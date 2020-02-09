@@ -1,0 +1,530 @@
+\section{Class Field Theory}
+\subsection{Context}
+Let $R$ be a commutative ring, $M$ and $P$ ideals in $R$. We can then prove the followings:
+\begin{theorem}
+    \begin{itemize}
+        \item $M \text{ is maximal} \iff R/M \text{ is a field}$
+        \item $P \text{ is prime} \iff R/P \text{ is an integral domain}$
+    \end{itemize}
+\end{theorem}
+\begin{property}
+    Maximal ideals are prime. 
+\end{property}
+\begin{proof}
+    \begin{align*}
+        M \text{ maximal ideal} &\iff R/M \text{ field}\\
+                                &\implies \text{ R/M Integral Domain } \iff M \text{ prime ideal}
+    \end{align*}
+\end{proof}
+
+If $L/K$ is a Galois extension, then we will denote it's Galois group by $\Gal{L/K}$.
+
+
+
+-----------
+
+
+
+Let $K$ be a number field, and $\mathcal{O}_K$ be the corresponding ring of integers.
+Let $\mathfrak{p}$ be a non-zero prime ideal in $\mathcal{O}_K$.
+Let $L/K$ be a finite extension and again, $\mathcal{O}_L$ be the ring of integers in $L$.
+
+Then we know that $\mathcal{O}_L$ is the integral closure of $\mathcal{O}_K$ in $L$
+
+We have $\mathfrak{p}\mathcal{O}_L$ an ideal in $\mathcal{O}_L$.
+It is not a prime ideal in general, but as $L/K$ is finite, there exists a factorization as the following:
+$$
+\mathfrak{p}\mathcal{O}_L = \prod_{i=1}^r \mathfrak{P}_i^{e_i}
+$$
+Where the integers $e_i$ are called the ramification indexes.
+We also have $\mathfrak{P}_i \cap \mathcal{O}_K = \mathfrak{p}$, and we say that the ideals $\mathfrak{P}_i$ in $L$ extend the ideal $\mathfrak{p}$ in $K$.
+
+Then, there are three possibilities for an ideal: it may split, ramifies of be inert.
+\begin{definition}[Ideal Ramifies]
+    We say that an ideal $\mathfrak{p}$ ramifies in $L/K$ if a ramification index $e_i$ is greater then one, 
+    i.e. if $e_i>1$ for some $1 \leq i \leq r$.
+\end{definition}
+\begin{definition}[Ideal Splits]
+    We say that $\mathfrak{p}$ splits in $L/K$ if none of the ramification indexes $e_i$ is greater then one, and $r$ is a least two; 
+    i.e. if $e_i=1 \quad \forall 1 \leq i \leq r$ and $r \geq 2$.
+\end{definition}
+\begin{definition}[Ideal Inert]
+    We say that $\mathfrak{p}$ is inert in $L/K$ if there is only one ramification index $e_1$ and it is equal to one;
+    i.e. if $e_1=1$ and $r=1$.
+\end{definition}
+We know that the extension $L/K$ is ramified in the primes that divide the discriminant. Therefore, the extension is unramified in all but finitely many prime ideals.
+
+
+\subsection{Residue Fields Extensions}
+The ideal $\mathfrak{p}$ defines the residue field $F=\mathcal{O}_K/\mathfrak{p}$.
+The ideals $\mathfrak{P}_i$ define the residue fields $F_i=\mathcal{O}_L/\mathfrak{P}_i$.\\
+The field $F$ then naturally embeds to $F_i$ (so each $\mathfrak{P}_i$ defines a field extension).
+The inertia degree of $\mathfrak{P}_i$ is the degree $f_i=[F_i:F]=[\mathcal{O}_L/\mathfrak{P}_i:\mathcal{O}_K/\mathfrak{p}]$ of this extension.
+
+We then observe that $[L:K] = \sum_{i=1}^r e_if_i$
+
+We can then specify when an ideal splits or ramifies completely.
+\begin{definition}[Ideal Splits Completely]
+    We say that $\mathfrak{p}$ splits completely in $L/K$ if all ramification indexes $e_i$ and inertia degrees $f_i$ are one.
+    i.e. if $e_i=f_i=1 \quad \forall 1 \leq i \leq r$.\\
+    In this case, $r=[L:K]$.
+\end{definition}
+\begin{definition}[Ideal Ramifies Completely]
+    We say that $\mathfrak{p}$ ramifies completely in $L/K$ if the inertia degrees $f_1$ is one, and $r$ is one.
+    i.e. if $r=1$ and $f_1=1$.\\
+    In this case, $e_1=[L:K]$.
+\end{definition}
+
+\subsection{Norms of Ideals}
+We define the norm of an ideal $I$ in $\mathcal{O}_K$ as $N(I)=|\mathcal{O}_K/I|$.
+
+If $\mathfrak{p} \subset \mathcal{O}_K$ is a prime ideal, then we can put $(p)=\mathfrak{p} \cap \Z$.
+It follows that $p\mathcal{O}_K \subset \mathfrak{p}$.
+$\mathcal{O}_K$ is a free $\Z-module$ of rank $[K:\Q]=q$, i.e. $\exists \alpha_1,\dots,\alpha_q \text{ s.t. } \mathcal{O}_K=\Z \alpha_1 \oplus \cdots \oplus \Z \alpha_q$.
+Thus, $|\mathcal{O}_K/\mathfrak{p}| \leq |\mathcal{O}_K/(p)| \leq p^q$.
+
+We have $Norm(\mathfrak{p})=|\mathcal{O}_K/\mathfrak{p}|=p^m$
+and $Norm_{L/\Q}(\mathfrak{P}_i) = Norm_{K/\Q}(\mathfrak{p})^{f_i}$.
+This implies $Norm(\mathfrak{P}_i)=|\mathcal{O}_L/\mathfrak{P}_i|=p^{mf_i}$.\\
+We also have: $\mathcal{O}_K/\mathfrak{p} \cong \mathbb{F}_{Norm(\mathfrak{p})}$
+and $\mathcal{O}_L/\mathfrak{P}_i \cong \mathbb{F}_{Norm(\mathfrak{P}_i)}$
+
+\subsection{Galois Extensions Simplifications}
+When the extension $L/K$ is Galois, the ramification indexes $e_i$ are all the same ($e_i=e$), as well as the inertia degrees $f_i=f$.
+We then have $$\mathfrak{p}\mathcal{O}_L = \prod_{i=1}^r \mathfrak{P}_i^{e} \text{ and } [L:K] = ref$$
+The Galois group $\Gal{L/K}$ is often denoted $G$
+
+We define the decomposition group $G_{\mathfrak{P}}$ of the ideal $\mathfrak{P}$ to be $\{\sigma \in G | \sigma(\mathfrak{P})=\mathfrak{P} \}$.
+It turns out that $G_{\mathfrak{P}} \cong \Gal{\nicefrac{\mathcal{O}_L/\mathfrak{P}}{\mathcal{O}_K/\mathfrak{p}}} \cong \Gal{ \mathbb{F}_{p^{mf}}/\mathbb{F}_{p^{f}}}$.
+Moreover, it is a cyclic group, so $G_{\mathfrak{P}} = <\tilde{\sigma}>$.
+
+\subsection{Unramified Prime Simplifications}
+When the ideal $\mathfrak{p}$ is unramified, $e=1$, so we get:
+$$\mathfrak{p}\mathcal{O}_L = \prod_{i=1}^r \mathfrak{P} \text{ and } [L:K] = rf$$
+
+\subsection{The Frobenius Element}
+\subsubsection{Definition}
+[is it ok a a subsection title? (perhaps too generic?) alternatives: well definiteness, introduction,  ]
+
+We can construct the Frobenius element (sometimes also called the Artin symbol, or the Frobenius map) that depend on the extension $L/K$ and ideal $\mathfrak{P}$ in $\mathcal{O}_L$.
+It is denoted $\Frob{L/K}{\mathfrak{P}}$, and is \textit{the} element $\sigma \in G$ such that:
+$$
+\sigma(\alpha) \equiv \alpha^{Norm(\mathfrak{p})} \bmod{\mathfrak{P}} \quad \forall \alpha \in \mathcal{O}_L.
+$$
+
+At the moment, we can not talk of the Frobenius element as it is not unique: it is unique only up to a conjugacy class.
+This is not too pathological, as Frobenius element of primes ideals $\mathfrak{P}_1$ and $\mathfrak{P}_2$ that extend the same prime $\mathfrak{p}$ are conjugates.
+
+We define the Frobenius element for $\mathfrak{p}$ (denoted $\Frob{L/K}{\mathfrak{p}}$) in a meaning full manner, to be the set $\{ \Frob{L/K}{\mathfrak{P}} | \mathfrak{P} \text{ extending } \mathfrak{p} \} \subset G$.
+
+[is this construction / definition ok? or maybe I should rephrase it? (it look weird to me)]
+
+\begin{property}
+	If $\tau \in G$, then 
+	$\Frob{L/K}{\mathfrak{\tau P}} = \tau \Frob{L/K}{\mathfrak{P}} \tau^{-1}$.
+\end{property}
+\begin{proof}
+	For all $x \in \mathcal{O}_L$, we have:
+	$$
+	\Frob{L/K}{\mathfrak{P}}x 
+	= x^{Norm(\mathfrak{p})} \mod \mathfrak{P}
+	$$
+	But all such $x$ may be written as $\tau^{-1}(x)$, so we have:
+	$$
+	\Frob{L/K}{\mathfrak{P}} \tau^{-1}(x) 
+	= {(\tau^{-1} x)}^{Norm(\mathfrak{p})} \mod \mathfrak{P}
+	$$
+	Which gives:
+	$$
+	\tau \Frob{L/K}{\mathfrak{P}}\tau^{-1}(x) 
+	= x^{Norm(\mathfrak{p})} \mod \mathfrak{P}
+	$$
+\end{proof}
+
+
+\begin{property}
+	If $\mathfrak{P}_1$ and $\mathfrak{P}_2$ extend $\mathfrak{p}$, then $\Frob{L/K}{\mathfrak{P}_1}$ and $\Frob{L/K}{\mathfrak{P}_2}$ are conjugates.
+\end{property}
+\begin{proof}
+	We have the following scheme:\\
+	\begin{tikzpicture}[text width=10cm, align=flush center]
+	%nodes
+	\node (L)                                           {$L$};
+	
+	\node (subsetL)[right of=L, node distance=0.75cm]   {$\supseteq$};
+	\node (P1)[right of=subsetL, node distance=0.75cm]  {$\mathfrak{P}_1$};
+	\node (P2)[right of=P1, node distance=1cm]          {$\mathfrak{P}_2$};
+	
+	\node (K) [below of=L, node distance=2cm]           {$K$};
+	\node (subsetK)[right of=K, node distance=1cm]      {$\supseteq$};
+	\node (p) [right of=subsetK, node distance=1cm]     {$\mathfrak{p}$};
+	
+	%links
+	\draw[-] (L) to node {} (K);
+	\draw[-] (p) to node {} (P1);
+	\draw[-] (p) to node {} (P2);
+	\end{tikzpicture}
+	
+	There is an element $\tau \in G$ such that $\tau(\mathfrak{P}_1)=\mathfrak{P}_2$.
+	Then using last property, we deduce that $\Frob{L/K}{\mathfrak{P}_1}$ and $\Frob{L/K}{\mathfrak{P}_2}$ are conjugates.
+\end{proof}
+
+Never the less, is important to notice at this point that if $G$ is abelian, then all conjugacy classes are made up of only one element.
+Therefore, the Frobenius element is well defined in this case.
+Moreover, it will only depend on the prime $\mathfrak{p}$ that is extended.
+[should this comment be before or after the property?]
+
+
+
+\subsubsection{Examples}
+\paragraph{Case $\Q[\sqrt{7}]:\Q$ (quadratic field extension)}
+%Looking at $\Q[\sqrt{7}]:\Q$ (which is a Galois extension).
+We have minimum polynomial $m(x)=x^2-7$, the discriminant is $\Delta = 4.7 = 28$.\\
+We write $G = \Gal{\Q[\sqrt{7}]:\Q} = <\sigma \ | \ \sigma^2 = 1_G> \cong C_2$.
+
+\subparagraph{The prime ideal $(2)$}
+%We look at the prime ideal $(2)$:
+As $m(x) = (x+1)^2 \mod 2$, we have $(2) = (2, \sqrt{7}+1)^2$.\\
+As well, $Norm((2)) = 2^2 = 4$ and $Norm((2, \sqrt{7}+1)) = 2$.
+
+So we have:
+\begin{align*}
+    \Frob{\Q[\sqrt{7}]:\Q}{(2, \sqrt{7}+1)}: \alpha &\to \alpha^{Norm((2))} \ (3, \sqrt{7}+1)\\
+    \sqrt{7} &\to [\sqrt{7}]^4 \ (2, \sqrt{7}+1) = -\sqrt{7} \ (2, \sqrt{7}+1) 
+\end{align*}
+Thus, $\Frob{\Q[\sqrt{7}]:\Q}{(2, \sqrt{7}+1)} = \sigma \in G$.
+
+\subparagraph{The prime ideal $(3)$}
+%We look at the prime ideal $(3)$:
+As $m(x) = (x+1)(x-1) \mod 3$, we have $(3) = (3, \sqrt{7}+1)(3, \sqrt{7}-1)$.\\
+As well, $Norm((3)) = 3^2 = 9$ and $Norm((3, \sqrt{7}+1)) = Norm((3, \sqrt{7}-1)) = 3$.
+
+So we have:
+\begin{align*}
+    \Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}+1)}: \alpha&\to \alpha^{Norm((3))} \ (3, \sqrt{7}+1)\\
+    \sqrt{7}&\to [\sqrt{7}]^9 \ (3, \sqrt{7}+1) = \sqrt{7} \ (3, \sqrt{7}+1)
+\end{align*}
+Thus, $\Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}+1)} = 1_G \in G$.
+Similarly, $\Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}-1)} = 1_G \in G$.
+
+\paragraph{Case $\Q[\zeta_6]:\Q$ ($6^{th}$ cyclotomic field extension)}
+%Looking at $\Q[\zeta_6]:\Q$ (which is a Galois extension).
+We have minimum polynomial $m(x)=x^2-x+1$ (so the degree of the extension is 2), the discriminant is $\Delta = -3$ (here, $\zeta_6=e^{\pi i/3}$ denotes the $6^{th}$ root of unity).
+
+We write $G = \Gal{\Q[\zeta_6]:\Q} = < \sigma: \zeta_6 \to \zeta_6^2, \tau: \zeta_6 \to \zeta_6^3 \ | \ \sigma^3=\tau^2=Id, \sigma\tau=\tau\sigma > \cong C_2 \times C_3$.
+Note that $g \in G$ is determined by $g(\zeta_6)$.
+Note as well that $G$ is abelian, so the Frobenius element is well defined.
+
+\subparagraph{The prime ideal $(3)$}
+%We look at the prime ideal $(3)$:
+As $m(x) = (x+1)^2 \mod 3$, we have $(3) = (3, \zeta_6+1)^2$.\\
+As well, $Norm((3)) = 3^2 = 9$ and $Norm((3, \zeta_6+1)) = Norm((3, \zeta_6-1)) = 3$.
+
+So we have:
+\begin{align*}
+    \Frob{\Q[\zeta_6]:\Q}{(3, \zeta_6+1)}: \alpha & \to \alpha^{Norm((3))} \ (3, \zeta_6+1)\\
+    \zeta_6   & \to [\zeta_6]^9 \ (3, \zeta_6+1) = -1 \ (3, \zeta_6+1) = \zeta_6 \ (3, \zeta_6+1)
+\end{align*}
+Thus, $\Frob{\Q[\zeta_6]:\Q}{(3, \zeta_6+1)} = Id \in G$.
+
+\subparagraph{The prime ideal $(7)$}
+%We look at the prime ideal $(7)$:
+As $m(x) = (x+2)(x-3) \mod 3$, we have $(7) = (7, \zeta_6+2)(7, \zeta_6-3)$.\\
+As well, $Norm((7)) = 7^2 = 49$ and $Norm((7, \zeta_6+2)) = Norm((3, \zeta_6-3)) = 7$.
+
+So we have:
+\begin{align*}
+    \Frob{\Q[\zeta_6]:\Q}{(7, \zeta_6+2)}: \alpha & \to \alpha^{Norm((7))} \ (7, \zeta_6+2)\\
+    \zeta_6   & \to [\zeta_6]^49 \ (7, \zeta_6+2) = \zeta_6 \ (7, \zeta_6+2)
+\end{align*}
+Thus, $\Frob{\Q[\zeta_6]:\Q}{(7, \zeta_6+2)} = Id \in G$.
+Similarly, $\Frob{\Q[\zeta_6]:\Q}{(7, \zeta_6-3)} = Id \in G$.
+
+\subparagraph{The prime ideal $(13)$}
+%We look at the prime ideal $(7)$:
+As $m(x) = (x+3)(x-4) \mod 3$, we have $(13) = (13, \zeta_6+3)(13, \zeta_6-4)$.\\
+As well, $Norm((13)) = 13^2 = 169$ and $Norm((13, \zeta_6+3)) = Norm((3, \zeta_6-4)) = 13$.
+
+So we have:
+\begin{align*}
+    \Frob{\Q[\zeta_6]:\Q}{(13, \zeta_6+3)}: \alpha & \to \alpha^{Norm((13))} \ (13, \zeta_6+3)\\
+    \zeta_6   & \to [\zeta_6]^169 \ (13, \zeta_6+3) = \zeta_6 \ (13, \zeta_6+3)
+\end{align*}
+Thus, $\Frob{\Q[\zeta_6]:\Q}{(13, \zeta_6+3)} = Id \in G$.
+?? always identity?? [to be solved]
+
+
+
+\subsubsection{Behaviour in Chained Extensions}
+
+We will consider the following scheme:\\
+\begin{tikzpicture}[text width=10cm, align=flush center, node distance=0.75cm]
+%nodes
+
+\node (M)                                      {$M$};
+\node (subsetM)[left of=M, node distance=0.5cm]  {$\subset$};
+\node (OM)[left of=subsetM, node distance=0.5cm] {$\mathcal{O}_M$};
+\node (supsetM)[right of=M]                    {$\supseteq$};
+\node (PM)[right of=supsetM]                   {$\mathfrak{P}$};
+
+
+\node (L) [below of=M, node distance=2cm]      {$L$};
+\node (subsetL)[left of=L, node distance=0.5cm]  {$\subset$};
+\node (OL)[left of=subsetL, node distance=0.5cm] {$\mathcal{O}_L$};
+\node (supsetL)[right of=L]                    {$\supseteq$};
+\node (PL)[right of=supsetL]                    {$\mathfrak{p}$};
+
+
+\node (K) [below of=L, node distance=2cm]        {$K$};
+\node (subsetK)[left of=K, node distance=0.5cm]  {$\subset$};
+\node (OK)[left of=subsetK, node distance=0.5cm] {$\mathcal{O}_K$};
+\node (supsetK)[right of=K]                    {$\supseteq$};
+\node (PK)[right of=supsetK]                    {$p$};
+
+
+%links
+\draw[-] (M) to node {} (L);
+\draw[-] (L) to node {} (K);
+\draw[-] (PM) to node {} (PL);
+\draw[-] (PL) to node {} (PK);
+\end{tikzpicture}
+
+In such a situation, we can define (for $M/K$ Galois)
+$\Frob{M/K}{\mathfrak{P}}$, 
+$\Frob{M/K}{p}$, 
+$\Frob{M/L}{\mathfrak{P}}$, 
+$\Frob{M/L}{\mathfrak{p}}$.
+If, in addition, $L/K$ is normal:
+$\Frob{L/K}{\mathfrak{p}}$ , and 
+$\Frob{L/K}{p}$.
+\cite[p.99]{AlgebraicNumberFields}
+
+We will look at properties of these Frobenius elements (relation between each others).
+
+\begin{property}
+	$$
+	\Frob{M/K}{\mathfrak{P}}^{f(\mathfrak{P}/\mathfrak{p})} = \Frob{M/L}{\mathfrak{P}}
+	$$
+	
+	[what is this $f(\mathfrak{P}/\mathfrak{p})$? is it the fields of $\mathfrak{P}$ over $\mathfrak{p}$?]
+\end{property}
+\begin{proof}
+[to write...]
+\cite[p.99]{AlgebraicNumberFields}
+\end{proof}
+
+\begin{property}
+	$$
+	\Frob{L/K}{\mathfrak{p}} = \left. \Frob{M/K}{\mathfrak{P}} \right|_L
+	$$
+\end{property}
+\begin{proof}
+	Let $\sigma = \Frob{M/K}{\mathfrak{P}} \in \Gal{M/K}$ so 
+	$\sigma: M \to M \text{ s.t. } \left. \sigma \right|_K = Id \text{ and } \sigma \text{ is an autotomorphism}$.\\
+	Similarly, let $\tau = \Frob{L/K}{\mathfrak{p}} \in \Gal{L/K}$ so 
+	$\tau: L \to L \text{ s.t. } \left. \tau \right|_K = Id \text{ and } \tau \text{ is an autotomorphism}$.
+	
+	As $M$ extends $L$, $\sigma$ being an automorphism of $M$ makes it an automorphism of $L$ as well.
+	The restriction condition stays the same.
+	% done with Djordjo
+	% \cite[p.99]{AlgebraicNumberFields}
+\end{proof}
+
+
+\begin{property}
+	$$
+	\Gal{L/K} \cong \nicefrac{\Gal{M/K}}{\Gal{M/L}}
+	$$
+\end{property}
+\begin{proof}
+	Let $\sigma \in \Gal{M/K}$, i.e. $\sigma: M \to M \text{ s.t. } \left. \sigma \right|_K = Id \text{ and } \sigma \text{ is an autotomorphism}$.
+	
+	Let $\phi: \Gal{M/K} \to \Gal{L/K}$ be such that:
+	$\phi(\sigma) = \left. \sigma \right|_L$.
+	This is well defined as an automorphism of $M$ restricts to an automorphism of $L$ when $M$ extends $L$.
+	
+	It is trivial to check that $\phi$ is a homomorphism.
+	
+	The kernel of $\phi$ is clearly $\Gal{M/L}$.
+	
+	The image of $\phi$ is $\Gal{L/K}$ as every element of $\Gal{L/K}$ may be extended to $\Gal{M/K}$.
+	
+	Therefore, the property follows via the $1^{st}$ isomorphism theorem.
+	% done with Djordjo
+\end{proof}
+
+\begin{property}
+	We have: 
+	$$
+	\mathfrak{p} \text{ splits complitely in } L 
+	\iff \Frob{L/K}{\mathfrak{P}} = 1
+	$$
+\end{property}
+\cite[p.100]{AlgebraicNumberFields}
+
+
+We will consider the following scheme:\\
+\begin{tikzpicture}[text width=10cm, align=flush center, node distance=2cm]
+%nodes
+\node (M) {$L_1L_2$};
+\node (supsetM)[right of=M, node distance=0.75cm] {$\supseteq$};
+\node (PM)[right of=supsetM, node distance=0.5cm] {$\mathfrak{P}$};
+
+\node (L1) [below of=M, left of=M] {$L_1$};
+\node (supsetL1)[right of=L1, node distance=0.5cm] {$\supseteq$};
+\node (PL1)[right of=supsetL1, node distance=0.5cm] {$\mathfrak{p}_1$};
+
+\node (L2) [below of=M, right of=M] {$L_2$};
+\node (supsetL2)[right of=L2, node distance=0.5cm] {$\supseteq$};
+\node (PL2)[right of=supsetL2, node distance=0.5cm] {$\mathfrak{p}_2$};
+
+\node (K) [below of=M, node distance = 4cm] {$K$};
+\node (supsetK)[right of=K, node distance=0.5cm] {$\supseteq$};
+\node (PK)[right of=supsetK, node distance=0.5cm] {$\mathfrak{p}$};
+
+
+%links
+\draw[-] (M) to node {} (L1);
+\draw[-] (M) to node {} (L2);
+\draw[-] (L1) to node {} (K);
+\draw[-] (L2) to node {} (K);
+\end{tikzpicture}
+
+
+
+\begin{property}
+	We have:
+	$$
+	\Frob{L_1L_2/K}{\mathfrak{P}}
+	= \Frob{L_1/K}{\mathfrak{p}_1} \times \Frob{L_2/K}{\mathfrak{p}_2}
+	$$
+\end{property}
+\cite[p.100]{AlgebraicNumberFields}
+
+\begin{property}
+	We have: 
+	$$
+	\mathfrak{p} \text{ splits complitely in } L_1L_2
+	\iff
+	\mathfrak{p} \text{ splits complitely in } L_1 \text{ and } L_2
+	$$
+\end{property}
+\begin{proof}
+	Combine the last two proposition.
+	\cite[p.100]{AlgebraicNumberFields}
+\end{proof}
+
+
+
+
+
+\subsection{The Chebotarev's Density Theorem}
+\subsubsection{Motivations}
+If we look at the distribution of primes numbers modulo a number (15 in the next example), we get a table as follows:
+
+Table mod 15:\\
+0: \\
+1: 31, 61, 151, 181, 211, 241, 271, 331, 421, \\
+2: 2, 17, 47, 107, 137, 167, 197, 227, 257, 317, 347, 467, \\
+3: 3, \\
+4: 19, 79, 109, 139, 199, 229, 349, 379, 409, 439, 499, \\
+5: 5, \\
+6: \\
+7: 7, 37, 67, 97, 127, 157, 277, 307, 337, 367, 397, 457, 487, \\
+8: 23, 53, 83, 113, 173, 233, 263, 293, 353, 383, 443, \\
+9: \\
+10: \\
+11: 11, 41, 71, 101, 131, 191, 251, 281, 311, 401, 431, 461, 491, \\
+12: \\
+13: 13, 43, 73, 103, 163, 193, 223, 283, 313, 373, 433, 463, \\
+14: 29, 59, 89, 149, 179, 239, 269, 359, 389, 419, 449, 479, \\
+
+%[table display to improve!!!]
+It looks like there are classes of primes.
+We would like to characterize this repartition: that is, decide if classes are finite or infinite, and quantify the repartitions.
+
+
+
+\subsubsection{Notions of Density}
+As discussed previously, we are interested in subsets of $\primes$ (the set of primes numbers).
+Euler proved that there are infinitely many primes.
+%cite Euler?
+Therefore, there are two types of subsets of $\primes$: the ones that are infinite, and the finites ones.
+For finite sets, we can characterise the size by just counting elements.
+In fact, we will mainly be interested in sets that have infinitely many primes, and again, we would like a notion of size.
+
+A suitable way would be to compare the subset with the set of all primes, and, say look at the proportions of primes included in the subset.
+
+We call this the density, there are two rigorous ways to define it:
+\begin{definition}[Natural density]
+	We say that $S \subseteq \primes$ has natural density $\delta$ when:
+	$$
+	\lim_{x \to +\infty}
+	\frac{ \# \{ p \in \primes | p \in S \}}
+	{ \# \{ p \in \primes | p \in \primes \}} = \delta
+	$$
+\end{definition}
+\begin{definition}[Analytic density or Dirichlet density]
+	We say that $S \subseteq \primes$ has analytical (or Dirichlet) density $\delta$ when:
+	$$
+	\lim_{s \to 1^+}
+	\left( \sum_{p \in S} \frac{1}{p^s} \right) 
+	\left( \sum_{p \in \primes} \frac{1}{p} \right)^{-1} = \delta
+	$$
+\end{definition}
+
+Note that the natural density may not exist.
+However, when both exist, the two densities are the same.
+%cite!
+
+
+
+\subsubsection{Theorem}
+One of the most important results that use Frobenian maps is probably the Chebotarev density theorem.
+\begin{theorem}
+	With $L/K$ an extension of Galois group $G=\Gal{L/K}$.\\
+	Let $C$ be a conjugacy class in $G$.
+	
+	Then, the proportion of unramified primes ideals $\mathfrak{p}$ in $K$ that have Frobenius element $\Frob{L/K}{\mathfrak{p}}=C$ \footnote{When depending on a prime in the "lower" field, the Frobenius element is a conjugacy class to be well defined} is $\nicefrac{|C|}{|G|}$.
+\end{theorem}
+We see that Frobenius elements are in the heart of this theorem.
+
+\paragraph{Proof}
+[quick proof? actually, I couldn't find one, maybe just idea of proof?]
+
+\paragraph{Example}
+Extension with non-commutative Galois group (as commutative will be used in Dirichlet's example).
+=> splitting field of $x^3-2$? (i.e. $\Q[\zeta_3, \curt{2}]:\Q$)
+
+
+
+\subsection{The Dirichlet's Density Theorem}
+\subsubsection{Theorem}
+The most common application of Chebotarev density theorem is probably the Dirichlet's density theorem.
+It states as follows:
+\begin{theorem}
+	Let $n \in \N^*$, $a \in \N$ such that $\gcd(a,n) = 1$. 
+	If $S = \{ p \in \primes | p \equiv a \mod n \}$, then $S$ has density $\nicefrac{1}{\varphi(n)}$.
+\end{theorem}
+
+\subsubsection{Link with Chebotarev}
+This is a direct application of Chebotarev's density theorem for the field extension $\Q[\gamma]:\Q$ where $\gamma$ is the $n^{th}$ root of unity (this is the cyclotomic field).
+
+The Galois group then is cyclic, as this is a cyclotomic extension, and has order $\varphi(n)$ by definition (so $\Gal{\Q[\gamma]:\Q} \cong \left( \nicefrac{\Z}{n\Z} \right) \cong C_{\varphi(n)}$).
+
+Primes ideals in $\Q$ are just primes numbers. And as the Galois group is cyclic, it is abelian, so all conjugacy classes have one element.
+Thus, Chebotarev gives Dirichlet's density theorem in the particular case of cyclotomic extensions.
+%[need more details?]
+
+\subsubsection{Proof}
+[Stand alone proof?]
+
+\subsubsection{Example}
+[Prove the case n=15 from the motivation subsection above.]
+
+
+
+
+
+
+
