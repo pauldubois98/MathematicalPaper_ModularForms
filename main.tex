@@ -1,0 +1,110 @@
+\documentclass[a4paper, 11pt]{article}
+\usepackage[utf8]{inputenc}
+
+%margin
+\usepackage[margin=2cm]{geometry}
+%\usepackage{geometry}
+%lists
+\usepackage{enumitem}
+%encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%English
+\usepackage[english]{babel}
+%colors
+\usepackage[dvipsnames,svgnames,table]{xcolor}
+%tables
+\usepackage{multirow}
+%for math
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{nicefrac}
+%for images
+\usepackage{graphicx}
+%for plots
+\usepackage{tikz}
+\usetikzlibrary{mindmap}
+%links
+\usepackage{hyperref}
+%citations
+\usepackage{natbib}
+\setcitestyle{numbers, notesep={: }}
+
+
+%environments
+\newtheorem*{notation}{Notation}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{property}{Property}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}[section]
+%commands
+%\newcommand{\name}[num]{definition}
+\newcommand{\primes}{\mathbb{P}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\halfplane}{\mathbb{H}}
+%\newcommand{\dim}[1]{\text{dim}(#1)}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\curt}[1]{\sqrt[3]{#1}}
+\newcommand{\Ker}[1]{\text{Ker}(#1)}
+\newcommand{\Image}[1]{\text{Im}(#1)}
+\newcommand{\Gal}[1]{\text{Gal}(#1)}
+\newcommand{\Frob}[2]{\text{Frob}_{#1}(#2)}
+
+    
+%opening
+\title{Modular forms modulo 2}
+\author{Paul Dubois}
+%\date{2019/2020}
+
+
+%\includeonly{ModularForms,ModularFormsModuloTwo}
+%\includeonly{FrobenianMaps}
+
+
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We are interested in Modular forms modulo 2, and computing thing about it.
+[temporary abstract]
+
+Key words that should appear:
+Modular forms;
+Mod 2;
+Duality of definitions;
+Governing fields;
+Frobenian map?;
+Exact computations;
+\end{abstract}
+
+\tableofcontents
+
+
+
+\include{ModularForms}
+\include{ModularFormsModuloTwo}
+\include{HeckeAlgebra}
+\include{FrobenianMaps}
+\include{Numerics}
+
+
+
+\bibliography{references}
+\bibliographystyle{alpha}
+
+\end{document}
