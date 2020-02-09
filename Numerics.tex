@@ -1,0 +1,23 @@
+\section{Finding coefficients of Hecke operators}
+\subsection{(Very) General Method}
+We want to find the coefficients $a_{ij}$ such that $$\sum_{i, j} a_{ij} T_3^iT_5^j = T_p$$
+(with $a_{ij} \in \mathbb{F}_2$).
+
+Let $k\geq 1$ an integer.
+Then there exists an integer $N(k)>0$ such that,
+for all pairs of non-negative integers $(i, j)$ with $i+j \geq N(k)$,
+we have $T_3^{i}T_5^{j}|\Delta^k = 0$.
+
+This allows us to write:
+$$\sum_{i+j < N(k)} a_{ij} T_3^iT_5^j|\Delta^k= T_p|\Delta^k \qquad (*)$$
+
+Now, suppose that we want to calculate the table of the $a_{ij}(p)$ for $p \in \primes$:
+\begin{enumerate}
+    \item Take an odd power for $\Delta$ (say $k$, we usually start with the smallest: 1 and the increase gradually)
+    \item Plug $\Delta^k$ in the equation above, ie:
+    \item Calculate $T_3^iT_5^j|\Delta^k \forall i+j < N(k)$
+    \item Calculate $T_p|\Delta^k \forall i+j < N(k)$
+    \item Equate both sides of $(*)$, if not zero (which unfortunately happens often), use the equation to deduce $a_{ij}(p)$
+\end{enumerate}
+
+[How much of the algorithm is there? too much? too little? I could develop much more on how everything is calculated: how I go back and forward between $q$ and $\Delta$ representations of modular forms to both be efficient in calculations and catch up the error in numerical approximation, what techniques are used for speed, argue the implementation choices, describe how the code is split, etc... I could write at least  pages on all of that, but is it the point of a math paper?]
