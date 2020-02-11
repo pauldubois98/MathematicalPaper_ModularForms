@@ -1,19 +1,21 @@
 \section{Modular Forms Modulo Two}
 \subsection{Strategy to Reduce Modulo Two}
-It is not trivial, at this point, why and how we can reduce modulo two modular forms, objects that have coefficients in $\C$.
+It is not trivial, at this point, why and how we can reduce modulo 2 modular forms, objects that have coefficients in $\C$.
 In general, reduction modulo a number is only possible with whole numbers (integers).
-We would like to reduce modulo two coefficients of the Fourier series for modular forms.
+We would like to reduce modulo 2 coefficients of the Fourier series for modular forms.
 But at the moment, they lie in $\C$.
 
 In fact, we will introduce a new basis for the modular forms: the so called Miller Basis.
 The coefficients of all the forms in this basis are integers. It is then possible to consider the space of modular forms over $\Z$ instead of $\C$.
-Once this is done, we will reduce all the newly integers coefficients modulo $2$.
+Once this is done, we will reduce all the newly integral coefficients modulo $2$.
 
-In this section, we will denote all object reduced with an $\overline{\text{over-line}}$: $f \to \overline{f}$; $c \to \overline{c}$; $T_n \to \overline{T_n}$.
+In this section, we will denote all objects reduced modulo 2 with an $\overline{\text{over-line}}$:
+\begin{itemize}
+	\item The modular form $f$ once reduced will be denoted $\overline{f}$.	\item The coefficients of the $q$-expansion $c$ will reduce to $\overline{c}$
+	\item The Hecke operators $T_n$ reduced will be denoted $\overline{T_n}$.
+\end{itemize}
 
-
-
-\subsection{Integer Basis}
+\subsection{Integral Basis}
 \subsubsection{Normalisation of Typical Modular Forms}
 \paragraph{Normalisation of Eisenstein series $G_k$}
 We first recall the formula for $q$ extension of $G_k$ and the one for $\zeta(2k)$:
@@ -29,12 +31,12 @@ $$
 G_k(q) = \frac{(2\pi)^{2k}}{(2k)!}B_k + 2 \frac{{(2 \pi i)}^{2k}}{(2k-1)!} \sum_{n=1}^{\infty} \sigma_{2k-1}(n)q^n
 $$
 
-We would like to normalize this series, so that the coefficients become integers, so that we can ultimately reduce them modulo two.
+We would like to normalize this series, so that the coefficients become integers, so that we can ultimately reduce them modulo 2.
 Right now, coefficients are rational.
 
 As we want to keep the series modular with same weight, the only tool we have to normalize the series is multiplication by a constant.
 The normalization is a crucial point: 
-If we multiply by $2$ all coefficients of a modular form that already lie in $\Z$, the reduction $\mod 2$ will always give zero.
+If we multiply by $2$ all coefficients of a modular form that already lie in $\Z$, the reduction $\bmod 2$ will always give zero.
 
 First, let's normalize the series to have particular values on some coefficients of interest.
 There are two justified ways to do so: normalize to have constant coefficient set to one, and to have $q$ coefficient is set to one.
@@ -60,26 +62,20 @@ $$
 $F_k$ then has $q$ coefficient set to one (as $\sigma_{2k-1}(1)=1$).
 
 Clearly, the coefficients of this expansion remain in $\Q$ at least, and we will show that for some specific $k$, the coefficients lie in fact in $\Z$.
-Both $F_k$ and $E_k$ are interesting, but for our purpose (reducing modulo two), we will use $E_k$.
+Both $F_k$ and $E_k$ are interesting, but for our purpose (reducing modulo 2), we will use $E_k$.
 Note that $E_k$ are normalized versions of Eisenstein series $G_k$, but in literature, both are called Eisenstein series see \cite[p.6]{IntoductionModularFormsWorkshop} for example.
 
-\paragraph{Normalisation of $\varDelta$}
-Again, we recall the formula for $q$ extension of $\varDelta$:
-$$
-\varDelta(q) = (2\pi)^{12} q \prod_{n=1}^{\infty} (1-q^n)^{24}
-$$
-Again, we want to normalize the series so that the first coefficient is one. 
-As there is no constant coefficients, we will normalize it so that the $q$ coefficient becomes $1$.
-Therefore, we define $\varDelta = (2\pi)^{12}.\Delta$, so explicitly:
+\paragraph{The Modular Discriminant $\Delta$ Normalized}
+Again, we recall the formula for $q$ extension of $\Delta$:
 $$
 \Delta(q) = q \prod_{n=1}^{\infty} (1-q^n)^{24}
 $$
-Defined that way, $\Delta$ is known as the discriminant modular form.
+Clearly, the coefficients in expansion of $\Delta$ are integers (which we can reduce modulo 2).
+This is the reason why we defined $\Delta$ with the $\frac{1}{(2\pi)^{12}}$ factor in front.
 
-Clearly, the coefficients in expansion of $\Delta$ are integers (which we can reduce modulo two).
 
 \subsubsection{Miller Basis}
-\paragraph{Basis with Integer Coefficients (in Fourier Series)}
+\paragraph{Basis with Integral Coefficients (in Fourier Series)}
 Applying normalization $G_k \to E_k$ above for $k=2,3$, we get:
 \begin{align*}
 	E_2 &= 1 + \frac{8}{B_2} \sum_{n=1}^{\infty} \sigma_{3}(n)q^n \qquad B_2 = \frac{1}{30} \\
@@ -95,10 +91,10 @@ and
 Now, we have shown that $\{G_2^aG_3^b | 2a+3b=k\}$ is a basis for modular forms of weight $2k$ over the complex (see \ref{BasisModularForms}).
 As $E_2 = \lambda G_2,\ \lambda \in \C$ and $E_3 = \mu G_3,\ \mu \in \C$, we have that $\{E_2^aE_3^b | 2a+3b=k\}$ remains a basis for $M_k$ over $\C$.
 
-It is clear, from the series, that coefficients of the $q$ expansion of both $E_2$ and $E_3$ are all integers.
+It is clear, from the series, that coefficients of the $q$-expansion of both $E_2$ and $E_3$ are all integers.
 Thus, so are coefficients of combinations of $E_2$ and $E_3$.
-Therefore, we have found a basis for $M_k$ such that all elements in the basis have only integer coefficients in their $q$ expansion.
-\label{IntegerBasisModularForms}
+Therefore, we have found a basis for $M_k$ such that all elements in the basis have only integral coefficients in their $q$-expansion.
+\label{IntegralBasisModularForms}
 
 \paragraph{Miller Basis for $M_k^0$}
 This is a nice result, but we can in fact do better, by forcing the first coefficients to chosen values.
@@ -141,13 +137,13 @@ This is commonly called the Miller basis for $M_k^0$, as it was first introduced
 		$$
 		with
 		$$
-		2a+3b \leq 7 \ \&\ 2a+3b \cong k \mod 6$$
+		2a+3b \leq 7 \ \&\ 2a+3b \cong k \bmod 6$$
 		$$
 		\& \ \ d=\frac{k-(2a+3b)}{6} \quad \in \N \text{ as $k \geq 7$}
 		$$
-		Note that $a$ and $b$ are unique unless $k \cong 0 \mod 6$. In witch case, we use by convention $a=0$, $b=0$.
+		Note that $a$ and $b$ are unique unless $k \cong 0 \bmod 6$. In witch case, we use by convention $a=0$, $b=0$.
 		
-		As all $E_2$, $E_3$, and $\Delta$ have integer coefficients, $g_j$ will as well.
+		As all $E_2$, $E_3$, and $\Delta$ have integral coefficients, $g_j$ will as well.
 		
 		We then look at the $q$ series:
 		$$
@@ -176,8 +172,8 @@ This is commonly called the Miller basis for $M_k^0$, as it was first introduced
 \paragraph{Extension to all $M_k$}
 We already have a basis for $M_k^0$, as $\dim(M_k) = \dim(M_k^0) + 1$ (over $\C$), we just need to adjoint one element of $M_k \setminus M_k^0$ to our basis.
 
-It was shown before that $\{E_2^aE_3^b | 2a+3b=k\}$ is a basis for $M_k$ with integer coefficients (see \ref{IntegerBasisModularForms})
-One may see from the $q$ expansion that $E_2^aE_3^b = 1 + O(q)$ so $E_2^aE_3^b \in M_k \setminus M_k^0$.
+It was shown before that $\{E_2^aE_3^b | 2a+3b=k\}$ is a basis for $M_k$ with integral coefficients (see \ref{IntegralBasisModularForms})
+One may see from the $q$-expansion that $E_2^aE_3^b = 1 + O(q)$ so $E_2^aE_3^b \in M_k \setminus M_k^0$.
 
 Therefore, we can just add one element of $\{E_2^aE_3^b | 2a+3b=k\}$ to the Miller basis, and use Gaussian elimination again.
 We get a basis foe $M_k$ of the form $\{f_j | 0 \leq j \leq r \}$ such that in this basis: $a_i^j = \delta_{ij} \quad \forall 0 \leq i,j \leq r$ (with $r=dim(M_k^0)$ i.e. $r+1=dim(M_k)$).
@@ -185,13 +181,13 @@ We get a basis foe $M_k$ of the form $\{f_j | 0 \leq j \leq r \}$ such that in t
 \paragraph{Miller Basis Examples}
 \subparagraph{Miller basis for $k=16$}
 We can calculate the Miller basis for $k=16$:
-$k \cong 4 \mod 12$ so $a=2$ and $b=0$; $d=2$.
+$k \cong 4 \bmod 12$ so $a=2$ and $b=0$; $d=2$.
 We put $g_1 = \Delta^1E_3^2E_2^2$, so:
 \begin{align*}
     g_1(q) &= \Delta(q)E_2^2(q)E_3^2(q)\\
            &= \left[ q - 24q^2 + 252q^3 + O(q^4) \right]\\
-           & \qquad * \left[ 1 + 240q + 2160q^2 + 6720q^3 + O(q^4) \right]^2\\
-           & \qquad \qquad * \left[ 1 - 504q - 16632q^2 + 122976q^3 + O(q^4) \right]^2\\
+           & \qquad \cdot \left[ 1 + 240q + 2160q^2 + 6720q^3 + O(q^4) \right]^2\\
+           & \qquad \qquad \cdot \left[ 1 - 504q - 16632q^2 + 122976q^3 + O(q^4) \right]^2\\
            &= q - 552q^2 - 188244q^3 + O(q^4)
 % (Wolfram|Alpha) develop (q - 24q^2 + 252q^3)(1 + 240q + 2160q^2 + 6720q^3)^2(1 - 504q - 16632q^2 + 122976q^3)^2
 \end{align*}
@@ -199,16 +195,16 @@ and $g_2 = \Delta^2E_3^0E_2^2$, so:
 \begin{align*}
     g_2(q) &= \Delta^2(q)E_2^2(q)\\
            &= \left[ q - 24q^2 + 252q^3 + O(q^4) \right]^2\\
-           & \qquad * \left[ 1 + 240q + 2160q^2 + 6720q^3 + O(q^4) \right]^2\\
+           & \qquad \cdot \left[ 1 + 240q + 2160q^2 + 6720q^3 + O(q^4) \right]^2\\
            &= q^2 + 432q^3 + O(q^4)
 % (Wolfram|Alpha) develop (q - 24q^2 + 252q^3)^2(1 + 240q + 2160q^2 + 6720q^3)^2
 \end{align*}
 Then, $f_2=g_2$ and $f_1=g_1+552g_2$, so:
 \begin{align*}
-    f_1(q) &= q - 552q^2 - 188244q^3 + O(q^4) \ + \ 552*\left[q^2 + 432q^3 + O(q^4)\right] \\
+    f_1(q) &= q - 552q^2 - 188244q^3 + O(q^4) \ + \ 552 \cdot \left[q^2 + 432q^3 + O(q^4)\right] \\
            &= q + 50220q^3 + O(q^4)\\
     f_2(q) &= q^2 + 432q^3 + O(q^4)\\
-% (Wolfram|Alpha) develop q - 552q^2 - 188244q^3 + 552*[q^2 + 432q^3]
+% (Wolfram|Alpha) develop q - 552q^2 - 188244q^3 + 552 \cdot [q^2 + 432q^3]
 \end{align*}
 
 Therefore, up to $O(q^4)$, $\{f_1, f_2\}=\{q + 50220q^3 + O(q^4), q^2 + 432q^3 + O(q^4)\}$ is a basis for $M_{16}^0$.
@@ -227,7 +223,7 @@ Then, $f_0 = g_0 - 1920g_1 - 1630080g_2$, so:
            & \qquad - 1920 \left[ q + 50220q^3 + O(q^4) \right] \\
            & \qquad \qquad - 1630080 \left[ q^2 + 432q^3 + O(q^4) \right]\\
            &= 1 + 2611200q^3 + O(q^4)
-% (Wolfram|Alpha) develop [1 + 1920q + 1630080q^2 + 803228160q^3] - 1920*[q + 50220q^3] - 1630080*[q^2 + 432q^3]
+% (Wolfram|Alpha) develop [1 + 1920q + 1630080q^2 + 803228160q^3] - 1920\cdot[q + 50220q^3] - 1630080\cdot[q^2 + 432q^3]
 \end{align*}
 
 Therefore, up to $O(q^4)$, $\{f_0, f_1, f_2\} = \{1 + 2611200q^3 + O(q^4), q + 50220q^3 + O(q^4), q^2 + 432q^3 + O(q^4)\}$ is a basis for $M_{16}$.
@@ -235,26 +231,26 @@ Therefore, up to $O(q^4)$, $\{f_0, f_1, f_2\} = \{1 + 2611200q^3 + O(q^4), q + 5
 \subparagraph{Miller basis for $k=92$}
 The calculation of this basis may be interesting by hand once;
 However, it is possible to automate it.
-The procedure that calculates such coefficients is a standard in SageMath\cite{sage}.
+The procedure that calculates such coefficients is a standard in SageMath \cite{sage}.
 Here is, up to $O(q^{10})$, the Miller basis for $M_{92}$:
 % (sage) victor_miller_basis(92, prec=10, cusp_only=False, var='q')
 \begin{align*}
-	f_0 &= 1 + 3034192667130000*q^8 + 137290127714549760000*q^9 + O(q^{10})\\
-	f_1 &= q + 91578443563200*q^8 + 2651503140376278561*q^9 + O(q^{10})\\
-	f_2 &= q^2 + 2380310529376*q^8 + 42238207588515840*q^9 + O(q^{10})\\
-	f_3 &= q^3 + 51682260816*q^8 + 530253459731160*q^9 + O(q^{10})\\
-	f_4 &= q^4 + 896013480*q^8 + 4882999541760*q^9 + O(q^{10})\\
-	f_5 &= q^5 + 11516000*q^8 + 28971735750*q^9 + O(q^{10})\\
-	f_6 &= q^6 + 94680*q^8 + 80990208*q^9 + O(q^{10})\\
-	f_7 &= q^7 + 312*q^8 - 4860*q^9 + O(q^{10})\\
+	f_0 &= 1 + 3034192667130000 q^8 + 137290127714549760000 q^9 + O(q^{10})\\
+	f_1 &= q + 91578443563200 q^8 + 2651503140376278561 q^9 + O(q^{10})\\
+	f_2 &= q^2 + 2380310529376 q^8 + 42238207588515840 q^9 + O(q^{10})\\
+	f_3 &= q^3 + 51682260816 q^8 + 530253459731160 q^9 + O(q^{10})\\
+	f_4 &= q^4 + 896013480 q^8 + 4882999541760 q^9 + O(q^{10})\\
+	f_5 &= q^5 + 11516000 q^8 + 28971735750 q^9 + O(q^{10})\\
+	f_6 &= q^6 + 94680 q^8 + 80990208 q^9 + O(q^{10})\\
+	f_7 &= q^7 + 312 q^8 - 4860 q^9 + O(q^{10})\\
 \end{align*}
 
 
 
 \subsection{Basis Modulo Two}
 \subsubsection{Reduced Modular Forms}
-Now that we have a basis with integer coefficients, it makes sense to reduce forms modulo two.
-For a modular form $f$, we denote its reduced modulo two from $\overline{f}$. It is defined as follows:
+Now that we have a basis with integral coefficients, it makes sense to reduce forms modulo 2.
+For a modular form $f$, we denote its reduced modulo 2 from $\overline{f}$. It is defined as follows:
 
 If
 $$
@@ -263,30 +259,32 @@ $$
 then
 $$
 \overline{f}(q) = \sum_{n \in \N} \overline{c}(n)q^n 
-\qquad \text{ with } \ \overline{c}(n) = c(n) \mod 2 .
+\qquad \text{ with } \ \overline{c}(n) = c(n) \bmod 2 .
 $$
 
-We want to reduce Miller basis modulo two.
+We want to reduce Miller basis modulo 2.
 The reason is that as we know that some coefficients are ones, the reduction will not be trivial.
 We will reduce separately $E_2$, $E_3$ and $\Delta$ (witch together generate the Miller basis).
 
 \paragraph{$E_2$ reduced}
 We have:
 $$
-\overline{E_2}(q)
-= \overline{ 1 + 240 \sum_{n=1}^{\infty} \sigma_{3}(n)q^n } 
-= 1 \mod 2
+E_2(q) 
+= 1 + 240 \sum_{n=1}^{\infty} \sigma_{3}(n)q^n
+\equiv 1 \bmod 2
 $$
-Therefore, the reduction modulo two of $E_2^a$ is just $1$, for all $a \geq 0$.
+Therefore, the reduction modulo 2 of $E_2$ is just $1$.
+We write $\overline{E_2} = 1$, so $\overline{E_2^a} = 1$, for all $a \geq 0$.
 
 \paragraph{$E_3$ reduced}
 We have:
 $$
-\overline{E_2}(q)
-= \overline{ 1 - 504 \sum_{n=1}^{\infty} \sigma_{5}(n)q^n }
-= 1 \mod 2
+E_3(q)
+= 1 - 504 \sum_{n=1}^{\infty} \sigma_{5}(n)q^n
+\equiv 1 \bmod 2
 $$
-Therefore, the reduction modulo two of $E_3^b$ is just $1$, for all $b \geq 0$ as well.
+Therefore, the reduction modulo 2 of $E_3$ is $1$ as well.
+We write $\overline{E_3} = 1$, so $\overline{E_3^b} = 1$, for all $b \geq 0$.
 
 \paragraph{$\Delta$ reduced}
 We defined before $\Delta$, and we would now like to know its $q$ extension in the standard way.
@@ -300,9 +298,9 @@ $$
 $$
 When this holds, $\tau$ is called the Ramanujan function.
 
-We would like an explicit formula for $\tau(n)$. More precisely, we are interested in a formula for $\tau(n) \mod 2$.
+We would like an explicit formula for $\tau(n)$. More precisely, we are interested in a formula for $\tau(n) \bmod 2$.
 
-We will calculate separately the coefficients $\tau(n) \mod 2$ for $n$ even and odd.
+We will calculate separately the coefficients $\tau(n) \bmod 2$ for $n$ even and odd.
 
 \subparagraph{Case $n$ odd}
 Remember $\sigma_s(n)$ as the sum of $s^{th}$ powers of (positive) divisors of $n$.
@@ -335,15 +333,15 @@ $$\tau(n) \equiv \left\lbrace \begin{array}{ll}
 \end{array}\right.$$
 Thus, we can write the power series of $\Delta$ as:
 \[
-\Delta(q) \equiv \overline{\Delta}(q) = \sum_{m=0}^{\infty} q^{(2m+1)^2} \mod 2
+\Delta(q) \equiv \overline{\Delta}(q) = \sum_{m=0}^{\infty} q^{(2m+1)^2} \bmod 2
 \label{eq:Delta}
 \]
 
 \subsubsection{Reduced Basis}
 The Miller basis for $M_k$ was obtained via the Gauss elimination of the set $\{ \Delta^jE_3^{2(d-j)+b}E_2^a | 1 \leq j \leq \dim(M_k) \}$ (with some conditions on $a$,$b$,$d$).
 
-But $\overline{E_2^a} = \overline{E_2}^a = 1^a = 1 \mod 2$ and similarly, $\overline{E_3^{2(d-j)+b}} = 1 \mod 2$.
-So once the above set is reduced modulo two, we are left with $\{ \overline{\Delta}^j | 1 \leq j \leq \dim(M_k) \}$.
+But $\overline{E_2^a} = \overline{E_2}^a = 1^a = 1 \bmod 2$ and similarly, $\overline{E_3^{2(d-j)+b}} = 1 \bmod 2$.
+So once the above set is reduced modulo 2, we are left with $\{ \overline{\Delta}^j | 1 \leq j \leq \dim(M_k) \}$.
 So the Miller basis just becomes the Gauss elimination of $\overline{\Delta}$ powers.
 
 This is what motivates the next section.
@@ -355,23 +353,23 @@ We would like to have a definition for this space in a similar way as $M_k$ was 
 \label{WeightModuloTwo}
 We just saw that the Miller basis for $\overline{M_k}$ is (the Gaussian elimination of) $\{ \overline{\Delta}^j | 1 \leq j \leq \dim(M_k) \}$.
 
-Now, if we look at this set not reduced modulo two, we have:
+Now, if we look at this set not reduced modulo 2, we have:
 $\{ \Delta^j | 1 \leq j \leq \dim(M_k) \}$.
 This is a set of modular forms that have different weights.
 However, we started with a modular forms in $M_k$, i.e. all modular forms having weight $2k$.
 
-We understand now that modulo two, the weight of modular form doesn't make sense any more.
-This is one of the consequences of reducing modulo two: we lose some informations about the modular forms, such as the weight.
+We understand now that modulo 2, the weight of modular form doesn't make sense any more.
+This is one of the consequences of reducing modulo 2: we lose some informations about the modular forms, such as the weight.
 
-From this observation, we should study all modular forms together, modulo two (instead of separating by weights).
-This is why the space of modular forms modulo two will be denoted  $\mathcal{F}$, with mo dependence on $k$.
+From this observation, we should study all modular forms together, modulo 2 (instead of separating by weights).
+This is why the space of modular forms modulo 2 will be denoted  $\mathcal{F}$, with mo dependence on $k$.
 
-\subsubsection{Powers of $\Delta$}
-\paragraph{Set of Powers of $\Delta$}
-As we just saw, the Gaussian elimination of powers $\overline{\Delta}^k$ up to $\dim(\overline{M_k})$ form the Miller basis of $\overline{M_k}$ (modular forms of weight $2k$ reduced modulo two).
+\subsubsection{Powers of the Modular Discriminant $\Delta$}
+\paragraph{Set of Powers of the Modular Discriminant $\Delta$}
+As we just saw, the Gaussian elimination of powers $\overline{\Delta}^k$ up to $\dim(\overline{M_k})$ form the Miller basis of $\overline{M_k}$ (modular forms of weight $2k$ reduced modulo 2).
 
-To lighten the notation, we will now write $\Delta$ instead of $\overline{\Delta}$, and consider everything modulo two.
-For simplicity again, we will just take the powers of $\Delta$ to be our basis for modular forms modulo two (i.e. drop the Gaussian elimination process).
+To lighten the notation, we will now write $\Delta$ instead of $\overline{\Delta}$, and consider everything modulo 2.
+For simplicity again, we will just take the powers of $\Delta$ to be our basis for modular forms modulo 2 (i.e. drop the Gaussian elimination process).
 
 We define the space $\F_2[\Delta]$ in the usual way:
 $$
@@ -389,12 +387,12 @@ Therefore, we define
 $$
 \Delta^{k}(q) 
 = \sum_{n=0}^{\infty} \tau_k(n)q^n
-= \left( \sum_{m=0}^{\infty} q^{(2m+1)^2} \right)^k \mod 2
+= \left( \sum_{m=0}^{\infty} q^{(2m+1)^2} \right)^k \bmod 2
 $$
 Thus, we have $\tau(n)=\tau_1(n)$.
 
 \paragraph{Proportion of zeros}
-In fact, most of the coefficients $\tau_k(n)$ are $0$ modulo two.
+In fact, most of the coefficients $\tau_k(n)$ are $0$ modulo 2.
 
 When $k=1$, there is already few coefficients that are ones: only the odd squares.
 When raising to the $k^{th}$ power, there are even "less".
@@ -408,9 +406,9 @@ We observe:
 	\begin{center}
 		\begin{tabular}{|r||c|c|c|c|c|c|c|c||l|}
 			\hline
-			$a=$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $\mod 8$ \\
+			$a=$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $\bmod 8$ \\
 			\hline
-			$a^2=$ & \color{BrickRed} $0$ & \color{ForestGreen} $1$ & \color{BrickRed} $4$ & \color{ForestGreen} $1$ & \color{BrickRed} $0$ & \color{ForestGreen} $1$ & \color{BrickRed} $4$ & \color{ForestGreen} $1$ & $\mod 8$ \\
+			$a^2=$ & \color{BrickRed} $0$ & \color{ForestGreen} $1$ & \color{BrickRed} $4$ & \color{ForestGreen} $1$ & \color{BrickRed} $0$ & \color{ForestGreen} $1$ & \color{BrickRed} $4$ & \color{ForestGreen} $1$ & $\bmod 8$ \\
 			\hline
 
 		\end{tabular}
@@ -418,20 +416,20 @@ We observe:
 	\caption{Squares modulo $8$}
 	\label{table:SquaresMod8}
 \end{table}
-We remark that odd squares are all $1 \mod 8$, and even squares are all $0 \mod 8$.
+We remark that odd squares are all $1 \bmod 8$, and even squares are all $0 \bmod 8$.
 
 We know from previous calculations that $\Delta(q)$ only has odd powers of $q$.
 Thus, raising to the $k^{th}$ power give terms of power $n$ such that:
 \begin{align*}
 n &= m_1^2 + m_2^2 + m_3^2 + \dots + m_k^2 \\
-&\equiv \:\; 1 \ + \:\; 1 \ + \:\; 1 \; + \dots + \:\; 1 \mod 8 \\
-&\equiv k \mod 8
+&\equiv \:\; 1 \ + \:\; 1 \ + \:\; 1 \; + \dots + \:\; 1 \bmod 8 \\
+&\equiv k \bmod 8
 \end{align*}
-Therefore: $\tau_k(n) \equiv 1 \quad \mod 2 \implies n \equiv k \quad \mod 8$\\
-Equivalently: $n \not\equiv k \quad \mod 8 \implies \tau_k(n) \equiv 0 \quad \mod 2$ (by taking the contra-positive)
+Therefore: $\tau_k(n) \equiv 1 \quad \bmod 2 \implies n \equiv k \quad \bmod 8$\\
+Equivalently: $n \not\equiv k \quad \bmod 8 \implies \tau_k(n) \equiv 0 \quad \bmod 2$ (by taking the contra-positive)
 
-This means, that $\Delta^k$ may only have terms $q^n$ such that $n \equiv k \mod 8$, i.e. $\Delta^k$ may only have terms of power congruent to $k \mod 8$.
-When $k=1$, this is that $\Delta$ may only have terms of power $1 \mod 8$, this matches with table \ref{table:SquaresMod8}: all odd squares are $1 \mod 8$.
+This means, that $\Delta^k$ may only have terms $q^n$ such that $n \equiv k \bmod 8$, i.e. $\Delta^k$ may only have terms of power congruent to $k \bmod 8$.
+When $k=1$, this is that $\Delta$ may only have terms of power $1 \bmod 8$, this matches with table \ref{table:SquaresMod8}: all odd squares are $1 \bmod 8$.
 \label{ObservationsMod8}
 
 \paragraph{Even powers of $\Delta$}
@@ -441,11 +439,11 @@ We compare $\Delta^{2k}(q)$ and $\Delta^k(q^2)$:
 	&= \left( \sum_{m=0}^{\infty} q^{(2m+1)^2} \right)^{2k} \\
 	&= \sum_{n=0}^{\infty} \#[ (2m_1+1)^2+(2m_2+1)^2+...+(2m_{2k}+1)^2=n \ | \  m_0,m_1,...,m_{2k} \in \N ] \  q^n\\
 	&= \sum_{n \ even}^{\infty} \#[ (2m_1+1)^2+(2m_2+1)^2+...+(2m_k+1)^2=n/2 \ | \  m_0,m_1,...,m_k \in \N ] \  q^n\\
-	&= \left( \sum_{m=0}^{\infty} q^{((2m+1)^2)*2} \right)^k \\
+	&= \left( \sum_{m=0}^{\infty} q^{((2m+1)^2) \cdot 2} \right)^k \\
 	&= \left( \sum_{m=0}^{\infty} (q^2)^{(2m+1)^2} \right)^k = \Delta^{k}(q^2)
 \end{align*}
 Thus, $\Delta^{2k}(q) = \Delta^k(q^2)$.
-Therefore, we can write any modular form modulo two $f$ as the following:
+Therefore, we can write any modular form modulo 2 $f$ as the following:
 $$
 f = \sum_{s \geq 0} f_s^{2^s} \quad \text{ with } f_s \text{ having only odd powers of } \Delta
 $$
@@ -454,7 +452,7 @@ So it is sufficient to study only the odd powers of $\Delta$.
 
 \subsubsection{The Space $\mathcal{F}$}
 \label{ModularFormsModTwo}
-We define the space of modular forms modulo two denoted $\mathcal{F} $ to be\cite[2.1]{OrdreNilpotenceOperateurHecke}:
+We define the space of modular forms modulo 2 denoted $\mathcal{F} $ to be \cite[2.1]{OrdreNilpotenceOperateurHecke}:
 $$
 \mathcal{F}
 %= \left\lbrace \sum_{\substack{k \  odd,\\ k \leq n}} a_k \Delta^k | n \in \N, \  a_k \in \mathbb{F}_2 \right\rbrace
@@ -466,22 +464,22 @@ We remark that the weight of modular forms do not appear, as it was discussed be
 The observations modulo 8 that we have done in \ref{ObservationsMod8} yields that it will be useful to denote:
 $$
 \mathcal{F}_1
-= \left\langle \Delta^k | k = 1 \mod 8 \right\rangle
+= \left\langle \Delta^k \ | \ k = 1 \bmod 8 \right\rangle
 = \left\langle \Delta, \Delta^9, \Delta^{17}, \Delta^{25}, \cdots \right\rangle
 $$
 $$
 \mathcal{F}_3
-= \left\langle \Delta^k | k = 3 \mod 8 \right\rangle
+= \left\langle \Delta^k \ | \ k = 3 \bmod 8 \right\rangle
 = \left\langle \Delta^3, \Delta^{11}, \Delta^{19}, \Delta^{27}, \cdots \right\rangle
 $$
 $$
 \mathcal{F}_5
-= \left\langle \Delta^k | k = 5 \mod 8 \right\rangle
+= \left\langle \Delta^k \ | \ k = 5 \bmod 8 \right\rangle
 = \left\langle \Delta^5, \Delta^{13}, \Delta^{21}, \Delta^{29}, \cdots \right\rangle
 $$
 $$
 \mathcal{F}_7
-= \left\langle \Delta^k | k = 7 \mod 8 \right\rangle
+= \left\langle \Delta^k \ | \ k = 7 \bmod 8 \right\rangle
 = \left\langle \Delta^7, \Delta^{15}, \Delta^{23}, \Delta^{31}, \cdots \right\rangle
 $$
 Of course, we have:
@@ -491,20 +489,20 @@ $$
 We will also introduce (as in \cite[2.]{StructureAlgebreHecke}):
 $$
 \mathcal{F}(n)
-= \left\langle \Delta^k | k \text{ odd} \text{ and } k \leq 2n-1 \right\rangle
+= \left\langle \Delta^k \ | \ k \text{ odd} \text{ and } k \leq 2n-1 \right\rangle
 = \left\langle \Delta, \Delta^3, \Delta^5, \dots, \Delta^{2n-1} \right\rangle
 $$
 This matches specifically $\overline{M_{12(2n-1)}} = \mathcal{F}(n)$.
 
 
-\subsubsection{Duality $\Delta$ - $q$}
+\subsubsection{Duality between $\Delta$ and $q$}
 %reference to wave-particule duality from physics
-As we defined $\mathcal{F}$ above, a modular form modulo two is an expression of powers $\Delta^k$.
-But we had from before that $\Delta = \sum_{m=0}^{\infty} q^{(2m+1)^2} \mod 2$.
+As we defined $\mathcal{F}$ above, a modular form modulo 2 is an expression of powers $\Delta^k$.
+But we had from before that $\Delta = \sum_{m=0}^{\infty} q^{(2m+1)^2} \bmod 2$.
 Therefore, we can translate a modular form given as a finite polynomial of $\Delta$ into an infinite polynomial of $q$.
-Thus, there are two ways to write a modular form modulo two.
+Thus, there are two ways to write a modular form modulo 2.
 
-This duality between the two definitions is what makes the study of modular forms modulo two so interesting:
+This duality between the two definitions is what makes the study of modular forms modulo 2 so interesting:
 we go back and forth between an infinite series and a finite polynomial.
 One is easy to express, the other easy to compute.
 This will lead to new reasoning.
@@ -517,9 +515,9 @@ In particular, there is a new technique of computation ("exact computations") th
 \subsubsection{Reduction Modulo Two}
 \paragraph{Definition}
 \label{DefHeckeOperatorsMod2}
-Now that we have reduced modular forms modulo two, we would like to study the Hecke operators on these reduced modular forms. We define Hecke operators modulo two as follows:
+Now that we have reduced modular forms modulo 2, we would like to study the Hecke operators on these reduced modular forms. We define Hecke operators modulo 2 as follows:
 
-With $f$ a modular form modulo two with $q$ definition
+With $f$ a modular form modulo 2 with $q$ definition
 $$
 f(q) = \sum_{n \in \N} c(n)q^n
 $$
@@ -540,7 +538,7 @@ $$
 $$
 
 \paragraph{Well-definiteness}
-We want to check that all the definitions make sense. When we look at $T_p|f$, there is a number of ways to to reduce it modulo two: $\overline{T_p|f}$, $\overline{T_p|\overline{f}}$, $\overline{\overline{T_p}|f}$, $\overline{T_p}|\overline{f}$.
+We want to check that all the definitions make sense. When we look at $T_p|f$, there is a number of ways to to reduce it modulo 2: $\overline{T_p|f}$, $\overline{T_p|\overline{f}}$, $\overline{\overline{T_p}|f}$, $\overline{T_p}|\overline{f}$.
 
 Let's compare coefficients:
 
@@ -557,13 +555,13 @@ $$
 $$
 
 Divisors of $(n,p)$ are $\{1\}$ or $\{1,p\}$ since $p$ is prime, so the sum split in two cases, with one or two terms.
-We see now that looking at Hecke operators modulo two only for primes simplifies the sum to a computable formula.
+We see now that looking at Hecke operators modulo 2 only for primes simplifies the sum to a computable formula.
 
-As both $1$ and $p$ are odd, the term $a^{2k-1}$ reduces to $1$ modulo two.
-We understand why Hecke operators modulo two isn't defined for even numbers: many terms in the summation would become zero.
+As both $1$ and $p$ are odd, the term $a^{2k-1}$ reduces to $1$ modulo 2.
+We understand why Hecke operators modulo 2 isn't defined for even numbers: many terms in the summation would become zero.
 It would not make sense to call it a Hecke operator any more.
 
-It also makes sense why we look at modular forms modulo two and not say three or five: the coefficient $a^{2k-1}$ collapse nicely modulo two, which won't be the case modulo an other number then two.
+It also makes sense why we look at modular forms modulo 2 and not say three or five: the coefficient $a^{2k-1}$ collapse nicely modulo 2, which won't be the case modulo an other number then 2.
 
 $\overline{T_p|\overline{f}}$:
 This is (very) similar to the case before.
@@ -582,32 +580,32 @@ $$
 $\overline{\overline{T_n}|f}$:
 Again, this is (very) similar to the case before.
 
-All reductions give in fact the same result, so it makes sense to reduce modular forms modulo two, and still study the Hecke operators (but now only for odd primes).
-As this all makes sense, we will now write only consider modular forms modulo two, and we will drop the over lines for simplicity.
+All reductions give in fact the same result, so it makes sense to reduce modular forms modulo 2, and still study the Hecke operators (but now only for odd primes).
+As this all makes sense, we will now write only consider modular forms modulo 2, and we will drop the over lines for simplicity.
 
 \subsubsection{Properties}
 What makes Hecke operators interesting, is that they have many properties.
 
 \paragraph{Inherited properties}
-From the fact that $\overline{T_p}|f(q) = \overline{T_p|f(q)}$, we get that the Hecke operators modulo two keep all the properties they had before being reduced.
+From the fact that $\overline{T_p}|f(q) = \overline{T_p|f(q)}$, we get that the Hecke operators modulo 2 keep all the properties they had before being reduced.
 
 \subparagraph{Modularity Remains}
 From definition \ref{DefHeckeOperators}, a Hecke operators transform a modular form to an other.
-This is because from definition, $T(n)f$ is a sum of modular forms (which remain modular).
-Therefore, Hecke operators modulo two will as well transform a modular form to an other.
-This was not clear from the definition modulo two that we had (which was in terms of $q$ series).
+This is because from definition, $T_nf$ is a sum of modular forms (which remain modular).
+Therefore, Hecke operators modulo 2 will as well transform a modular form to an other.
+This was not clear from the definition modulo 2 that we had (which was in terms of $q$ series).
 
 \subparagraph{Commutativity}
-As in general\cite[p.101]{CourseInArithmetic}:
+As in general \cite[p.101]{CourseInArithmetic}:
 $$
-T(n)T(m)=T(mn) \quad \text{ if } \gcd(m,n)=1
+T_nT_m = T_{mn} \quad \text{ if } \gcd(m,n)=1
 $$
 % and $$ T(p)T(p^n)f=T(p^{n+1})f+T(p^{n-1})f $$
 We get that:
 $$
 T_pT_q=T_qT_p \quad \forall p,q \in \primes
 $$
-Therefore, the Hecke operators modulo two commute.
+Therefore, the Hecke operators modulo 2 commute.
 This, as well, was not clear form definition.
 It will be very convenient for future calculations.
 
@@ -617,7 +615,7 @@ The properties of Hecke operators is that, given a modular form $f$, if we apply
 \subparagraph{Order of $\Delta$ doesn't increase}
 From definition \ref{DefHeckeOperators}, a Hecke operators takes a modular form of weight $2k$ to an other modular form of weight $2k$.
 
-Take a modular form modulo two $\overline{f}$ with degree $k$ (in terms of $\Delta$).
+Take a modular form modulo 2 $\overline{f}$ with degree $k$ (in terms of $\Delta$).
 Now we want to know the maximum degree (again in terms of $\Delta$) of $T_p|\overline{f}$.
 Let $n$ be the smallest integer such that $\overline{f} \in \overline{M_{12(2n-1)}}$.
 
@@ -640,7 +638,7 @@ f
 = \sum_{m \equiv i \bmod 8} \mu_m\Delta^m 
 = \sum_{n \equiv i \bmod 8} c(n)q^n
 $$
-From the definition of Hecke operator modulo two (\ref{DefHeckeOperatorsMod2}), we have:
+From the definition of Hecke operator modulo 2 (\ref{DefHeckeOperatorsMod2}), we have:
 $$
 T_p|f
 = \sum_{n \in \N} \gamma(n)q^n
@@ -654,19 +652,19 @@ c(np)+c(n/p) & \text{ if } p \mid  n
 \right.
 $$
 \begin{enumerate}
-	\item [$c(np)$:] We have $np \not \equiv i \mod 8 \implies c(np) = 0$.
-	\item [$c(n/p)$:] As $p$ is an odd prime, it is an odd number, so from \ref{ObservationsMod8}, $p^2 \equiv 1 \mod 8$, so $p^{-2} \equiv 1 \mod 8$ as well (with $p^{-2}$ seen $\bmod 8$).
+	\item [$c(np)$:] We have $np \not \equiv i \bmod 8 \implies c(np) = 0$.
+	\item [$c(n/p)$:] As $p$ is an odd prime, it is an odd number, so from \ref{ObservationsMod8}, $p^2 \equiv 1 \bmod 8$, so $p^{-2} \equiv 1 \bmod 8$ as well (with $p^{-2}$ seen $\bmod 8$).
 	
-	Therefore, $np \not\equiv i \mod 8 \implies  n/p \equiv \nicefrac{np}{p^2} \equiv np \not\equiv i \mod 8 $.
+	Therefore, $np \not\equiv i \bmod 8 \implies  n/p \equiv \nicefrac{np}{p^2} \equiv np \not\equiv i \bmod 8 $.
 	
-	\item [$\gamma(n)$:] We conclude that $n \equiv np^2 \not\equiv pi \mod 8 \implies \gamma(n) = 0$
+	\item [$\gamma(n)$:] We conclude that $n \equiv np^2 \not\equiv pi \bmod 8 \implies \gamma(n) = 0$
 \end{enumerate}
-Using \ref{ObservationsMod8} again, we deduce that $T_p|f \in \mathcal{F}_j$ with $j \equiv pi \mod 8$.
+Using \ref{ObservationsMod8} again, we deduce that $T_p|f \in \mathcal{F}_j$ with $j \equiv pi \bmod 8$.
 
 Overall, we have the following:
 $$
 f \in \mathcal{F}_i \implies T_p|f \in \mathcal{F}_j
-\text{ with } j \equiv pj \mod 8
+\text{ with } j \equiv pj \bmod 8
 $$
 
 \paragraph{Application to $\Delta^k$}
@@ -684,7 +682,7 @@ The last observation (on $\mathcal{F}_i$), leads us to the formula:
 T_p|\Delta^k = \sum_{\substack{j \leq k-2\\ j \equiv pk \bmod 8}} \mu_j\Delta^j
 \label{eq:TpDelta^k_bis} \tag{**}
 \]
-(since $\Delta^k \in \mathcal{F}_i \text{ with } k \equiv i \mod 8$)
+(since $\Delta^k \in \mathcal{F}_i \text{ with } k \equiv i \bmod 8$)
 
 \subsubsection{Examples (for Small Powers of $\Delta$)}
 We will describe the behaviour of Hecke operators when applied to $\Delta^k$ with $k \text{ odd}, k \leq 7$.
@@ -694,9 +692,9 @@ Clearly, from \eqref{eq:TpDelta^k}, we have $T_p|\Delta = 0$, since the sum is e
 
 \paragraph{$\Delta^3$}
 From \eqref{eq:TpDelta^k}, we have $T_p|\Delta^3 = \Delta \text{ or } 0$.\\
-Moreover, \eqref{eq:TpDelta^k_bis} gives $T_p|\Delta^3 = 0$ if $1 \not\equiv 3p \mod 8$ i.e. if $p \not\equiv 3 \mod 8$.
+Moreover, \eqref{eq:TpDelta^k_bis} gives $T_p|\Delta^3 = 0$ if $1 \not\equiv 3p \bmod 8$ i.e. if $p \not\equiv 3 \bmod 8$.
 
-Now, if $p \equiv 3 \mod 8$, we may only look at the coefficient $q^1$ of $T_p|\Delta^3$ (if it is $1$, $T_p|\Delta^3 = \Delta$ and if it is $0$, $T_p|\Delta^3 = 0$, as there is no other possibilities).
+Now, if $p \equiv 3 \bmod 8$, we may only look at the coefficient $q^1$ of $T_p|\Delta^3$ (if it is $1$, $T_p|\Delta^3 = \Delta$ and if it is $0$, $T_p|\Delta^3 = 0$, as there is no other possibilities).
 
 From definition (in \ref{DefHeckeOperatorsMod2}), we have that the coefficient of $q^1$ is $\gamma(1) = c(p)$ (since $p \nmid 1$) with $c$ the $q$ coefficients of $\Delta^3$.
 
@@ -708,7 +706,7 @@ $$
 = \left( \sum_{m=0}^{\infty} q^{(2m+1)^2} \right)^3
 = \sum_{n=0}^{\infty} \#\{m_1, m_2, m_3 \text{ odds } | m_1^2 + m_2^2 + m_3^2 = n\} q^n
 $$
-So $c(p) = \#\{m_1, m_2, m_3 \text{ odds } | m_1^2 + m_2^2 + m_3^2 = p\} \mod 2$ corresponds ($\bmod 2$) to the number of ways to write $p$ as sum of three odd squares.
+So $c(p) = \#\{m_1, m_2, m_3 \text{ odds } | m_1^2 + m_2^2 + m_3^2 = p\} \bmod 2$ corresponds ($\bmod 2$) to the number of ways to write $p$ as sum of three odd squares.
 
 
 
@@ -724,12 +722,12 @@ Need in fact $m_1 = m_2 \neq m_3$, but then??
 From \eqref{eq:TpDelta^k}, we have $T_p|\Delta^5 = \Delta^3 \text{ or } \Delta \text{ or } 0$.\\
 Moreover, \eqref{eq:TpDelta^k_bis} gives:
 \begin{align*}
-	p \equiv 7 \bmod 8: & \quad T_p|\Delta^5 = \Delta^3 \text{ or } 0 & \text{ if } 3 \equiv 5p \mod 8 & \quad \text{ i.e. } p \equiv 7 \mod 8 \\
-	p \equiv 5 \bmod 8: & \quad T_p|\Delta^5 = \Delta \text{ or } 0 & \text{ if } 1 \equiv 5p \mod 8 & \quad \text{ i.e. } p \equiv 5 \mod 8 \\
+	p \equiv 7 \bmod 8: & \quad T_p|\Delta^5 = \Delta^3 \text{ or } 0 & \text{ if } 3 \equiv 5p \bmod 8 & \quad \text{ i.e. } p \equiv 7 \bmod 8 \\
+	p \equiv 5 \bmod 8: & \quad T_p|\Delta^5 = \Delta \text{ or } 0 & \text{ if } 1 \equiv 5p \bmod 8 & \quad \text{ i.e. } p \equiv 5 \bmod 8 \\
 	p \equiv 1 \text{ or } 3 \bmod 8: & \quad T_p|\Delta^5 = 0 & \text{ else } &
 \end{align*}
 
-Now, if $p \equiv 7 \mod 8$, we may only look at the coefficient $q^3$ of $T_p|\Delta^5$ (if it is $1$, $T_p|\Delta^5 = \Delta^3$ and if it is $0$, $T_p|\Delta^3 = 0$, as there is no other possibilities).
+Now, if $p \equiv 7 \bmod 8$, we may only look at the coefficient $q^3$ of $T_p|\Delta^5$ (if it is $1$, $T_p|\Delta^5 = \Delta^3$ and if it is $0$, $T_p|\Delta^3 = 0$, as there is no other possibilities).
 
 From definition (in \ref{DefHeckeOperatorsMod2}), we have that the coefficient of $q^3$ is $\gamma(3) = c(3p)$ (since $p \nmid 3$) with $c$ the $q$ coefficients of $\Delta^5$.
 
@@ -740,10 +738,10 @@ $$
 = \left( \sum_{m=0}^{\infty} q^{(2m+1)^2} \right)^5
 = \sum_{n=0}^{\infty} \#\{m_1, m_2, m_3, m_4, m_5 \text{ odds } | m_1^2 + m_2^2 + m_3^2 + m_4^2 + m_5^2 = n\} q^n
 $$
-So $c(3p) = \#\{m_1, m_2, m_3, m_4, m_5 \text{ odds } | m_1^2 + m_2^2 + m_3^2 + m_4^2 + m_5^2 = 3p\} \mod 2$ corresponds ($\bmod 2$) to the number of ways to write $3p$ as sum of five odd squares.
+So $c(3p) = \#\{m_1, m_2, m_3, m_4, m_5 \text{ odds } | m_1^2 + m_2^2 + m_3^2 + m_4^2 + m_5^2 = 3p\} \bmod 2$ corresponds ($\bmod 2$) to the number of ways to write $3p$ as sum of five odd squares.
 
-When looked $\bmod 8$, $m_1^2 + m_2^2 + m_3^2 + m_4^2 + m_5^2 \equiv 5 \mod 8$.
-We can check, $p \equiv 7 \mod 8$ so $3p \equiv 5 \mod 8$.
+When looked $\bmod 8$, $m_1^2 + m_2^2 + m_3^2 + m_4^2 + m_5^2 \equiv 5 \bmod 8$.
+We can check, $p \equiv 7 \bmod 8$ so $3p \equiv 5 \bmod 8$.
 
 
 

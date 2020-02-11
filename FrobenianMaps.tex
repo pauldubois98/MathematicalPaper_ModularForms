@@ -39,7 +39,7 @@ $$
 Where the integers $e_i$ are called the ramification indexes.
 We also have $\mathfrak{P}_i \cap \mathcal{O}_K = \mathfrak{p}$, and we say that the ideals $\mathfrak{P}_i$ in $L$ extend the ideal $\mathfrak{p}$ in $K$.
 
-Then, there are three possibilities for an ideal: it may split, ramifies of be inert.
+Then, there are three possibilities for an ideal: it may split, ramify of be inert.
 \begin{definition}[Ideal Ramifies]
     We say that an ideal $\mathfrak{p}$ ramifies in $L/K$ if a ramification index $e_i$ is greater then one, 
     i.e. if $e_i>1$ for some $1 \leq i \leq r$.
@@ -83,39 +83,76 @@ It follows that $p\mathcal{O}_K \subset \mathfrak{p}$.
 $\mathcal{O}_K$ is a free $\Z-module$ of rank $[K:\Q]=q$, i.e. $\exists \alpha_1,\dots,\alpha_q \text{ s.t. } \mathcal{O}_K=\Z \alpha_1 \oplus \cdots \oplus \Z \alpha_q$.
 Thus, $|\mathcal{O}_K/\mathfrak{p}| \leq |\mathcal{O}_K/(p)| \leq p^q$.
 
-We have $Norm(\mathfrak{p})=|\mathcal{O}_K/\mathfrak{p}|=p^m$
-and $Norm_{L/\Q}(\mathfrak{P}_i) = Norm_{K/\Q}(\mathfrak{p})^{f_i}$.
-This implies $Norm(\mathfrak{P}_i)=|\mathcal{O}_L/\mathfrak{P}_i|=p^{mf_i}$.\\
-We also have: $\mathcal{O}_K/\mathfrak{p} \cong \mathbb{F}_{Norm(\mathfrak{p})}$
-and $\mathcal{O}_L/\mathfrak{P}_i \cong \mathbb{F}_{Norm(\mathfrak{P}_i)}$
+We have 
+$
+\Norm{\mathfrak{p}} = |\mathcal{O}_K/\mathfrak{p}|=p^m
+$
+and 
+$
+\Norm[L/\Q]{\mathfrak{P}_i} = \Norm[K/\Q]{\mathfrak{p}}^{f_i}
+$.
+This implies 
+$
+\Norm{\mathfrak{P}_i} = |\mathcal{O}_L/\mathfrak{P}_i| = p^{mf_i}
+$.\\
+We also have: 
+$
+\mathcal{O}_K/\mathfrak{p} \cong \mathbb{F}_{\Norm{\mathfrak{p}}}
+$
+ and 
+$
+\mathcal{O}_L/\mathfrak{P}_i \cong \mathbb{F}_{\Norm{\mathfrak{P}_i}}
+$
 
 \subsection{Galois Extensions Simplifications}
 When the extension $L/K$ is Galois, the ramification indexes $e_i$ are all the same ($e_i=e$), as well as the inertia degrees $f_i=f$.
-We then have $$\mathfrak{p}\mathcal{O}_L = \prod_{i=1}^r \mathfrak{P}_i^{e} \text{ and } [L:K] = ref$$
-The Galois group $\Gal{L/K}$ is often denoted $G$
+We then have
+$$
+\mathfrak{p}\mathcal{O}_L = \prod_{i=1}^r \mathfrak{P}_i^{e}
+\text{ and } [L:K] = ref.
+$$
+The Galois group $\Gal{L/K}$ is often denoted $G$.
 
-We define the decomposition group $G_{\mathfrak{P}}$ of the ideal $\mathfrak{P}$ to be $\{\sigma \in G | \sigma(\mathfrak{P})=\mathfrak{P} \}$.
-It turns out that $G_{\mathfrak{P}} \cong \Gal{\nicefrac{\mathcal{O}_L/\mathfrak{P}}{\mathcal{O}_K/\mathfrak{p}}} \cong \Gal{ \mathbb{F}_{p^{mf}}/\mathbb{F}_{p^{f}}}$.
-Moreover, it is a cyclic group, so $G_{\mathfrak{P}} = <\tilde{\sigma}>$.
+We define the decomposition group $G_{\mathfrak{P}}$ of the ideal $\mathfrak{P}$ to be 
+$
+\{\sigma \in G | \sigma(\mathfrak{P})=\mathfrak{P} \}
+$.
+It turns out that 
+$
+G_{\mathfrak{P}} 
+\cong \Gal{\nicefrac{\mathcal{O}_L/\mathfrak{P}}{\mathcal{O}_K/\mathfrak{p}}}
+\cong \Gal{ \mathbb{F}_{p^{mf}}/\mathbb{F}_{p^{f}}}
+$.
+Moreover, it is a cyclic group, so 
+$
+G_{\mathfrak{P}} = <\tilde{\sigma}>
+$.
 
 \subsection{Unramified Prime Simplifications}
 When the ideal $\mathfrak{p}$ is unramified, $e=1$, so we get:
-$$\mathfrak{p}\mathcal{O}_L = \prod_{i=1}^r \mathfrak{P} \text{ and } [L:K] = rf$$
+$$
+\mathfrak{p}\mathcal{O}_L 
+= \prod_{i=1}^r \mathfrak{P} \text{ and } [L:K] = rf
+$$
 
 \subsection{The Frobenius Element}
 \subsubsection{Definition}
-[is it ok a a subsection title? (perhaps too generic?) alternatives: well definiteness, introduction,  ]
+[is it ok as a subsection title? (perhaps too generic?) alternatives: well definiteness, introduction]
 
 We can construct the Frobenius element (sometimes also called the Artin symbol, or the Frobenius map) that depend on the extension $L/K$ and ideal $\mathfrak{P}$ in $\mathcal{O}_L$.
 It is denoted $\Frob{L/K}{\mathfrak{P}}$, and is \textit{the} element $\sigma \in G$ such that:
 $$
-\sigma(\alpha) \equiv \alpha^{Norm(\mathfrak{p})} \bmod{\mathfrak{P}} \quad \forall \alpha \in \mathcal{O}_L.
+\sigma(\alpha) \equiv \alpha^{\Norm{\mathfrak{p}}} \bmod{\mathfrak{P}} \quad \forall \alpha \in \mathcal{O}_L.
 $$
 
 At the moment, we can not talk of the Frobenius element as it is not unique: it is unique only up to a conjugacy class.
 This is not too pathological, as Frobenius element of primes ideals $\mathfrak{P}_1$ and $\mathfrak{P}_2$ that extend the same prime $\mathfrak{p}$ are conjugates.
 
-We define the Frobenius element for $\mathfrak{p}$ (denoted $\Frob{L/K}{\mathfrak{p}}$) in a meaning full manner, to be the set $\{ \Frob{L/K}{\mathfrak{P}} | \mathfrak{P} \text{ extending } \mathfrak{p} \} \subset G$.
+We define the Frobenius element for $\mathfrak{p}$ (denoted $\Frob{L/K}{\mathfrak{p}}$) in a meaning full manner, to be the set 
+$
+\{ \Frob{L/K}{\mathfrak{P}} | \mathfrak{P} 
+\text{ extending } \mathfrak{p} \} \subset G
+$.
 
 [is this construction / definition ok? or maybe I should rephrase it? (it look weird to me)]
 
@@ -127,17 +164,17 @@ We define the Frobenius element for $\mathfrak{p}$ (denoted $\Frob{L/K}{\mathfra
 	For all $x \in \mathcal{O}_L$, we have:
 	$$
 	\Frob{L/K}{\mathfrak{P}}x 
-	= x^{Norm(\mathfrak{p})} \mod \mathfrak{P}
+	= x^{\Norm{\mathfrak{p}}} \mod \mathfrak{P}
 	$$
 	But all such $x$ may be written as $\tau^{-1}(x)$, so we have:
 	$$
 	\Frob{L/K}{\mathfrak{P}} \tau^{-1}(x) 
-	= {(\tau^{-1} x)}^{Norm(\mathfrak{p})} \mod \mathfrak{P}
+	= {(\tau^{-1} x)}^{\Norm{\mathfrak{p}}} \mod \mathfrak{P}
 	$$
 	Which gives:
 	$$
 	\tau \Frob{L/K}{\mathfrak{P}}\tau^{-1}(x) 
-	= x^{Norm(\mathfrak{p})} \mod \mathfrak{P}
+	= x^{\Norm{\mathfrak{p}}} \mod \mathfrak{P}
 	$$
 \end{proof}
 
@@ -180,32 +217,36 @@ Moreover, it will only depend on the prime $\mathfrak{p}$ that is extended.
 \paragraph{Case $\Q[\sqrt{7}]:\Q$ (quadratic field extension)}
 %Looking at $\Q[\sqrt{7}]:\Q$ (which is a Galois extension).
 We have minimum polynomial $m(x)=x^2-7$, the discriminant is $\Delta = 4.7 = 28$.\\
-We write $G = \Gal{\Q[\sqrt{7}]:\Q} = <\sigma \ | \ \sigma^2 = 1_G> \cong C_2$.
+We write
+$$
+G = \Gal{\Q[\sqrt{7}]:\Q} = <\sigma \ | \ \sigma^2 = 1_G> \cong C_2.
+$$
 
 \subparagraph{The prime ideal $(2)$}
 %We look at the prime ideal $(2)$:
 As $m(x) = (x+1)^2 \mod 2$, we have $(2) = (2, \sqrt{7}+1)^2$.\\
-As well, $Norm((2)) = 2^2 = 4$ and $Norm((2, \sqrt{7}+1)) = 2$.
+As well, $\Norm{(2)} = 2^2 = 4$ and $\Norm{(2, \sqrt{7}+1)} = 2$.
 
 So we have:
 \begin{align*}
-    \Frob{\Q[\sqrt{7}]:\Q}{(2, \sqrt{7}+1)}: \alpha &\to \alpha^{Norm((2))} \ (3, \sqrt{7}+1)\\
+    \Frob{\Q[\sqrt{7}]:\Q}{(2, \sqrt{7}+1)}: \alpha &\to \alpha^{\Norm{(2)}} \ (3, \sqrt{7}+1)\\
     \sqrt{7} &\to [\sqrt{7}]^4 \ (2, \sqrt{7}+1) = -\sqrt{7} \ (2, \sqrt{7}+1) 
 \end{align*}
 Thus, $\Frob{\Q[\sqrt{7}]:\Q}{(2, \sqrt{7}+1)} = \sigma \in G$.
 
-\subparagraph{The prime ideal $(3)$}
-%We look at the prime ideal $(3)$:
-As $m(x) = (x+1)(x-1) \mod 3$, we have $(3) = (3, \sqrt{7}+1)(3, \sqrt{7}-1)$.\\
-As well, $Norm((3)) = 3^2 = 9$ and $Norm((3, \sqrt{7}+1)) = Norm((3, \sqrt{7}-1)) = 3$.
-
-So we have:
-\begin{align*}
-    \Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}+1)}: \alpha&\to \alpha^{Norm((3))} \ (3, \sqrt{7}+1)\\
-    \sqrt{7}&\to [\sqrt{7}]^9 \ (3, \sqrt{7}+1) = \sqrt{7} \ (3, \sqrt{7}+1)
-\end{align*}
-Thus, $\Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}+1)} = 1_G \in G$.
-Similarly, $\Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}-1)} = 1_G \in G$.
+% 3 RAMIFIES !!!
+%\subparagraph{The prime ideal $(3)$}
+%%We look at the prime ideal $(3)$:
+%As $m(x) = (x+1)(x-1) \mod 3$, we have $(3) = (3, \sqrt{7}+1)(3, \sqrt{7}-1)$.\\
+%As well, $\Norm{(3)} = 3^2 = 9$ and $\Norm{(3, \sqrt{7}+1)} = \Norm{(3, \sqrt{7}-1)} = 3$.
+%
+%So we have:
+%\begin{align*}
+%    \Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}+1)}: \alpha&\to \alpha^{\Norm{(3)}} \ (3, \sqrt{7}+1)\\
+%    \sqrt{7}&\to [\sqrt{7}]^9 \ (3, \sqrt{7}+1) = \sqrt{7} \ (3, \sqrt{7}+1)
+%\end{align*}
+%Thus, $\Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}+1)} = 1_G \in G$.
+%Similarly, $\Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}-1)} = 1_G \in G$.
 
 \paragraph{Case $\Q[\zeta_6]:\Q$ ($6^{th}$ cyclotomic field extension)}
 %Looking at $\Q[\zeta_6]:\Q$ (which is a Galois extension).
@@ -218,11 +259,11 @@ Note as well that $G$ is abelian, so the Frobenius element is well defined.
 \subparagraph{The prime ideal $(3)$}
 %We look at the prime ideal $(3)$:
 As $m(x) = (x+1)^2 \mod 3$, we have $(3) = (3, \zeta_6+1)^2$.\\
-As well, $Norm((3)) = 3^2 = 9$ and $Norm((3, \zeta_6+1)) = Norm((3, \zeta_6-1)) = 3$.
+As well, $\Norm{(3)} = 3^2 = 9$ and $\Norm{(3, \zeta_6+1)} = \Norm{(3, \zeta_6-1)} = 3$.
 
 So we have:
 \begin{align*}
-    \Frob{\Q[\zeta_6]:\Q}{(3, \zeta_6+1)}: \alpha & \to \alpha^{Norm((3))} \ (3, \zeta_6+1)\\
+    \Frob{\Q[\zeta_6]:\Q}{(3, \zeta_6+1)}: \alpha & \to \alpha^{\Norm{(3)})} \ (3, \zeta_6+1)\\
     \zeta_6   & \to [\zeta_6]^9 \ (3, \zeta_6+1) = -1 \ (3, \zeta_6+1) = \zeta_6 \ (3, \zeta_6+1)
 \end{align*}
 Thus, $\Frob{\Q[\zeta_6]:\Q}{(3, \zeta_6+1)} = Id \in G$.
@@ -230,11 +271,11 @@ Thus, $\Frob{\Q[\zeta_6]:\Q}{(3, \zeta_6+1)} = Id \in G$.
 \subparagraph{The prime ideal $(7)$}
 %We look at the prime ideal $(7)$:
 As $m(x) = (x+2)(x-3) \mod 3$, we have $(7) = (7, \zeta_6+2)(7, \zeta_6-3)$.\\
-As well, $Norm((7)) = 7^2 = 49$ and $Norm((7, \zeta_6+2)) = Norm((3, \zeta_6-3)) = 7$.
+As well, $\Norm{(7)} = 7^2 = 49$ and $\Norm{(7, \zeta_6+2)} = \Norm{(3, \zeta_6-3)} = 7$.
 
 So we have:
 \begin{align*}
-    \Frob{\Q[\zeta_6]:\Q}{(7, \zeta_6+2)}: \alpha & \to \alpha^{Norm((7))} \ (7, \zeta_6+2)\\
+    \Frob{\Q[\zeta_6]:\Q}{(7, \zeta_6+2)}: \alpha & \to \alpha^{\Norm{(7)}} \ (7, \zeta_6+2)\\
     \zeta_6   & \to [\zeta_6]^49 \ (7, \zeta_6+2) = \zeta_6 \ (7, \zeta_6+2)
 \end{align*}
 Thus, $\Frob{\Q[\zeta_6]:\Q}{(7, \zeta_6+2)} = Id \in G$.
@@ -243,11 +284,11 @@ Similarly, $\Frob{\Q[\zeta_6]:\Q}{(7, \zeta_6-3)} = Id \in G$.
 \subparagraph{The prime ideal $(13)$}
 %We look at the prime ideal $(7)$:
 As $m(x) = (x+3)(x-4) \mod 3$, we have $(13) = (13, \zeta_6+3)(13, \zeta_6-4)$.\\
-As well, $Norm((13)) = 13^2 = 169$ and $Norm((13, \zeta_6+3)) = Norm((3, \zeta_6-4)) = 13$.
+As well, $\Norm{(13)} = 13^2 = 169$ and $\Norm{(13, \zeta_6+3)} = \Norm{(3, \zeta_6-4)} = 13$.
 
 So we have:
 \begin{align*}
-    \Frob{\Q[\zeta_6]:\Q}{(13, \zeta_6+3)}: \alpha & \to \alpha^{Norm((13))} \ (13, \zeta_6+3)\\
+    \Frob{\Q[\zeta_6]:\Q}{(13, \zeta_6+3)}: \alpha & \to \alpha^{\Norm{(13)}} \ (13, \zeta_6+3)\\
     \zeta_6   & \to [\zeta_6]^169 \ (13, \zeta_6+3) = \zeta_6 \ (13, \zeta_6+3)
 \end{align*}
 Thus, $\Frob{\Q[\zeta_6]:\Q}{(13, \zeta_6+3)} = Id \in G$.
@@ -510,7 +551,7 @@ It states as follows:
 \subsubsection{Link with Chebotarev}
 This is a direct application of Chebotarev's density theorem for the field extension $\Q[\gamma]:\Q$ where $\gamma$ is the $n^{th}$ root of unity (this is the cyclotomic field).
 
-The Galois group then is cyclic, as this is a cyclotomic extension, and has order $\varphi(n)$ by definition (so $\Gal{\Q[\gamma]:\Q} \cong \left( \nicefrac{\Z}{n\Z} \right) \cong C_{\varphi(n)}$).
+The Galois group then is cyclic, as this is a cyclotomic extension, and has order $\varphi(n)$ by definition (so $\Gal{\Q[\gamma]:\Q} \cong \left( \nicefrac{\Z}{n\Z} \right)^{\times} \cong C_{\varphi(n)}$).
 
 Primes ideals in $\Q$ are just primes numbers. And as the Galois group is cyclic, it is abelian, so all conjugacy classes have one element.
 Thus, Chebotarev gives Dirichlet's density theorem in the particular case of cyclotomic extensions.

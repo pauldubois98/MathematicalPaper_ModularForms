@@ -2,8 +2,10 @@
 \usepackage[utf8]{inputenc}
 
 %margin
-\usepackage[margin=2cm]{geometry}
+\usepackage[margin=2.5cm]{geometry}
 %\usepackage{geometry}
+%line spacing
+\renewcommand{\baselinestretch}{1.15} 
 %lists
 \usepackage{enumitem}
 %encoding
@@ -31,8 +33,11 @@
 %links
 \usepackage{hyperref}
 %citations
-\usepackage{natbib}
-\setcitestyle{numbers, notesep={: }}
+\usepackage[square]{natbib}
+\bibliographystyle{unsrtnat}
+
+
+
 
 
 %environments
@@ -55,6 +60,8 @@
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\halfplane}{\mathbb{H}}
 %\newcommand{\dim}[1]{\text{dim}(#1)}
+\newcommand{\SL}[2]{\text{SL}_{#1}(#2)}
+\newcommand{\Norm}[2][]{\text{Norm}_{#1}(#2)}
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \newcommand{\ceil}[1]{\lceil #1 \rceil}
 \newcommand{\curt}[1]{\sqrt[3]{#1}}
@@ -83,6 +90,7 @@
 We are interested in Modular forms modulo 2, and computing thing about it.
 [temporary abstract]
 
+
 Key words that should appear:
 Modular forms;
 Mod 2;
@@ -104,7 +112,7 @@ Exact computations;
 
 
 
+
 \bibliography{references}
-\bibliographystyle{alpha}
 
 \end{document}
