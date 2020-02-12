@@ -626,6 +626,7 @@ Therefore, the maximum degree (in terms of $\Delta$) of $T_p|\overline{f}$ is $k
 Thus, the degree of $\overline{f}$ doesn't increase after applying a Hecke operator.
 
 \subparagraph{Order of $\Delta$ decrease}
+\label{orderDecrease}
 %[find a proof!]
 \cite[2.3]{OrdreNilpotenceOperateurHecke}
 ==> need a proof!!!
@@ -762,10 +763,81 @@ Need in fact $m_1 = m_2 \neq m_3$, but then??
 \subsubsection{Nilpotent Order}
 As we know that the Hecke operators are nilpotent, we may want to study the order of nil potentness.
 \paragraph{Definition}
+For a modular from modulo 2 $f \in \mathcal{F}$, we define the \textit{nil potentness order} to be the smallest integer $g(f)$ such that we have 
+$$
+T_{p_1} T_{p_2} \cdots T_{p_{g(f)}} | f = 0
+$$
+for any set of primes numbers $p_1, p_2, \dots, p_{g(f)} \in \primes$.
+The primes $p_i$ involved do not need to be distinct.
+Note as well that from commutativity of the Hecke operators, the order of the primes $p_i$ doesn't matter.
+
+By convention, we write $g(0)= -\infty$.
+With a slight abuse of notation, we will write $g(k)$ for $g(\Delta^k)$.
 
 \paragraph{Properties}
+\subparagraph{Well-definiteness}
+All Hecke operators lower by at least two the maximum degree of $\Delta$ in the $\Delta$-expansion of a modular form modulo 2 \ref{orderDecrease}.
+We deduce that $g(f) \leq g(T_p|f) + 1$.
+Applied to $Delta^k$, we get: $g(k) \leq g(k-2) + 1$.
+Therefore, by induction, we have $g(k) \leq \floor{\frac{k+1}{2}}$.
+This implies by the same occasion, the well definiteness of the order of nil potentness for all modular form modulo two.
+
+\subparagraph{conjecture}
+Let $f_1,f_2 \in \mathcal{F}$ be modular form modulo 2, such that
+$f_1 = \Delta^k + \sum_{j < k} \mu_j \Delta^k$
+and
+$f_2 = \Delta^k + \sum_{j < k} \nu_j \Delta^k$
+(i.e. both having maximum power $\Delta^k$).
+
+Then $g(f_1)=g(f_2)$.
+
+\subparagraph{proof attempt}
+By induction?\\
+Case $k=1$: This is trivial.\\
+Case $k=3$: This is rather straightforward as well: $g(\Delta^3)=1$ and $g(\Delta^3+\Delta)=1$.
+
+Now, suppose this is true for all $k^* < k$.
+Want to show it is true for $k$.
+
+Need 
+$$
+T_p|\Delta^k = \Delta^l + O(\Delta^{l-2}) 
+\implies
+\exists q \in \primes \text{ such that } 
+T_q|\Delta^{k+2}=\Delta^m + O(\Delta^{l-2}) 
+\text{ with } m \geq l
+$$
+------ or ------
+$$
+MaxOrder(T_p|\Delta^k) \geq MaxOrder(T_p|\Delta^k+\Delta^l)
+\quad \forall l<k
+$$
+Is any of the two reasonable to prove?
+
+
+Note that if it is not provable, I should do a numerical analysis, and mension it as a [rather strong, depending on the analysis] conjecture.
+Note that it might be wrong, and maybe that numerical analysis will find it out. In such a case, it is nice to mention.
 
 \paragraph{Example}
+\subparagraph{By hand}
+We can compute a few nil potentness by hand:
+\begin{itemize}
+	\item $g(0) = -\infty$
+	
+	\item $g(\Delta) = 1$ as order of $\Delta$ decrease \ref{orderDecrease}
+	
+	\item $g(\Delta^3) = 2$ as $T_3|\Delta^3 = \Delta \implies g(\Delta^3) > 1$ and order of $\Delta$ decrease gives $g(\Delta^3) \leq 2$
+	\item $g(\Delta^3+\Delta) = 2$ similarly
+	
+	\item $g(\Delta^5) = 2$ as $T_p|\Delta^5 = \Delta \text{ or } 0 \implies g(\Delta^5) \leq 2$ and $T_5|\Delta^5 = \Delta \implies g(\Delta^5) \geq 2$
+	\item $g(\Delta^5+\Delta^3+\Delta) = g(\Delta^5+\Delta^3) = g(\Delta^5+\Delta) = 2$ similarly
+	
+	\item $g(\Delta^7) = 3$
+\end{itemize}
+
+
+
+\subparagraph{Computer calculated}
 We will look at $\Delta^{95}$...
 
 
