@@ -760,6 +760,32 @@ Need in fact $m_1 = m_2 \neq m_3$, but then??
 
 \paragraph{$\Delta^7$}
 
+\subsubsection{Table of Hecke Operators}
+Here is a table of Hecke operators that was computed with a computer:
+
+\begin{center}
+	\begin{tabular}{l|c c c c c c c c c c c c c c}
+		 & $T_3$ & $T_5$ & $T_7$ & $T_{11}$ & $T_{13}$
+		 & $T_{17}$ & $T_{19}$ & $T_{23}$ & $T_{29}$ & $T_{31}$ 
+		 & $T_{37}$ & $T_{41}$ & $T_{43}$ & $T_{47}$ \\
+		\hline
+		$\Delta$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+		$\Delta^3$ & $\Delta$ & 0 & 0 & $\Delta$ & 0 & 0 & $\Delta$ & 0 & 0 & 0 & 0 & 0 & $\Delta$ & 0\\
+		$\Delta^5$ & 0 & $\Delta$ & 0 & 0 & $\Delta$ & 0 & 0 & 0 & $\Delta$ & 0 & $\Delta$ & 0 & 0 & 0\\
+		$\Delta^7$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+		$\Delta^9$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+		$\Delta^{11}$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+		$\Delta^{13}$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+		$\Delta^{15}$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+		$\Delta^{17}$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+		$\Delta^{19}$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+	\end{tabular}
+\end{center}
+
+It seems quite random, which makes sense since the Hecke operators depend on prime, and primes appear at random.
+In line one ($\Delta^3$), we get $\nicefrac{1}{4}^{\text{th}}$ of the primes giving $\Delta$, this is a consequence of Dirichlet Density Theorem, that will be discussed later in this paper.
+[Is this remark pertinent?]
+
 \subsubsection{Nilpotent Order}
 As we know that the Hecke operators are nilpotent, we may want to study the order of nil potentness.
 \paragraph{Definition}
@@ -818,21 +844,50 @@ Is any of the two reasonable to prove?
 Note that if it is not provable, I should do a numerical analysis, and mension it as a [rather strong, depending on the analysis] conjecture.
 Note that it might be wrong, and maybe that numerical analysis will find it out. In such a case, it is nice to mention.
 
-\paragraph{Example}
+\paragraph{Examples}
 \subparagraph{By hand}
 We can compute a few nil potentness by hand:
 \begin{itemize}
 	\item $g(0) = -\infty$
 	
-	\item $g(\Delta) = 1$ as order of $\Delta$ decrease \ref{orderDecrease}
+	\item $g(\Delta) = 1$:\\
+	$
+	T_p(\Delta) = 0
+	$
+	as order of $\Delta$ decrease, see \ref{orderDecrease}
 	
-	\item $g(\Delta^3) = 2$ as $T_3|\Delta^3 = \Delta \implies g(\Delta^3) > 1$ and order of $\Delta$ decrease gives $g(\Delta^3) \leq 2$
-	\item $g(\Delta^3+\Delta) = 2$ similarly
+	\item $g(\Delta^3) = 2$:\\
+	$
+	T_p|\Delta^3 = \Delta \text{ or } 0
+	$\\
+	thus:
+	$
+	g(\Delta^3) = 1 + \max(g(\Delta), g(0)) = 2
+	$
 	
-	\item $g(\Delta^5) = 2$ as $T_p|\Delta^5 = \Delta \text{ or } 0 \implies g(\Delta^5) \leq 2$ and $T_5|\Delta^5 = \Delta \implies g(\Delta^5) \geq 2$
-	\item $g(\Delta^5+\Delta^3+\Delta) = g(\Delta^5+\Delta^3) = g(\Delta^5+\Delta) = 2$ similarly
+	\item $g(\Delta^3+\Delta) = 2$\\
+	similarly
 	
-	\item $g(\Delta^7) = 3$
+	\item $g(\Delta^5) = 2$:\\
+	$
+	T_p|\Delta^5 = \Delta \text{ or } 0
+	$\\
+	thus:
+	$
+	g(\Delta^5) = 1 + \max(g(\Delta), g(0)) = 2
+	$
+	
+	\item $g(\Delta^5+\Delta^3+\Delta) = g(\Delta^5+\Delta^3) = g(\Delta^5+\Delta) = 2$\\
+	similarly
+	
+	\item $g(\Delta^7) = 3$:\\
+	$
+	T_p(\Delta^7) = \Delta^5 \text{ or } \Delta^3 \text{ or }  \Delta \text{ or } 0
+	$\\
+	thus:
+	$
+	g(\Delta^7) = 1 + \max(g(\Delta^5), g(\Delta^3), g(\Delta), g(0)) = 3
+	$
 \end{itemize}
 
 

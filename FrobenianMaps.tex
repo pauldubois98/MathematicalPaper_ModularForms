@@ -139,14 +139,17 @@ $$
 \subsubsection{Definition}
 [is it ok as a subsection title? (perhaps too generic?) alternatives: well definiteness, introduction]
 
-We can construct the Frobenius element (sometimes also called the Artin symbol, or the Frobenius map) that depend on the extension $L/K$ and ideal $\mathfrak{P}$ in $\mathcal{O}_L$.
+We can construct the \textit{Frobenius element} (sometimes also called the Artin symbol, or the Frobenius map) that depend on the extension $L/K$ and ideal $\mathfrak{P}$ in $\mathcal{O}_L$.
 It is denoted $\Frob{L/K}{\mathfrak{P}}$, and is \textit{the} element $\sigma \in G$ such that:
 $$
-\sigma(\alpha) \equiv \alpha^{\Norm{\mathfrak{p}}} \bmod{\mathfrak{P}} \quad \forall \alpha \in \mathcal{O}_L.
+\sigma \mathfrak{P} = \mathfrak{P}
+\quad \text{ and } \quad
+\sigma(\alpha) \equiv \alpha^{\Norm[K/\Q]{\mathfrak{p}}} \bmod{\mathfrak{P}} \quad \forall \alpha \in \mathcal{O}_L.
 $$
 
-At the moment, we can not talk of the Frobenius element as it is not unique: it is unique only up to a conjugacy class.
-This is not too pathological, as Frobenius element of primes ideals $\mathfrak{P}_1$ and $\mathfrak{P}_2$ that extend the same prime $\mathfrak{p}$ are conjugates.
+The second condition is the interesting one; while the first is only useful to make the Frobenius element unique.
+The second condition defines a unique element only up to conjugacy class.
+Most of the time, we will consider abelian extensions, so the conjugacy classes will only have one element, and the first condition will be dropped.
 
 We define the Frobenius element for $\mathfrak{p}$ (denoted $\Frob{L/K}{\mathfrak{p}}$) in a meaning full manner, to be the set 
 $
@@ -164,17 +167,17 @@ $.
 	For all $x \in \mathcal{O}_L$, we have:
 	$$
 	\Frob{L/K}{\mathfrak{P}}x 
-	= x^{\Norm{\mathfrak{p}}} \mod \mathfrak{P}
+	= x^{\Norm[K/\Q]{\mathfrak{p}}} \mod \mathfrak{P}
 	$$
 	But all such $x$ may be written as $\tau^{-1}(x)$, so we have:
 	$$
 	\Frob{L/K}{\mathfrak{P}} \tau^{-1}(x) 
-	= {(\tau^{-1} x)}^{\Norm{\mathfrak{p}}} \mod \mathfrak{P}
+	= {(\tau^{-1} x)}^{\Norm[K/\Q]{\mathfrak{p}}} \mod \mathfrak{P}
 	$$
 	Which gives:
 	$$
 	\tau \Frob{L/K}{\mathfrak{P}}\tau^{-1}(x) 
-	= x^{\Norm{\mathfrak{p}}} \mod \mathfrak{P}
+	= x^{\Norm[K/\Q]{\mathfrak{p}}} \mod \mathfrak{P}
 	$$
 \end{proof}
 
@@ -214,90 +217,135 @@ Moreover, it will only depend on the prime $\mathfrak{p}$ that is extended.
 
 
 \subsubsection{Examples}
-\paragraph{Case $\Q[\sqrt{7}]:\Q$ (quadratic field extension)}
+\paragraph{$\Q[\sqrt{7}]/\Q$ (quadratic field extension)}
 %Looking at $\Q[\sqrt{7}]:\Q$ (which is a Galois extension).
 We have minimum polynomial $m(x)=x^2-7$, the discriminant is $\Delta = 4.7 = 28$.\\
 We write
 $$
 G = \Gal{\Q[\sqrt{7}]:\Q} = <\sigma \ | \ \sigma^2 = 1_G> \cong C_2.
 $$
-
-\subparagraph{The prime ideal $(2)$}
-%We look at the prime ideal $(2)$:
-As $m(x) = (x+1)^2 \mod 2$, we have $(2) = (2, \sqrt{7}+1)^2$.\\
-As well, $\Norm{(2)} = 2^2 = 4$ and $\Norm{(2, \sqrt{7}+1)} = 2$.
-
-So we have:
-\begin{align*}
-    \Frob{\Q[\sqrt{7}]:\Q}{(2, \sqrt{7}+1)}: \alpha &\to \alpha^{\Norm{(2)}} \ (3, \sqrt{7}+1)\\
-    \sqrt{7} &\to [\sqrt{7}]^4 \ (2, \sqrt{7}+1) = -\sqrt{7} \ (2, \sqrt{7}+1) 
-\end{align*}
-Thus, $\Frob{\Q[\sqrt{7}]:\Q}{(2, \sqrt{7}+1)} = \sigma \in G$.
-
-% 3 RAMIFIES !!!
-%\subparagraph{The prime ideal $(3)$}
-%%We look at the prime ideal $(3)$:
-%As $m(x) = (x+1)(x-1) \mod 3$, we have $(3) = (3, \sqrt{7}+1)(3, \sqrt{7}-1)$.\\
-%As well, $\Norm{(3)} = 3^2 = 9$ and $\Norm{(3, \sqrt{7}+1)} = \Norm{(3, \sqrt{7}-1)} = 3$.
-%
-%So we have:
-%\begin{align*}
-%    \Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}+1)}: \alpha&\to \alpha^{\Norm{(3)}} \ (3, \sqrt{7}+1)\\
-%    \sqrt{7}&\to [\sqrt{7}]^9 \ (3, \sqrt{7}+1) = \sqrt{7} \ (3, \sqrt{7}+1)
-%\end{align*}
-%Thus, $\Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}+1)} = 1_G \in G$.
-%Similarly, $\Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}-1)} = 1_G \in G$.
-
-\paragraph{Case $\Q[\zeta_6]:\Q$ ($6^{th}$ cyclotomic field extension)}
-%Looking at $\Q[\zeta_6]:\Q$ (which is a Galois extension).
-We have minimum polynomial $m(x)=x^2-x+1$ (so the degree of the extension is 2), the discriminant is $\Delta = -3$ (here, $\zeta_6=e^{\pi i/3}$ denotes the $6^{th}$ root of unity).
-
-We write $G = \Gal{\Q[\zeta_6]:\Q} = < \sigma: \zeta_6 \to \zeta_6^2, \tau: \zeta_6 \to \zeta_6^3 \ | \ \sigma^3=\tau^2=Id, \sigma\tau=\tau\sigma > \cong C_2 \times C_3$.
-Note that $g \in G$ is determined by $g(\zeta_6)$.
-Note as well that $G$ is abelian, so the Frobenius element is well defined.
+As $C_2$ is abelian, we will have no problem defining Frobenius elements.
 
 \subparagraph{The prime ideal $(3)$}
 %We look at the prime ideal $(3)$:
-As $m(x) = (x+1)^2 \mod 3$, we have $(3) = (3, \zeta_6+1)^2$.\\
-As well, $\Norm{(3)} = 3^2 = 9$ and $\Norm{(3, \zeta_6+1)} = \Norm{(3, \zeta_6-1)} = 3$.
-
+As $m(x) = (x+1)(x-1) \mod 3$, we have $(3) = (3, \sqrt{7}+1)(3, \sqrt{7}-1)$.\\
+As well, $\Norm[{\Q[\sqrt{7}]/\Q}]{(3)} = 3$ and $\Norm[{\Q[\sqrt{7}]/\Q}]{(3, \sqrt{7}+1)} 
+=\Norm[{\Q[\sqrt{7}]/\Q}]{(3, \sqrt{7}-1)} 
+= 3
+$, but $\Norm[\Q/\Q]{(3)} = 3$.
 So we have:
 \begin{align*}
-    \Frob{\Q[\zeta_6]:\Q}{(3, \zeta_6+1)}: \alpha & \to \alpha^{\Norm{(3)})} \ (3, \zeta_6+1)\\
-    \zeta_6   & \to [\zeta_6]^9 \ (3, \zeta_6+1) = -1 \ (3, \zeta_6+1) = \zeta_6 \ (3, \zeta_6+1)
+    \Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}+1)}:
+    \alpha   &\to \alpha^{\Norm[\Q/\Q]{(3)}} \bmod (3, \sqrt{7}+1)\\
+    \sqrt{7} &\to \left( \sqrt{7} \right)^3 \equiv \sqrt{7} \bmod (3, \sqrt{7}+1)
 \end{align*}
-Thus, $\Frob{\Q[\zeta_6]:\Q}{(3, \zeta_6+1)} = Id \in G$.
+Thus, $\Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}+1)} = 1_G \in G$.
+Similarly, $\Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}-1)} = 1_G \in G$.
+
+\subparagraph{The prime ideal $(5)$}
+%We look at the prime ideal $(5)$:
+As $m(x)$ has no root $\bmod 2$. So $m(x)$ is irreducible $\bmod 5$ and $(5)$ is inert in $\Q[\sqrt{7}]$
+As well, $\Norm[{\Q[\sqrt{7}]/\Q}]{(5)} = 5^2 = 25$ but $\Norm[\Q/\Q]{(5)} = 5$.
+So we have:
+\begin{align*}
+    \Frob{\Q[\sqrt{7}]:\Q}{(5)}: 
+    \alpha   &\to \alpha^{\Norm[\Q/\Q]{(5)}} \bmod (5)\\
+    \sqrt{7} &\to \left( \sqrt{7} \right)^5 \equiv -\sqrt{7} \bmod (5)
+\end{align*}
+Thus, $\Frob{\Q[\sqrt{7}]:\Q}{(5)} = \sigma \in G$.
+
+\paragraph{$\Q[\zeta_n]/\Q$ ($n^{th}$ Cyclotomic Field Extensions)}
+We have minimum polynomial:
+$$
+\Phi(x)= \prod_{\substack{1 \leq k \leq n \\ \gcd(k,n)=1}} 
+\left( x-e^{2 i \pi \frac{k}{n}} \right)
+$$
+(so degree of the extension is $\varphi(n)$, where $\varphi$ is Euler totient function).
+
+Discriminant of the extension is:
+$$
+\Delta = (-1)^{\varphi(n)/2}
+\frac{n^{\varphi(n)}}{\prod_{p \mid n} p^{\varphi(n)/(p-1)}}
+$$
+see \cite[Proposition 2.7]{IntroductionToCyclotomicFields}.
+
+The Galois group $G$ consist of $\sigma_k$ such that $\sigma_k(\zeta_n^i)=\zeta_n^{ik}$, with $\gcd(k,n)=1$.)
+Note as well that $G$ is abelian, so it is simple to calculate the Frobenius element.
+It is straightforward that $G$ is naturally isomorphic to the multiplicative group $\left( \nicefrac{\Z}{n\Z} \right)^\times$.
+Note that $\sigma \in G$ is determined by $\sigma(\zeta_n)$.
+
+With $p \in \primes$, a prime that is unramified in $\Q[\zeta_n]/\Q$, let $P$ be an ideal lying above $(p)$.
+We want to look at $\Frob{\Q[\zeta_n]/\Q}{P}$:
+
+We have:
+\begin{align*}
+	\Frob{\Q[\zeta_n]/\Q}{P}: 
+	\alpha&\to \alpha^{\Norm[\Q/\Q]{(p)}} \bmod P\\
+	\zeta_n&\to \zeta_n^p \bmod P
+\end{align*}
+
+\paragraph{Case $\Q[\zeta_{10}]/\Q$ ($10^{th}$ cyclotomic field extension)}
+We denote by $\zeta_{10}=e^{\pi i/5}$ the $10^{th}$ root of unity.
+We have minimum polynomial $m(x) = x^4-x^3+x^2-x+1$ (so degree of the extension is 4), the discriminant is $\Delta = 5^3$.
+
+We write $
+G = \Gal{\Q[\zeta_{10}]:\Q} 
+= < \sigma: \zeta_{10} \to \zeta_{10}^3 \ | \ \sigma^4 = Id > \cong C_4$.
+
+%\begin{center}
+%	\begin{tabular}{r|l}
+%		$x$ & $x^4-x^3+x^2-x+1$ \\
+%		\hline
+%		$-5$ & $781 = 11 \cdot 71$ \\
+%		$-4$ & $341 = 11 \cdot 31$\\
+%		$-3$ & $121 = 11^2$\\
+%		$-2$ & $31$\\
+%		$-1$ & $5$\\
+%		$0$  & $1$\\
+%		$1$  & $1$\\
+%		$2$  & $11$\\
+%		$3$  & $61$\\
+%		$4$  & $205 = 5 \cdot 41$\\
+%		$5$  & $521$\\		
+%	\end{tabular}
+%\end{center}
+
+
+\subparagraph{The prime ideal $(3)$}
+%We look at the prime ideal $(3)$:
+As $m(x)$ has no root $\bmod 3$, so $(3)$ is inert.
+We have:
+\begin{align*}
+	\Frob{\Q[\zeta_{10}]/\Q}{(3)}:
+	\alpha   &\to \alpha^{\Norm[\Q/\Q]{(3)}} \bmod (3)\\
+	\zeta_{10} &\to \left( \zeta_{10} \right)^3 \bmod (3)
+\end{align*}
+Thus, $\Frob{\Q[\zeta_{10}]:\Q}{(3)} = \sigma \in G$.
 
 \subparagraph{The prime ideal $(7)$}
-%We look at the prime ideal $(7)$:
-As $m(x) = (x+2)(x-3) \mod 3$, we have $(7) = (7, \zeta_6+2)(7, \zeta_6-3)$.\\
-As well, $\Norm{(7)} = 7^2 = 49$ and $\Norm{(7, \zeta_6+2)} = \Norm{(3, \zeta_6-3)} = 7$.
-
-So we have:
+%We look at the prime ideal $(3)$:
+As $m(x)$ has no root $\bmod 7$, so $(7)$ is inert.
+We have:
 \begin{align*}
-    \Frob{\Q[\zeta_6]:\Q}{(7, \zeta_6+2)}: \alpha & \to \alpha^{\Norm{(7)}} \ (7, \zeta_6+2)\\
-    \zeta_6   & \to [\zeta_6]^49 \ (7, \zeta_6+2) = \zeta_6 \ (7, \zeta_6+2)
+	\Frob{\Q[\zeta_{10}]/\Q}{(7)}:
+	\alpha   &\to \alpha^{\Norm[\Q/\Q]{(7)}} \bmod (7)\\
+	\zeta_{10} &\to \left( \zeta_{10} \right)^7 \bmod (7)
 \end{align*}
-Thus, $\Frob{\Q[\zeta_6]:\Q}{(7, \zeta_6+2)} = Id \in G$.
-Similarly, $\Frob{\Q[\zeta_6]:\Q}{(7, \zeta_6-3)} = Id \in G$.
+Thus, $\Frob{\Q[\zeta_{10}]:\Q}{(7)} = \sigma^3 \in G$.
 
-\subparagraph{The prime ideal $(13)$}
-%We look at the prime ideal $(7)$:
-As $m(x) = (x+3)(x-4) \mod 3$, we have $(13) = (13, \zeta_6+3)(13, \zeta_6-4)$.\\
-As well, $\Norm{(13)} = 13^2 = 169$ and $\Norm{(13, \zeta_6+3)} = \Norm{(3, \zeta_6-4)} = 13$.
-
-So we have:
+\subparagraph{The prime ideal $(11)$}
+As $m(x) = (x-2)(x+3)(x+4)(x+4) \bmod 11$, so $(11)$ splits.
+We have:
 \begin{align*}
-    \Frob{\Q[\zeta_6]:\Q}{(13, \zeta_6+3)}: \alpha & \to \alpha^{\Norm{(13)}} \ (13, \zeta_6+3)\\
-    \zeta_6   & \to [\zeta_6]^169 \ (13, \zeta_6+3) = \zeta_6 \ (13, \zeta_6+3)
+	\Frob{\Q[\zeta_{10}]/\Q}{(11)}:
+	\alpha   &\to \alpha^{\Norm[\Q/\Q]{(11)}} \bmod (11)\\
+	\zeta_{10} &\to \left( \zeta_{10} \right)^{11} = \zeta_{10} \bmod (11)
 \end{align*}
-Thus, $\Frob{\Q[\zeta_6]:\Q}{(13, \zeta_6+3)} = Id \in G$.
-?? always identity?? [to be solved]
+Thus, $\Frob{\Q[\zeta_{10}]:\Q}{(11)} = \sigma^4 = Id \in G$.
 
 
 
 \subsubsection{Behaviour in Chained Extensions}
-
 We will consider the following scheme:\\
 \begin{tikzpicture}[text width=10cm, align=flush center, node distance=0.75cm]
 %nodes
@@ -529,13 +577,10 @@ One of the most important results that use Frobenian maps is probably the Chebot
 	Then, the proportion of unramified primes ideals $\mathfrak{p}$ in $K$ that have Frobenius element $\Frob{L/K}{\mathfrak{p}}=C$ \footnote{When depending on a prime in the "lower" field, the Frobenius element is a conjugacy class to be well defined} is $\nicefrac{|C|}{|G|}$.
 \end{theorem}
 We see that Frobenius elements are in the heart of this theorem.
-
-\paragraph{Proof}
-[quick proof? actually, I couldn't find one, maybe just idea of proof?]
+[cite proof]
 
 \paragraph{Example}
-Extension with non-commutative Galois group (as commutative will be used in Dirichlet's example).
-=> splitting field of $x^3-2$? (i.e. $\Q[\zeta_3, \curt{2}]:\Q$)
+[quadratic extension?]
 
 
 
@@ -555,10 +600,7 @@ The Galois group then is cyclic, as this is a cyclotomic extension, and has orde
 
 Primes ideals in $\Q$ are just primes numbers. And as the Galois group is cyclic, it is abelian, so all conjugacy classes have one element.
 Thus, Chebotarev gives Dirichlet's density theorem in the particular case of cyclotomic extensions.
-%[need more details?]
-
-\subsubsection{Proof}
-[Stand alone proof?]
+[need more details?]
 
 \subsubsection{Example}
 [Prove the case n=15 from the motivation subsection above.]

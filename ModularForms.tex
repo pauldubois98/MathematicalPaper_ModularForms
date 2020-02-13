@@ -1,6 +1,6 @@
 \section{Modular forms}
 \subsection{Modular forms of level 1}
-Let $\halfplane$ denote the upper-half plane, that is, $\halfplane = \{z = x+yi \in \C | \ y>0 \}$.
+Let $\halfplane$ denote the \textit{upper-half plane}, that is, $\halfplane = \{z = x+yi \in \C | \ y>0 \}$.
 
 We say that a function $f:\halfplane \to \C$ is \textit{weakly modular} of \textit{weight} $2k$ if $f$ is meromorphic and
 $$
@@ -47,13 +47,13 @@ It is also possible to multiply modular forms, in which case the weights are add
 If $f_1$ and $f_2$ are modular forms of respective weights $2k_1$ and $2k_2$, then $f_1f_2:a \to f_1(z)f_2(z)$ is modular of weight $2k_1+2k_2$.
 
 We deduce that we can take powers of modular forms, and the weight is then multiplied by the exponent:
-if $f(z)$ is modular of weight $2k$, then $f^n(z)$ is modular of weight $2k \cdot n$ (with $n \in \N$).
+if $f(z)$ is modular of weight $2k$, then $f^n(z)$ is modular of weight $2k \cdot n$ (with $n \in \N$ \footnote{The set of naturals $\N$ is taken to start from $0$ in this paper.} ).
 
 
 
 \subsection{Typical Modular Forms}
 \subsubsection{Eisenstein series $G_k$}
-The most famous class of modular forms is probably the Eisenstein series, usually denoted $G_k$. We define them as follows \cite[Examples of Modular Forms of Level 1]{ModularFormsComputationalApproach}:
+The most famous class of modular forms is probably the \textit{Eisenstein series}, usually denoted $G_k$. We define them as follows \cite[Examples of Modular Forms]{ModularFormsComputationalApproach}:
 $$
 G_k(z) = \sum_{(m,n) \in \Z^2\setminus\{(0,0)\}} \frac{1}{(mz+n)^{2k}}
 $$
@@ -81,7 +81,7 @@ $$
 where $B_k = (-1)^{k+1} b_{2k}$ and $b_k$ are Bernoulli numbers.
 
 \subsubsection{The Modular Discriminant $\Delta$}
-We will be interested in one main modular form in the rest of this article: the modular discriminant $\Delta$.
+We will be interested in one main modular form in the rest of this article: the \textit{modular discriminant} $\Delta$.
 We define $\Delta$ in terms of $G_k$ as follows \cite[p.84]{CourseInArithmetic}:
 $$
 \Delta = \left( \frac{1}{(2\pi)^{12}} \right) (g_2^3 - 27g_3^2) \in M_6^0 \qquad \text{ with } g_2 = 40G_2 \text{ and } g_3 = 140G_3
@@ -105,8 +105,8 @@ so $\Delta$ has a zero at infinity.
 
 
 \subsection{Cusp Forms}
-A function $f:\halfplane \to \C$ that is a modular form may in addition be a cusp form, if $f(\infty)=0$.
-We will denote the space of modular cusp forms of weight $2k$ over $\C$ by $M_k^0$.
+A function $f:\halfplane \to \C$ that is a modular form may in addition be a \textit{cusp form}, if $f(\infty)=0$.
+We will denote the \textit{space of modular cusp forms} of weight $2k$ over $\C$ by $M_k^0$.
 
 It is useful to note $G_k(\infty) = \sum_{n \in \N^*} \frac{2}{n^{2k}} > 2$ and in particular, $G_k(\infty) \neq 0$, so $G_k$ are \textit{not} cusp forms for any $k$.
 As we have shown it before, $\Delta(\infty)=0$, so $\Delta$ is a modular cusp form of weight 12, so $\Delta \in M_6^0$.
@@ -195,14 +195,14 @@ Note that the $\max$ is taken only to avoid negative dimensions.
 \subsubsection{Definition}
 To study such function, we use Fourier Expansion.
 In the case of $f$ being a modular form of weight $2k$, 
-a Fourier Expansion is a representation of $f$ as a power series of $e^{2\pi i n z}$
+a \textit{Fourier Expansion} is a representation of $f$ as a power series of $e^{2\pi i n z}$
 i.e. $$f(z) = \sum_{n \in \Z} a_n(f) e^{2\pi inz}.$$
 We usually denote $q = e^{2\pi i z}$ so that $q^n = e^{2\pi i n z}$ 
 and the Fourier expansion of $f$ become 
 $$
 f(q) = \sum_{n \in \Z} a_n(f) q^n.
 $$
-When in this form, we may as well call it the $q$-expansion.
+When in this form, we may as well call it the \textit{$q$-expansion}.
 
 \subsubsection{Typical Modular Forms Fourier Expansion}
 \paragraph{Fourier Expansions of $G_k$}
@@ -235,7 +235,7 @@ It is not obvious and may in fact seems wrong at a first stage: $G_2$ and $G_3$ 
 However, by taking combinations of $G_2$ and $G_3$, we may obtain modular forms of any weight $2k$. It is important to remember that when multiplied, the weight of modular forms add up.
 
 \begin{theorem}
-    The set $S = \{G_2^aG_3^b | a,b \in \N, 2a+3b = k\}$\footnote{The set of naturals $\N$ is taken to start from $0$.} is a basis for $M_k$. \cite[Theorem 2.17]{ModularFormsComputationalApproach}
+    The set $S = \{G_2^aG_3^b | a,b \in \N, 2a+3b = k\}$ is a basis for $M_k$. \cite[Theorem 2.17]{ModularFormsComputationalApproach}
 \end{theorem}
 \begin{proof}
     Of course, the cases when $\dim(M_k)=0$ (for $k<0$ and $k=1$) are trivial, as the basis is empty, and $2a+3b = k$ has no solution for $a,b \in \N$.
@@ -270,7 +270,7 @@ This set of makes to be a basis, and one may even find it pleasant: given the tw
 
 \subsection{Hecke Operators}
 \label{DefHeckeOperators}
-We define the Hecke operators for a modular form $f$ as follows \cite[p.100]{CourseInArithmetic}:
+We define the \textit{Hecke operators} for a modular form $f$ as follows \cite[p.100]{CourseInArithmetic}:
 $$
 T_nf(z) = n^{2k-1}\sum_{a \geq 1,\, ad=n,\, 0 \leq b < d} d^{-2k}f \left( \frac{az+b}{d} \right)
 $$
