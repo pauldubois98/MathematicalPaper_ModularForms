@@ -659,6 +659,8 @@ $$
 \paragraph{Non-Nullity of Hecke Opereator}
 \label{HeckeNonNull}
 We will prove a property that directly implies the non nullity of Hecke Operators.
+
+This property follows the idea developed in \cite[p.33]{TheWebOfModularityArithmeticOfTheCoefficientsOfModularForms}.
 \begin{property}
 	If $f \in \mathcal{F}$, and $T_p|f = 0$ for all odd primes $p$, then either $f = 0$ or $f = \Delta$.
 	That is, only $\Delta$ and $0$ give zero after applying any Hecke operator.
@@ -747,8 +749,8 @@ Now that we have all this information on the diagonal, it makes sense to study t
 $\Tr{A_p} = a_{k,k}$.
 A nice interpretation of the Trace should give us an equation for $a_{k,k}$.
 
-We can interpret the trace as the sum of eigenvaues of the matrix $A_p$, i.e. eigenvalues of the Hecke oprator $T_p$.
-Some knoledge about eigenvalues of Hecke operators has been proved already (by Hatada, see \cite{EigenvaluesOfHeckeOperators}), we have:
+We can interpret the trace as the sum of eigenvalues of the matrix $A_p$, i.e. eigenvalues of the Hecke operator $T_p$.
+Some knowledge about eigenvalues of Hecke operators has been proved already (see \cite{EigenvaluesOfHeckeOperators}), we have:
 For $p$ an odd prime, if $\lambda_p$ is an eigenvalue of $T_p$, we have the congruence: $\lambda_p \equiv 1+p \bmod 8$
 Since $p$ is an odd (prime) number, we get: $\lambda_p \equiv 0 \bmod 2$.
 As this is true for all eigenvalues of $T_p$, we have that the sum of eigenvalues (which corresponds to the trace of the matrix) is zero over $\F_2$.
@@ -878,7 +880,7 @@ It seems quite random, which makes sense since the Hecke operators depend on pri
 In line one ($\Delta^3$), we get $\nicefrac{1}{4}^{\text{th}}$ of the primes giving $\Delta$, this is a consequence of Dirichlet Density Theorem, that will be discussed later in this paper.
 [Is this remark pertinent?]
 
-\subsubsection{Nilpotent Order}
+\subsubsection{Nil-potency Order}
 As we know that the Hecke operators are nilpotent, we may want to study the order of nil potentness.
 \paragraph{Definition}
 For a modular from modulo 2 $f \in \mathcal{F}$, we define the \textit{nil potentness order} to be the smallest integer $g(f)$ such that we have 
@@ -896,11 +898,18 @@ With a slight abuse of notation, we will write $g(k)$ for $g(\Delta^k)$.
 \subparagraph{Well-definiteness}
 All Hecke operators lower by at least two the maximum degree of $\Delta$ in the $\Delta$-expansion of a modular form modulo 2 \ref{orderDecrease}.
 We deduce that $g(f) \leq g(T_p|f) + 1$.
-Applied to $Delta^k$, we get: $g(k) \leq g(k-2) + 1$.
+Applied to $\Delta^k$, we get: $g(k) \leq g(k-2) + 1$.
 Therefore, by induction, we have $g(k) \leq \floor{\frac{k+1}{2}}$.
 This implies by the same occasion, the well definiteness of the order of nil potentness for all modular form modulo two.
 
-\subparagraph{conjecture}
+\subparagraph{Minimum Order}
+If the degree of $f$ is strictly greater than 1 (i.e. $f \neq 0, \Delta$), then $g(f) \geq 2$.
+
+We deduce this from the fact that Hecke operators are not null operators in general (\ref{HeckeNonNull}):
+Remember that one consequence of non nullity is that if $f \neq 0, \Delta$, then there exists an odd prime $p$ such that $T_p|f \neq 0$.
+This directly implies that $g(f) > 1$.
+
+\subparagraph{Conjecture}
 Let $f_1,f_2 \in \mathcal{F}$ be modular form modulo 2, such that
 $f_1 = \Delta^k + \sum_{j < k} \mu_j \Delta^k$
 and
@@ -909,7 +918,7 @@ $f_2 = \Delta^k + \sum_{j < k} \nu_j \Delta^k$
 
 Then $g(f_1)=g(f_2)$.
 
-\subparagraph{proof attempt}
+\subparagraph{Proof attempt}
 By induction?\\
 Case $k=1$: This is trivial.\\
 Case $k=3$: This is rather straightforward as well: $g(\Delta^3)=1$ and $g(\Delta^3+\Delta)=1$.
