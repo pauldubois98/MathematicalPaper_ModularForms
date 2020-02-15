@@ -588,14 +588,14 @@ The extra properties make the study modulo two interesting.
 
 \paragraph{Inherited properties}
 From the fact that $\overline{T_p}|f(q) = \overline{T_p|f(q)}$, we get that the Hecke operators modulo 2 keep the properties they had before being reduced.
-
 \subparagraph{Modularity Remains}
+\label{HekeModular}
 From definition \ref{DefHeckeOperators}, a Hecke operators transform a modular form to an other.
 This is because from definition, $T_nf$ is a sum of modular forms (which remain modular).
 Therefore, Hecke operators modulo 2 will as well transform a modular form to an other.
 This was not clear from the definition modulo 2 that we had (which was in terms of $q$ series).
-
 \subparagraph{Commutativity}
+\label{HekeCommute}
 As in general \cite[p.101]{CourseInArithmetic}:
 $$
 T_nT_m = T_{mn} \quad \text{ if } \gcd(m,n)=1
@@ -608,7 +608,6 @@ $$
 Therefore, the Hecke operators modulo 2 commute.
 This, as well, was not clear form definition.
 It will be very convenient for future calculations.
-
 \subparagraph{Linearity}
 \label{HekeLinear}
 From definition \ref{DefHeckeOperators}, we have that the Hecke operators are immediately linear.
@@ -619,6 +618,73 @@ $$
 (this follows directly from definition).
 
 This property will also remain modulo 2.
+
+\paragraph{Behaviour of $\mathcal{F}_i$}
+\label{HeckeInF_i}
+Suppose $f \in \mathcal{F}_i$, using \ref{ObservationsMod8}, we have:
+$$
+f
+= \sum_{m \equiv i \bmod 8} \mu_m\Delta^m 
+= \sum_{n \equiv i \bmod 8} c(n)q^n
+$$
+From the definition of Hecke operator modulo 2 (\ref{DefHeckeOperatorsMod2}), we have:
+$$
+T_p|f
+= \sum_{n \in \N} \gamma(n)q^n
+\quad \text{ with }
+\gamma(n) = 
+\left\lbrace 
+\begin{array}{l l}
+c(np)        & \text{ if } p \nmid n \\
+c(np)+c(n/p) & \text{ if } p \mid  n
+\end{array}
+\right.
+$$
+\begin{enumerate}
+	\item [$c(np)$:] We have $np \not \equiv i \bmod 8 \implies c(np) = 0$.
+	\item [$c(n/p)$:] As $p$ is an odd prime, it is an odd number, so from \ref{ObservationsMod8}, $p^2 \equiv 1 \bmod 8$, so $p^{-2} \equiv 1 \bmod 8$ as well (with $p^{-2}$ seen $\bmod 8$).
+	
+	Therefore, $np \not\equiv i \bmod 8 \implies  n/p \equiv \nicefrac{np}{p^2} \equiv np \not\equiv i \bmod 8 $.
+	
+	\item [$\gamma(n)$:] We conclude that $n \equiv np^2 \not\equiv pi \bmod 8 \implies \gamma(n) = 0$
+\end{enumerate}
+Using \ref{ObservationsMod8} again, we deduce that $T_p|f \in \mathcal{F}_j$ with $j \equiv pi \bmod 8$.
+
+Overall, we have the following:
+$$
+f \in \mathcal{F}_i \implies T_p|f \in \mathcal{F}_j
+\text{ with } j \equiv pj \bmod 8
+$$
+
+\paragraph{Non-Nullity of Hecke Opereator}
+\label{HeckeNonNull}
+We will prove a property that directly implies the non nullity of Hecke Operators.
+\begin{property}
+	If $f \in \mathcal{F}$, and $T_p|f = 0$ for all odd primes $p$, then either $f = 0$ or $f = \Delta$.
+	That is, only $\Delta$ and $0$ give zero after applying any Hecke operator.
+\end{property}
+\begin{proof}
+	Let's denote by $a(n)$ the coefficients of the $q$-expansion of $f$ in the usual way ($f(z) = \sum_{n=0}^{\infty} a(n)q^n$, with $q=e^{2\pi i z}$).
+	With $p$ an odd prime, we similarly define $T_p|f(z) = \sum_{n=0}^{\infty} \gamma(n)q^n$ with $\gamma(n) = c(np) + c(n/p)$.
+	\begin{enumerate}
+		\item if $r$ simple odd:\\
+		$p \nmid n$ gives $0 = \gamma(n) = a(np)$,
+		so $a(r)=0$
+		\item If $r$ odd of power 3 or more:\\
+		Putting $n=mp^2$, we get: $0 = \gamma(mp^2) = a(mp^3)+a(mp) = a(mp^3)$.\\
+		Thus, $a(r)=0$
+	\end{enumerate}
+	Thus, $a(r) \neq 0$ implies $r$ is an odd square.
+	Note that $0 = \gamma(np) = a(np^2) + a(n)$, so $a(1)=1$ will implies $a(r)=1$ for all odd squares $r$.
+	In this case, $f = \Delta$.
+	
+	Similarly, $a(1)=0$ makes $a(n)=0$ for all $n$.
+	Therefore, $f$ may only be $\Delta$ or $0$.
+\end{proof}
+
+An immediate consequence (by taking the contra-positive) of this property is that if $f \neq 0, \Delta$, then there exists a $p$ such that $T_p|f \neq 0$.
+Thus, for any $k > 1$, we get that there is a prime $p$ such that $T_p|\Delta^k \neq 0$.
+This means that $T_p$ is never the null operator.
 
 \subsubsection{Nil-potency}
 The properties of Hecke operators is that, given a modular form $f$, if we apply a Hecke operators enough times, the form will become zero (i.e. they are nilpotent).
@@ -694,44 +760,7 @@ Now, this is a proof by induction, but the first case really is $k=0$, in which 
 
 Therefore, we proved the nilpotence modulo 2 of Hecke operators $T_p$ for all $p$ odd primes.
 
-\subsubsection{Expression as a Sum of Powers of $\Delta$}
-\paragraph{Behaviour of $\mathcal{F}_i$}
-Suppose $f \in \mathcal{F}_i$, using \ref{ObservationsMod8}, we have:
-$$
-f
-= \sum_{m \equiv i \bmod 8} \mu_m\Delta^m 
-= \sum_{n \equiv i \bmod 8} c(n)q^n
-$$
-From the definition of Hecke operator modulo 2 (\ref{DefHeckeOperatorsMod2}), we have:
-$$
-T_p|f
-= \sum_{n \in \N} \gamma(n)q^n
-\quad \text{ with }
-\gamma(n) = 
-\left\lbrace 
-\begin{array}{l l}
-c(np)        & \text{ if } p \nmid n \\
-c(np)+c(n/p) & \text{ if } p \mid  n
-\end{array}
-\right.
-$$
-\begin{enumerate}
-	\item [$c(np)$:] We have $np \not \equiv i \bmod 8 \implies c(np) = 0$.
-	\item [$c(n/p)$:] As $p$ is an odd prime, it is an odd number, so from \ref{ObservationsMod8}, $p^2 \equiv 1 \bmod 8$, so $p^{-2} \equiv 1 \bmod 8$ as well (with $p^{-2}$ seen $\bmod 8$).
-	
-	Therefore, $np \not\equiv i \bmod 8 \implies  n/p \equiv \nicefrac{np}{p^2} \equiv np \not\equiv i \bmod 8 $.
-	
-	\item [$\gamma(n)$:] We conclude that $n \equiv np^2 \not\equiv pi \bmod 8 \implies \gamma(n) = 0$
-\end{enumerate}
-Using \ref{ObservationsMod8} again, we deduce that $T_p|f \in \mathcal{F}_j$ with $j \equiv pi \bmod 8$.
-
-Overall, we have the following:
-$$
-f \in \mathcal{F}_i \implies T_p|f \in \mathcal{F}_j
-\text{ with } j \equiv pj \bmod 8
-$$
-
-\paragraph{Application to $\Delta^k$}
+\subsubsection[Expression for $T_p|\Delta^k$]{Expression as a Sum of Powers of $\Delta$}
 As the degree of a modular form doesn't increase after applying a Hecke operator, we can apply this the modular form $\Delta^k$ to get:
 $$
 T_p|\Delta^k = \sum_{\substack{j \leq k \\ j \text{ odd}}} \mu_j\Delta^j
@@ -741,7 +770,7 @@ As we know, moreover, that the degree of a modular form will in fact decrease, w
 T_p|\Delta^k = \sum_{\substack{j \leq k-2\\ j \text{ odd}}} \mu_j\Delta^j
 \label{eq:TpDelta^k} \tag{*}
 \]
-The last observation (on $\mathcal{F}_i$), leads us to the formula:
+The observation on $\mathcal{F}_i$ (in \ref{HeckeInF_i}) leads us to the formula:
 \[
 T_p|\Delta^k = \sum_{\substack{j \leq k-2\\ j \equiv pk \bmod 8}} \mu_j\Delta^j
 \label{eq:TpDelta^k_bis} \tag{**}
