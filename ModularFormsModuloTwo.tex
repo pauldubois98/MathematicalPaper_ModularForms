@@ -346,12 +346,18 @@ So the Miller basis just becomes the Gauss elimination of $\overline{\Delta}$ po
 
 This is what motivates the next section.
 
+
+
 \subsection{Space of Modular Forms Modulo Two}
 We would like to have a definition for this space in a similar way as $M_k$ was used for modular forms (of weight $2k$) before reduction.
 
+By abuse of notation, we denote the reduction of $\Delta$ modulo 2 (written $\overline{\Delta}$ until here) also by $\Delta$, that is,
+$$
+\Delta(q) = \sum_{m=0}^{\infty} q^{(2m+1)^2} \bmod 2.
+$$
 \subsubsection{Weights of Modular Forms Modulo Two}
 \label{WeightModuloTwo}
-We just saw that the Miller basis for $\overline{M_k}$ is (the Gaussian elimination of) $\{ \overline{\Delta}^j | 1 \leq j \leq \dim(M_k) \}$.
+We just saw that the Miller basis for $\overline{M_k}$ is (the Gaussian elimination of) $\{ \Delta^j | 1 \leq j \leq \dim(M_k) \}$.
 
 Now, if we look at this set not reduced modulo 2, we have:
 $\{ \Delta^j | 1 \leq j \leq \dim(M_k) \}$.
@@ -362,13 +368,12 @@ We understand now that modulo 2, the weight of modular form doesn't make sense a
 This is one of the consequences of reducing modulo 2: we lose some informations about the modular forms, such as the weight.
 
 From this observation, we should study all modular forms together, modulo 2 (instead of separating by weights).
-This is why the space of modular forms modulo 2 will be denoted  $\mathcal{F}$, with mo dependence on $k$.
+This is why the space of modular forms modulo 2 will be denoted  $\mathcal{F}$, with no dependence on $k$.
 
 \subsubsection{Powers of the Modular Discriminant $\Delta$}
 \paragraph{Set of Powers of the Modular Discriminant $\Delta$}
-As we just saw, the Gaussian elimination of powers $\overline{\Delta}^k$ up to $\dim(\overline{M_k})$ form the Miller basis of $\overline{M_k}$ (modular forms of weight $2k$ reduced modulo 2).
+As we just saw, the Gaussian elimination of powers $\Delta^k$ up to $\dim(\overline{M_k})$ form the Miller basis of $\overline{M_k}$ (modular forms of weight $2k$ reduced modulo 2).
 
-To lighten the notation, we will now write $\Delta$ instead of $\overline{\Delta}$, and consider everything modulo 2.
 For simplicity again, we will just take the powers of $\Delta$ to be our basis for modular forms modulo 2 (i.e. drop the Gaussian elimination process).
 
 We define the space $\F_2[\Delta]$ in the usual way:
@@ -492,7 +497,7 @@ $$
 = \left\langle \Delta^k \ | \ k \text{ odd} \text{ and } k \leq 2n-1 \right\rangle
 = \left\langle \Delta, \Delta^3, \Delta^5, \dots, \Delta^n \right\rangle
 $$
-This matches specifically $\overline{M_{12 \cdot n}} = \mathcal{F}(n)$.
+This matches specifically $\overline{M_{12 n}} = \mathcal{F}(n)$.
 
 \subsubsection{Duality between $\Delta$ and $q$}
 %reference to wave-particule duality from physics
@@ -581,13 +586,15 @@ Again, this is (very) similar to the case before.
 
 All reductions give in fact the same result, so it makes sense to reduce modular forms modulo 2, and still study the Hecke operators (but now only for odd primes).
 As this all makes sense, we will now write only consider modular forms modulo 2, and we will drop the over lines for simplicity.
+The fact that $T_p$ and $\overline{T_p}$ have exactly the same action on the $q$-expansions of modular forms is only true when $p$ is an odd prime.
+This is why we will concentrate on this case.
 
 \subsubsection{Basic Properties}
 When reduced modulo 2, Hecke operators $\overline{T_p}$ for primes $p$ have more properties then the general $T_p$.
 The extra properties make the study modulo two interesting.
 
 \paragraph{Inherited properties}
-From the fact that $\overline{T_p}|f(q) = \overline{T_p|f(q)}$, we get that the Hecke operators modulo 2 keep the properties they had before being reduced.
+From the fact that $\overline{T_p}|\overline{f(q)} = \overline{T_p|f(q)}$, we get that the Hecke operators modulo 2 keep the properties they had before being reduced.
 \subparagraph{Modularity Remains}
 \label{HekeModular}
 From definition \ref{DefHeckeOperators}, a Hecke operators transform a modular form to an other.
@@ -603,7 +610,7 @@ $$
 % and $$ T(p)T(p^n)f=T(p^{n+1})f+T(p^{n-1})f $$
 We get that:
 $$
-T_pT_q=T_qT_p \quad \forall p,q \in \primes
+\overline{T_p}\overline{T_q} = \overline{T_q}\overline{T_p} \quad \forall p,q \in \primes
 $$
 Therefore, the Hecke operators modulo 2 commute.
 This, as well, was not clear form definition.
@@ -621,7 +628,7 @@ This property will also remain modulo 2.
 
 \paragraph{Behaviour of $\mathcal{F}_i$}
 \label{HeckeInF_i}
-Suppose $f \in \mathcal{F}_i$, using \ref{ObservationsMod8}, we have:
+Suppose $f \in \mathcal{F}_i$ \footnote{By abuse of notation, denote by $f$ a modular forms modulo (instead of $\overline{f}$).}, using \ref{ObservationsMod8}, we have:
 $$
 f
 = \sum_{m \equiv i \bmod 8} \mu_m\Delta^m 
@@ -629,7 +636,7 @@ f
 $$
 From the definition of Hecke operator modulo 2 (\ref{DefHeckeOperatorsMod2}), we have:
 $$
-T_p|f
+\overline{T_p}|f
 = \sum_{n \in \N} \gamma(n)q^n
 \quad \text{ with }
 \gamma(n) = 
@@ -648,11 +655,11 @@ $$
 	
 	\item [$\gamma(n)$:] We conclude that $n \equiv np^2 \not\equiv pi \bmod 8 \implies \gamma(n) = 0$
 \end{enumerate}
-Using \ref{ObservationsMod8} again, we deduce that $T_p|f \in \mathcal{F}_j$ with $j \equiv pi \bmod 8$.
+Using \ref{ObservationsMod8} again, we deduce that $\overline{T_p}|f \in \mathcal{F}_j$ with $j \equiv pi \bmod 8$.
 
 Overall, we have the following:
 $$
-f \in \mathcal{F}_i \implies T_p|f \in \mathcal{F}_j
+f \in \mathcal{F}_i \implies \overline{T_p}|f \in \mathcal{F}_j
 \text{ with } j \equiv pj \bmod 8
 $$
 
@@ -662,12 +669,12 @@ We will prove a property that directly implies the non nullity of Hecke Operator
 
 This property follows the idea developed in \cite[p.33]{TheWebOfModularityArithmeticOfTheCoefficientsOfModularForms}.
 \begin{property}
-	If $f \in \mathcal{F}$, and $T_p|f = 0$ for all odd primes $p$, then either $f = 0$ or $f = \Delta$.
+	If $f \in \mathcal{F}$, and $\overline{T_p}|f = 0$ for all odd primes $p$, then either $f = 0$ or $f = \Delta$.
 	That is, only $\Delta$ and $0$ give zero after applying any Hecke operator.
 \end{property}
 \begin{proof}
 	Let's denote by $a(n)$ the coefficients of the $q$-expansion of $f$ in the usual way ($f(z) = \sum_{n=0}^{\infty} a(n)q^n$, with $q=e^{2\pi i z}$).
-	With $p$ an odd prime, we similarly define $T_p|f(z) = \sum_{n=0}^{\infty} \gamma(n)q^n$ with $\gamma(n) = c(np) + c(n/p)$.
+	With $p$ an odd prime, we similarly define $\overline{T_p}|f(z) = \sum_{n=0}^{\infty} \gamma(n)q^n$ with $\gamma(n) = c(np) + c(n/p)$.
 	\begin{enumerate}
 		\item if $r$ simple odd:\\
 		$p \nmid n$ gives $0 = \gamma(n) = a(np)$,
@@ -684,9 +691,9 @@ This property follows the idea developed in \cite[p.33]{TheWebOfModularityArithm
 	Therefore, $f$ may only be $\Delta$ or $0$.
 \end{proof}
 
-An immediate consequence (by taking the contra-positive) of this property is that if $f \neq 0, \Delta$, then there exists a $p$ such that $T_p|f \neq 0$.
-Thus, for any $k > 1$, we get that there is a prime $p$ such that $T_p|\Delta^k \neq 0$.
-This means that $T_p$ is never the null operator.
+An immediate consequence (by taking the contra-positive) of this property is that if $f \neq 0, \Delta$, then there exists a $p$ such that $\overline{T_p}|f \neq 0$.
+Thus, for any $k > 1$, we get that there is a prime $p$ such that $\overline{T_p}|\Delta^k \neq 0$.
+This means that $\overline{T_p}$ is never the null operator (so reduction modulo two doesn't become trivial).
 
 \subsubsection{Nil-potency}
 The properties of Hecke operators is that, given a modular form $f$, if we apply a Hecke operators enough times, the form will become zero (i.e. they are nilpotent).
@@ -704,27 +711,31 @@ $$
 
 From definition \ref{DefHeckeOperators}, a Hecke operators takes a modular form of weight $2k$ to an other modular form of weight $2k$.
 Take a modular form modulo 2 $\overline{f}$ with degree $k$ (in terms of $\Delta$).
-Now we want to know the maximum degree (again in terms of $\Delta$) of $T_p|\overline{f}$.
-Let $n$ be the smallest integer such that $\overline{f} \in \overline{M_{12(2n-1)}}$.
+Note that there is a modular form $f$ that corresponds to $\overline{f}$ when reduced modulo two.
+Now we want to know the maximum degree (again in terms of $\Delta$) of $\overline{T_p}|\overline{f}$.
+Let $n$ be the smallest integer such that $\overline{f} \in \overline{M_{12n}}$.
 
-We know $T_p|\overline{f} = \overline{T(p)f}$ and $\overline{f} \in \mathcal{F}(n) = \overline{M_{12(2n-1)}}$ so $f \in M_{12(2n-1)}$.
-This implies that $T(p)f \in M_{12(2n-1)}$ so $T_p|\overline{f} = \overline{T(p)f} \in \overline{M_{12(2n-1)}} = \mathcal{F}(n)$.
+We know $\overline{T_p}|\overline{f} = \overline{T_p|f}$ and $\overline{f} \in \mathcal{F}(n) = \overline{M_{12n}}$ so $f \in M_{12n}$.
+This implies that $T(p)f \in M_{12n}$ so $\overline{T(p)f} \in \overline{M_{12n}}$, thus $\overline{T_p}|\overline{f} \in \mathcal{F}(n)$.
 
-Therefore, the maximum degree (in terms of $\Delta$) of $T_p|\overline{f}$ is $k$ as well.
+Therefore, the maximum degree (in terms of $\Delta$) of $\overline{T_p}|\overline{f}$ is $k$ as well.
 Thus, the degree of $\overline{f}$ doesn't increase after applying a Hecke operator.
 
 \subparagraph{Order of $\Delta$ decrease}
 %Serre's "proof"
 %\cite[2.3]{OrdreNilpotenceOperateurHecke}
 \label{orderDecrease}
+Since $T_p$ and $\overline{T_p}$ have exactly the same action on $q$-expansions of modular forms, we can interchange them as we want.
+By abuse of notation (again), we denote the reduction of $T_p$ modulo 2 (usually denoted $\overline{T_p}$) by $T_p$ as well.
+
 Now that we have proved that 
 $$
-\overline{T_p}| \Delta^k = \sum_{j \leq k} \mu_j \Delta^j
+T_p| \Delta^k = \sum_{j \leq k} \mu_j \Delta^j
 $$
 we need to show that $\mu_k = 0$, so that the maximum order of $\Delta$ in fact effectively decrease.
 
-Let's look at $\mathcal{F}(k)$ as a vector space over $\F_2$ with basis $\{ \Delta, \Delta^3, \ddots, \Delta^k \}$.
-We may the represent a modular form modulo 2 by a $k$-vector over $\F_2$ (note that even powers of $\Delta$ will always be zero, but we keep track of them to lighten notation).
+Let's look at $\mathcal{F}(k)$ as a vector space over $\F_2$ with basis $\{ \Delta, \Delta^3, \cdots, \Delta^k \}$.
+We may represent a modular form modulo 2 by a $k$-vector over $\F_2$ (note that even powers of $\Delta$ will always be zero, but we keep track of them to lighten notation).
 Then, as $T_p$ are linear (see \ref{HekeLinear}), we can represent each operator $T_p$ with a matrix.
 Let $A_p$ be the $(k \times k)$-matrix (over $\F_2$) representing the action of $T_p$ on $\mathcal{F}(k)$.
 Since the order of $\Delta$ doesn't increase when applying a Hecke operator, the matrix $A_p$ should be upper-triangular, i.e.:

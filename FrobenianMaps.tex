@@ -218,6 +218,7 @@ Moreover, it will only depend on the prime $\mathfrak{p}$ that is extended.
 
 \subsubsection{Examples}
 \paragraph{$\Q[\sqrt{7}]/\Q$ (quadratic field extension)}
+\label{QuadraticExtensionExample}
 %Looking at $\Q[\sqrt{7}]:\Q$ (which is a Galois extension).
 We have minimum polynomial $m(x)=x^2-7$, the discriminant is $\Delta = 4.7 = 28$.\\
 We write
@@ -273,6 +274,7 @@ The Galois group $G$ consist of $\sigma_k$ such that $\sigma_k(\zeta_n^i)=\zeta_
 Note as well that $G$ is abelian, so it is simple to calculate the Frobenius element.
 It is straightforward that $G$ is naturally isomorphic to the multiplicative group $\left( \nicefrac{\Z}{n\Z} \right)^\times$.
 Note that $\sigma \in G$ is determined by $\sigma(\zeta_n)$.
+Note as well that this group is abelian.
 
 With $p \in \primes$, a prime that is unramified in $\Q[\zeta_n]/\Q$, let $P$ be an ideal lying above $(p)$.
 We want to look at $\Frob{\Q[\zeta_n]/\Q}{P}$:
@@ -509,25 +511,31 @@ We will consider the following scheme:\\
 
 \subsection{The Chebotarev's Density Theorem}
 \subsubsection{Motivations}
+\label{DensityMotivation}
 If we look at the distribution of primes numbers modulo a number (15 in the next example), we get a table as follows:
 
-Table mod 15:\\
-0: \\
-1: 31, 61, 151, 181, 211, 241, 271, 331, 421, \\
-2: 2, 17, 47, 107, 137, 167, 197, 227, 257, 317, 347, 467, \\
-3: 3, \\
-4: 19, 79, 109, 139, 199, 229, 349, 379, 409, 439, 499, \\
-5: 5, \\
-6: \\
-7: 7, 37, 67, 97, 127, 157, 277, 307, 337, 367, 397, 457, 487, \\
-8: 23, 53, 83, 113, 173, 233, 263, 293, 353, 383, 443, \\
-9: \\
-10: \\
-11: 11, 41, 71, 101, 131, 191, 251, 281, 311, 401, 431, 461, 491, \\
-12: \\
-13: 13, 43, 73, 103, 163, 193, 223, 283, 313, 373, 433, 463, \\
-14: 29, 59, 89, 149, 179, 239, 269, 359, 389, 419, 449, 479, \\
-
+Table mod 15:
+\begin{center}
+	\begin{tabular}{r|l}
+		$\bmod 15$ & primes (up to 500)\\
+		\hline
+		0& \\
+		1& 31, 61, 151, 181, 211, 241, 271, 331, 421, \\
+		2& 2, 17, 47, 107, 137, 167, 197, 227, 257, 317, 347, 467, \\
+		3& 3, \\
+		4& 19, 79, 109, 139, 199, 229, 349, 379, 409, 439, 499, \\
+		5& 5, \\
+		6& \\
+		7& 7, 37, 67, 97, 127, 157, 277, 307, 337, 367, 397, 457, 487, \\
+		8& 23, 53, 83, 113, 173, 233, 263, 293, 353, 383, 443, \\
+		9& \\
+		10& \\
+		11& 11, 41, 71, 101, 131, 191, 251, 281, 311, 401, 431, 461, 491, \\
+		12& \\
+		13& 13, 43, 73, 103, 163, 193, 223, 283, 313, 373, 433, 463, \\
+		14& 29, 59, 89, 149, 179, 239, 269, 359, 389, 419, 449, 479, \\
+	\end{tabular}
+\end{center}
 %[table display to improve!!!]
 It looks like there are classes of primes.
 We would like to characterize this repartition: that is, decide if classes are finite or infinite, and quantify the repartitions.
@@ -568,45 +576,85 @@ However, when both exist, the two densities are the same.
 
 
 
-\subsubsection{Theorem}
+\subsubsection{Statement}
 One of the most important results that use Frobenian maps is probably the Chebotarev density theorem.
-\begin{theorem}
+\begin{theorem}[Chebotarev Density Theorem]
 	With $L/K$ an extension of Galois group $G=\Gal{L/K}$.\\
 	Let $C$ be a conjugacy class in $G$.
 	
-	Then, the proportion of unramified primes ideals $\mathfrak{p}$ in $K$ that have Frobenius element $\Frob{L/K}{\mathfrak{p}}=C$ \footnote{When depending on a prime in the "lower" field, the Frobenius element is a conjugacy class to be well defined} is $\nicefrac{|C|}{|G|}$.
+	Then, the proportion of unramified primes ideals $\mathfrak{p}$ in $K$ that have Frobenius element $\Frob{L/K}{\mathfrak{p}}=C$ \footnote{When depending on a prime in the "lower" field, the Frobenius element is a conjugacy class to be well defined.} is $\nicefrac{|C|}{|G|}$.
 \end{theorem}
 We see that Frobenius elements are in the heart of this theorem.
 It was proved by Nikolai Chebotarev in his thesis (\cite{ChebotarevTheorem}).
 
+\subsubsection{Example}
+[extension of order 3?]
 
+\subsubsection{Special Case}
+We want here to apply Chebotarev theorem in the case of a quadratic field extension.
+We are looking at the field extension $L/K = \Q[\sqrt{d}]/\Q$ for $d \in \Z$ a square-free integer.
+Denote by $G = \Gal{\Q[\sqrt{d}]/\Q} \cong C_2$ the Galois group of this extension.
+This group is abelian (so all conjugacy classes are made of a single element), and for any conjugacy class $C$, $\nicefrac{|C|}{|G|} = \nicefrac{1}{2}$.
 
+Now, for a prime $p$ unramified, we want to calculate the Frobenius element.
+If $p$ is unramified, either $p \mathcal{O}_{\Q[\sqrt{d}]} = R_1R_2$ or $p \mathcal{O}_{\Q[\sqrt{d}]} = R$.
 
-\paragraph{Example}
-[quadratic extension?]
+In the first case, we have $\left( \frac{d}{p} \right) = 1$ (i.e. $\sqrt{d} \in \F_p$, so $d$ is a square modulo $p$).
+In this case, $\sqrt{d}^p \equiv \sqrt{d} \bmod p$ so $\Frob{\Q[\sqrt{d}]}{p} = \left\lbrace Id: \sqrt{d} \to \sqrt{d} \right\rbrace \in G$.
+
+In the second case, $\left( \frac{d}{p} \right) = -1$ (i.e. $\sqrt{d} \not\in \F_p$, so $d$ is not a square modulo $p$).
+In this case, $\sqrt{d}^p \not\equiv \sqrt{d} \bmod p$ as there is no other choice, $\Frob{\Q[\sqrt{d}]}{p} = \left\lbrace \sigma: \sqrt{d} \to -\sqrt{d} \right\rbrace \in G$.
+
+Then by Chebotarev's density theorem, we have that the density of primes $p$ such that $\left( \frac{d}{p} \right) = \pm1$ is $\nicefrac{1}{2}$ in both cases.
+
+Therefore, we have the following summary:
+\begin{center}
+	\begin{tabular}{|c|c|}
+		\hline
+		Primes $p \in \primes$ such that: & Density:\\
+		\hline
+		$\left( \frac{d}{p} \right) = +1$ & $\nicefrac{1}{2}$\\
+		$\left( \frac{d}{p} \right) =  0$ & $0$\\
+		$\left( \frac{d}{p} \right) = -1$ & $\nicefrac{1}{2}$\\
+		\hline
+	\end{tabular}
+\end{center}
+Thus, for a square free $d$, $\left( \frac{d}{p} \right)$ is as often $+1$ as $-1$ (for a prime $p$), and  $\left( \frac{d}{p} \right) = 0$ happens only finitely many times.
 
 
 
 \subsection{The Dirichlet's Density Theorem}
-\subsubsection{Theorem}
+\subsubsection{Statement}
 The most common application of Chebotarev density theorem is probably the Dirichlet's density theorem.
-It states as follows:
-\begin{theorem}
+\begin{theorem}[Dirichlet's Density Theorem]
 	Let $n \in \N^*$, $a \in \N$ such that $\gcd(a,n) = 1$. 
-	If $S = \{ p \in \primes | p \equiv a \mod n \}$, then $S$ has density $\nicefrac{1}{\varphi(n)}$.
+	If $S = \{ p \in \primes \ | \ p \equiv a \mod n \}$, then $S$ has density $\nicefrac{1}{\varphi(n)}$.
 \end{theorem}
 
 \subsubsection{Link with Chebotarev}
-This is a direct application of Chebotarev's density theorem for the field extension $\Q[\gamma]:\Q$ where $\gamma$ is the $n^{th}$ root of unity (this is the cyclotomic field).
+This is a direct application of Chebotarev's density theorem for the field extension $\Q[\zeta]:\Q$ where $\zeta$ is the $n^{th}$ root of unity (this is the cyclotomic field).
 
-The Galois group then is cyclic, as this is a cyclotomic extension, and has order $\varphi(n)$ by definition (so $\Gal{\Q[\gamma]:\Q} \cong \left( \nicefrac{\Z}{n\Z} \right)^{\times} \cong C_{\varphi(n)}$).
-
-Primes ideals in $\Q$ are just primes numbers. And as the Galois group is cyclic, it is abelian, so all conjugacy classes have one element.
-Thus, Chebotarev gives Dirichlet's density theorem in the particular case of cyclotomic extensions.
-[need more details?]
+The Galois group is abelian (it is precisely $G=\Z_n^{\times}$ and has order $\varphi(n)$).
+The abelian property implies that all conjugacy classes are made of a single element.
+Thus, for any conjugacy class $C$, the fraction $\nicefrac{|C|}{|G|}$ is just $\nicefrac{1}{\varphi(n)}$.
+Primes ideals in $\Q$ are just primes numbers.
+Therefore, Chebotarev gives Dirichlet's density theorem in the particular case of cyclotomic extensions.
 
 \subsubsection{Example}
-[Prove the case n=15 from the motivation subsection above.]
+Here, look at the example of Dirichlet theorem in the case $n=15$ from the motivation subsection above (see \ref{DensityMotivation}).
+
+We apply the last theorem in the case of $n=15$: $\varphi(15)=8$.
+We define $S_k = \{ p \in \primes \ | \ p \equiv k \bmod 15 \}$.
+By Dirichlet density theorem,  the density of $S_k$ is $\nicefrac{1}{8}$ if $k$ and $15$ are co-prime (i.e. if $k = 1,2,4,7,8,11,13,14$), otherwise (if $k=0,3,5,6,9,10,12$) it is $0$.
+This is what we could conjecture from the observations.
+% We have:% $\Phi(x) = x^8 - x^7 + x^5 - x^4 + x^3 - x + 1$
+% $\Delta = 3^4 5^6 = 1265625$.
+% We consider $\Q[\zeta_{15}/\Q]/\Q$.
+% The Galois group $G = \left( \nicefrac{\Z}{15\Z} \right)^\times$ has elements:
+% $\alpha \to \alpha$, $\alpha \to \alpha^2$, $\alpha \to \alpha^4$, $\alpha \to \alpha^7$, $\alpha \to \alpha^8$, $\alpha \to \alpha^{11}$, $\alpha \to \alpha^{13}$, $\alpha \to \alpha^{14}$.
+
+
+
 
 
 
