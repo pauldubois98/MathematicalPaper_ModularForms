@@ -1,29 +1,4 @@
 % !TeX spellcheck = en_GB
-%\input{listings-python.prf}
-julia
-
-\begin{minted}{julia}
-function f(t::Int)
-	return pi * t
-end
-# works?
-a = "ok"
-b='l'
-\end{minted}
-
-python
-
-\begin{minted}{python}
-def f(t):
-	return pi * t
-# works?
-a = "ok"
-b='l'
-
-\end{minted}
-
-
-
 \section{Numerics}
 \subsection{Finding coefficients of Hecke operators}
 It is important to make the program as fast as possible.
@@ -38,7 +13,7 @@ A better algorithm means, for example, test factors only up to square root (in t
 A better implementation simply means optimisation inside the computer (i.e. on operations that are made, types that are used...).
 We will try to optimise both.
 
-\subsubsection{Choice of implementation}
+\subsubsection{Approach}
 As explained above, investigations on which tool will be the more suitable for the computations is an important part.
 Of course, the best would be to find a programming language that can already deal with modular forms modulo two.
 Unfortunately, this (yet) doesn't exist.
@@ -49,6 +24,186 @@ So using what has already been done in general to make computations modulo two w
 Now we realize that there is no other way than just creating a package for modular forms modulo two on our own.
 In fact, this is what we will do later, but before, we want to determine the tools to build this package.
 Modular forms modulo 2 come from maths, so it makes sense to use a \href{https://en.wikipedia.org/wiki/High-level_programming_language}{high level programming language}.
+For scientific computing nowadays, there are two main \href{https://en.wikipedia.org/wiki/Open-source_model}{open source} languages: \href{https://en.wikipedia.org/wiki/Python_(programming_language)}{Python} and \href{https://en.wikipedia.org/wiki/Julia_(programming_language)}{Julia}.
+Each having various packages to work with.
+
+We will test a selection of major ones.
+
+\subsubsection{Choice of implementation}
+Now it is time to wonder how to represent modular forms modulo 2.
+We have seen above that a modular form modulo 2 in fact have two representations: one as an infinite $q$-series, and one as a finite $\Delta$-polynomial.
+As we want (later on) to compute Hecke operators of these forms, we will need, at some point to use the $q$-series representation.
+In fact, this will be one of the crucial points, since it is an infinite series.
+The way we represent infinite objects in computers, which have only a finite amount of components (memory addresses, say), is to only store informations up to a cutting point.
+This is equivalent (somewhat) to the asymptotic notation in mathematics.
+In the case of $q$-series of modular forms, we will store only the few first hundred/thousand/million coefficients.
+
+This means that we will represent a modular form via its $q$-series, witch will be stored as a list.
+We investigate the best ways (timewise) to do basic operations to decide what technology to use.
+The operations tested are creating the $q$-series of $\Delta$, and squaring it (both storing coefficients up to some power \texttt{LENGTH}, the length of the list used).
+
+There are various techniques to store lists in a computed, the main ones are continuous list, linked list, and sparse list.
+Continuous and linked lists can be aggregated as dense lists.
+
+\paragraph{Dense Technique}
+Dense storage means that we store each values of the list (next to each other, or with a link to the next).
+No element of the list is skipped.
+There are various ways to implement this technique:
+\subparagraph{Pure Python}
+Using the Python language, this is the most elementary way to go.
+It represents all the $q$-coefficients with the default linked list python object.
+\begin{minted}{python}
+def delta(LENGTH):
+	f = [0 for i in range(LENGTH)]
+	indice = 2
+	i = 1
+	while indice<LENGTH:
+		f[indice] = 1
+		i += 2
+		indice = i**2
+	return f
+
+def square(f):
+	f_sq = [0 for i in range(len(f))]
+	i = 0
+	while 2*i < len(f):
+		if f[i]:
+			f_sq[2*i] = 1
+		i += 1
+	return f_sq
+\end{minted}
+\subparagraph{NumPy Python}
+\href{https://fr.wikipedia.org/wiki/NumPy}{NumPy} is the most well known scientific computing library for Python.
+It interfaces with C objects to provide very fast features (such as lists).
+\begin{minted}{python}
+import numpy as np
+
+def delta(LENGTH):
+	f = np.zeros(LENGTH, dtype=np.int8)
+	indice = 2
+	i = 1
+	while indice<LENGTH:
+		f[indice] = 1
+		i += 2
+		indice = i**2
+	return f
+
+def square(f):
+	f_sq = np.zeros(len(f), dtype=np.int8)
+	i = 0
+	while 2*i < len(f):
+		if f[i]:
+			f_sq[2*i] = 1
+		i += 1
+	return f_sq
+\end{minted}
+\subparagraph{Dense Julia}
+Julia is well-known as both high level and very fast language.
+Julia naturally supports lists, that we can use to represent modular forms.
+\begin{minted}{julia}
+function delta(LENGTH)
+	f = zeros(Int8, LENGTH)
+	indice = 2
+	i = 1
+	while indice < LENGTH
+		f[indice] = 1
+		i += 2
+		indice = i^2 + 1
+	end
+	return f
+end
+
+function square(f)
+	f_sq = zeros(Int8, length(f))
+	i = 1
+	while 2 * i - 1 < length(f)
+		if f[i] == 1
+			f_sq[2 * i - 1] = 1
+		end
+		i += 1
+	end
+	return f_sq
+end
+\end{minted}
+
+\paragraph{Sparse Technique}
+As all coefficients of the $q$-series are just $0$ or $1$, and that most of the time, they are $0$, we can represent a modular forms by storing only the coefficients for which it is non-zero.
+This method is (storing only non-zero values) is known as \href{https://en.wikipedia.org/wiki/Sparse_matrix}{sparse representation}.
+We can implement this technique in both Python and Julia:
+\subparagraph{Sparse Python}
+We can adapt the previous code to use Python's linked lists as index of a sparse list.
+Note that in general, we would need a second list to store values, but there ar only $0$s and $1$s, we can take as convention that all stored indices have value $1$ and all non-store have value $0$. 
+\begin{minted}{python}
+def delta(LENGTH):
+	f = []
+	indice = 2
+	i = 1
+	while indice < LENGTH:
+		f.append(indice)
+		i += 2
+		indice = i**2+1
+	return (f, LENGTH)
+
+def square(form):
+	f_sq = []
+	f = form[0]
+	for n in f:
+		if 2*n-1 <= form[1]:
+			f_sq.append(2*n-1)
+	return (f_sq, form[1])
+\end{minted}
+\subparagraph{Sparse Julia}
+Julia has a very convenient built-in sparse module.
+This is particularly interesting, since the built-in type already have nice methods.
+\begin{minted}{julia}
+using SparseArrays: SparseVector, spzeros
+
+function delta(LENGTH)
+	f = spzeros(Int8, LENGTH)
+	indice::Int = 2
+	i::Int = 1
+	while indice <= f.n
+		f[indice] = Int8(1)
+		i += 2
+		indice = i^2 + 1
+	end
+	return f
+end
+
+function square(f)
+	f_sq = spzeros(Int8, f.n)
+	for n in f.nzind
+		if 2n - 1 <= f_sq.n
+			f_sq[2n - 1] = 1
+		end
+	end
+	return f_sq
+end
+\end{minted}
+\paragraph{Speed Comparison}
+We can now compare the speed of each implementation to compute $q$-series of $\Delta$ and $\Delta^2$\footnote{$\Delta^2$ itself isn't part of our space $\mathcal{F}$, but it will be useful as we will compute $\Delta^{2k+1} = \Delta^{2k-1}\cdot \Delta^2$. So it makes sense to be concerned about it.}.
+The following table is calculated with respect to $10^6$ coefficients computed (i.e. up to $q^{10^6}$).
+This will be the standard for the rest of this paper.
+
+\begin{center}
+	\begin{tabular}{r||l|l}
+		 & $\Delta$ & $\Delta^2$\\
+		\hline\hline
+		Pure Python   & 0.08263147 & 0.26249526 \\
+		NumPy Python  & 0.00138761 & 0.16163688 \\
+		Dense Julia   & 0.000648   & 0.001698   \\
+		Sparse Python & 0.00095099 & 0.00134479 \\
+		Sparse Julia  & 0.000021   & 0.000034   \\
+	\end{tabular}
+\end{center}
+
+In fact, a more precise look as the following graphs leads to the same conclusion.
+
+\includegraphics{speed_comparison_delta}
+
+
+
+
 
 
 
