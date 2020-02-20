@@ -1,3 +1,4 @@
+% !TeX spellcheck = en_GB
 \section{Modular Forms Modulo Two}
 \subsection{Strategy to Reduce Modulo Two}
 It is not trivial, at this point, why and how we can reduce modulo 2 modular forms, objects that have coefficients in $\C$.
@@ -866,28 +867,31 @@ Need in fact $m_1 = m_2 \neq m_3$, but then??
 \paragraph{$\Delta^7$}
 
 \subsubsection{Table of Hecke Operators}
-Here is a table of Hecke operators that was computed with a computer:
+Here is a table of Hecke operators for primes up to 50, and powers of $\Delta$ up to 20:
 
 \begin{center}
-	\begin{tabular}{l|c c c c c c c c c c c c c c}
-		 & $T_3$ & $T_5$ & $T_7$ & $T_{11}$ & $T_{13}$
-		 & $T_{17}$ & $T_{19}$ & $T_{23}$ & $T_{29}$ & $T_{31}$ 
-		 & $T_{37}$ & $T_{41}$ & $T_{43}$ & $T_{47}$ \\
-		\hline
-		$\Delta$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
-		$\Delta^3$ & $\Delta$ & 0 & 0 & $\Delta$ & 0 & 0 & $\Delta$ & 0 & 0 & 0 & 0 & 0 & $\Delta$ & 0\\
-		$\Delta^5$ & 0 & $\Delta$ & 0 & 0 & $\Delta$ & 0 & 0 & 0 & $\Delta$ & 0 & $\Delta$ & 0 & 0 & 0\\
-		$\Delta^7$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
-		$\Delta^9$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
-		$\Delta^{11}$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
-		$\Delta^{13}$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
-		$\Delta^{15}$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
-		$\Delta^{17}$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
-		$\Delta^{19}$ &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+	\begin{tabular}{r|rrrrrrrrrr}
+		\textbf{} & \textbf{$\Delta^1$} & \textbf{$\Delta^3$} & \textbf{$\Delta^5$} & \textbf{$\Delta^7$} & \textbf{$\Delta^9$} & \textbf{$\Delta^{11}$} & \textbf{$\Delta^{13}$} & \textbf{$\Delta^{15}$} & \textbf{$\Delta^{17}$} & \textbf{$\Delta^{19}$} \\\hline
+		$T_3$ & 0 & $\Delta$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^9$ & $\Delta^7$ & $\Delta^5 + \Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ \\       
+		$T_5$ & 0 & 0 & $\Delta$ & $\Delta^3$ & 0 & 0 & $\Delta^9$ & $\Delta^3 + \Delta^{11}$ & $\Delta^5$ & $\Delta^7$ \\
+		$T_7$ & 0 & 0 & 0 & $\Delta$ & 0 & 0 & $\Delta^3$ & $\Delta^9$ & 0 & $\Delta^5$ \\
+		$T_{11}$ & 0 & $\Delta$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta + \Delta^9$ & $\Delta^7$ & $\Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ \\
+		$T_{13}$ & 0 & 0 & $\Delta$ & $\Delta^3$ & 0 & 0 & $\Delta + \Delta^9$ & $\Delta^{11}$ & $\Delta^5$ & $\Delta^7$ \\
+		$T_{17}$ & 0 & 0 & 0 & 0 & $\Delta$ & $\Delta^3$ & $\Delta^5$ & $\Delta^7$ & $\Delta$ & 0 \\
+		$T_{19}$ & 0 & $\Delta$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta + \Delta^9$ & $\Delta^7$ & $\Delta^{13}$ & 0 & $\Delta + \Delta^9 + \Delta^{17}$ \\   
+		$T_{23}$ & 0 & 0 & 0 & $\Delta$ & 0 & 0 & $\Delta^3$ & $\Delta + \Delta^9$ & 0 & $\Delta^5$ \\
+		$T_{29}$ & 0 & 0 & $\Delta$ & $\Delta^3$ & 0 & 0 & $\Delta^9$ & $\Delta^3 + \Delta^{11}$ & $\Delta^5$ & $\Delta^7$ \\
+		$T_{31}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\Delta$ & 0 & 0 \\
+		$T_{37}$ & 0 & 0 & $\Delta$ & $\Delta^3$ & 0 & 0 & $\Delta + \Delta^9$ & $\Delta^{11}$ & $\Delta^5$ & $\Delta^7$ \\
+		$T_{41}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\Delta$ & $\Delta^3$ \\
+		$T_{43}$ & 0 & $\Delta$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^9$ & $\Delta^7$ & $\Delta^5 + \Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ \\
+		$T_{47}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\Delta$ & 0 & 0 \\
 	\end{tabular}
 \end{center}
 
 It seems quite random, which makes sense since the Hecke operators depend on prime, and primes appear at random.
+However, it is interesting to try to find patterns and rules for this table.
+
 In line one ($\Delta^3$), we get $\nicefrac{1}{4}^{\text{th}}$ of the primes giving $\Delta$, this is a consequence of Dirichlet Density Theorem, that will be discussed later in this paper.
 [Is this remark pertinent?]
 

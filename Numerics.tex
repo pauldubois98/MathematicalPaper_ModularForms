@@ -1,5 +1,59 @@
-\section{Finding coefficients of Hecke operators}
+% !TeX spellcheck = en_GB
+%\input{listings-python.prf}
+julia
+
+\begin{minted}{julia}
+function f(t::Int)
+	return pi * t
+end
+# works?
+a = "ok"
+b='l'
+\end{minted}
+
+python
+
+\begin{minted}{python}
+def f(t):
+	return pi * t
+# works?
+a = "ok"
+b='l'
+
+\end{minted}
+
+
+
+\section{Numerics}
+\subsection{Finding coefficients of Hecke operators}
+It is important to make the program as fast as possible.
+Indeed, the faster the program goes, the more data it will generate (within the same amount of time).
+This data will be used for numerical analysis and we will also use it for interpretation.
+Therefore, with more data, we have more knowledge, and we can make smarter guesses.
+
+There are two main ways to make a program faster:
+use a better algorithm, or 
+use a faster implementation.
+A better algorithm means, for example, test factors only up to square root (in the case of primality a test).
+A better implementation simply means optimisation inside the computer (i.e. on operations that are made, types that are used...).
+We will try to optimise both.
+
+\subsubsection{Choice of implementation}
+As explained above, investigations on which tool will be the more suitable for the computations is an important part.
+Of course, the best would be to find a programming language that can already deal with modular forms modulo two.
+Unfortunately, this (yet) doesn't exist.
+There are packages that have modular forms implemented, but none with modular forms modulo two specifically.
+The goal of looking at modulo two is to conclude more than what we know in general.
+So using what has already been done in general to make computations modulo two won't give any thing interesting.
+
+Now we realize that there is no other way than just creating a package for modular forms modulo two on our own.
+In fact, this is what we will do later, but before, we want to determine the tools to build this package.
+Modular forms modulo 2 come from maths, so it makes sense to use a \href{https://en.wikipedia.org/wiki/High-level_programming_language}{high level programming language}.
+
+
+
 \subsection{(Very) General Method}
+
 We want to find the coefficients $a_{ij}$ such that $$\sum_{i, j} a_{ij} T_3^iT_5^j = T_p$$
 (with $a_{ij} \in \mathbb{F}_2$).
 

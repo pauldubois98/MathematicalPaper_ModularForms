@@ -1,9 +1,9 @@
-\documentclass[a4paper, 11pt]{article}
+% !TeX spellcheck = en_GB
+\documentclass[a4paper, 10pt]{article}
 %\documentclass[a4paper, 12pt]{article}
 \usepackage[utf8]{inputenc}
 
 %margin
-%\usepackage{geometry}
 \usepackage[margin=2cm]{geometry}
 %\usepackage[margin=1in]{geometry}
 %line spacing
@@ -11,8 +11,6 @@
 %\renewcommand{\baselinestretch}{1.6}
 %lists
 \usepackage{enumitem}
-%dash lines in table
-\usepackage{arydshln}
 %encoding
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -40,6 +38,8 @@
 %citations
 \usepackage[square]{natbib}
 \bibliographystyle{unsrtnat}
+%code
+\usepackage{minted}
 
 
 
@@ -112,12 +112,14 @@ Exact computations;
 
 
 
-\include{ModularForms}
-\include{ModularFormsModuloTwo}
-\include{HeckeAlgebra}
-\include{FrobenianMaps}
+%\include{ModularForms}
+%\include{ModularFormsModuloTwo}
+%\include{HeckeAlgebra}
+%\include{FrobenianMaps}
 \include{Numerics}
-
+\appendix
+\include{ComputationTables}
+\include{Codes}
 
 
 
