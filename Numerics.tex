@@ -1,6 +1,6 @@
 % !TeX spellcheck = en_GB
 \section{Numerics}
-\subsection{Finding coefficients of Hecke operators}
+\subsection{High Performance Computations}
 It is important to make the program as fast as possible.
 Indeed, the faster the program goes, the more data it will generate (within the same amount of time).
 This data will be used for numerical analysis and we will also use it for interpretation.
@@ -13,7 +13,48 @@ A better algorithm means, for example, test factors only up to square root (in t
 A better implementation simply means optimisation inside the computer (i.e. on operations that are made, types that are used...).
 We will try to optimise both.
 
-\subsubsection{Approach}
+\subsubsection{Algorithm Optimisation}
+\label{algorithmOptimisation}
+We can optimize an algorithm by optimizing (decreasing) the number of operations, or by using mathematical scheme (usually cancellations).
+\paragraph{Optimize instructions}
+Optimizing instructions usually comes through optimizing loops (stopping loops as soon as possible, avoiding extra loops...).
+For example, the following two algorithms create the same list of coefficients for the $q$-series of $\Delta$.
+
+\textbf{\textit{Algorithm 1:}}
+\begin{algorithmic}
+	\color{CodeColor}
+	\Require $L \geq 1$
+	\State{$f \leftarrow zeros(L)$}\Comment{Empty list of length $L$}
+	\State{n=0}
+	\While{$n < L$}
+		\If{$(\sqrt{n}-1) \% 2 = 0$}
+			\State{$f[n]=1$}
+		\EndIf
+	\EndWhile
+\end{algorithmic}
+
+\textit{\textbf{Algorithm 2:}}
+\begin{algorithmic}
+	\color{CodeColor}
+	\Require $L \geq 1$
+	\State{$f \leftarrow zeros(L)$}\Comment{Empty list of length $L$}
+	\State{$id=1$}
+	\State{$i=1$}
+	\While{$id < L$}
+		\State{$f[id] = 1$}
+		\State{$i += 2$}
+		\State{$id = i^2$}
+	\EndWhile
+\end{algorithmic}
+
+However, the second algorithm is significantly more efficient: the loop is faster as it only goes through odd squares instead of all numbers, and it has no condition to check.
+The algorithms may be \textit{harder} to understand, but it in fact is \textit{better} (in terms of performance).
+
+\paragraph{Mathematical ruse}
+As we are working modulo 2, there are obviously many cancellations, which will make the calculations \textit{faster}.
+It is an opportunity we shouldn't miss to make the algorithms \textit{stronger}.
+% harder, better, faster, stronger
+\subsubsection{Implementation Approach}
 As explained above, investigations on which tool will be the more suitable for the computations is an important part.
 Of course, the best would be to find a programming language that can already deal with modular forms modulo two.
 Unfortunately, this (yet) doesn't exist.
@@ -21,7 +62,7 @@ There are packages that have modular forms implemented, but none with modular fo
 The goal of looking at modulo two is to conclude more than what we know in general.
 So using what has already been done in general to make computations modulo two won't give any thing interesting.
 
-Now we realize that there is no other way than just creating a package for modular forms modulo two on our own.
+We realize that there is no other way than just creating a package for modular forms modulo two on our own.
 In fact, this is what we will do later, but before, we want to determine the tools to build this package.
 Modular forms modulo 2 come from maths, so it makes sense to use a \href{https://en.wikipedia.org/wiki/High-level_programming_language}{high level programming language}.
 For scientific computing nowadays, there are two main \href{https://en.wikipedia.org/wiki/Open-source_model}{open source} languages: \href{https://en.wikipedia.org/wiki/Python_(programming_language)}{Python} and \href{https://en.wikipedia.org/wiki/Julia_(programming_language)}{Julia}.
@@ -29,7 +70,7 @@ Each having various packages to work with.
 
 We will test a selection of major ones.
 
-\subsubsection{Choice of implementation}
+\subsubsection{Choice of Implementation}
 Now it is time to wonder how to represent modular forms modulo 2.
 We have seen above that a modular form modulo 2 in fact have two representations: one as an infinite $q$-series, and one as a finite $\Delta$-polynomial.
 As we want (later on) to compute Hecke operators of these forms, we will need, at some point to use the $q$-series representation.
@@ -55,7 +96,7 @@ It represents all the $q$-coefficients with the default linked list python objec
 \begin{minted}{python}
 def delta(LENGTH):
 	f = [0 for i in range(LENGTH)]
-	indice = 2
+	indice = 1
 	i = 1
 	while indice<LENGTH:
 		f[indice] = 1
@@ -80,7 +121,7 @@ import numpy as np
 
 def delta(LENGTH):
 	f = np.zeros(LENGTH, dtype=np.int8)
-	indice = 2
+	indice = 1
 	i = 1
 	while indice<LENGTH:
 		f[indice] = 1
@@ -136,12 +177,12 @@ Note that in general, we would need a second list to store values, but there ar 
 \begin{minted}{python}
 def delta(LENGTH):
 	f = []
-	indice = 2
+	indice = 1
 	i = 1
 	while indice < LENGTH:
 		f.append(indice)
 		i += 2
-		indice = i**2+1
+		indice = i**2
 	return (f, LENGTH)
 
 def square(form):
@@ -160,8 +201,8 @@ using SparseArrays: SparseVector, spzeros
 
 function delta(LENGTH)
 	f = spzeros(Int8, LENGTH)
-	indice::Int = 2
-	i::Int = 1
+	indice = 2
+	i = 1
 	while indice <= f.n
 		f[indice] = Int8(1)
 		i += 2
@@ -181,9 +222,19 @@ function square(f)
 end
 \end{minted}
 \paragraph{Speed Comparison}
-We can now compare the speed of each implementation to compute $q$-series of $\Delta$ and $\Delta^2$\footnote{$\Delta^2$ itself isn't part of our space $\mathcal{F}$, but it will be useful as we will compute $\Delta^{2k+1} = \Delta^{2k-1}\cdot \Delta^2$. So it makes sense to be concerned about it.}.
-The following table is calculated with respect to $10^6$ coefficients computed (i.e. up to $q^{10^6}$).
-This will be the standard for the rest of this paper.
+We can now compare the speed of each implementation to compute $q$-series.
+If we do that for various number of coefficients, we may obtain a graph of the following type (it is sightly dependent on the machine that execute the code, but the shape remains).
+
+\includegraphics{speed_comparison_delta}
+
+For small computations, the implementation doesn't make a big difference.
+However, for large computations, it seems that the sparse methods do better.
+It makes sense, since sparse representations are typically used for objects with more than 95\% of zeros, which is the case for modular forms modulo 2.
+
+For a more precise analysis, we now compare the speed of each implementation to compute $q$-series of $\Delta$ and $\Delta^2$
+\footnote{$\Delta^2$ itself isn't part of our space $\mathcal{F}$, but it will be useful as we will compute $\Delta^{2k+1} = \Delta^{2k-1}\cdot \Delta^2$. So it makes sense to be concerned about it.}.
+The following table is obtained for $10^6$ coefficients computed (i.e. up to $q^{10^6}$).
+Note that $\mathcal{O}(q^{10^6})$ will be standard for the rest of this paper.
 
 \begin{center}
 	\begin{tabular}{r||l|l}
@@ -197,17 +248,146 @@ This will be the standard for the rest of this paper.
 	\end{tabular}
 \end{center}
 
-In fact, a more precise look as the following graphs leads to the same conclusion.
+From this table, it is clear that the fastest implementation is the one using sparse lists (so called "sparse vectors") in Julia.
+Therefore, we will use this technique.
+It is nice to remark that the Pure Python implementation was 7720 times slower than the Sparse Julia one.
+We see here the importance of choosing the right tool to implement an algorithm.
 
-\includegraphics{speed_comparison_delta}
-
-
-
-
-
+This ratio would even be greater considering the bad algorithm presented before \ref{algorithmOptimisation}.
 
 
-\subsection{(Very) General Method}
+
+\subsection{Creating the library}
+It is clear now that the code should be done with Julia and it's Sparse objects.
+Now, as all the library should be created from the beginning, it is a good idea to pack all of it in a Julia module.
+Doing so, no code will be repeated for each small task.
+\paragraph{Code Architecture}
+The code will be divided in a many files, for convenience.
+
+\begin{forest}
+	for tree={
+		font=\ttfamily,
+		grow'=0,
+		child anchor=west,
+		parent anchor=south,
+		anchor=west,
+		calign=first,
+		edge path={
+			\noexpand\path [draw, \forestoption{edge}]
+			(!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+		},
+		before typesetting nodes={
+			if n=1
+			{insert before={[,phantom]}}
+			{}
+		},
+		fit=band,
+		before computing xy={l=15pt},
+	}
+	[text1
+	[text1.1
+	[text1.1.1]
+	[text1.1.2]
+	[text1.1.3]
+	]
+	[text1.2
+	[text1.2.1]
+	[text1.2.2]
+	]
+	]
+\end{forest}
+
+\begin{tikzpicture}
+
+\node[draw,align=left] at (0,0) {arithmetic.jl\\$+$, $*$, ², $^{\boxed{}}$};
+\node[draw] at (5,0) {generator.jl};
+
+
+\end{tikzpicture}
+
+
+
+\tikzset{
+	state/.style={
+		rectangle,
+		rounded corners,
+		draw=black, very thick,
+		minimum height=4.2cm,
+		minimum width=3.8cm,
+		inner sep=2pt,
+		text width=3.7cm,
+	},
+}
+
+\begin{tikzpicture}
+\coordinate(center) at (0,0);
+\node[state] (arithm) at (center){
+	\begin{tabular}{l}
+		\textbf{arithmetic.jl}\\
+		$\cdot$ addition ($+$)\\
+		$\cdot$ multiplication ($*$)\\
+		$\cdot$ square (²)\\
+		$\cdot$ power (${}^{\boxed{}}$)\\
+		\\\\
+	\end{tabular}
+};
+\node[state, right of = center, node distance=4cm] (gene){
+	\begin{tabular}{l}
+	\textbf{generator.jl}\\
+	$\cdot$ zero ($0$)\\
+	$\cdot$ one ($1$)\\
+	$\cdot$ delta ($\Delta$)\\
+	$\cdot$ delta\_k ($\Delta^k$)\\
+	\\\\
+	\end{tabular}
+};
+\node[state, left of = center ,node distance=4cm] (Hecke){
+	\begin{tabular}{l}
+	\textbf{HeckeOperator.jl}\\
+	$\cdot$ Hecke ($T_p$)\\
+	\\
+	\\
+	\\
+	\\\\
+	\end{tabular}
+};
+\node[state, below of = center ,node distance=5cm] (reco){
+	\begin{tabular}{l}
+	\textbf{recognizer.jl}\\
+	$\cdot$ to\_q ($\Delta \to q$)\\
+	$\cdot$ to\_$\Delta$ ($q \to \Delta$)\\
+	$\cdot$ drop\_error ($q \circlearrowleft$)\\
+	\\
+	\\\\
+	\end{tabular}
+};
+\node[state, above of = center ,node distance=5cm] (reco){
+	\begin{tabular}{l}
+	\textbf{recognizer.jl}\\
+	$\cdot$ to\_q ($\Delta \to q$)\\
+	$\cdot$ to\_$\Delta$ ($q \to \Delta$)\\
+	$\cdot$ drop\_error ($q \circlearrowleft$)\\
+	\\
+	\\\\
+	\end{tabular}
+};
+\path (gene) edge (reco);
+
+
+\end{tikzpicture}
+
+
+
+
+\paragraph{Published}
+
+\paragraph{Online Library}
+
+
+
+
+
+\subsection{Finding coefficients of Hecke operators}
 
 We want to find the coefficients $a_{ij}$ such that $$\sum_{i, j} a_{ij} T_3^iT_5^j = T_p$$
 (with $a_{ij} \in \mathbb{F}_2$).
