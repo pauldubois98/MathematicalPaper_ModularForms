@@ -1,5 +1,5 @@
 % !TeX spellcheck = en_GB
-\section{Class Field Theory}
+\section{Frobenian Elements}
 \subsection{Context}
 Let $R$ be a commutative ring, $M$ and $P$ ideals in $R$. We can then prove the followings:
 \begin{theorem}
@@ -592,7 +592,7 @@ It was proved by Nikolai Chebotarev in his thesis (\cite{ChebotarevTheorem}).
 [extension of order 3?]
 
 \subsubsection{Special Case}
-We want here to apply Chebotarev theorem in the case of a quadratic field extension.
+Here, we want to apply Chebotarev theorem in the case of a quadratic field extension.
 We are looking at the field extension $L/K = \Q[\sqrt{d}]/\Q$ for $d \in \Z$ a square-free integer.
 Denote by $G = \Gal{\Q[\sqrt{d}]/\Q} \cong C_2$ the Galois group of this extension.
 This group is abelian (so all conjugacy classes are made of a single element), and for any conjugacy class $C$, $\nicefrac{|C|}{|G|} = \nicefrac{1}{2}$.
@@ -642,17 +642,76 @@ Primes ideals in $\Q$ are just primes numbers.
 Therefore, Chebotarev gives Dirichlet's density theorem in the particular case of cyclotomic extensions.
 
 \subsubsection{Example}
+% We have:% $\Phi(x) = x^8 - x^7 + x^5 - x^4 + x^3 - x + 1$
+% $\Delta = 3^4 5^6 = 1265625$.
+% We consider $\Q[\zeta_{15}/\Q]/\Q$.
+% The Galois group $G = \left( \nicefrac{\Z}{15\Z} \right)^\times$ has elements:
+% $\alpha \to \alpha$, $\alpha \to \alpha^2$, $\alpha \to \alpha^4$, $\alpha \to \alpha^7$, $\alpha \to \alpha^8$, $\alpha \to \alpha^{11}$, $\alpha \to \alpha^{13}$, $\alpha \to \alpha^{14}$.
 Here, look at the example of Dirichlet theorem in the case $n=15$ from the motivation subsection above (see \ref{DensityMotivation}).
 
 We apply the last theorem in the case of $n=15$: $\varphi(15)=8$.
 We define $S_k = \{ p \in \primes \ | \ p \equiv k \bmod 15 \}$.
 By Dirichlet density theorem,  the density of $S_k$ is $\nicefrac{1}{8}$ if $k$ and $15$ are co-prime (i.e. if $k = 1,2,4,7,8,11,13,14$), otherwise (if $k=0,3,5,6,9,10,12$) it is $0$.
 This is what we could conjecture from the observations.
-% We have:% $\Phi(x) = x^8 - x^7 + x^5 - x^4 + x^3 - x + 1$
-% $\Delta = 3^4 5^6 = 1265625$.
-% We consider $\Q[\zeta_{15}/\Q]/\Q$.
-% The Galois group $G = \left( \nicefrac{\Z}{15\Z} \right)^\times$ has elements:
-% $\alpha \to \alpha$, $\alpha \to \alpha^2$, $\alpha \to \alpha^4$, $\alpha \to \alpha^7$, $\alpha \to \alpha^8$, $\alpha \to \alpha^{11}$, $\alpha \to \alpha^{13}$, $\alpha \to \alpha^{14}$.
+
+\section{Frobenian Maps}
+\paragraph{Class functions}
+Let $G$ be a group, $\Omega$ a set, and $f: G \to \Omega$.
+We say that $f$ is a \textit{class function} (of $G$) if $f$ is constant on conjugacy classes of $G$.
+That is, if $f$ remains unchanged under conjugation map of $G$.
+
+\paragraph{Frobenian Property for Maps}
+Let $K$ be a number field. Let $P$ be the set of primes ideals in $K$
+A map $f: P \to \Omega$ is said to be \textit{Frobenian} if there exists a field extension $M/K$ and a class function $\phi:\Gal{M/K} \to \Omega$ such that for all $\mathfrak{p} \in P$ (prime ideal of $K$) unramified in $M/K$, we have $f(\mathfrak{p})=\phi(\Frob{M/K}{\mathfrak{p}})$
+\footnote{Note that $\phi(\Frob{M/K}{\mathfrak{p}})$ is well defined since $\phi$ is a class function, and $\Frob{M/K}{\mathfrak{p}}$ is a conjugacy class of $\Gal{M/K}$.}.
+
+In the case of $K=\Q$, the set of primes ideals becomes just the set of primes $\primes$.
+And a map $f: \primes \to \Omega$ is said to be \textit{Frobenian} if there exists a field extension $M/\Q$ and a class function $\phi:\Gal{M/\Q} \to \Omega$ such that for all $p \in \primes$ (prime) unramified in $M/\Q$, we have $f(p)=\phi(\Frob{M/\Q}{p})$.
+
+\paragraph{$a_{ij}(p)$ Frobenian}
+
+We recall that for all $p$ odd prime, 
+$$
+T_p = \sum_{i,j \geq 0} a_{ij}(p)T_3^iT_5^j
+\qquad \text{ with } a_{ij}(p) \in \F_2.
+$$
+\begin{theorem}
+	The map $p \to a_{ij}(p)$ is Frobenian (for all $i,j \geq 0$).\\
+	That is, for all $i,j \geq 0$, there exists an extension $M_{ij}/\Q$ and a class function $\phi_{ij}: \Gal{M_{ij}/\Q} \to \F_2$ such that $a_{ij}(p)=\phi_{ij}(\Frob{M_{ij}/\Q}{p})$ for all $p \in \primes$ unramified in $M_{ij}/\Q$.
+\end{theorem}
+In such a configuration, $M_{ij}$ are called \textit{governing fields}.
+
+%% to add later, maybe
+%\paragraph{Link with Theorem from Bellaïche}
+%Let $A = \F_2\left[ T_3, T_5 \right]$, and $\text{Frac}(A)=\{\nicefrac{f}{g} | f,g \in A, g \neq 0 \}$.
+%With $k$ a field, we define 
+%$
+%\SL{2}{k} = \left\lbrace 
+%\begin{pmatrix}
+%	a & b \\
+%	c & d
+%\end{pmatrix} | \ a,b,c,d \in k, ad-bc \neq 0
+%\right\rbrace
+%$.
+%
+%We define $G_{\Q} = \Gal{\overline{\Q}/\Q}$, the profinite group.
+%Where $\overline{\Q}$ is the algebraic closure of $\Q$, i.e. the composition of all number fields $K/\Q$.
+%%number field: finite extension of $\Q$
+%
+%% what is $G_{\Q}$?
+%Let $\mathcal{K}$ be the set of all Galois number fields.
+%With $A_K = \Gal{K/\Q}$, $(A_K)_{K \in \mathcal{K}}$ is a family of groups.
+%There are groups homomorphisms $f_{ij}$
+%
+%[...bla...]
+
+
+
+
+
+
+
+
 
 
 

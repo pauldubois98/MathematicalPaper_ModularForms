@@ -471,22 +471,22 @@ The observations modulo 8 that we have done in \ref{ObservationsMod8} yields tha
 $$
 \mathcal{F}_1
 = \left\langle \Delta^k \ | \ k = 1 \bmod 8 \right\rangle
-= \left\langle \Delta, \Delta^9, \Delta^{17}, \Delta^{25}, \cdots \right\rangle
+= \left\langle \Delta, \Delta^9, \Delta^{17}, \Delta^{25}, \dots \right\rangle
 $$
 $$
 \mathcal{F}_3
 = \left\langle \Delta^k \ | \ k = 3 \bmod 8 \right\rangle
-= \left\langle \Delta^3, \Delta^{11}, \Delta^{19}, \Delta^{27}, \cdots \right\rangle
+= \left\langle \Delta^3, \Delta^{11}, \Delta^{19}, \Delta^{27}, \dots \right\rangle
 $$
 $$
 \mathcal{F}_5
 = \left\langle \Delta^k \ | \ k = 5 \bmod 8 \right\rangle
-= \left\langle \Delta^5, \Delta^{13}, \Delta^{21}, \Delta^{29}, \cdots \right\rangle
+= \left\langle \Delta^5, \Delta^{13}, \Delta^{21}, \Delta^{29}, \dots \right\rangle
 $$
 $$
 \mathcal{F}_7
 = \left\langle \Delta^k \ | \ k = 7 \bmod 8 \right\rangle
-= \left\langle \Delta^7, \Delta^{15}, \Delta^{23}, \Delta^{31}, \cdots \right\rangle
+= \left\langle \Delta^7, \Delta^{15}, \Delta^{23}, \Delta^{31}, \dots \right\rangle
 $$
 Of course, we have:
 $$
@@ -697,6 +697,7 @@ Thus, for any $k > 1$, we get that there is a prime $p$ such that $\overline{T_p
 This means that $\overline{T_p}$ is never the null operator (so reduction modulo two doesn't become trivial).
 
 \subsubsection{Nil-potency}
+\label{NilpotencyHeckeOperators}
 The properties of Hecke operators is that, given a modular form $f$, if we apply a Hecke operators enough times, the form will become zero (i.e. they are nilpotent).
 The strategy to show this is to prove that for any $k$ (odd), and any prime $p$, we have:
 $$
@@ -910,7 +911,8 @@ By convention, we write $g(0)= -\infty$.
 With a slight abuse of notation, we will write $g(k)$ for $g(\Delta^k)$.
 
 \paragraph{Properties}
-\subparagraph{Well-definiteness}
+\subparagraph[Well-definiteness]{Maximum Order}
+\label{MaximumOrderNilpotencyHeckeOperators}
 All Hecke operators lower by at least two the maximum degree of $\Delta$ in the $\Delta$-expansion of a modular form modulo 2 \ref{orderDecrease}.
 We deduce that $g(f) \leq g(T_p|f) + 1$.
 Applied to $\Delta^k$, we get: $g(k) \leq g(k-2) + 1$.
@@ -918,6 +920,7 @@ Therefore, by induction, we have $g(k) \leq \floor{\frac{k+1}{2}}$.
 This implies by the same occasion, the well definiteness of the order of nil potentness for all modular form modulo two.
 
 \subparagraph{Minimum Order}
+\label{MinimumOrderNilpotencyHeckeOperators}
 If the degree of $f$ is strictly greater than 1 (i.e. $f \neq 0, \Delta$), then $g(f) \geq 2$.
 
 We deduce this from the fact that Hecke operators are not null operators in general (\ref{HeckeNonNull}):
@@ -1010,5 +1013,6 @@ We can compute a few nil potentness by hand:
 
 \subparagraph{Computer calculated}
 We will look at $\Delta^{95}$...
-
+[To do]
+%[to do]
 
