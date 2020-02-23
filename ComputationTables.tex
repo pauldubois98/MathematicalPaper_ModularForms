@@ -1,7 +1,205 @@
 % !TeX spellcheck = en_GB
+\newgeometry{margin=1cm, top=2cm, bottom=2cm}
 \section{Hecke Operators}
 \subsection{Primes Hecke Operators}
-$T_p$
+\label{table:PrimeHeckeOperators}
+\begin{center}
+\begin{tabular}{|c|ccccccccccc|}
+	\hline
+	\textbf{} & \textbf{$\Delta^1$} & \textbf{$\Delta^3$} & \textbf{$\Delta^5$} & \textbf{$\Delta^7$} & \textbf{$\Delta^9$} & \textbf{$\Delta^{11}$} & \textbf{$\Delta^{13}$} & \textbf{$\Delta^{15}$} & \textbf{$\Delta^{17}$} & \textbf{$\Delta^{19}$} & \textbf{$\Delta^{21}$} \\\hline    
+	$T_3$ & 0 & $\Delta^1$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^9$ & $\Delta^7$ & $\Delta^5 + \Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ & $\Delta^7$ \\
+	$T_5$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^9$ & $\Delta^3 + \Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^9 + \Delta^{17}$ 
+	\\
+	$T_7$ & 0 & 0 & 0 & $\Delta^1$ & 0 & 0 & $\Delta^3$ & $\Delta^9$ & 0 & $\Delta^5$ & $\Delta^3$ \\
+	$T_{11}$ & 0 & $\Delta^1$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^1 + \Delta^9$ & $\Delta^7$ & $\Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ & $\Delta^7$ \\
+	$T_{13}$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^1 + \Delta^9$ & $\Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^9 + \Delta^{17}$ \\
+	$T_{17}$ & 0 & 0 & 0 & 0 & $\Delta^1$ & $\Delta^3$ & $\Delta^5$ & $\Delta^7$ & $\Delta^1$ & 0 & 0 \\
+	$T_{19}$ & 0 & $\Delta^1$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^1 + \Delta^9$ & $\Delta^7$ & $\Delta^{13}$ & 0 & $\Delta^1 + \Delta^9 + \Delta^{17}$ & $\Delta^7$ \\
+	$T_{23}$ & 0 & 0 & 0 & $\Delta^1$ & 0 & 0 & $\Delta^3$ & $\Delta^1 + \Delta^9$ & 0 & $\Delta^5$ & $\Delta^3$ \\
+	$T_{29}$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^9$ & $\Delta^3 + \Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^1 + \Delta^9 + \Delta^{17}$ \\
+	$T_{31}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\Delta^1$ & 0 & 0 & 0 \\
+	$T_{37}$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^1 + \Delta^9$ & $\Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^9 + \Delta^{17}$ \\
+	$T_{41}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\Delta^1$ & $\Delta^3$ & $\Delta^5$ \\
+	$T_{43}$ & 0 & $\Delta^1$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^9$ & $\Delta^7$ & $\Delta^5 + \Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ & $\Delta^7$ \\
+	$T_{47}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\Delta^1$ & 0 & 0 & 0 \\
+	$T_{53}$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^1 + \Delta^9$ & $\Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^1 + \Delta^9 + \Delta^{17}$ \\
+	$T_{59}$ & 0 & $\Delta^1$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^9$ & $\Delta^7$ & $\Delta^5 + \Delta^{13}$ & 0 & $\Delta^1 + \Delta^9 + \Delta^{17}$ & $\Delta^7$ \\
+	$T_{61}$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^1 + \Delta^9$ & $\Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^1 + \Delta^9 + \Delta^{17}$ \\
+	$T_{67}$ & 0 & $\Delta^1$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^1 + \Delta^9$ & $\Delta^7$ & $\Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ & $\Delta^7$ \\
+	$T_{71}$ & 0 & 0 & 0 & $\Delta^1$ & 0 & 0 & $\Delta^3$ & $\Delta^1 + \Delta^9$ & 0 & $\Delta^5$ & $\Delta^3$ \\
+	$T_{73}$ & 0 & 0 & 0 & 0 & $\Delta^1$ & $\Delta^3$ & $\Delta^5$ & $\Delta^7$ & 0 & $\Delta^3$ & $\Delta^5$ \\
+	$T_{79}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	$T_{83}$ & 0 & $\Delta^1$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^9$ & $\Delta^7$ & $\Delta^5 + \Delta^{13}$ & 0 & $\Delta^1 + \Delta^9 + \Delta^{17}$ & $\Delta^7$ \\
+	$T_{89}$ & 0 & 0 & 0 & 0 & $\Delta^1$ & $\Delta^3$ & $\Delta^5$ & $\Delta^7$ & 0 & $\Delta^3$ & $\Delta^5$ \\
+	$T_{97}$ & 0 & 0 & 0 & 0 & $\Delta^1$ & $\Delta^3$ & $\Delta^5$ & $\Delta^7$ & $\Delta^1$ & 0 & 0 \\
+	$T_{101}$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^1 + \Delta^9$ & $\Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^9 + \Delta^{17}$ \\
+	$T_{103}$ & 0 & 0 & 0 & $\Delta^1$ & 0 & 0 & $\Delta^3$ & $\Delta^1 + \Delta^9$ & 0 & $\Delta^5$ & $\Delta^3$ \\
+	$T_{107}$ & 0 & $\Delta^1$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^1 + \Delta^9$ & $\Delta^7$ & $\Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ 
+	& $\Delta^7$ \\
+	$T_{109}$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^9$ & $\Delta^3 + \Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^9 + \Delta^{17}$ \\
+	$T_{113}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	$T_{127}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\Delta^1$ & 0 & 0 & 0 \\
+	$T_{131}$ & 0 & $\Delta^1$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^1 + \Delta^9$ & $\Delta^7$ & $\Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ 
+	& $\Delta^7$ \\
+	$T_{137}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\Delta^1$ & $\Delta^3$ & $\Delta^5$ \\
+	$T_{139}$ & 0 & $\Delta^1$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^9$ & $\Delta^7$ & $\Delta^5 + \Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ 
+	& $\Delta^7$ \\
+	$T_{149}$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^9$ & $\Delta^3 + \Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^1 + \Delta^9 
+	+ \Delta^{17}$ \\
+	%	$T_{151}$ & 0 & 0 & 0 & $\Delta^1$ & 0 & 0 & $\Delta^3$ & $\Delta^1 + \Delta^9$ & 0 & $\Delta^5$ & $\Delta^3$ \\
+	%	$T_{157}$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^1 + \Delta^9$ & $\Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^1 + \Delta^9 
+	%	+ \Delta^{17}$ \\
+	%	$T_{163}$ & 0 & $\Delta^1$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^9$ & $\Delta^7$ & $\Delta^5 + \Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ 
+	%	& $\Delta^7$ \\
+	%	$T_{167}$ & 0 & 0 & 0 & $\Delta^1$ & 0 & 0 & $\Delta^3$ & $\Delta^9$ & 0 & $\Delta^5$ & $\Delta^3$ \\
+	%	$T_{173}$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^1 + \Delta^9$ & $\Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^9 + \Delta^{17}$ \\
+	%	$T_{179}$ & 0 & $\Delta^1$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^9$ & $\Delta^7$ & $\Delta^5 + \Delta^{13}$ & 0 & $\Delta^1 + \Delta^9 + \Delta^{17}$ & $\Delta^7$ \\
+	%	$T_{181}$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^9$ & $\Delta^3 + \Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^1 + \Delta^9 
+	%	+ \Delta^{17}$ \\
+	%	$T_{191}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\Delta^1$ & 0 & 0 & 0 \\
+	%	$T_{193}$ & 0 & 0 & 0 & 0 & $\Delta^1$ & $\Delta^3$ & $\Delta^5$ & $\Delta^7$ & $\Delta^1$ & 0 & 0 \\
+	%	$T_{197}$ & 0 & 0 & $\Delta^1$ & $\Delta^3$ & 0 & 0 & $\Delta^9$ & $\Delta^3 + \Delta^{11}$ & $\Delta^5$ & $\Delta^7$ & $\Delta^9 + \Delta^{17}$ \\
+	%	$T_{199}$ & 0 & 0 & 0 & $\Delta^1$ & 0 & 0 & $\Delta^3$ & $\Delta^9$ & 0 & $\Delta^5$ & $\Delta^3$ \\
+	\hline
+\end{tabular}
+Action of Primes Hecke Operators (primes up to $150$) on Modular Forms Modulo 2 (up to $\Delta^{21}$).
+\end{center}
 
+A larger table may be found \href{https://pauldubois98.github.io/ModularFormsModuloTwo.jl/tables/Hecke_primes_table.html}{online} at \url{https://pauldubois98.github.io/ModularFormsModuloTwo.jl/tables/Hecke_primes_table.html}.
+
+
+
+
+\newgeometry{margin=1cm, bottom=2cm}
 \subsection{Powers of Hecke Operators}
-$T_3^iT_5^j$
+\label{table:PowersHeckeOperators}
+\begin{center}
+\begin{tabular}{|c|cccc|}
+	\hline
+	\textbf{$\Delta^1$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^1$ & 0 & 0 & $\dots$ \\
+	$T_3^1$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^2$ & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}
+\begin{tabular}{|c|cccc|}
+	\hline
+	\textbf{$\Delta^3$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^3$ & 0 & 0 & $\dots$ \\
+	$T_3^1$ & $\Delta^1$ & 0 & 0 & $\dots$ \\
+	$T_3^2$ & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}
+\begin{tabular}{|c|cccc|}
+	\hline
+	\textbf{$\Delta^5$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^5$ & $\Delta^1$ & 0 & $\dots$ \\
+	$T_3^1$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^2$ & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}
+\begin{tabular}{|c|cccc|}
+	\hline
+	\textbf{$\Delta^7$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^7$ & $\Delta^3$ & 0 & $\dots$ \\
+	$T_3^1$ & $\Delta^5$ & $\Delta^1$ & 0 & $\dots$ \\
+	$T_3^2$ & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}
+\begin{tabular}{|c|ccccc|}
+	\hline
+	\textbf{$\Delta^9$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$T_5^3$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^9$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^1$ & $\Delta^3$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^2$ & $\Delta^1$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^3$ & 0 & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}
+\begin{tabular}{|c|ccccc|}
+	\hline
+	\textbf{$\Delta^{11}$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$T_5^3$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^{11}$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^1$ & $\Delta^9$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^2$ & $\Delta^3$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^3$ & $\Delta^1$ & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}
+\begin{tabular}{|c|ccccc|}
+	\hline
+	\textbf{$\Delta^{13}$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$T_5^3$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^{13}$ & $\Delta^9$ & 0 & 0 & $\dots$ \\
+	$T_3^1$ & $\Delta^7$ & $\Delta^3$ & 0 & 0 & $\dots$ \\
+	$T_3^2$ & $\Delta^5$ & $\Delta^1$ & 0 & 0 & $\dots$ \\
+	$T_3^3$ & 0 & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}
+\begin{tabular}{|c|cccccc|}
+	\hline
+	\textbf{$\Delta^{15}$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$T_5^3$} & \textbf{$T_5^4$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^{15}$ & $\Delta^3 + \Delta^{11}$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^1$ & $\Delta^5 + \Delta^{13}$ & $\Delta^1 + \Delta^9$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^2$ & $\Delta^7$ & $\Delta^3$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^3$ & $\Delta^5$ & $\Delta^1$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^4$ & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}
+\begin{tabular}{|c|cccccc|}
+	\hline
+	\textbf{$\Delta^{17}$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$T_5^3$} & \textbf{$T_5^4$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^{17}$ & $\Delta^5$ & $\Delta^1$ & 0 & 0 & $\dots$ \\
+	$T_3^1$ & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$T_3^2$ & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$T_3^3$ & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$T_3^4$ & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}
+\begin{tabular}{|c|cccccc|}
+	\hline
+	\textbf{$\Delta^{19}$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$T_5^3$} & \textbf{$T_5^4$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^{19}$ & $\Delta^7$ & $\Delta^3$ & 0 & 0 & $\dots$ \\
+	$T_3^1$ & $\Delta^9 + \Delta^{17}$ & $\Delta^5$ & $\Delta^1$ & 0 & 0 & $\dots$ \\
+	$T_3^2$ & $\Delta^3$ & 0 & 0 & 0 & 0 & $\dots$ \\
+	$T_3^3$ & $\Delta^1$ & 0 & 0 & 0 & 0 & $\dots$ \\
+	$T_3^4$ & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}
+\begin{tabular}{|c|cccccc|}
+	\hline
+	\textbf{$\Delta^{21}$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$T_5^3$} & \textbf{$T_5^4$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^{21}$ & $\Delta^9 + \Delta^{17}$ & $\Delta^5$ & $\Delta^1$ & 0 & $\dots$ \\
+	$T_3^1$ & $\Delta^7$ & $\Delta^3$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^2$ & $\Delta^5$ & $\Delta^1$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^3$ & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$T_3^4$ & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}
+\begin{tabular}{|c|ccccccc|}
+	\hline
+	\textbf{$\Delta^{23}$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$T_5^3$} & \textbf{$T_5^4$} & \textbf{$T_5^5$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^{23}$ & $\Delta^{11} + \Delta^{19}$ & $\Delta^7$ & $\Delta^3$ & 0 & 0 & $\dots$ \\
+	$T_3^1$ & $\Delta^{13} + \Delta^{21}$ & $\Delta^{17}$ & $\Delta^5$ & $\Delta^1$ & 0 & 0 & $\dots$ \\
+	$T_3^2$ & 0 & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$T_3^3$ & 0 & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$T_3^4$ & 0 & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$T_3^5$ & 0 & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}
+\begin{tabular}{|c|ccccccc|}
+	\hline
+	\textbf{$\Delta^{25}$} & \textbf{$T_5^0$} & \textbf{$T_5^1$} & \textbf{$T_5^2$} & \textbf{$T_5^3$} & \textbf{$T_5^4$} & \textbf{$T_5^5$} & \textbf{$\dots$} \\\hline
+	$T_3^0$ & $\Delta^{25}$ & $\Delta^5 + \Delta^{13}$ & $\Delta^1 + \Delta^9$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^1$ & $\Delta^{11} + \Delta^{19}$ & $\Delta^7$ & $\Delta^3$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^2$ & $\Delta^{17}$ & $\Delta^5$ & $\Delta^1$ & 0 & 0 & 0 & $\dots$ \\
+	$T_3^3$ & 0 & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$T_3^4$ & 0 & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$T_3^5$ & 0 & 0 & 0 & 0 & 0 & 0 & $\dots$ \\
+	$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ \\\hline
+\end{tabular}\\
+Action of Powers Hecke Operators $T_3$ and $T_5$ on Modular Forms Modulo 2 (up to $\Delta^{25}$).
+\end{center}
+A larger table may be found \href{https://pauldubois98.github.io/ModularFormsModuloTwo.jl/tables/Hecke_powers_table.html}{online} at \url{https://pauldubois98.github.io/ModularFormsModuloTwo.jl/tables/Hecke_powers_table.html}.
+
+
+
+
+\newgeometry{margin=2cm}

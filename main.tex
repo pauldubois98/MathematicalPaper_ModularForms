@@ -6,6 +6,7 @@
 %margin
 \usepackage[margin=2cm]{geometry}
 %\usepackage[margin=1in]{geometry}
+\usepackage{changepage}
 %line spacing
 \renewcommand{\baselinestretch}{1.15}
 %\renewcommand{\baselinestretch}{1.6}
@@ -20,6 +21,7 @@
 \usepackage[dvipsnames,svgnames,table]{xcolor}
 %tables
 \usepackage{multirow}
+\usepackage{longtable}
 %for math
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -86,14 +88,6 @@
 %opening
 \title{Modular forms modulo 2}
 \author{Paul Dubois}
-%\date{2019/2020}
-
-
-%\includeonly{ModularForms,ModularFormsModuloTwo}
-%\includeonly{FrobenianMaps}
-
-
-
 
 \begin{document}
 \maketitle
@@ -101,7 +95,6 @@
 \begin{abstract}
 We are interested in Modular forms modulo 2, and computing thing about it.
 [temporary abstract]
-
 
 Key words that should appear:
 Modular forms;
@@ -116,14 +109,14 @@ Exact computations;
 
 
 
-%\include{ModularForms}
+\include{ModularForms}
 \include{ModularFormsModuloTwo}
 \include{HeckeAlgebra}
 \include{FrobenianMaps}
-%\include{Numerics}
+\include{Numerics}
 \appendix
-%\include{ComputationTables}
-%\include{Codes}
+\include{ComputationTables}
+\include{Codes}
 
 
 

@@ -629,7 +629,7 @@ This property will also remain modulo 2.
 
 \paragraph{Behaviour of $\mathcal{F}_i$}
 \label{HeckeInF_i}
-Suppose $f \in \mathcal{F}_i$ \footnote{By abuse of notation, denote by $f$ a modular forms modulo (instead of $\overline{f}$).}, using \ref{ObservationsMod8}, we have:
+Suppose $f \in \mathcal{F}_i$ \footnote{By abuse of notation, we denote by $f$ a modular forms modulo 2 (instead of $\overline{f}$).}, using \ref{ObservationsMod8}, we have:
 $$
 f
 = \sum_{m \equiv i \bmod 8} \mu_m\Delta^m 
@@ -868,11 +868,12 @@ Need in fact $m_1 = m_2 \neq m_3$, but then??
 \paragraph{$\Delta^7$}
 
 \subsubsection{Table of Hecke Operators}
-Here is a table of Hecke operators for primes up to 50, and powers of $\Delta$ up to 20:
-
+Here is a table of Hecke operators:
 \begin{center}
-	\begin{tabular}{r|rrrrrrrrrr}
-		\textbf{} & \textbf{$\Delta^1$} & \textbf{$\Delta^3$} & \textbf{$\Delta^5$} & \textbf{$\Delta^7$} & \textbf{$\Delta^9$} & \textbf{$\Delta^{11}$} & \textbf{$\Delta^{13}$} & \textbf{$\Delta^{15}$} & \textbf{$\Delta^{17}$} & \textbf{$\Delta^{19}$} \\\hline
+	\begin{tabular}{|r|rrrrrrrrrr|}
+		\hline
+		\textbf{} & \textbf{$\Delta^1$} & \textbf{$\Delta^3$} & \textbf{$\Delta^5$} & \textbf{$\Delta^7$} & \textbf{$\Delta^9$} & \textbf{$\Delta^{11}$} & \textbf{$\Delta^{13}$} & \textbf{$\Delta^{15}$} & \textbf{$\Delta^{17}$} & \textbf{$\Delta^{19}$} \\
+		\hline
 		$T_3$ & 0 & $\Delta$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^9$ & $\Delta^7$ & $\Delta^5 + \Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ \\       
 		$T_5$ & 0 & 0 & $\Delta$ & $\Delta^3$ & 0 & 0 & $\Delta^9$ & $\Delta^3 + \Delta^{11}$ & $\Delta^5$ & $\Delta^7$ \\
 		$T_7$ & 0 & 0 & 0 & $\Delta$ & 0 & 0 & $\Delta^3$ & $\Delta^9$ & 0 & $\Delta^5$ \\
@@ -887,8 +888,12 @@ Here is a table of Hecke operators for primes up to 50, and powers of $\Delta$ u
 		$T_{41}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\Delta$ & $\Delta^3$ \\
 		$T_{43}$ & 0 & $\Delta$ & 0 & $\Delta^5$ & $\Delta^3$ & $\Delta^9$ & $\Delta^7$ & $\Delta^5 + \Delta^{13}$ & 0 & $\Delta^9 + \Delta^{17}$ \\
 		$T_{47}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & $\Delta$ & 0 & 0 \\
+		\hline
 	\end{tabular}
+
+	Action of Primes Hecke Operators (primes up to $50$) on Modular Forms Modulo 2 (up to $\Delta^{19}$).
 \end{center}
+A larger table may be found in the appendix (see \ref{table:PrimeHeckeOperators}).
 
 It seems quite random, which makes sense since the Hecke operators depend on prime, and primes appear at random.
 However, it is interesting to try to find patterns and rules for this table.
@@ -925,7 +930,8 @@ If the degree of $f$ is strictly greater than 1 (i.e. $f \neq 0, \Delta$), then 
 
 We deduce this from the fact that Hecke operators are not null operators in general (\ref{HeckeNonNull}):
 Remember that one consequence of non nullity is that if $f \neq 0, \Delta$, then there exists an odd prime $p$ such that $T_p|f \neq 0$.
-This directly implies that $g(f) > 1$.
+
+This directly implies that $g(f) > 1$ if $f \neq \Delta, 0$.
 
 \subparagraph{Conjecture}
 Let $f_1,f_2 \in \mathcal{F}$ be modular form modulo 2, such that
