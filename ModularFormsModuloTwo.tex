@@ -60,7 +60,7 @@ so that
 $$
 F_k =  (-1)^k \frac{B_k}{4k} + \sum_{n=1}^{\infty} \sigma_{2k-1}(n)q^n.
 $$
-$F_k$ then has $q$ coefficient set to one (as $\sigma_{2k-1}(1)=1$).
+$F_k$ then has $q$-coefficient set to one (as $\sigma_{2k-1}(1)=1$).
 
 Clearly, the coefficients of this expansion remain in $\Q$ at least, and we will show that for some specific $k$, the coefficients lie in fact in $\Z$.
 Both $F_k$ and $E_k$ are interesting, but for our purpose (reducing modulo 2), we will use $E_k$.
@@ -288,7 +288,7 @@ Therefore, the reduction modulo 2 of $E_3$ is $1$ as well.
 We write $\overline{E_3} = 1$, so $\overline{E_3^b} = 1$, for all $b \geq 0$.
 
 \paragraph{$\Delta$ reduced}
-We defined before $\Delta$, and we would now like to know its $q$ extension in the standard way.
+We defined before $\Delta$, and we would now like to know its $q$-extension in the standard way.
 That is, an infinite sum of $q^n$, instead of an infinite product as we have at the moment.
 
 We define the coefficients $\tau(n)$ to match in the equation: 
@@ -297,7 +297,7 @@ $$
 = q \prod_{n=1}^{\infty} (1-q^n)^{24} 
 = \sum_{n=1}^{\infty} \tau(n)q^n
 $$
-When this holds, $\tau$ is called the Ramanujan function.
+When this holds, $\tau$ is called the \textit{Ramanujan function}.
 
 We would like an explicit formula for $\tau(n)$. More precisely, we are interested in a formula for $\tau(n) \bmod 2$.
 
@@ -458,7 +458,7 @@ So it is sufficient to study only the odd powers of $\Delta$.
 
 \subsubsection{The Space $\mathcal{F}$}
 \label{ModularFormsModTwo}
-We define the space of modular forms modulo 2 denoted $\mathcal{F} $ to be \cite[2.1]{OrdreNilpotenceOperateurHecke}:
+We define the \textit{space of modular forms modulo 2} denoted $\mathcal{F} $ to be \cite[2.1]{OrdreNilpotenceOperateurHecke}:
 $$
 \mathcal{F}
 %= \left\lbrace \sum_{\substack{k \  odd,\\ k \leq n}} a_k \Delta^k | n \in \N, \  a_k \in \mathbb{F}_2 \right\rbrace
@@ -520,9 +520,9 @@ In particular, there is a new technique of computation ("exact computations") th
 \subsubsection{Reduction Modulo Two}
 \paragraph{Definition}
 \label{DefHeckeOperatorsMod2}
-Now that we have reduced modular forms modulo 2, we would like to study the Hecke operators on these reduced modular forms. We define Hecke operators modulo 2 as follows:
+Now that we have reduced modular forms modulo 2, we would like to study the Hecke operators on these reduced modular forms. We define \textit{Hecke operators modulo 2} as follows:
 
-With $f$ a modular form modulo 2 with $q$ definition
+With $f$ a modular form modulo 2 with $q$-definition
 $$
 f(q) = \sum_{n \in \N} c(n)q^n
 $$
@@ -960,8 +960,7 @@ T_q|\Delta^{k+2}=\Delta^m + O(\Delta^{l-2})
 $$
 ------ or ------
 $$
-MaxOrder(T_p|\Delta^k) \geq MaxOrder(T_p|\Delta^k+\Delta^l)
-\quad \forall l<k
+\deg(T_p|\Delta^k) \geq \deg(T_p|\Delta^k+\Delta^l) \quad \forall l<k
 $$
 Is any of the two reasonable to prove?
 
