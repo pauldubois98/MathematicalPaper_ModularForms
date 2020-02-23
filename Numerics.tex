@@ -13,9 +13,11 @@ A better algorithm means, for example, test factors only up to square root (in t
 A better implementation simply means optimisation inside the computer (i.e. on operations that are made, types that are used...).
 We will try to optimise both.
 
+
 \subsubsection{Algorithm Optimisation}
 \label{algorithmOptimisation}
 We can optimize an algorithm by optimizing (decreasing) the number of operations, or by using mathematical scheme (usually cancellations).
+
 \paragraph{Optimize instructions}
 Optimizing instructions usually comes through optimizing loops (stopping loops as soon as possible, avoiding extra loops...).
 For example, the following two algorithms create the same list of coefficients for the $q$-series of $\Delta$.
@@ -54,6 +56,9 @@ The algorithms may be \textit{harder} to understand, but it in fact is \textit{b
 As we are working modulo 2, there are obviously many cancellations, which will make the calculations \textit{faster}.
 It is an opportunity we shouldn't miss to make the algorithms \textit{stronger}.
 % harder, better, faster, stronger
+
+
+
 \subsubsection{Implementation Approach}
 As explained above, investigations on which tool will be the more suitable for the computations is an important part.
 Of course, the best would be to find a programming language that can already deal with modular forms modulo two.
@@ -69,6 +74,8 @@ For scientific computing nowadays, there are two main \href{https://en.wikipedia
 Each having various packages to work with.
 
 We will test a selection of major ones.
+
+
 
 \subsubsection{Choice of Implementation}
 Now it is time to wonder how to represent modular forms modulo 2.
@@ -93,79 +100,15 @@ There are various ways to implement this technique:
 \subparagraph{Pure Python}
 Using the Python language, this is the most elementary way to go.
 It represents all the $q$-coefficients with the default linked list python object.
-\begin{minted}{python}
-def delta(LENGTH):
-	f = [0 for i in range(LENGTH)]
-	indice = 1
-	i = 1
-	while indice<LENGTH:
-		f[indice] = 1
-		i += 2
-		indice = i**2
-	return f
-
-def square(f):
-	f_sq = [0 for i in range(len(f))]
-	i = 0
-	while 2*i < len(f):
-		if f[i]:
-			f_sq[2*i] = 1
-		i += 1
-	return f_sq
-\end{minted}
+(code in appendix \ref{code:PurePython}).
 \subparagraph{NumPy Python}
 \href{https://fr.wikipedia.org/wiki/NumPy}{NumPy} is the most well known scientific computing library for Python.
 It interfaces with C objects to provide very fast features (such as lists).
-\begin{minted}{python}
-import numpy as np
-
-def delta(LENGTH):
-	f = np.zeros(LENGTH, dtype=np.int8)
-	indice = 1
-	i = 1
-	while indice<LENGTH:
-		f[indice] = 1
-		i += 2
-		indice = i**2
-	return f
-
-def square(f):
-	f_sq = np.zeros(len(f), dtype=np.int8)
-	i = 0
-	while 2*i < len(f):
-		if f[i]:
-			f_sq[2*i] = 1
-		i += 1
-	return f_sq
-\end{minted}
+(code in appendix \ref{code:NumPyPython}).
 \subparagraph{Dense Julia}
 Julia is well-known as both high level and very fast language.
 Julia naturally supports lists, that we can use to represent modular forms.
-\begin{minted}{julia}
-function delta(LENGTH)
-	f = zeros(Int8, LENGTH)
-	indice = 2
-	i = 1
-	while indice < LENGTH
-		f[indice] = 1
-		i += 2
-		indice = i^2 + 1
-	end
-	return f
-end
-
-function square(f)
-	f_sq = zeros(Int8, length(f))
-	i = 1
-	while 2 * i - 1 < length(f)
-		if f[i] == 1
-			f_sq[2 * i - 1] = 1
-		end
-		i += 1
-	end
-	return f_sq
-end
-\end{minted}
+(code in appendix \ref{code:DenseJulia}).
 
 \paragraph{Sparse Technique}
 As all coefficients of the $q$-series are just $0$ or $1$, and that most of the time, they are $0$, we can represent a modular forms by storing only the coefficients for which it is non-zero.
@@ -173,54 +116,13 @@ This method is (storing only non-zero values) is known as \href{https://en.wikip
 We can implement this technique in both Python and Julia:
 \subparagraph{Sparse Python}
 We can adapt the previous code to use Python's linked lists as index of a sparse list.
-Note that in general, we would need a second list to store values, but there ar only $0$s and $1$s, we can take as convention that all stored indices have value $1$ and all non-store have value $0$. 
-\begin{minted}{python}
-def delta(LENGTH):
-	f = []
-	indice = 1
-	i = 1
-	while indice < LENGTH:
-		f.append(indice)
-		i += 2
-		indice = i**2
-	return (f, LENGTH)
-
-def square(form):
-	f_sq = []
-	f = form[0]
-	for n in f:
-		if 2*n-1 <= form[1]:
-			f_sq.append(2*n-1)
-	return (f_sq, form[1])
-\end{minted}
+Note that in general, we would need a second list to store values, but there ar only $0$s and $1$s, we can take as convention that all stored indices have value $1$ and all non-store have value $0$.
+(code in appendix \ref{code:SparsePython}). 
 \subparagraph{Sparse Julia}
 Julia has a very convenient built-in sparse module.
 This is particularly interesting, since the built-in type already have nice methods.
-\begin{minted}{julia}
-using SparseArrays: SparseVector, spzeros
+(code in appendix \ref{code:SparseJulia}).
 
-function delta(LENGTH)
-	f = spzeros(Int8, LENGTH)
-	indice = 2
-	i = 1
-	while indice <= f.n
-		f[indice] = Int8(1)
-		i += 2
-		indice = i^2 + 1
-	end
-	return f
-end
-
-function square(f)
-	f_sq = spzeros(Int8, f.n)
-	for n in f.nzind
-		if 2n - 1 <= f_sq.n
-			f_sq[2n - 1] = 1
-		end
-	end
-	return f_sq
-end
-\end{minted}
 \paragraph{Speed Comparison}
 We can now compare the speed of each implementation to compute $q$-series.
 If we do that for various number of coefficients, we may obtain a graph of the following type (it is sightly dependent on the machine that execute the code, but the shape remains).
@@ -261,54 +163,19 @@ This ratio would even be greater considering the bad algorithm presented before 
 It is clear now that the code should be done with Julia and it's Sparse objects.
 Now, as all the library should be created from the beginning, it is a good idea to pack all of it in a Julia module.
 Doing so, no code will be repeated for each small task.
-\paragraph{Code Architecture}
+
+
+
+\subsubsection[Main Module]{ModularFormsModuloTwo.jl}
 The code will be divided in a many files, for convenience.
 
-\begin{forest}
-	for tree={
-		font=\ttfamily,
-		grow'=0,
-		child anchor=west,
-		parent anchor=south,
-		anchor=west,
-		calign=first,
-		edge path={
-			\noexpand\path [draw, \forestoption{edge}]
-			(!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
-		},
-		before typesetting nodes={
-			if n=1
-			{insert before={[,phantom]}}
-			{}
-		},
-		fit=band,
-		before computing xy={l=15pt},
-	}
-	[text1
-	[text1.1
-	[text1.1.1]
-	[text1.1.2]
-	[text1.1.3]
-	]
-	[text1.2
-	[text1.2.1]
-	[text1.2.2]
-	]
-	]
-\end{forest}
+\paragraph{Code Architecture}
+The main function are direct parts of the module, and the pre-calculated data part is written in a subfolder, detailed next paragraph.
+Here is a visualization of the organisation (the "architecture"):
 
-\begin{tikzpicture}
-
-\node[draw,align=left] at (0,0) {arithmetic.jl\\$+$, $*$, ², $^{\boxed{}}$};
-\node[draw] at (5,0) {generator.jl};
-
-
-\end{tikzpicture}
-
-
-
+% code architecture draw
 \tikzset{
-	state/.style={
+	file/.style={
 		rectangle,
 		rounded corners,
 		draw=black, very thick,
@@ -318,71 +185,219 @@ The code will be divided in a many files, for convenience.
 		text width=3.7cm,
 	},
 }
-
+\tikzset{
+	submodule/.style={
+		rectangle,
+		rounded corners,
+		draw=black, thin,
+		minimum height=1.5cm,
+		minimum width=4.6cm,
+		inner sep=2pt,
+		text width=4.7cm,
+	},
+}
 \begin{tikzpicture}
-\coordinate(center) at (0,0);
-\node[state] (arithm) at (center){
+%% nodes
+\coordinate(top) at (0,0);
+\node[file, text width=6.25cm] (MFmod2) at (top){
 	\begin{tabular}{l}
-		\textbf{arithmetic.jl}\\
-		$\cdot$ addition ($+$)\\
-		$\cdot$ multiplication ($*$)\\
-		$\cdot$ square (²)\\
-		$\cdot$ power (${}^{\boxed{}}$)\\
-		\\\\
+	\textbf{ModularFormsModuloTwo.jl}\\
+	$\cdot$ ModularForm (\textit{type})\\
+	$\cdot$ ModularFormList (\textit{type})\\
+	$\cdot$ \textit{Printing functions}\\
+	\\
+	\\
+	\\
 	\end{tabular}
 };
-\node[state, right of = center, node distance=4cm] (gene){
+\node[file, below of = top, node distance=5cm] (gene){
 	\begin{tabular}{l}
 	\textbf{generator.jl}\\
 	$\cdot$ zero ($0$)\\
 	$\cdot$ one ($1$)\\
 	$\cdot$ delta ($\Delta$)\\
 	$\cdot$ delta\_k ($\Delta^k$)\\
-	\\\\
+	\\
+	\\
 	\end{tabular}
 };
-\node[state, left of = center ,node distance=4cm] (Hecke){
+\node[file, left of = gene, node distance=4cm] (arithm){
+	\begin{tabular}{l}
+	\textbf{arithmetic.jl}\\
+	$\cdot$ addition ($+$)\\
+	$\cdot$ multiplication ($*$)\\
+	$\cdot$ square (²)\\
+	$\cdot$ power (${}^{\boxed{}}$)\\
+	\textbf{equality.jl}\\
+	$\cdot$ eq ($\overset{?}{=}$)\\
+	\end{tabular}
+};
+\node[file, right of = gene ,node distance=4cm] (reco){
+	\begin{tabular}{l}
+	\textbf{recognizer.jl}\\
+	$\cdot$ to\_q ($\Delta \to q$)\\
+	$\cdot$ to\_$\Delta$ ($q \to \Delta$)\\
+	$\cdot$ drop\_error ($q \circlearrowleft$)\\
+	\\
+	\\
+	\\
+	\end{tabular}
+};
+\node[file, right of = reco, node distance=4.5cm] (Hecke){
 	\begin{tabular}{l}
 	\textbf{HeckeOperator.jl}\\
 	$\cdot$ Hecke ($T_p$)\\
 	\\
 	\\
 	\\
-	\\\\
-	\end{tabular}
-};
-\node[state, below of = center ,node distance=5cm] (reco){
-	\begin{tabular}{l}
-	\textbf{recognizer.jl}\\
-	$\cdot$ to\_q ($\Delta \to q$)\\
-	$\cdot$ to\_$\Delta$ ($q \to \Delta$)\\
-	$\cdot$ drop\_error ($q \circlearrowleft$)\\
 	\\
-	\\\\
 	\end{tabular}
 };
-\node[state, above of = center ,node distance=5cm] (reco){
+\node[submodule, right of = MFmod2, node distance=7cm, thin] (Data){
 	\begin{tabular}{l}
-	\textbf{recognizer.jl}\\
-	$\cdot$ to\_q ($\Delta \to q$)\\
-	$\cdot$ to\_$\Delta$ ($q \to \Delta$)\\
-	$\cdot$ drop\_error ($q \circlearrowleft$)\\
-	\\
-	\\\\
+	\textbf{Data (submodule)}\\
+	\textit{(load precalculated data)}\\
 	\end{tabular}
 };
-\path (gene) edge (reco);
-
-
+%% links
+\path (MFmod2) edge (arithm);
+\path (MFmod2) edge (gene);
+\path (MFmod2) edge (reco);
+%\path (MFmod2) edge (Hecke);
+\path (MFmod2) edge (+6,-2);
+\path (+6,-2) edge (Hecke);
+\path (MFmod2) edge (Data);
 \end{tikzpicture}
 
 
+\paragraph{Files Details}
+We will detail here the important and interesting parts of the code.
+For more details, the reader may refer to the source code, witch is commented and documented.
+\subparagraph{Basics Operations}
+Basic operations on modular forms modulo 2 are defined in \texttt{arithmetic.jl} (see \ref{code:arithmetic} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/arithmetic.jl}).
+All of these algorithms have been optimised as much as possible (i.e. cutting loops as soon as possible, and iterate through "ones" only, as most coefficients are zero).
+\subparagraph{Equality up to known}
+It might be useful to compare two modular form up to some coefficients (perhaps if $f_1$ is known up to $q^n$ and $f_2$ up to $q^m$, we can compare them up to $q^{\min{n,m}}$).
+This equality test is defined in \texttt{equality.jl} (see \ref{code:equality} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/equality.jl}).
+\subparagraph{Generators of $\mathcal{F}$}
+As modular forms modulo 2 are polynomials of $\Delta$, we need to ba able to generate the $q$-series of powers of $\Delta$.
+Such functions are defined in \texttt{generator.jl} \footnote{\texttt{generators.jl} generates $\Delta$ and then uses the power function from \texttt{arithmetic.jl}.} (see \ref{code:generators} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/generators.jl}).
+Here, the optimization is not trivial:
+To calculate $\Delta^{31}$ (say), the most trivial way is to do $\Delta \cdot \Delta \cdots \Delta$ with 30 multiplications.
+But what is done in fact inside the library is much faster: we calculate $\Delta$, $\Delta^2 = \Delta \cdot \Delta$, $\Delta^4 = \Delta^2 \cdot \Delta^2$, ... until $\Delta^{16}$, and then $\Delta^{31} = \Delta^{16} \cdot \Delta^8 \cdot \Delta^4 \cdot \Delta^2 \cdot \Delta$.
+Doing like this, only 8 multiplications were needed (against 30 with the naïve method).
+On may think that 3 was an example particularly good for this technique, but if we take an other example, say 32, we would turn 31 multiplication to 5.
+In fact, in general, to calculate $\Delta^n$ this second method need a maximum of $\log_2(n)^2$ multiplications against $n-1$ for the first one.
+So it really is a much faster algorithm.\footnote{In fact, half of the operations are squaring modular forms, wich is much faster than a usual multiplication. This this algorithm is even better than stated.}
+\subparagraph{Hecke Operators}
+The only formula we have to calculate Hecke operators, is using the $q$-representation of modular forms.
+Therefore, the Hecke operators are taking a modular forms under $q$-representation as input (together with a prime $p$).
+Note that when applying a Hecke operator, we loose a lot of informations on it's expansion:
+If $f$ is known up to $q^n$, then $T_p|f$ will only be known up to $q^{n/p}$.
+This means that we should be careful when applying Hecke operator.
+
+Hecke operators are implemented in the file \texttt{HeckeOperator.jl} (see \ref{code:HeckeOperator} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/HeckeOperator.jl})
+\subparagraph{Recognise the trick?}
+This part of the module us probably the most important, and it is the one that differ the most form any other computing technique.
+
+We start by noting that it is easy to go from the $\Delta$ representation of a modular form to the $q$ representation: it suffices to choose an arbitrary $n$, and calculate all coefficients up to $q^n$, using the series expansion of $\Delta$.
+This step is necessary to calculate Hecke operators.
+
+Now, one may ask if it is possible to go back from the $q$-representation to the $\Delta$-representation of a modular form.
+In general, this is not possible.
+\textbf{But}
+If we have some assumptions on the modular form, then it may become possible.
+For example, if we know that the maximum degree (in terms of $\Delta$) of $f$ is n, and that we know it's $q$-coefficients up to n:
+then $f$ may be written as $f = \sum_{k \leq n} \mu_k \Delta^k$, so the set $\{ \Delta^k | k \leq n \}$ acts as a basis, and it is just a matter of finding the matching coefficients $\mu_k$.
+This is in fact possible, and that is how the function \texttt{to\_delta()} is made possible.
+
+Now, once we have the $\Delta$ representation of a modular form, we potentially have as many $q$-coefficients as we want.
+This may seem weird or even magical, since we assumed only finitely many $q$-coefficients were known.
+In fact, we can use this fact to drop the numerical error that calculating a Hecke operator may have produced.
+
+Such kind of calculations are rather unusual in computer science: usually computers approximates objects, and this approximation error is never given back.
+But with modular forms modulo two, we can take back the approximation error.
+
+This method will now be referred as exact calculation. [may I create this name?]
+
+It is implemented in the file \texttt{recognizer.jl} (see \ref{code:recognizer} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/recognizer.jl}).
+\subparagraph{Global}
+The last file, \texttt{ModularFormsModuloTwo.jl} is the one that creates the link between all the small part of programs written in other files.
+It also defines a few general objects, such as types and printing functions.
+For more details, see (\ref{code:ModularFormsModuloTwo} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/ModularFormsModuloTwo.jl})
+\subsubsection[Sub Module]{(Pre-calculated) Data}
+Data is natively part of the ModularFormModuloTwo.jl module, but it is treated internally as a subcomponent, for better organisation.
 
 
-\paragraph{Published}
 
-\paragraph{Online Library}
+\paragraph{Code Architecture}
+This time, the architecture is much easier:
 
+\tikzset{
+	subfile/.style={
+		rectangle,
+		rounded corners,
+		draw=black, very thick,
+		minimum height=1.2cm,
+		minimum width=5.2cm,
+		inner sep=2pt,
+		text width=5.5cm,
+		align=center,
+	},
+}
+\begin{tikzpicture}
+%% nodes
+\coordinate(top) at (0,0);
+\node[submodule, align=center] (data) at (top){
+	\textbf{\LARGE Data}
+};
+\node[subfile, below of = top, node distance=3cm] (storage){
+	storage.jl
+};
+\node[subfile, right of = storage, node distance=6cm] (delta){
+	delta\_file\_maker.jl
+};
+\node[subfile, right of = delta ,node distance=6cm] (primes){
+	Hecke\_primes\_file\_maker.jl
+};
+\node[subfile, above of = primes, node distance=3cm] (powers){
+	Hecke\_powers\_file\_maker.jl
+};
+%% links
+\path (data) edge (storage);
+\path (data) edge (delta);
+\path (data) edge (primes);
+\path (data) edge (powers);
+\end{tikzpicture}
+
+\paragraph{Files Details}
+We will detail here an overview of what each file achieve.
+For more details, the reader may look at the source code, which is highly commented, and quite explicit in general.
+\begin{itemize}
+	\item \texttt{storage.jl} (see \ref{code:storage} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/storage.jl}): This is the only file to be called outside of the Data submodule.
+	\item \texttt{delta\_file\_maker.jl} (see \ref{code:deltaFileMaker} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/delta_file_maker.jl}): The program in this file generates the $q$-coefficients lists for a range of powers of $\Delta$.
+	\item \texttt{Hecke\_primes\_file\_maker.jl} (see \ref{code:HeckePrimesFileMaker} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/Hecke_primes_file_maker.jl}): The program in this file calculates the $\Delta$-representation lists for a range of Hecke operators $T_p$ and range of powers of $\Delta$.
+	\item \texttt{Hecke\_powers\_file\_maker.jl} (see \ref{code:HeckePowersFileMaker} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/Hecke_powers_file_maker.jl}): The program in this file calculates the $\Delta$-representation lists for a range of powers of Hecke operators $T_3$ and $T_5$ and range of powers of $\Delta$.
+\end{itemize}
+
+
+
+\subsubsection{Open-Source}
+This library is completely open-source.
+Anyone is welcome to contribute.
+Anyone can use it (for free).
+
+\subsubsection{Official}
+This module is now registered as an official Julia package.
+To use all the code form this library, a new user will just need to type:
+\begin{minted}{julia}
+julia> using Pkg
+julia> Pkg.add(PackageSpec(url="https://github.com/pauldubois98/ModularFormsModuloTwo.jl"))
+\end{minted}
+It is convenient that all the algorithms developed in this module can be used just by importing the package, which can be done in a minute.
+
+\subsubsection{Online Documentation}
+As it usually comes wit open-sources packages, ModularFormsModuloTwo.jl has an \href{https://pauldubois98.github.io/ModularFormsModuloTwo.jl/}{online documentation} (see \url{https://pauldubois98.github.io/ModularFormsModuloTwo.jl/}).
 
 
 

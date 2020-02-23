@@ -1,4 +1,102 @@
 % !TeX spellcheck = en_GB
+%\inputminted[firstline=2,lastline=15]{language}{file}
+
 \section{Speed Comparison}
+\subsection{Pure Python}
+\label{code:PurePython}
+\inputminted[lastline=19]{python}{SpeedComparison/PurePython.py}
+
+\subsection{NumPy Python}
+\label{code:NumPyPython}
+\inputminted[lastline=21]{python}{SpeedComparison/NumPyPython.py}
+
+\subsection{Dense Julia}
+\label{code:DenseJulia}
+\inputminted[lastline=24]{julia}{SpeedComparison/DenseJulia.jl}
+
+\subsection{Sparse Python}
+\label{code:SparsePython}
+\inputminted[lastline=18]{python}{SpeedComparison/SparsePython.py}
+
+\subsection{Sparse Julia}
+\label{code:SparseJulia}
+\inputminted[lastline=24]{julia}{SpeedComparison/SparseJulia.jl}
+
+
+
+
+
 \section{ModularFormsModuloTwo.jl}
+\subsection[Files Tree]{Module structure}
+\dirtree{% Module file tree
+	.1 \textit{ModularFormsModuloTwo.jl (module)}.
+	.2 docs.
+	.3 \textit{(automatic documentation)}.
+	.2 examples.
+	.3 Hecke\_primes\_table.jl.
+	.3 Hecke\_powers\_table.j.
+	.2 src.
+	.3 data.
+	.4 storage.jl.
+	.4 delta\_file\_maker.jl.
+	.4 Hecke\_primes\_file\_maker.jl.
+	.4 Hecke\_powers\_file\_maker.jl.
+	.4 \textit{data files (.JLD2)}.
+	.3 arithmetic.jl.
+	.3 equality.jl.
+	.3 generators.jl.
+	.3 HeckeOperator.jl.
+	.3 ModularFormsModuloTwo.jl.
+	.3 recognizer.jl.
+}
+Full module on \href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl}{GitHub} (\url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl}).
+The official \href{https://pauldubois98.github.io/ModularFormsModuloTwo.jl/}{documentation} (\url{https://pauldubois98.github.io/ModularFormsModuloTwo.jl/}) has more details on how to use.
+
+\subsection{Files details}
+
+\subsubsection{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/tree/master/src}{Main Sources}}
+\subparagraph{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/ModularFormsModuloTwo.jl}{ModularFormsModuloTwo.jl}}
+\label{code:ModularFormsModuloTwo}
+\inputminted{julia}{Module/ModularFormsModuloTwo.jl}
+
+\subparagraph{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/arithmetic.jl}{arithmetic.jl}}
+\label{code:arithmetic}
+\inputminted{julia}{Module/arithmetic.jl}
+
+\subparagraph{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/equality.jl}{equality.jl}}
+\label{code:equality}
+\inputminted{julia}{Module/equality.jl}
+
+\subparagraph{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/generators.jl}{generators.jl}}
+\label{code:generators}
+\inputminted{julia}{Module/generators.jl}
+
+\subparagraph{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/HeckeOperator.jl}{HeckeOperator.jl}}
+\label{code:HeckeOperator}
+\inputminted{julia}{Module/HeckeOperator.jl}
+
+\subparagraph{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/recognizer.jl}{recognizer.jl}}
+\label{code:recognizer}
+\inputminted{julia}{Module/recognizer.jl}
+
+
+\subsubsection{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/tree/master/src/data}{Data Submodule}}
+\subparagraph{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/storage.jl}{storage.jl}}
+\label{code:storage}
+\inputminted{julia}{Module/storage.jl}
+
+\subparagraph{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/delta_file_maker.jl}{delta\_file\_maker.jl}}
+\label{code:deltaFileMaker}
+\inputminted{julia}{Module/deltaFileMaker.jl}
+
+\subparagraph{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/Hecke_primes_file_maker.jl}{Hecke\_primes\_file\_maker.jl}}
+\label{code:HeckePrimesFileMaker}
+\inputminted{julia}{Module/HeckePrimesFileMaker.jl}
+
+\subparagraph{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/Hecke_powers_file_maker.jl}{Hecke\_powers\_file\_maker.jl}}
+\label{code:HeckePowersFileMaker}
+\inputminted{julia}{Module/HeckePowersFileMaker.jl}
+
+
+
 \section{Other Programs}
