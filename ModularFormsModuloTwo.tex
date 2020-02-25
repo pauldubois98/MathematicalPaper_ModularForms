@@ -806,25 +806,36 @@ Now, if $p \equiv 3 \bmod 8$, we may only look at the coefficient $q^1$ of $T_p|
 
 From definition (in \ref{DefHeckeOperatorsMod2}), we have that the coefficient of $q^1$ is $\gamma(1) = c(p)$ (since $p \nmid 1$) with $c$ the $q$ coefficients of $\Delta^3$.
 
-From \eqref{eq:Delta}, the none zero coefficients of $\Delta$ are odd squares.
-
-Now, $c(p)$ is th $p^{th}$ coefficient of $\Delta^3$. We have:
+From \eqref{eq:Delta}, the non-zero coefficients of $\Delta$ are odd squares.
+So we have:
 $$
 \left( \Delta(q) \right)^3
 = \left( \sum_{m=0}^{\infty} q^{(2m+1)^2} \right)^3
 = \sum_{n=0}^{\infty} \#\{m_1, m_2, m_3 \text{ odds } | m_1^2 + m_2^2 + m_3^2 = n\} q^n
 $$
-So $c(p) = \#\{m_1, m_2, m_3 \text{ odds } | m_1^2 + m_2^2 + m_3^2 = p\} \bmod 2$ corresponds ($\bmod 2$) to the number of ways to write $p$ as sum of three odd squares.
+As, $c(p)$ is th $p^{th}$ coefficient of $\Delta^3$, $c(p) = \#\{m_1, m_2, m_3 \text{ odds } | m_1^2 + m_2^2 + m_3^2 = p\} \bmod 2$ corresponds ($\bmod 2$) to the number of ways to write $p$ as sum of three odd squares.
 
+Now, there are a few possible cases:
+If $p=3$, then $m_1=m_2=m_3=1$ is the only solution, and $c(p)=1$ so $T_p|\Delta^3=\Delta$.
+Now, we consider 
+\begin{itemize}
+	\item $m_1=m_2=m_3$: in this case, $m_1^2 + m_2^2 + m_3^2$ isn't prime, unless $p=3$ (but we handled this case already). So there is no solution of this form.
+	\item $m_1 \neq m_2 \neq m_3 \neq m_1$ (i.e. all distinct): in this case, if $(m_1, m_2, m_3)$ is a solution, the so is $(m_1, m_3, m_2)$, $(m_2, m_1, m_3)$, $(m_2, m_3, m_1)$, $(m_3, m_1, m_2)$ and $(m_3, m_2, m_1)$. Therefore, there is an even number of solutions, so the contribution to $c(p)$ of solutions of this type is 0.
+	\item $m_1 = m_2\neq m_3$ in this case, if $(m_1, m_2, m_3)$ is a solution, the so is $(m_1, m_3, m_2)$, $(m_3, m_1, m_2)$. Therefore, there is an odd number of solutions, so the contribution to $c(p)$ of solutions of this type is 1 (if such kind of solution exist).
+\end{itemize}
 
+We want to know if there are solutions to $a^2+2b^2=p$ with $a$ and $b$ odds.
+We look at the integers $\Z[\sqrt{-2}]$:
+If $p$ splits, then there is a pair $(a,b)$ of integers such that $(a+b\sqrt{-2})(a-b\sqrt{-2})=p$, i.e. $a^2+2b^2=p$.
+Now, $p$ splits in $\Z[\sqrt{-2}]$ if $\legendre{-2}{p}=+1$.
+As $p \equiv 3 \bmod 8$, $\legendre{2}{p}=-1$ and $\legendre{-1}{p}=-1$, so $\legendre{-2}{p}=+1$.
+Therefore, there are two integers $a$ and $b$ such that $a^2+2b^2=p$.
+Suppose $a$ is even: then $p$ is even, which is even (as $p$ is an odd prime).
+Thus, $a$ must be odd.
+Suppose $b$ is even: then $a^2+2b^2 \equiv a^2 \equiv 1 \bmod 8$, but $p \equiv 3 \bmod 8$
+Thus, $b$ must be odd.
 
-Need in fact $m_1 = m_2 \neq m_3$, but then??
-[I am stuck]
-
-
-
-
-
+Therefore, if $p \equiv 3 \bmod 8$, we found a pair of odd numbers $a$ and $b$ such that $a^2+2b^2=p$, so $c(p)=1$, and thus $T_p|\Delta^3 = \Delta$.
 
 \paragraph{$\Delta^5$}
 From \eqref{eq:TpDelta^k}, we have $T_p|\Delta^5 = \Delta^3 \text{ or } \Delta \text{ or } 0$.\\
@@ -835,6 +846,7 @@ Moreover, \eqref{eq:TpDelta^k_bis} gives:
 	p \equiv 1 \text{ or } 3 \bmod 8: & \quad T_p|\Delta^5 = 0 & \text{ else } &
 \end{align*}
 
+\subparagraph{$p \equiv 7 \bmod 8$}
 Now, if $p \equiv 7 \bmod 8$, we may only look at the coefficient $q^3$ of $T_p|\Delta^5$ (if it is $1$, $T_p|\Delta^5 = \Delta^3$ and if it is $0$, $T_p|\Delta^3 = 0$, as there is no other possibilities).
 
 From definition (in \ref{DefHeckeOperatorsMod2}), we have that the coefficient of $q^3$ is $\gamma(3) = c(3p)$ (since $p \nmid 3$) with $c$ the $q$ coefficients of $\Delta^5$.
@@ -848,24 +860,88 @@ $$
 $$
 So $c(3p) = \#\{m_1, m_2, m_3, m_4, m_5 \text{ odds } | m_1^2 + m_2^2 + m_3^2 + m_4^2 + m_5^2 = 3p\} \bmod 2$ corresponds ($\bmod 2$) to the number of ways to write $3p$ as sum of five odd squares.
 
-When looked $\bmod 8$, $m_1^2 + m_2^2 + m_3^2 + m_4^2 + m_5^2 \equiv 5 \bmod 8$.
-We can check, $p \equiv 7 \bmod 8$ so $3p \equiv 5 \bmod 8$.
+Now, we look at the decomposition of $m_1$, $m_2$, $m_3$, $m_4$, $m_5$:
+\begin{itemize}
+	\item (1+1+1+1+1): in this case, there are $5!=120$ symmetric solutions, so an even number of solution, so the contribution to $c(3p)$ is 0.
+	\item (1+1+1+2): in this case, there are $3!\binom{5}{2}=60$ symmetric solutions, (which is even), so the contribution to $c(3p)$ is 0.
+	\item (1+2+2): in this case, there are $\binom{5}{2}\binom{3}{2}=30$ symmetric solutions, (again, even), so the contribution to $c(3p)$ is 0.
+	\item (1+1+3): in this case, there are $2\binom{5}{3}=20$ symmetric solutions, so the contribution to $c(3p)$ is 0.
+	\item (1+4): in this case, there are $5$ symmetric solutions, so an odd number of solution, so the contribution to $c(3p)$ is 1, if such a solution exist.
+	\item (5): in this case, $m_1^2 + m_2^2 + m_3^2 + m_4^2 + m_5^2 = 5n$ which is never $3p$.
+\end{itemize}
 
+Now, we are looking for pairs of odd integers $(a,b)$ such that $a^2+4b^2=3p$.
+that is, $a^2+c^2=3p$ with $c=2b$ so $c \equiv 2 \bmod 4$.
+We look at factorization of $3p$ in $\Z[\sqrt(-1)]$.
+Now, $p \equiv 7 \bmod 8$, so $\legendre{-1}{p}=-1$.
+Thus, $p$ remains prime in the Gaussian integers $\Z[\sqrt(-1)]$.
+Therefore, there is no pair of $(a,b)$ integers solution $a^2+4b^2=3p$.
 
+Thus, $T_p|\Delta^5 \neq \Delta^3$ for any odd prime $p$.
 
+\subparagraph{$p \equiv 5 \bmod 8$}
+Now, if $p \equiv 5 \bmod 8$, we want to know if $T_p\Delta = \Delta \text{ or } 0$.
+Again, we look at the coefficient $q^1$ of $T_p|\Delta$, which is the coefficient $q^p$ of $\Delta^5$, i.e. $c(p)= \#\{ m_1, m_2, m_3, m_4, m_5 \text{ odds } | m_1^2 + m_2^2 + m_3^2 + m_4^2 + m_5^2 = p \} \bmod 2$, which corresponds ($\bmod 2$) to the number of ways to write $p$ as sum of five odd squares.
 
+If $p=5$, then $c(5)=1$ clearly, and we have $T_5|\Delta^5=\Delta$.
+Now, we again look at the decomposition of $m_1$, $m_2$, $m_3$, $m_4$, $m_5$:
+\begin{itemize}
+	\item (1+1+1+1+1): in this case, there are $5!=120$ symmetric solutions, so an even number of solution, so the contribution to $c(3p)$ is 0.
+	\item (1+1+1+2): in this case, there are $3!\binom{5}{2}=60$ symmetric solutions, (which is even), so the contribution to $c(3p)$ is 0.
+	\item (1+2+2): in this case, there are $\binom{5}{2}\binom{3}{2}=30$ symmetric solutions, (again, even), so the contribution to $c(3p)$ is 0.
+	\item (1+1+3): in this case, there are $2\binom{5}{3}=20$ symmetric solutions, so the contribution to $c(3p)$ is 0.
+	\item (1+4): in this case, there are $5$ symmetric solutions, so an odd number of solution, so the contribution to $c(3p)$ is 1, if such a solution exist.
+	\item (5): in this case, $m_1^2 + m_2^2 + m_3^2 + m_4^2 + m_5^2 = 5n$ which is not prime unless $p=5$ (but we treated this case before).
+\end{itemize}
 
+Now, we are looking for pairs of odd integers $(a,b)$ such that $a^2+4b^2=p$.
+that is, $a^2+c^2=3p$ with $c=2b$ so $c \equiv 2 \bmod 4$.
+We again look at factorization of $p$ in $\Z[\sqrt(-1)]$.
+Now, $p \equiv 5 \bmod 8$, so $\legendre{-1}{p}=1$.
+Thus, $p$ remains prime in the Gaussian integers $\Z[\sqrt(-1)]$.
+Therefore, there is a pair of $(a,b)$ integers solution $a^2+c^2=p$.
 
-
-Need in fact $m_1 = m_2 \neq m_3$, but then??
-[I am stuck]
-
-
-
-
-
+Suppose both $a$ and $c$ are odd: then $a^2+c^2$ is even, so it may not be any odd prime $p$.
+Suppose both $a$ and $c$ are even: then $a^2+c^2$ is even, so it may not be any odd prime $p$.
+So, without loss of generalities, $a$ is odd and $c$ is even. We can write $b=\nicefrac{c}{2}$.
+Suppose $c$ is even: then $a^2+4b^2 \equiv 1 \bmod 8$. As $p \equiv 5 \bmod 8$, $a^2+4b^2 \neq p$.
+So if $(a,b)$ is a solution, then $a$ and $b$ are odds.
+Thus, $T_p|\Delta^5=\Delta$ for any odd prime $p$.
 
 \paragraph{$\Delta^7$}
+From \eqref{eq:TpDelta^k}, we have $T_p|\Delta^7 = \Delta^5 \text{ or } \Delta^3 \text{ or } \Delta \text{ or } 0$.
+In fact, we have \cite[2.3]{OrdreNilpotenceOperateurHecke}:
+\begin{align*}
+	T_p|\Delta^7 = \Delta   & \quad p \equiv 7 \bmod 16 \\
+	T_p|\Delta^7 = \Delta^3 & \quad p \equiv 5 \bmod 8 \\
+	T_p|\Delta^7 = \Delta^5 & \quad p \equiv 3 \bmod 8 \\
+	T_p|\Delta^7 = 0        & \quad p \equiv 1 \bmod 8 \text{ or } p \equiv -1 \bmod 16 \\
+\end{align*}
+
+% start of proof
+%Moreover, \eqref{eq:TpDelta^k_bis} gives:
+%\begin{align*}
+%p \equiv 7 \bmod 8: & \quad T_p|\Delta^7 = \Delta \text{ or } 0 \\
+%p \equiv 5 \bmod 8: & \quad T_p|\Delta^7 = \Delta^3 \text{ or } 0 \\
+%p \equiv 3 \bmod 8: & \quad T_p|\Delta^7 = \Delta^5 \text{ or } 0 \\
+%p \equiv 1 \bmod 8: & \quad T_p|\Delta^7 = 0 \\
+%\end{align*}
+%
+%We will have to analyse $q$-coefficients of $\Delta^7$, (precisely coefficient of $q^{5p}$, $q^{3p}$, and $q^{p}$).
+%As $c(n) = \#\{m_1, m_2, m_3, m_4, m_5 \text{ odds } | m_1^2 + m_2^2 + m_3^2 + m_4^2 + m_5^2 + m_6^2 + m_7^2 = n\} \bmod 2$, it is useful to look at the decomposition of $m_1$, $m_2$, $m_3$, $m_4$, $m_5$, $m_6$, $m_7$:
+%\begin{itemize}
+%	\item (1+1+1+1+1+1+1): in this case, the only possible $p$ is $p=7$, but then it is easy to see that $T_7|\Delta^7=\Delta$.
+%	\item (1+1+...): in this case, there are evenly many symmetric solutions, so the contribution to $c(n)$ is 0.
+%	\item (1+2+2+2): in this case, there are $\binom{7}{2}\binom{7}{2}\binom{7}{2}=3^3*7^3$ symmetric solutions, so an odd number of solution, so the contribution to $c(n)$ is 1, if such a solution exist.
+%	\item (1+3+3): in this case, there are evenly many symmetric solutions, so the contribution to $c(n)$ is 0.
+%	\item (1+2+4): in this case, there are evenly many symmetric solutions, so the contribution to $c(n)$ is 0?
+%	\item (1+6): in this case, there are evenly many (in fact 6) symmetric solutions, so the contribution to $c(n)$ is 0.
+%	\item (2+2+3): in this case, there are evenly many symmetric solutions, so the contribution to $c(n)$ is 0.
+%	\item (2+5): in this case, there are evenly many symmetric solutions, so the contribution to $c(n)$ is 0?
+%	\item (3+4): in this case, there are evenly many symmetric solutions, so the contribution to $c(n)$ is 0?
+%\end{itemize}
+
+
 
 \subsubsection{Table of Hecke Operators}
 Here is a table of Hecke operators:
@@ -898,8 +974,11 @@ A larger table may be found in the appendix (see \ref{table:PrimeHeckeOperators}
 It seems quite random, which makes sense since the Hecke operators depend on prime, and primes appear at random.
 However, it is interesting to try to find patterns and rules for this table.
 
-In line one ($\Delta^3$), we get $\nicefrac{1}{4}^{\text{th}}$ of the primes giving $\Delta$, this is a consequence of Dirichlet Density Theorem, that will be discussed later in this paper.
-[Is this remark pertinent?]
+In the second column (of $\Delta^3$), we get $\nicefrac{1}{4}$ of the primes giving $\Delta$ (the other $\nicefrac{3}{4}$ giving $0$), this is a consequence of Dirichlet Density Theorem, that will be discussed later in this paper.
+Similarly, in the third column (of $\Delta^5$), we get $\nicefrac{1}{4}$ of the primes giving $\Delta$.
+For similar reason, in the fourth column (of $\Delta^7$), we get $\nicefrac{1}{4}$ of the primes giving $\Delta^3$; $\nicefrac{1}{4}$ of the primes giving $\Delta^5$; $\nicefrac{1}{8}$ of the primes giving $\Delta$; and $\nicefrac{3}{8}$ of the primes giving $0$.
+
+
 
 \subsubsection{Nil-potency Order}
 As we know that the Hecke operators are nilpotent, we may want to study the order of nil potentness.

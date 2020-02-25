@@ -38,7 +38,11 @@
 \usetikzlibrary{mindmap}
 \usepackage{adjustbox}
 %links
+\usepackage[hyphens]{url}
 \usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+}
 %citations
 \usepackage[square]{natbib}
 \bibliographystyle{unsrtnat}
@@ -84,7 +88,7 @@
 \newcommand{\Det}[1]{\text{Det}(#1)}
 \newcommand{\End}[1]{\text{End}(#1)}
 \newcommand{\Aut}[1]{\text{Aut}(#1)}
-
+\newcommand{\legendre}[2]{\left( \frac{#1}{#2} \right)}
 
 
 %opening
