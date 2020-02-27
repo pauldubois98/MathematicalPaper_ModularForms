@@ -114,8 +114,6 @@ $$
 
 \subsection{The Frobenius Element}
 \subsubsection{Definition}
-[is it ok as a subsection title? (perhaps too generic?) alternatives: well definiteness, introduction]
-
 We can construct the \textit{Frobenius element} (sometimes also called the \textit{Artin symbol}, or the \textit{Frobenius map}) that depend on the extension $L/K$ and ideal $\mathfrak{P}$ in $\mathcal{O}_L$.
 It is denoted $\Frob{L/K}{\mathfrak{P}}$, and is \textit{the} element $\sigma \in G$ such that:
 $$
@@ -128,9 +126,13 @@ The second condition is the interesting one; while the first is only useful to m
 The second condition defines a unique element only up to conjugacy class.
 Most of the time, we will consider abelian extensions, so the conjugacy classes will only have one element, and the first condition will be dropped.
 
-We define the \textit{Frobenius element} for $\mathfrak{p}$ (denoted $\Frob{L/K}{\mathfrak{p}}$) in a meaning full manner, to be the set $\{\Frob{L/K}{\mathfrak{P}} | \mathfrak{P} \text{ extending } \mathfrak{p}\} \subset G$.
+We define the \textit{Frobenius element} for $\mathfrak{p}$ (denoted $\Frob{L/K}{\mathfrak{p}}$) in a meaning full manner, to be the set
+$$
+\{\Frob{L/K}{\mathfrak{P}} | \mathfrak{P} \text{ extending } \mathfrak{p}\} \subset G
+.$$
 
-[is this construction / definition ok? or maybe I should rephrase it? (it look weird to me)]
+The following properties imply that $\Frob{L/K}{\mathfrak{p}}$ is in fact a conjugacy class in the Galois group $\Gal{L/K}$.
+Hence, we refer to $\Frob{L/K}{\mathfrak{p}}$ as the Frobenius conjugacy class.
 
 \begin{property}
 	If $\tau \in G$, then 
@@ -182,10 +184,8 @@ We define the \textit{Frobenius element} for $\mathfrak{p}$ (denoted $\Frob{L/K}
 	Then using last property, we deduce that $\Frob{L/K}{\mathfrak{P}_1}$ and $\Frob{L/K}{\mathfrak{P}_2}$ are conjugates.
 \end{proof}
 
-Never the less, is important to notice at this point that if $G$ is abelian, then all conjugacy classes are made up of only one element.
-Therefore, the Frobenius element is well defined in this case.
-Moreover, it will only depend on the prime $\mathfrak{p}$ that is extended.
-[should this comment be before or after the property?]
+Never the less, is important to notice at this point that if $L/K$ is an abelian extension (i.e. $G$ is abelian), then every conjugacy class in $\Gal{L/K}$ are made up of only one element.
+In this case, we sometimes use $\Frob{L/K}{\mathfrak{p}}$ to denote the Frobenius element $\Frob{L/K}{\mathfrak{P}}$, where $\mathfrak{P}$ is any prime lying above $\mathfrak{p}$.
 
 
 
