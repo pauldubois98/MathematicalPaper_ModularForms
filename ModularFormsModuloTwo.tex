@@ -696,6 +696,29 @@ An immediate consequence (by taking the contra-positive) of this property is tha
 Thus, for any $k > 1$, we get that there is a prime $p$ such that $\overline{T_p}|\Delta^k \neq 0$.
 This means that $\overline{T_p}$ is never the null operator (so reduction modulo two doesn't become trivial).
 
+\begin{property}
+	In fact, we have $\overline{T_p}|\Delta^p = \Delta + \mathcal{O}(\Delta^9)$ for any odd primes $p$.
+\end{property}
+\begin{proof}
+	We denote $c(n)$ the coefficients of the $q$-expansion of $\Delta^p$ and $\gamma(n)$ the ones of $T_p|\Delta^p$.
+	We recall form definition that $\gamma(1)=c(p)$ (since $p \nmid 1$).
+	Now, $c(p)=1$ (in fact, $p$ is the smallest power of $q$ that appear in the $q$-expansion of $\Delta^p$).
+	So $\overline{T_p}|\Delta^p = \Delta + \mathcal{O}(\Delta^3)$.
+	
+	But now using Behaviour of Hecke operators in $\mathcal{F}_i$, we have:
+	$$
+	\overline{T_p}|\Delta^p = \Delta{n_0} + \Delta^{n_1} + \Delta^{n_2} + \dots + \Delta^{n_r} \qquad n_i \neq n_j \text{ if } i \neq j
+	$$
+	with $n_0 \equiv n_j \bmod 8$ for all $0 \leq j \leq r$.
+	As $n_0=1$, this means that $n_j \equiv 1 \bmod 8$.
+	Therefore, the smallest power of $\Delta$ appearing in $\overline{T_p}|\Delta^p$ apart from 1 is 9.
+	This gives the proposition statement.
+\end{proof}
+This is an other way to prove non-nullity of Hecke operators (for primes).
+Note that with this proof, we know an explicit modular form such that the Hecke operator doesn't vanish.
+
+
+
 \subsubsection{Nil-potency}
 \label{NilpotencyHeckeOperators}
 The properties of Hecke operators is that, given a modular form $f$, if we apply a Hecke operators enough times, the form will become zero (i.e. they are nilpotent).
@@ -1004,44 +1027,8 @@ Remember that one consequence of non nullity is that if $f \neq 0, \Delta$, then
 
 This directly implies that $g(f) > 1$ if $f \neq \Delta, 0$.
 
-\subparagraph{Conjecture}
-Let $f_1,f_2 \in \mathcal{F}$ be modular form modulo 2, such that
-$f_1 = \Delta^k + \sum_{j < k} \mu_j \Delta^k$
-and
-$f_2 = \Delta^k + \sum_{j < k} \nu_j \Delta^k$
-(i.e. both having maximum power $\Delta^k$).
-
-Then $g(f_1)=g(f_2)$.
-
-\subparagraph{Proof attempt}
-By induction?\\
-Case $k=1$: This is trivial.\\
-Case $k=3$: This is rather straightforward as well: $g(\Delta^3)=1$ and $g(\Delta^3+\Delta)=1$.
-
-Now, suppose this is true for all $k^* < k$.
-Want to show it is true for $k$.
-
-Need 
-$$
-T_p|\Delta^k = \Delta^l + O(\Delta^{l-2}) 
-\implies
-\exists q \in \primes \text{ such that } 
-T_q|\Delta^{k+2}=\Delta^m + O(\Delta^{l-2}) 
-\text{ with } m \geq l
-$$
------- or ------
-$$
-\deg(T_p|\Delta^k) \geq \deg(T_p|\Delta^k+\Delta^l) \quad \forall l<k
-$$
-Is any of the two reasonable to prove?
-
-
-Note that if it is not provable, I should do a numerical analysis, and mension it as a [rather strong, depending on the analysis] conjecture.
-Note that it might be wrong, and maybe that numerical analysis will find it out. In such a case, it is nice to mention.
-
 \paragraph{Examples}
-\subparagraph{By hand}
-We can compute a few nil potentness by hand:
+We can compute a few nil potentness "by hand" (we will see later that there is a more direct method):
 \begin{itemize}
 	\item $g(0) = -\infty$
 	
@@ -1084,11 +1071,3 @@ We can compute a few nil potentness by hand:
 	g(\Delta^7) = 1 + \max(g(\Delta^5), g(\Delta^3), g(\Delta), g(0)) = 3
 	$
 \end{itemize}
-
-
-
-\subparagraph{Computer calculated}
-We will look at $\Delta^{95}$...
-[To do]
-%[to do]
-
