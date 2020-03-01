@@ -562,7 +562,20 @@ We see that Frobenius elements are in the heart of this theorem.
 It was proved by Nikolai Chebotarev in his thesis (\cite{ChebotarevTheorem}).
 
 \subsubsection{Example}
-[extension of order 3?]
+We go through an example of Chebotarev Density Theorem for an extension of order 3.
+
+We look at $K/\Q$ with $K \cong \nicefrac{\Q[x]}{x^3-3x-1}$ (i.e. the number field with defining polynomial $x^3 - 3x - 1$).
+
+Using SageMath \footnote{See the code in appendix, \ref{code:ChebotarevExample}}, we have:
+The discriminant of this extension is $3^4=81$, and the extension is Galois.
+We define $G = \Gal{K\Q}$ the Galois group of the extension, and we have $G \cong C_3 = \left\langle \sigma \ | \ \sigma^2 = 1 \right\rangle $ since the order of the extension is 3).
+
+Then, an unramified prime in $\Q$ may remain irreducible in $K/\Q$, split in $K/\Q$.
+If $p$ splits in $K\Q$, then $\Frob{K/\Q}{p}=1$ (the identity of the Galois group $G$).
+If $p$ remains inert in $K\Q$, then $\Frob{K/\Q}{p}=\sigma \text{ or } \sigma^2$.
+
+As the discriminant is finite, there are finitely many primes that ramifies.
+Applying the Chebotarev Density theorem: one third of the primes will split in this extension, and two third will remain inert.
 
 \subsubsection{Special Case}
 Here, we want to apply Chebotarev theorem in the case of a quadratic field extension.

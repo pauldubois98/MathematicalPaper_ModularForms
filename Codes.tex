@@ -54,7 +54,7 @@ The official \href{https://pauldubois98.github.io/ModularFormsModuloTwo.jl/}{doc
 
 \subsection{Files details}
 
-\subsubsection{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/tree/master/src}{Main Sources}}
+\subsubsection[Main Sources] {\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/tree/master/src}{Main Sources}}
 \subparagraph{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/ModularFormsModuloTwo.jl}{ModularFormsModuloTwo.jl}}
 \label{code:ModularFormsModuloTwo}
 \inputminted[breaklines]{julia}{Module/ModularFormsModuloTwo.jl}
@@ -80,7 +80,7 @@ The official \href{https://pauldubois98.github.io/ModularFormsModuloTwo.jl/}{doc
 \inputminted[breaklines]{julia}{Module/recognizer.jl}
 
 
-\subsubsection{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/tree/master/src/data}{Data Submodule}}
+\subsubsection[Data Submodule] {\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/tree/master/src/data}{Data Submodule}}
 \subparagraph{\href{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/storage.jl}{storage.jl}}
 \label{code:storage}
 \inputminted[breaklines]{julia}{Module/storage.jl}
@@ -98,5 +98,38 @@ The official \href{https://pauldubois98.github.io/ModularFormsModuloTwo.jl/}{doc
 \inputminted[breaklines]{julia}{Module/HeckePowersFileMaker.jl}
 
 
+\section{$T_p$ as series of $T_3$ and $T_5$}
+\subsection{$a_ij(p)$ Computations}
+\subsection{$a_ij(p)$ Graphs}
 
-\section{Other Programs}
+\section{Governing Fields}
+\subsection{Check of Known Governing Fields}
+\subsection{Frobenian Elements Computations in Extensions}
+\subsection{Analysis of Extensions}
+
+
+
+\section{Chebotarev Example}
+\label{code:ChebotarevExample}
+\begin{minted}{sage}
+m = 0
+f = x^3 + m*x^2 + (m-3)*x - 1
+K = NumberField(f, 'a')
+
+print("Defining polynomial:")
+print(f)
+> x^3 - 3*x - 1
+print("Discriminant:")
+print(K.discriminant())
+> 81
+print("Extension Degree:")
+print(K.degree())
+> 3
+print("Galois extension:")
+print(K.is_galois())
+> True
+print("Basis:")
+True
+print(K.maximal_order().basis())
+> [1, a, a^2]
+\end{minted}
