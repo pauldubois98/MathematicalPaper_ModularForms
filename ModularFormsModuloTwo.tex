@@ -496,9 +496,9 @@ We will also introduce (as in \cite[2.]{StructureAlgebreHecke}):
 $$
 \mathcal{F}(n)
 = \left\langle \Delta^k \ | \ k \text{ odd} \text{ and } k \leq 2n-1 \right\rangle
-= \left\langle \Delta, \Delta^3, \Delta^5, \dots, \Delta^n \right\rangle
+= \left\langle \Delta, \Delta^3, \Delta^5, \dots, \Delta^{2n-1} \right\rangle
 $$
-This matches specifically $\overline{M_{12 n}} = \mathcal{F}(n)$.
+This matches specifically $\overline{M_{6(2n-1)}} = \mathcal{F}(n)$.
 
 \subsubsection{Duality between $\Delta$ and $q$}
 %reference to wave-particule duality from physics
@@ -696,6 +696,9 @@ An immediate consequence (by taking the contra-positive) of this property is tha
 Thus, for any $k > 1$, we get that there is a prime $p$ such that $\overline{T_p}|\Delta^k \neq 0$.
 This means that $\overline{T_p}$ is never the null operator (so reduction modulo two doesn't become trivial).
 
+
+
+Non-nullity of Hecke operators is also implied by the following property, which is new to this paper:
 \begin{property}
 	In fact, we have $\overline{T_p}|\Delta^p = \Delta + \mathcal{O}(\Delta^9)$ for any odd primes $p$.
 \end{property}
@@ -707,14 +710,13 @@ This means that $\overline{T_p}$ is never the null operator (so reduction modulo
 	
 	But now using Behaviour of Hecke operators in $\mathcal{F}_i$, we have:
 	$$
-	\overline{T_p}|\Delta^p = \Delta{n_0} + \Delta^{n_1} + \Delta^{n_2} + \dots + \Delta^{n_r} \qquad n_i \neq n_j \text{ if } i \neq j
+	\overline{T_p}|\Delta^p = \Delta^{k_0} + \Delta^{k_1} + \Delta^{k_2} + \dots + \Delta^{k_r} \qquad k_i \neq k_j \text{ if } i \neq j
 	$$
-	with $n_0 \equiv n_j \bmod 8$ for all $0 \leq j \leq r$.
-	As $n_0=1$, this means that $n_j \equiv 1 \bmod 8$.
+	with $k_0 \equiv k_j \bmod 8$ for all $0 \leq j \leq r$.
+	As $k_0=1$, this means that $k_j \equiv 1 \bmod 8$.
 	Therefore, the smallest power of $\Delta$ appearing in $\overline{T_p}|\Delta^p$ apart from 1 is 9.
 	This gives the proposition statement.
 \end{proof}
-This is an other way to prove non-nullity of Hecke operators (for primes).
 Note that with this proof, we know an explicit modular form such that the Hecke operator doesn't vanish.
 
 
@@ -734,17 +736,23 @@ $$
 \overline{T_p}| \Delta^k = \sum_{j \leq k} \mu_j \Delta^j
 $$
 
-From definition \ref{DefHeckeOperators}, a Hecke operators takes a modular form of weight $2k$ to an other modular form of weight $2k$.
-Take a modular form modulo 2 $\overline{f}$ with degree $k$ (in terms of $\Delta$).
-Note that there is a modular form $f$ that corresponds to $\overline{f}$ when reduced modulo two.
-Now we want to know the maximum degree (again in terms of $\Delta$) of $\overline{T_p}|\overline{f}$.
-Let $n$ be the smallest integer such that $\overline{f} \in \overline{M_{12n}}$.
+Let $f$ be a modular form modulo 2 of maximum degree $2n_0-1$ (in $\Delta$), i.e. 
+$$
+f = \Delta^{2n_0-1} + \Delta^{2n_1-1} + \dots + \Delta^{2n_m-1}
+$$ with $n_0 > n_1 > \dots > n_m$.
+So $f \in \mathcal{F}(n_0)$
+Then, there must exist a modular forms $g \in M_{6n_0}$ such that $\overline{g}=f$.
+For example, we can take 
+$$
+g = \Delta^{2n_0-1} + E_2^{6(n_0-n_1)}\Delta^{2n_1-1} + \dots + E_2^{6(n_0-n_m)}\Delta^{2n_m-1}
+$$
+(it is straightforward to check that $g\in M_{6n_0}$ and $\overline{g}=f$, as it was designed for).
+We know that $\overline{T_p}|f = \overline{T_p}|\overline{g} = \overline{T_p|g}$.
+Remark as well that as $T_p: M_{6n_0} \to M_{6n_0}$, we have $T_p|g \in M_{6n_0}$, so the maximum degree of $\Delta$ that appear in $T_p|g$ is $2n_0-1$.
+Thus, the maximum degree of $\overline{\Delta}$ that appear in $\overline{T_p|g} = \overline{T_p}|f$ is $2n_0-1$.
+Therefore, the degree of $f$ doesn't increase when applying $\overline{T_p}$ to it.
 
-We know $\overline{T_p}|\overline{f} = \overline{T_p|f}$ and $\overline{f} \in \mathcal{F}(n) = \overline{M_{12n}}$ so $f \in M_{12n}$.
-This implies that $T(p)f \in M_{12n}$ so $\overline{T(p)f} \in \overline{M_{12n}}$, thus $\overline{T_p}|\overline{f} \in \mathcal{F}(n)$.
 
-Therefore, the maximum degree (in terms of $\Delta$) of $\overline{T_p}|\overline{f}$ is $k$ as well.
-Thus, the degree of $\overline{f}$ doesn't increase after applying a Hecke operator.
 
 \subparagraph{Order of $\Delta$ decrease}
 %Serre's "proof"
