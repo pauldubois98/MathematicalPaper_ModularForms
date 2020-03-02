@@ -12,6 +12,8 @@
 %\renewcommand{\baselinestretch}{1.6}
 %lists
 \usepackage{enumitem}
+%multi-columns
+\usepackage{multicol}
 %encoding
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -90,7 +92,7 @@
 \newcommand{\End}[1]{\text{End}(#1)}
 \newcommand{\Aut}[1]{\text{Aut}(#1)}
 \newcommand{\legendre}[2]{\left( \frac{#1}{#2} \right)}
-
+\newcommand{\degree}[1]{\partial #1}
 
 
 %opening
@@ -98,36 +100,29 @@
 \author{Paul Dubois}
 
 \begin{document}
-\maketitle
-
-\begin{abstract}
-We are interested in Modular forms modulo 2, and computing thing about it.
-[temporary abstract]
-
-Key words that should appear:
-Modular forms;
-Mod 2;
-Duality of definitions;
-Governing fields;
-Frobenian map?;
-Exact computations;
-\end{abstract}
-
-\tableofcontents
-
-
-
-\include{ModularForms}
-\include{ModularFormsModuloTwo}
-\include{HeckeAlgebra}
-\include{FrobenianMaps}
-\include{Numerics}
-\appendix
-\include{ComputationTables}
-\include{Codes}
-
-
-
-\bibliography{references}
-
+	\maketitle
+	\begin{abstract}
+	We are interested in Modular forms modulo 2, and computing thing about it.
+	[temporary abstract]
+	
+	Key words that should appear:
+	Modular forms;
+	Mod 2;
+	Duality of definitions;
+	Governing fields;
+	Frobenian map?;
+	Exact computations;
+	\end{abstract}
+	\tableofcontents
+	
+	\include{ModularForms}
+	\include{ModularFormsModuloTwo}
+	\include{HeckeAlgebra}
+	\include{FrobenianMaps}
+	\include{Numerics}
+	\appendix
+	\include{ComputationTables}
+	\include{Codes}
+	
+	\bibliography{references}
 \end{document}

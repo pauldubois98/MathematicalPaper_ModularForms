@@ -66,3 +66,5 @@ plt.ylabel('Computation Time')
 plt.title("$q$-series of $\Delta^2$")
 plt.legend()
 plt.show()
+
+

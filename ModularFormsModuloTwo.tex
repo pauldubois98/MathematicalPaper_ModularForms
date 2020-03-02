@@ -1111,9 +1111,9 @@ $$
 
 
 \paragraph{Basic Properties}
-\subparagraph{Variation of $h$}
-By construction (it is simple to see with the example above), $h(n+1) \geq h(n)$.
-Note that it is $\underline{\text{not true}}$, in general, that $n_3(n+1) \geq n_3(n)$ nor $n_5(n+1) \geq n_5(n)$.
+\subparagraph{Variation}
+Note that neither of $h$, $n_3$, $n_5$ is monotone.
+That is, in general, it is not true that $h(n+1) \geq h(n)$, neither $n_3(n+1) \geq n_3(n)$ nor $n_5(n+1) \geq n_5(n)$.
 
 \subparagraph{$2k$ and $2k+1$}
 It is straightforward, form definition, that $n_3$ and $n_5$ (therefore also $h$) are the same for an even $2m$ and the next number $2m+1$.
@@ -1173,25 +1173,39 @@ $$
 
 \subparagraph{Upper Bound for $h$}
 Let $m = 2^{k_1} + 2^{k_2} + \dots + 2^{k_r}$ with $k_1 > k_2 > \dots > k_r$.
-Then $m \leq 2^{k_1+1}$, so $h(m) \leq h(2^{k_1+1}) \leq \sqrt{2^{k_1}} \leq \sqrt{m}$.
-So in general, we have:
-$$
-h(m) \leq \sqrt{m} \quad \text{for all } m \in \N.
-$$
+
+By construction, we have:
+\begin{itemize}
+	\item If $k_1$ is even, $n_3(m) < \sqrt{2^{k_1}} = \sqrt{m} < \sqrt{2m}$
+	\item If $k_1$ is odd, $n_3(m) < \sqrt{2^{k_1+1}} < \sqrt{2m}$
+\end{itemize}
+Thus, in any case $n_3(m) < \sqrt{2m}$.
+
+Again, by construction, we have:
+\begin{itemize}
+	\item If $k_1$ is even, $n_5(m) < \sqrt{2^{k_1}} < \sqrt{m}$
+	\item If $k_1$ is odd, $n_5(m) < \sqrt{2^{k_1-1}} = \sqrt{\nicefrac{m}{2}} < \sqrt{m}$
+\end{itemize}
+Thus, in any case $n_5(m) < \sqrt{m}$.
+
+Therefore, we have $h(m) < \sqrt{2m} +  \sqrt{m} = (1+\sqrt{2}) \sqrt{m} < \nicefrac{5}{2}\sqrt{m}$.
+
 
 \subparagraph{Asymptotic Behaviour of $h$}
+Note that if $m=0,1$, we have $h(m) = \sqrt{m} = m$.
 Thus, we have:
 $$
-\nicefrac{1}{2}\sqrt{m} \leq h(m) \leq \sqrt{m}
-\qquad \text{for all } m \in \N.
+\nicefrac{1}{2}\sqrt{m} \leq h(m) < (1+\sqrt{2}) \sqrt{m} < \nicefrac{5}{2}\sqrt{m}
 $$
+for all $m \in \N$.
 Using the big $\mathcal{O}$ notation (asymptotic behaviour), this is:
 $$
 h(m) = \mathcal{O}(\sqrt{m})
 $$
-Note that if $m=0,1$, we have $h(m) = \sqrt{m} = m$.
+
 
 \paragraph{Code of Natural Numbers}
+\subparagraph{A Representation of Odd/Even}
 Given a natural number $m \in \N$, we define it's \textit{code} as the pair $\left[  n_3(m), n_5(m) \right]$.
 
 We define the maps:
@@ -1233,6 +1247,62 @@ $$
 
 Since $\phi$ (respectively $\psi$) has an inverse, it defines a bijection between even (respectively odd) natural numbers and their code.
 
+\subparagraph{Behaviour}
+We observe the following behaviour:
+\begin{center}
+	\begin{tabular}{|r||c|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{k} & \textbf{0 , 1} & \textbf{2 , 3} & \textbf{4 , 5} & \textbf{6 , 7} & \textbf{8 , 9} & \textbf{10 , 11} & \textbf{12 , 13} & \textbf{14 , 15} \\
+		\hline \hline
+		Code of k & [ 1 , 0 ] & [ 0 , 1 ] & [ 1 , 1 ] & [ 2 , 0 ] & [ 3 , 0 ] & [ 2 , 1 ] & [ 3 , 1 ] & [ 0 , 2 ] \\
+		\hline
+		h(k) & 0 & 1 & 1 & 2 & 2 & 3 & 3 & 4 \\
+		\hline
+	\end{tabular}
+
+	(Larger table in \ref{table:IntegersToCode}.)
+\end{center}
+
+
+On smaller scale, the behaviour is as follows:\\
+\begin{center}
+	\includegraphics{behaviour_up_to_1000}
+	
+	(Plot with other scales in \ref{plot:Behaviour_h}.)
+\end{center}
+
+It may be interesting to represent how the code grows according to both parameters.
+First, we can make a small table of values:
+\begin{center}
+	\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|}
+		\hline
+		\textbf{} & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\\hline\hline
+		0 & 0 & 4 & 16 & 20 & 64 & 68 & 80 & 84 & 256 & 260 & 272 \\
+		1 & 2 & 6 & 18 & 22 & 66 & 70 & 82 & 86 & 258 & 262 & 274 \\
+		2 & 8 & 12 & 24 & 28 & 72 & 76 & 88 & 92 & 264 & 268 & 280 \\
+		3 & 10 & 14 & 26 & 30 & 74 & 78 & 90 & 94 & 266 & 270 & 282 \\
+		4 & 32 & 36 & 48 & 52 & 96 & 100 & 112 & 116 & 288 & 292 & 304 \\
+		5 & 34 & 38 & 50 & 54 & 98 & 102 & 114 & 118 & 290 & 294 & 306 \\
+		6 & 40 & 44 & 56 & 60 & 104 & 108 & 120 & 124 & 296 & 300 & 312 \\
+		7 & 42 & 46 & 58 & 62 & 106 & 110 & 122 & 126 & 298 & 302 & 314 \\
+		8 & 128 & 132 & 144 & 148 & 192 & 196 & 208 & 212 & 384 & 388 & 400 \\
+		9 & 130 & 134 & 146 & 150 & 194 & 198 & 210 & 214 & 386 & 390 & 402 \\
+		10 & 136 & 140 & 152 & 156 & 200 & 204 & 216 & 220 & 392 & 396 & 408 \\
+		\hline
+	\end{tabular}
+
+	(Larger table in \ref{table:CodeToIntegers}.)
+\end{center}
+
+But it isn't very visual, so another way to view it is as a surface (obtained by linking with triangles the points plotted).
+On the grid $\left[ 0,10 \right]^2$, we plot the surface $z = \left[ x, y \right]$ i.e. $z$ is the integer with code $\left[ x, y \right]$.
+\begin{center}
+	\includegraphics{code_plot_10-10}
+	
+	(Other scales of plots available in \ref{plot:CodeSurface}.)
+\end{center}
+
+
 \paragraph{Order Relation}
 We define the following order relation on natural numbers:
 For $m, l \in \N$, $m \prec l$ if $h(m) < h(l)$ or $h(m) = h(l)$ and $n_5(m) \prec n_5(l)$.
@@ -1242,29 +1312,29 @@ This relation is a total order, this is straightforward to check.
 \paragraph{$h$ on modular forms}
 For the rest of the section, we will write a modular form $f \in \mathcal{F}$ as follows:
 $f = \Delta^{m_1} + \Delta^{m_2} + \dots + \Delta^{m_r}$ with $m_1 > m_2 > \dots > m_r$.
-In this case, $m_1$ is the \textit{degree} of $f$, and we will denote it by $\partial f$.
-We write $\partial f = -\infty$ if $f=0$.
+In this case, $m_1$ is the \textit{degree} of $f$, and we will denote it by $\degree{f}$.
+We write $\degree{f} = -\infty$ if $f=0$.
 We define $h(f) = h(m_1)$, and $h(f) = -\infty$ if $f=0$.
 Similarly, we define $n_3(f) = n_3(m_1)$ and $n_5(f) = n_5(m_1)$, and $n_3(f) = n_5(f) = -\infty$ if $f=0$.
 
 \paragraph{Action of $T_3$}
-Here, we want to give a description for the behaviour of $h(T_3|f)$ and $\partial T_3|f$.
+Here, we want to give a description for the behaviour of $h(T_3|f)$ and $\degree{T_3|f}$.
 \begin{proposition}
 	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2.
 	\begin{enumerate}
 		\item In general, $h(T_3|f) \leq h(f)-1$.
-		\item If $n_3(f)>0$, then $h(T_3|f) = h(f)-1$ and $\partial T_3|f$ has code $\left[ n_3(f)-1, n_5(f) \right] $.
+		\item If $n_3(f)>0$, then $h(T_3|f) = h(f)-1$ and $\degree{T_3|f}$ has code $\left[ n_3(f)-1, n_5(f) \right] $.
 	\end{enumerate}
 \end{proposition}
 This proposition is stated in \cite[§4]{OrdreNilpotenceOperateurHecke}, and a complete proof is given in \cite{ModularFormsMcGill}.
 
 \paragraph{Action of $T_5$}
-Similarly to the above for $T_3$, we want to give a description for the behaviour of $h(T_5|f)$ and $\partial T_5|f$.
+Similarly to the above for $T_3$, we want to give a description for the behaviour of $h(T_5|f)$ and $\degree{T_5|f}$.
 \begin{proposition}
 	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2.
 	\begin{enumerate}
 		\item In general, $h(T_5|f) \leq h(f)-1$.
-		\item If $n_5(f)>0$, then $h(T_5|f) = h(f)-1$ and $\partial T_5|f$ has code $\left[ n_3(f), n_5(f)-1 \right] $.
+		\item If $n_5(f)>0$, then $h(T_5|f) = h(f)-1$ and $\degree{T_5|f}$ has code $\left[ n_3(f), n_5(f)-1 \right] $.
 	\end{enumerate}
 \end{proposition}
 Again, this proposition is stated in \cite[§4]{OrdreNilpotenceOperateurHecke}, and a complete proof is given in \cite{ModularFormsMcGill}.
@@ -1283,7 +1353,7 @@ Again, this proposition is stated in \cite[§4]{OrdreNilpotenceOperateurHecke}, 
 \begin{proof}
 	We apply $n_3(m_1)$ times the proposition about $T_3$ above, and $n_5(m_1)$ times the proposition about $T_5$, to get that the degree of $g = T_3^{n_3(m_1)}T_5^{n_5(m_1)}|f$ has code $\left[ 0,0 \right]$.
 	The propositions also implie that $h(g) > -\infty$, i.e. $g \neq 0$.
-	Therefore, $\partial g > -\infty$, so it must be odd. since it has code $\left[ 0,0 \right]$,  $\partial g = 1$, thus $g = \Delta$.
+	Therefore, $\degree{g} > -\infty$, so it must be odd. since it has code $\left[ 0,0 \right]$,  $\degree{g} = 1$, thus $g = \Delta$.
 \end{proof}
 
 \begin{corollary}
@@ -1294,6 +1364,39 @@ Again, this proposition is stated in \cite[§4]{OrdreNilpotenceOperateurHecke}, 
 	This is directly implied by the proposition:
 	As $T_3^{n_3(m_1)}T_5^{n_5(m_1)}|f = \Delta \neq 0$, we have $g(f) \geq n_3(f)+n_5(f)+1 = h(k)+1$.
 \end{proof}
+
+\paragraph{Representation of $\mathcal{F}$}
+\subparagraph{Table}
+This means that for each $k$ odd, there is pair $\left[ a,b \right] = \left[ n_3(k),n_5(k) \right] \in \N\times\N$ (which corresponds to the code of $k$), such that $T_3^aT_5^b|\Delta^k = \Delta$.
+Explicitly, $T_3^{n_3(k)}T_5^{n_5(k)}|\Delta^k = \Delta$.
+
+Thus, we can arrange all odd powers of the discriminant $\Delta$ in a table, such that applying the corresponding Hecke operators give exactly $\Delta^1$:
+\begin{center}
+	\begin{tabular}{|c||ccccccccccc|}
+		\hline
+		\textbf{} & \textbf{$T_5^{0}$} & \textbf{$T_5^{1}$} & \textbf{$T_5^{2}$} & \textbf{$T_5^{3}$} & \textbf{$T_5^{4}$} & \textbf{$T_5^{5}$} & \textbf{$T_5^{6}$} & \textbf{$T_5^{7}$} & \textbf{$T_5^{8}$} & \textbf{$T_5^{9}$} & \textbf{$T_5^{10}$} \\
+		\hline\hline
+		$T_3^{0}$ & $\Delta^{1}$ & $\Delta^{5}$ & $\Delta^{17}$ & $\Delta^{21}$ & $\Delta^{65}$ & $\Delta^{69}$ & $\Delta^{81}$ & $\Delta^{85}$ & $\Delta^{257}$ & $\Delta^{261}$ & $\Delta^{273}$ \\
+		$T_3^{1}$ & $\Delta^{3}$ & $\Delta^{7}$ & $\Delta^{19}$ & $\Delta^{23}$ & $\Delta^{67}$ & $\Delta^{71}$ & $\Delta^{83}$ & $\Delta^{87}$ & $\Delta^{259}$ & $\Delta^{263}$ & $\Delta^{275}$ \\
+		$T_3^{2}$ & $\Delta^{9}$ & $\Delta^{13}$ & $\Delta^{25}$ & $\Delta^{29}$ & $\Delta^{73}$ & $\Delta^{77}$ & $\Delta^{89}$ & $\Delta^{93}$ & $\Delta^{265}$ & $\Delta^{269}$ & $\Delta^{281}$ \\
+		$T_3^{3}$ & $\Delta^{11}$ & $\Delta^{15}$ & $\Delta^{27}$ & $\Delta^{31}$ & $\Delta^{75}$ & $\Delta^{79}$ & $\Delta^{91}$ & $\Delta^{95}$ & $\Delta^{267}$ & $\Delta^{271}$ & $\Delta^{283}$ \\
+		$T_3^{4}$ & $\Delta^{33}$ & $\Delta^{37}$ & $\Delta^{49}$ & $\Delta^{53}$ & $\Delta^{97}$ & $\Delta^{101}$ & $\Delta^{113}$ & $\Delta^{117}$ 
+		& $\Delta^{289}$ & $\Delta^{293}$ & $\Delta^{305}$ \\
+		$T_3^{5}$ & $\Delta^{35}$ & $\Delta^{39}$ & $\Delta^{51}$ & $\Delta^{55}$ & $\Delta^{99}$ & $\Delta^{103}$ & $\Delta^{115}$ & $\Delta^{119}$ 
+		& $\Delta^{291}$ & $\Delta^{295}$ & $\Delta^{307}$ \\
+		$T_3^{6}$ & $\Delta^{41}$ & $\Delta^{45}$ & $\Delta^{57}$ & $\Delta^{61}$ & $\Delta^{105}$ & $\Delta^{109}$ & $\Delta^{121}$ & $\Delta^{125}$ & $\Delta^{297}$ & $\Delta^{301}$ & $\Delta^{313}$ \\
+		$T_3^{7}$ & $\Delta^{43}$ & $\Delta^{47}$ & $\Delta^{59}$ & $\Delta^{63}$ & $\Delta^{107}$ & $\Delta^{111}$ & $\Delta^{123}$ & $\Delta^{127}$ & $\Delta^{299}$ & $\Delta^{303}$ & $\Delta^{315}$ \\
+		$T_3^{8}$ & $\Delta^{129}$ & $\Delta^{133}$ & $\Delta^{145}$ & $\Delta^{149}$ & $\Delta^{193}$ & $\Delta^{197}$ & $\Delta^{209}$ & $\Delta^{213}$ & $\Delta^{385}$ & $\Delta^{389}$ & $\Delta^{401}$ \\
+		$T_3^{9}$ & $\Delta^{131}$ & $\Delta^{135}$ & $\Delta^{147}$ & $\Delta^{151}$ & $\Delta^{195}$ & $\Delta^{199}$ & $\Delta^{211}$ & $\Delta^{215}$ & $\Delta^{387}$ & $\Delta^{391}$ & $\Delta^{403}$ \\
+		$T_3^{10}$ & $\Delta^{137}$ & $\Delta^{141}$ & $\Delta^{153}$ & $\Delta^{157}$ & $\Delta^{201}$ & $\Delta^{205}$ & $\Delta^{217}$ & $\Delta^{221}$ & $\Delta^{393}$ & $\Delta^{397}$ & $\Delta^{409}$ \\
+		\hline
+	\end{tabular}
+
+	(A larger table can be found in \ref{table:CodeToIntegers}.)
+\end{center}
+
+
+
 
 \paragraph{Exact Formula}
 We derive here an explicit formula for the order of nil-potency of a modular form modulo 2.
@@ -1310,7 +1413,7 @@ This is proved in \cite[§5]{OrdreNilpotenceOperateurHecke}.
 \end{corollary}
 \begin{proof}
 	By the previous proposition, we have both $n_3(f)=0$ and $n_5(f)=0$.
-	Thus, $\partial f$ has code $\left[ 0,0 \right]$.
+	Thus, $\degree{f}$ has code $\left[ 0,0 \right]$.
 	Since $f \neq 0$ and $f \in \mathcal{F}$, this means $f = \Delta$.
 \end{proof}
 
