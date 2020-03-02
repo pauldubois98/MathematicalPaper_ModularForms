@@ -1004,8 +1004,10 @@ For similar reason, in the fourth column (of $\Delta^7$), we get $\nicefrac{1}{4
 
 
 
-\subsubsection{Nil-potency Order}
+\subsection{Nil-potency Order}
+In this subsection, we follow the construction from \cite{OrdreNilpotenceOperateurHecke}.\\
 As we know that the Hecke operators are nilpotent, we may want to study the order of nil potentness.
+\subsubsection{Introduction}
 \paragraph{Definition}
 For a modular from modulo 2 $f \in \mathcal{F}$, we define the \textit{nil potentness order} to be the smallest integer $g(f)$ such that we have 
 $$
@@ -1040,43 +1042,279 @@ This directly implies that $g(f) > 1$ if $f \neq \Delta, 0$.
 We can compute a few nil potentness "by hand" (we will see later that there is a more direct method):
 \begin{itemize}
 	\item $g(0) = -\infty$
-	
 	\item $g(\Delta) = 1$:\\
-	$
-	T_p(\Delta) = 0
-	$
+	$ T_p(\Delta) = 0 $
 	as order of $\Delta$ decrease, see \ref{orderDecrease}
-	
 	\item $g(\Delta^3) = 2$:\\
-	$
-	T_p|\Delta^3 = \Delta \text{ or } 0
-	$\\
+	$ T_p|\Delta^3 = \Delta \text{ or } 0 $\\
 	thus:
-	$
-	g(\Delta^3) = 1 + \max(g(\Delta), g(0)) = 2
-	$
-	
+	$ g(\Delta^3) = 1 + \max(g(\Delta), g(0)) = 2 $
 	\item $g(\Delta^3+\Delta) = 2$\\
 	similarly
-	
 	\item $g(\Delta^5) = 2$:\\
-	$
-	T_p|\Delta^5 = \Delta \text{ or } 0
-	$\\
+	$ T_p|\Delta^5 = \Delta \text{ or } 0 $\\
 	thus:
-	$
-	g(\Delta^5) = 1 + \max(g(\Delta), g(0)) = 2
-	$
-	
+	$ g(\Delta^5) = 1 + \max(g(\Delta), g(0)) = 2 $
 	\item $g(\Delta^5+\Delta^3+\Delta) = g(\Delta^5+\Delta^3) = g(\Delta^5+\Delta) = 2$\\
 	similarly
-	
 	\item $g(\Delta^7) = 3$:\\
-	$
-	T_p(\Delta^7) = \Delta^5 \text{ or } \Delta^3 \text{ or }  \Delta \text{ or } 0
-	$\\
+	$ T_p(\Delta^7) = \Delta^5 \text{ or } \Delta^3 \text{ or }  \Delta \text{ or } 0 $\\
 	thus:
-	$
-	g(\Delta^7) = 1 + \max(g(\Delta^5), g(\Delta^3), g(\Delta), g(0)) = 3
-	$
+	$ g(\Delta^7) = 1 + \max(g(\Delta^5), g(\Delta^3), g(\Delta), g(0)) = 3$
 \end{itemize}
+
+\subsubsection{Code of Natural Numbers}
+\subparagraph{Definition of $n_3$, $n_5$ and $h$}
+We consider a natural number $k \in \N$, and we let $\alpha_i$ be the digits of it's binary representation, i.e.
+$$
+k = \sum_{i=0}^{\infty} \alpha_i 2^i \qquad \text{ with } \alpha_i \in \{ 0,1 \}.
+$$
+We then define $n_3(k)$ and $n_5(k)$ as follows:
+$$
+n_3(k) = \sum_{i=1}^{\infty} \alpha_{2i+1} 2^i = \sum_{i \text{ odd}} \alpha_i 2^{\frac{i-1}{2}}
+\qquad \text{ and } \qquad
+n_5(k) = \sum_{i=1}^{\infty} \alpha_{2i+2} 2^i = \sum_{i \text{ even}} \alpha_i 2^{\frac{i-2}{2}}
+$$
+We also define $h$ to be the sum of $n_3$ and $n_5$, that is:
+$$h(k) = n_3(k) + n_5(k)$$
+
+The definition of $n_3$ and $n_5$ is equivalent to the followings:
+\begin{itemize}
+	\item [$n_3(k)$] Take $k$ and write it in binary base. Ignore the units digit. Select only the digits corresponding to odd powers of 2. This forms $n_3(k)$.
+	\item [$n_5(k)$] Again, write $k$ in binary base. Ignore the unit digit. Select only the digits corresponding to even powers of 2. This forms $n_5(k)$.
+\end{itemize}
+
+\paragraph{Example}
+We look at the example $k=91$:
+$91 = 1 + 2 + 8 + 16 + 64 = 2^0 + 2^1 + 2^3 + 2^4 + 2^6$
+
+We construct $n_3(k)$ and $n_5(k)$ graphically as follows:
+$$
+\begin{array}{c|ccccccc|cl}
+k=91 & 2^6 & 2^5 & 2^4 & 2^3 & 2^2 & 2^1 & 2^0 & &\\
+\cline{1-9}
+k    &  1  &  0  &  1  &  1  &  0  &  1  &  1  & 1011011 = 91 & \\
+\makecell{  n_3(k)   \\  n_5(k)   } &
+\makecell{    1      \\ \boxed{1} } &
+\makecell{ \boxed{0} \\    0      } &
+\makecell{    1      \\ \boxed{1} } &
+\makecell{ \boxed{1} \\    1      } &
+\makecell{    0      \\ \boxed{0} } &
+\makecell{ \boxed{1} \\    1      } &
+\makecell{    1      \\    1      } &
+\makecell{   011=3     \\   110 =6    }&
+\left. 
+\begin{array}{c} \phantom{} \\ \phantom{} \end{array}
+\right\rbrace = h(k) = 3+6 = 9
+\end{array}
+$$
+
+
+\paragraph{Basic Properties}
+\subparagraph{Variation of $h$}
+By construction (it is simple to see with the example above), $h(n+1) \geq h(n)$.
+Note that it is $\underline{\text{not true}}$, in general, that $n_3(n+1) \geq n_3(n)$ nor $n_5(n+1) \geq n_5(n)$.
+
+\subparagraph{$2k$ and $2k+1$}
+It is straightforward, form definition, that $n_3$ and $n_5$ (therefore also $h$) are the same for an even $2m$ and the next number $2m+1$.
+Explicitly:
+$$
+\left. 
+\begin{array}{rc}
+	\text{for all } m \in \N: \qquad & n_3(2m) = n_3(2m+1) \\
+	\text{ and } & n_5(2m) = n_5(2m+1) \\
+\end{array} 
+\qquad \right\rbrace \quad h(2m) = h(2m+1)
+$$
+
+\subparagraph{Addition of powers of 2}
+Moreover, it is clear from definition that $m_3$, $m_5$ and $h$ preserve addition of powers of 2, that is:
+$$
+\begin{array}{rcl}
+	n_3(m_1) + n_3(m_2) &=& n_3(m_1+m_2) \\
+	n_5(m_1) + n_5(m_2) &=& n_5(m_1+m_2) \\
+	  h(m_1) + \ h(m_2) &=& \ h(m_1+m_2) \\
+\end{array}
+\qquad \text{for all } \quad
+\begin{array}{c}
+	m_1=2^{k_1}, \ k_1 \in \N \\
+	m_2=2^{k_2}, \ k_2 \in \N \\
+	k_1 \neq k_2
+\end{array}
+$$
+
+\subparagraph{Powers of 2}
+For $m=2^k, \ k>0$ even: 
+$$
+n_3(m) = 0 
+\quad \text{ and } \quad 
+n_5(m) = 2^{\frac{k-2}{2}} = \nicefrac{1}{2}\sqrt{m}
+\quad \text{ so } \quad 
+h(m) = \nicefrac{1}{2}\sqrt{m} 
+$$
+For $m=2^k, \ k>0$ odd: 
+$$
+n_3(m) = \sqrt{\nicefrac{m}{2}}
+\quad \text{ and } \quad 
+n_5(m) = 0
+\quad \text{ so } \quad 
+h(m) = \sqrt{\nicefrac{m}{2}}
+$$
+Therefore, if $m=2^k, \ m \geq 2$, we have:
+$$
+\nicefrac{1}{2}\sqrt{m} \leq h(m) \leq \sqrt{\nicefrac{m}{2}}
+$$
+
+\subparagraph{Lower Bound for $h$}
+Now, combining with the property above and properties of square root, we have:
+$$
+\nicefrac{1}{2}\sqrt{m} \leq h(m) \quad \text{for all } m \in \N, \ m \geq 2.
+$$
+
+\subparagraph{Upper Bound for $h$}
+Let $m = 2^{k_1} + 2^{k_2} + \dots + 2^{k_r}$ with $k_1 > k_2 > \dots > k_r$.
+Then $m \leq 2^{k_1+1}$, so $h(m) \leq h(2^{k_1+1}) \leq \sqrt{2^{k_1}} \leq \sqrt{m}$.
+So in general, we have:
+$$
+h(m) \leq \sqrt{m} \quad \text{for all } m \in \N.
+$$
+
+\subparagraph{Asymptotic Behaviour of $h$}
+Thus, we have:
+$$
+\nicefrac{1}{2}\sqrt{m} \leq h(m) \leq \sqrt{m}
+\qquad \text{for all } m \in \N.
+$$
+Using the big $\mathcal{O}$ notation (asymptotic behaviour), this is:
+$$
+h(m) = \mathcal{O}(\sqrt{m})
+$$
+Note that if $m=0,1$, we have $h(m) = \sqrt{m} = m$.
+
+\paragraph{Code of Natural Numbers}
+Given a natural number $m \in \N$, we define it's \textit{code} as the pair $\left[  n_3(m), n_5(m) \right]$.
+
+We define the maps:
+$$
+\phi: 2\N \to \N \times \N
+\quad \text{ such that } \quad 
+\phi(2m) = \left[ n_3(2m), n_5(2m) \right]
+$$
+and
+$$
+\psi: 2\N+1 \to \N \times \N
+\quad \text{ such that } \quad 
+\psi(2m+1) = \left[ n_3(2m+1), n_5(2m+1) \right]
+$$
+so that 
+$$\phi^{-1}: \N \times \N \to 2\N \quad \text{ such that: } $$
+$$
+\phi^{-1}(\left[ m_1, m_2 \right])
+= 2\sum_{i=0}^{\infty} \alpha_i 2^{2i}
++ 4\sum_{i=0}^{\infty} \alpha_i 2^{2i}
+\qquad \text{ with } \left\lbrace \begin{array}{c}
+m_1 = \sum_{i=0}^{\infty} \alpha_i 2^i \\
+m_2 = \sum_{i=0}^{\infty} \beta_i 2^i
+\end{array} \right.
+$$
+and
+$$\psi^{-1}: \N \times \N \to 2\N+1 \quad \text{ such that: } $$
+$$
+\psi^{-1}(\left[ m_1, m_2 \right])
+= 2\sum_{i=0}^{\infty} \alpha_i 2^{2i} 
++ 4\sum_{i=0}^{\infty} \alpha_i 2^{2i}
++ 1
+\qquad \text{ with } \left\lbrace \begin{array}{c}
+	m_1 = \sum_{i=0}^{\infty} \alpha_i 2^i \\
+	m_2 = \sum_{i=0}^{\infty} \beta_i 2^i
+\end{array} \right.
+$$
+(i.e. squaring each power of two composing $m_1$ and $m_2$ separately.)
+
+Since $\phi$ (respectively $\psi$) has an inverse, it defines a bijection between even (respectively odd) natural numbers and their code.
+
+\paragraph{Order Relation}
+We define the following order relation on natural numbers:
+For $m, l \in \N$, $m \prec l$ if $h(m) < h(l)$ or $h(m) = h(l)$ and $n_5(m) \prec n_5(l)$.
+This relation is a total order, this is straightforward to check.
+
+\subsubsection{Action of $T_3$ and $T_5$}
+\paragraph{$h$ on modular forms}
+For the rest of the section, we will write a modular form $f \in \mathcal{F}$ as follows:
+$f = \Delta^{m_1} + \Delta^{m_2} + \dots + \Delta^{m_r}$ with $m_1 > m_2 > \dots > m_r$.
+In this case, $m_1$ is the \textit{degree} of $f$, and we will denote it by $\partial f$.
+We write $\partial f = -\infty$ if $f=0$.
+We define $h(f) = h(m_1)$, and $h(f) = -\infty$ if $f=0$.
+Similarly, we define $n_3(f) = n_3(m_1)$ and $n_5(f) = n_5(m_1)$, and $n_3(f) = n_5(f) = -\infty$ if $f=0$.
+
+\paragraph{Action of $T_3$}
+Here, we want to give a description for the behaviour of $h(T_3|f)$ and $\partial T_3|f$.
+\begin{proposition}
+	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2.
+	\begin{enumerate}
+		\item In general, $h(T_3|f) \leq h(f)-1$.
+		\item If $n_3(f)>0$, then $h(T_3|f) = h(f)-1$ and $\partial T_3|f$ has code $\left[ n_3(f)-1, n_5(f) \right] $.
+	\end{enumerate}
+\end{proposition}
+This proposition is stated in \cite[§4]{OrdreNilpotenceOperateurHecke}, and a complete proof is given in \cite{ModularFormsMcGill}.
+
+\paragraph{Action of $T_5$}
+Similarly to the above for $T_3$, we want to give a description for the behaviour of $h(T_5|f)$ and $\partial T_5|f$.
+\begin{proposition}
+	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2.
+	\begin{enumerate}
+		\item In general, $h(T_5|f) \leq h(f)-1$.
+		\item If $n_5(f)>0$, then $h(T_5|f) = h(f)-1$ and $\partial T_5|f$ has code $\left[ n_3(f), n_5(f)-1 \right] $.
+	\end{enumerate}
+\end{proposition}
+Again, this proposition is stated in \cite[§4]{OrdreNilpotenceOperateurHecke}, and a complete proof is given in \cite{ModularFormsMcGill}.
+
+
+
+\subsubsection{Formula for the Order of Nil-potency}
+\paragraph{Lower bound}
+\begin{property}
+	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2 of degree $m_1$.
+	Then we have:
+	$$
+	T_3^{n_3(m_1)} T_5^{n_5(m_1)} | f = \Delta
+	$$
+\end{property}
+\begin{proof}
+	We apply $n_3(m_1)$ times the proposition about $T_3$ above, and $n_5(m_1)$ times the proposition about $T_5$, to get that the degree of $g = T_3^{n_3(m_1)}T_5^{n_5(m_1)}|f$ has code $\left[ 0,0 \right]$.
+	The propositions also implie that $h(g) > -\infty$, i.e. $g \neq 0$.
+	Therefore, $\partial g > -\infty$, so it must be odd. since it has code $\left[ 0,0 \right]$,  $\partial g = 1$, thus $g = \Delta$.
+\end{proof}
+
+\begin{corollary}
+	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2.
+	We have $g(f) \geq h(f) +1$.
+\end{corollary}
+\begin{proof}
+	This is directly implied by the proposition:
+	As $T_3^{n_3(m_1)}T_5^{n_5(m_1)}|f = \Delta \neq 0$, we have $g(f) \geq n_3(f)+n_5(f)+1 = h(k)+1$.
+\end{proof}
+
+\paragraph{Exact Formula}
+We derive here an explicit formula for the order of nil-potency of a modular form modulo 2.
+\begin{theorem}
+	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2.
+	The order of nil-potency is exactly $g(f) = h(f) + 1$.
+\end{theorem}
+What remains to prove is that $g(f) \leq h(f) +1$.
+This is proved in \cite[§5]{OrdreNilpotenceOperateurHecke}.
+
+\begin{corollary}
+	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2.
+	If $T_3|f = T_5|f = 0$, then $f = \Delta$.
+\end{corollary}
+\begin{proof}
+	By the previous proposition, we have both $n_3(f)=0$ and $n_5(f)=0$.
+	Thus, $\partial f$ has code $\left[ 0,0 \right]$.
+	Since $f \neq 0$ and $f \in \mathcal{F}$, this means $f = \Delta$.
+\end{proof}
+
+
+
+
+
