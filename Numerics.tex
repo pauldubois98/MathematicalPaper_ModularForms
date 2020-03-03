@@ -403,7 +403,6 @@ As it usually comes wit open-sources packages, ModularFormsModuloTwo.jl has an \
 
 
 \subsection{Finding coefficients of Hecke operators}
-
 We want to find the coefficients $a_{ij}$ such that $$\sum_{i, j} a_{ij} T_3^iT_5^j = T_p$$
 (with $a_{ij} \in \mathbb{F}_2$).
 
@@ -424,4 +423,45 @@ Now, suppose that we want to calculate the table of the $a_{ij}(p)$ for $p \in \
     \item Equate both sides of $(*)$, if not zero (which unfortunately happens often), use the equation to deduce $a_{ij}(p)$
 \end{enumerate}
 
-[How much of the algorithm is there? too much? too little? I could develop much more on how everything is calculated: how I go back and forward between $q$ and $\Delta$ representations of modular forms to both be efficient in calculations and catch up the error in numerical approximation, what techniques are used for speed, argue the implementation choices, describe how the code is split, etc... I could write at least  pages on all of that, but is it the point of a math paper?]
+\subsection{Finding Governing Fields}
+\paragraph{Implementation Strategy}
+For algebraic computations (such as coputing Frobenius elements), many libraries already exist.
+However, many (such as SageMath) are limited in terms of degree of field extensions.
+This is why we will use a very powerful and respected library: PARI GP.
+PARI GP may be used through C, but for simplicity, we will use the the GP language that PARI GP developers suggest.
+
+It isn't easy to connect the Julia computations for the maps $a_{ij}$ and the PARI GP language.
+So we will export results from both sides in text files, and analyse it with Python.
+Note here that the analysis is just checking if whether or not, the field is a governing field.
+All the "difficult" computations are made in very efficient languages (Julia and the highly optimized PARI GP library).
+So it is fine, for convenience, to use a slower language as Python for the last step, which isn't computationally fast.
+
+
+\subsubsection{Frobenian Map Test}
+To test if a field extension is a governing field for $a_{ij}$, we need to check if the map $a_{ij}$ is Frobenian (we take the set $S$ to be ramified primes) with respect to this field.
+Here is the algorithm we use to test this:
+
+[Algorithm to be included.]
+
+
+Note that this algorithm doesn't give a proof, since it only make some tests for primes less than $10^4$.
+
+\paragraph{Checking Known Governing Fields}
+[It is always good to check, to make the theory stronger (this is usually true in Science, a little bit less in math)]
+This will test the algorithms that we use: if the output agrees with the theory, then it is less likely to contain errors.
+[results: Serre is right]
+
+\paragraph{Finding Possible New Governing Fields}
+[NEW RESULTS!!!]
+[results: a04, a03, a30, a40]
+[more results? (a05, a50, ...)? => if time]
+
+
+\paragraph{Probabilistic Analysis}
+Here, we look for the probability that the results found appeared randomly.
+We assume that the Frobenius element of a prime is random for each prime.
+then the proba [bla].
+[this part is written, but only in my head, at the moment.]
+
+
+
