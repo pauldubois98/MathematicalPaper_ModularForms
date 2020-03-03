@@ -1063,7 +1063,7 @@ We can compute a few nil potentness "by hand" (we will see later that there is a
 	$ g(\Delta^7) = 1 + \max(g(\Delta^5), g(\Delta^3), g(\Delta), g(0)) = 3$
 \end{itemize}
 
-\subsubsection{Code of Natural Numbers}
+\subsubsection{Code and Height of Natural Numbers}
 \subparagraph{Definition of $n_3$, $n_5$ and $h$}
 We consider a natural number $k \in \N$, and we let $\alpha_i$ be the digits of it's binary representation, i.e.
 $$
@@ -1075,7 +1075,7 @@ n_3(k) = \sum_{i=1}^{\infty} \alpha_{2i+1} 2^i = \sum_{i \text{ odd}} \alpha_i 2
 \qquad \text{ and } \qquad
 n_5(k) = \sum_{i=1}^{\infty} \alpha_{2i+2} 2^i = \sum_{i \text{ even}} \alpha_i 2^{\frac{i-2}{2}}
 $$
-We also define $h$ to be the sum of $n_3$ and $n_5$, that is:
+We also define $h$ (the \textit{height})to be the sum of $n_3$ and $n_5$, that is:
 $$h(k) = n_3(k) + n_5(k)$$
 
 The definition of $n_3$ and $n_5$ is equivalent to the followings:
@@ -1205,9 +1205,10 @@ $$
 
 
 \paragraph{Code of Natural Numbers}
-\subparagraph{A Representation of Odd/Even}
+\label{definitionCode}
 Given a natural number $m \in \N$, we define it's \textit{code} as the pair $\left[  n_3(m), n_5(m) \right]$.
 
+\paragraph{A Representation of Odd/Even}
 We define the maps:
 $$
 \phi: 2\N \to \N \times \N
@@ -1247,7 +1248,8 @@ $$
 
 Since $\phi$ (respectively $\psi$) has an inverse, it defines a bijection between even (respectively odd) natural numbers and their code.
 
-\subparagraph{Behaviour}
+\paragraph{Behaviour}
+\subparagraph{Height's Behaviour}
 We observe the following behaviour:
 \begin{center}
 	\begin{tabular}{|r||c|c|c|c|c|c|c|c|}
@@ -1271,6 +1273,7 @@ On smaller scale, the behaviour is as follows:\\
 	(Plot with other scales in \ref{plot:Behaviour_h}.)
 \end{center}
 
+\subparagraph{Code's Behaviour}
 It may be interesting to represent how the code grows according to both parameters.
 First, we can make a small table of values:
 \begin{center}
@@ -1319,6 +1322,7 @@ Similarly, we define $n_3(f) = n_3(m_1)$ and $n_5(f) = n_5(m_1)$, and $n_3(f) = 
 
 \paragraph{Action of $T_3$}
 Here, we want to give a description for the behaviour of $h(T_3|f)$ and $\degree{T_3|f}$.
+\label{propositionActionT3}
 \begin{proposition}
 	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2.
 	\begin{enumerate}
@@ -1330,6 +1334,7 @@ This proposition is stated in \cite[§4]{OrdreNilpotenceOperateurHecke}, and a c
 
 \paragraph{Action of $T_5$}
 Similarly to the above for $T_3$, we want to give a description for the behaviour of $h(T_5|f)$ and $\degree{T_5|f}$.
+\label{propositionActionT5}
 \begin{proposition}
 	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2.
 	\begin{enumerate}
@@ -1400,13 +1405,18 @@ Thus, we can arrange all odd powers of the discriminant $\Delta$ in a table, suc
 
 \paragraph{Exact Formula}
 We derive here an explicit formula for the order of nil-potency of a modular form modulo 2.
-\begin{theorem}
+\label{theoremOrderOfNilpotency}
+\begin{theorem}[Order of Nil-potency of Modular Forms Modulo 2]
 	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2.
 	The order of nil-potency is exactly $g(f) = h(f) + 1$.
 \end{theorem}
-What remains to prove is that $g(f) \leq h(f) +1$.
+What remains to prove is that $g(f) \leq h(f) + 1$.
 This is proved in \cite[§5]{OrdreNilpotenceOperateurHecke}.
 
+From this follows a new remark, which is useful to estimate computations times:
+As $g(f)=h(f)+1$, and $h(f) = h(\degree{f}) = \mathcal{O}(\sqrt{\degree{f}})$, we have $g(f) = \mathcal{O}(\sqrt{\degree{f}})$, i.e. the nil-potency order of a modular form behaves asymptotically as the square root of its degree.
+
+\label{corollaryOrderOfNilpotency}
 \begin{corollary}
 	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2.
 	If $T_3|f = T_5|f = 0$, then $f = \Delta$.

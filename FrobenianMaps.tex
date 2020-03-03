@@ -640,19 +640,25 @@ We define $S_k = \{ p \in \primes \ | \ p \equiv k \bmod 15 \}$.
 By Dirichlet density theorem,  the density of $S_k$ is $\nicefrac{1}{8}$ if $k$ and $15$ are co-prime (i.e. if $k = 1,2,4,7,8,11,13,14$), otherwise (if $k=0,3,5,6,9,10,12$) it is $0$.
 This is what we could conjecture from the observations.
 
-\section{Frobenian Maps}
+\section{Frobenian Maps and Governing Fields}
+\subsection{Frobenian Maps}
 \paragraph{Class functions}
 Let $G$ be a group, $\Omega$ a set, and $f: G \to \Omega$.
 We say that $f$ is a \textit{class function} (of $G$) if $f$ is constant on conjugacy classes of $G$.
 That is, if $f$ remains unchanged under conjugation map of $G$.
 
-\paragraph{Frobenian Property for Maps}
-Let $K$ be a number field. Let $P$ be the set of primes ideals in $K$
-A map $f: P \to \Omega$ is said to be \textit{Frobenian} if there exists a field extension $M/K$ and a class function $\phi:\Gal{M/K} \to \Omega$ such that for all $\mathfrak{p} \in P$ (prime ideal of $K$) unramified in $M/K$, we have $f(\mathfrak{p})=\phi(\Frob{M/K}{\mathfrak{p}})$
-\footnote{Note that $\phi(\Frob{M/K}{\mathfrak{p}})$ is well defined since $\phi$ is a class function, and $\Frob{M/K}{\mathfrak{p}}$ is a conjugacy class of $\Gal{M/K}$.}.
+\paragraph{$S$-Frobenian Maps}
+This definition is taken from \cite[§3.3]{LecturesOnN_Xp}.
+Let $K$ be a number field. Let $P$ be the set of primes ideals in $K$.
+Let $S \subseteq P$ be a subset of primes ideal of $K$.
+We say that a function $f: P \setminus S \to \Omega$ is $S$-Frobenian if there exists an $M$, extending $K$ and a class function $\phi: \Gal{M/K} \to \Omega$ such that $f = \phi \circ \Frob{M/K}{}$, i.e. $f(\mathfrak{p})= \phi \circ \Frob{M/K}{\mathfrak{p}} \quad \forall \mathfrak{p} \in P$ \footnote{Note that $\phi(\Frob{M/K}{\mathfrak{p}})$ is well defined since $\phi$ is a class function, and $\Frob{M/K}{\mathfrak{p}}$ is a conjugacy class of $\Gal{M/K}$.}.
+
+\paragraph{Frobenian Maps}
+With the same setting as above, $f: P \setminus S \to \Omega$ is Frobenian if there exists a finite set $S \subset P$ such that $f$ is $S$-Frobenian.\\
+In general, we will take $S$ to be the set of ramified primes (there are finitely many, since they divide the Discriminant, which is finite).
 
 In the case of $K=\Q$, the set of primes ideals becomes just the set of primes $\primes$.
-And a map $f: \primes \to \Omega$ is said to be \textit{Frobenian} if there exists a field extension $M/\Q$ and a class function $\phi:\Gal{M/\Q} \to \Omega$ such that for all $p \in \primes$ (prime) unramified in $M/\Q$, we have $f(p)=\phi(\Frob{M/\Q}{p})$.
+And a map $f: \primes \to \Omega$ is said to be \textit{Frobenian} if there exists a field extension $M/\Q$ and a class function $\phi:\Gal{M/\Q} \to \Omega$ such that for all but finitely many (all unramified) primes $p \in \primes$, we have $f(p)=\phi(\Frob{M/\Q}{p})$.
 
 \paragraph{$a_{ij}(p)$ Frobenian}
 
@@ -665,6 +671,7 @@ $$
 	The map $p \to a_{ij}(p)$ is Frobenian (for all $i,j \geq 0$).\\
 	That is, for all $i,j \geq 0$, there exists an extension $M_{ij}/\Q$ and a class function $\phi_{ij}: \Gal{M_{ij}/\Q} \to \F_2$ such that $a_{ij}(p)=\phi_{ij}(\Frob{M_{ij}/\Q}{p})$ for all $p \in \primes$ unramified in $M_{ij}/\Q$.
 \end{theorem}
+[here, what paper do I cite? Bellaiche's "une représentation Galoisienne universelle attachée aux formes modulaires modulo 2?]
 In such a configuration, $M_{ij}$ are called \textit{governing fields}.
 
 %% to add later, maybe
@@ -692,14 +699,61 @@ In such a configuration, $M_{ij}$ are called \textit{governing fields}.
 %[...bla...]
 
 
+\subsection{Governing Fields}s
+It is nice to know that the maps $p \to a_{ij}(p)$ are Frobenius, but to compute $a_{ij}(p)$, we need to know explicitly the governing field (which will depend on $i$ and $j$).
+\subsubsection{Basics}
+\paragraph{Notations}
+We denote $M_{ij}$ the first governing field of the map $p \to a_{ij}(p)$ From the theorem above, we know that such a field exist, the first means that we take the one with smallest degree extension.
+[does this definition make sense?]
+
+\paragraph{Properties}
+Using properties of Frobenius elements, we have that if $L$ extends $M_{ij}$, then $L$ will also be a governing fields for the map $p \to a_{ij}(p)$.
+[other properties following from Frobenius properties?]
+
+We also have:
+\begin{itemize}
+	\item $T_p \in \F_2[[x^2, y^2]] \text{ if } p \equiv 1 \bmod 8$
+	\item $T_p \in x.\F_2[[x^2, y^2]] \text{ if } p \equiv 3 \bmod 8$
+	\item $T_p \in y.\F_2[[x^2, y^2]] \text{ if } p \equiv 5 \bmod 8$
+	\item $T_p \in xy.\F_2[[x^2, y^2]] \text{ if } p \equiv 7 \bmod 8$
+\end{itemize}
+\cite[§7]{StructureAlgebreHecke}
+[proof??]
+
+\paragraph{Examples}
+[include from comp + link to table for more]
+
+\subsubsection{Known Governing Fields}
+For $i$,$j$ small, we can compute explicitly the maps $a_{ij}$.
+\paragraph{Known $a_{ij}(p)$}
+We have:
+\begin{itemize}
+	\item $a_{10}(p)=1 \equiv p \equiv 3 \bmod 8$
+	\item $a_{01}(p)=1 \equiv p \equiv 5 \bmod 8$
+	\item $a_{11}(p)=1 \equiv p \equiv 7 \bmod 8$
+	\item $a_{20}(p)=1 \equiv \exists a,b \in \Z \text{ and } b \text{ odd},\text{ such that } p=a^2+8b^2, p \equiv 3 \bmod 8$
+	\item $a_{02}(p)=1 \equiv \exists a,b \in \Z \text{ and } b \text{ odd},\text{ such that } p=a^2+16b^2, p \equiv 3 \bmod 8$
+\end{itemize}
+\cite[§7]{StructureAlgebreHecke}
+[proof??]
+
+\paragraph{Corresponding Governing Fields}
+We then have the following corresponding governing fields:
+\begin{itemize}
+	\item $M_{10} = \Q(\zeta_8)$ with $\zeta_8$ the $8^{th}$ root of unity
+	\item $M_{01} = \Q(\zeta_8)$
+	\item $M_{11} = \Q(\zeta_8, \sqrt{\zeta_8}) = \Q(\zeta_{16})$ with $\zeta_{16}$ the $16^{th}$ root of unity.
+	\item $M_{10} = \Q(\zeta_8, \sqrt{1+i})$
+	\item $M_{10} = \Q(\zeta_8, \sqrt[4]{2})$
+\end{itemize}
+\cite[§7]{StructureAlgebreHecke}
+[proof??]
 
 
 
 
-
-
-
-
+\subsubsection{Research of Governing Fields}
+[ NEW TOPIC !!! ]
 
 
 

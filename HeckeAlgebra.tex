@@ -162,7 +162,8 @@ Then, we show that this equation remains when taking the limit.
 	As $\dim(U)>1$, there must exists a modular form $f \in \mathcal{F}(n)$ such that:
 	$f$ is neither $0$ or $\Delta$, and $a|f=0$ for all $a \in \mathfrak{m}'$.
 	In particular, this means that $T_3|f=0$ and $T_5|f=0$.
-	However, it contradicts 5.3 of \cite{OrdreNilpotenceOperateurHecke}.
+	However, this contradicts the Order of Nil-potency of Modular Forms Modulo 2 corollary \ref{corollaryOrderOfNilpotency}.
+	%However, it contradicts 5.3 of \cite{OrdreNilpotenceOperateurHecke}.
 	
 	Thus we have $A(n) = A'(n) = \F_2 \left[ T_3, T_5 \right]$.
 \end{proof}
@@ -177,13 +178,15 @@ Then, we show that this equation remains when taking the limit.
 	The fact that $\psi$ is surjective follows directly from the last property.
 	
 	Now we want to show that $\psi$ is injective.
-	Since is is already homomorphic, it suffices to show that for any element $u = \sum_{i,j} \lambda_{ij}T_3^iT_5^j | f = \Delta$.
-	Note that this sum id finite, as Hecke operators are nilpotent.\\
+	Since is is already homomorphic, it suffices to show that for any element $u = \sum_{i,j} \lambda_{ij}T_3^iT_5^j$, there exist a modular form modulo 2 $f$ such that $u|f = \sum_{i,j} \lambda_{ij}T_3^iT_5^j|f = \Delta$.
+	Note that this sum is finite, as Hecke operators are nilpotent.\\
 	If $\lambda_{00}=1$, take $f=\Delta$.
 	Suppose $\lambda_{00}=0$: Consider $S = \{ (i,j) \in \N^2 \ | \ \lambda_{ij}=1 \}$.\\
-	Let $S_{min} = \{ (m,n) \ | \ m+n \leq i+j \quad \forall (i,j) \in S \}$ and $(a,b) \in S_{min}$ be such that $b \leq n \forall (m,n) \in S_{min}$.
-	Let $k = [a,b]$ as in [bla], and let $f = \Delta^k$.
-	[Then, from 4.3 and 4.4 of \cite{OrdreNilpotenceOperateurHecke}, we have that $T_3^aT_5^b|f=\Delta$ and $T_3^iT_5^j|f=0$ for all $(i,j) \in S$.]
+	Let $S_{min} = \{ (m,n) \ | \ m+n \leq i+j \quad \forall (i,j) \in S \}$ and $(a,b) \in S_{min}$ be such that $b \leq n \quad \forall (m,n) \in S_{min}$.
+	Let $k = [a,b]$ ($k$ is the odd integer with code $[a,b]$ as in \ref{definitionCode}), and let $f = \Delta^k$.
+	Then, by the theorem of Order Of Nil-potency \ref{theoremOrderOfNilpotency}, we have $T_3^aT_5^b|f=\Delta$.
+	Moreover, by proposition on action of $T_3$ and $T_5$ (\ref{propositionActionT3} and \ref{propositionActionT5}), we have that $T_3^iT_5^j|f=0$ for all $(i,j) \in S$.
+	%[Then, from 4.3 and 4.4 of \cite{OrdreNilpotenceOperateurHecke}, we have that $T_3^aT_5^b|f=\Delta$ and $T_3^iT_5^j|f=0$ for all $(i,j) \in S$.]
 	Thus, $u|f = \Delta$.
 	
 	Therefore, $\psi$ is an isomorphism, which completes the proof.
