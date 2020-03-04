@@ -1,5 +1,31 @@
 % !TeX spellcheck = en_GB
-%\inputminted[firstline=2,lastline=15]{language}{file}
+
+\section{Chebotarev Example}
+\label{code:ChebotarevExample}
+\begin{minted}{sage}
+m = 0
+f = x^3 + m*x^2 + (m-3)*x - 1
+K = NumberField(f, 'a')
+
+print("Defining polynomial:")
+print(f)
+> x^3 - 3*x - 1
+print("Discriminant:")
+print(K.discriminant())
+> 81
+print("Extension Degree:")
+print(K.degree())
+> 3
+print("Galois extension:")
+print(K.is_galois())
+> True
+print("Basis:")
+True
+print(K.maximal_order().basis())
+> [1, a, a^2]
+\end{minted}
+
+
 
 \section{Speed Comparison}
 \subsection{Pure Python}
@@ -21,8 +47,6 @@
 \subsection{Sparse Julia}
 \label{code:SparseJulia}
 \inputminted[lastline=24, breaklines]{julia}{SpeedComparison/SparseJulia.jl}
-
-
 
 
 
@@ -97,34 +121,19 @@ The official \href{https://pauldubois98.github.io/ModularFormsModuloTwo.jl/}{doc
 \label{code:HeckePowersFileMaker}
 \inputminted[breaklines]{julia}{Module/HeckePowersFileMaker.jl}
 
-\section{Chebotarev Example}
-\label{code:ChebotarevExample}
-\begin{minted}{sage}
-m = 0
-f = x^3 + m*x^2 + (m-3)*x - 1
-K = NumberField(f, 'a')
 
-print("Defining polynomial:")
-print(f)
-> x^3 - 3*x - 1
-print("Discriminant:")
-print(K.discriminant())
-> 81
-print("Extension Degree:")
-print(K.degree())
-> 3
-print("Galois extension:")
-print(K.is_galois())
-> True
-print("Basis:")
-True
-print(K.maximal_order().basis())
-> [1, a, a^2]
-\end{minted}
 
 \section{$T_p$ as series of $T_3$ and $T_5$}
 \subsection{$a_ij(p)$ Computations}
+\label{code:a_ij(p)calculation}
+\inputminted[breaklines]{julia}{Module/HeckePowersFileMaker.jl}
+Find this program file with context on \href{https://github.com/pauldubois98/HeckeOperatorsModuloTwo/blob/master/a_ijComptation/T3T5_series_coef.jl}{GitHub}.
+Note that it in fact uses the library described above, and some other peices of code that are not important mathematically (all can be found on GitHub in \href{https://github.com/pauldubois98/HeckeOperatorsModuloTwo/tree/master/a_ijComptation}{this folder}: \url{https://github.com/pauldubois98/HeckeOperatorsModuloTwo/tree/master/a_ijComptation}).
+
 \subsection{$a_ij(p)$ Graphs}
+
+
+
 
 \section{Governing Fields}
 \subsection{Check of Known Governing Fields}

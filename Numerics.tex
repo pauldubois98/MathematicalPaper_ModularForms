@@ -318,7 +318,7 @@ In fact, we can use this fact to drop the numerical error that calculating a Hec
 Such kind of calculations are rather unusual in computer science: usually computers approximates objects, and this approximation error is never given back.
 But with modular forms modulo two, we can take back the approximation error.
 
-This method will now be referred as exact calculation. [may I create this name?]
+This method will now be referred as exact computations. [may I create this name?]
 
 It is implemented in the file \texttt{recognizer.jl} (see \ref{code:recognizer} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/recognizer.jl}).
 \subparagraph{Global}
@@ -403,29 +403,112 @@ As it usually comes wit open-sources packages, ModularFormsModuloTwo.jl has an \
 
 
 \subsection{Finding coefficients of Hecke operators}
-We want to find the coefficients $a_{ij}$ such that $$\sum_{i, j} a_{ij} T_3^iT_5^j = T_p$$
-(with $a_{ij} \in \mathbb{F}_2$).
+\subsubsection{Strategy}
+We want to find the coefficients $a_{ij}$ such that 
+\begin{equation}
+\label{eq:coefficientsEquate}
+	T_p = \sum_{i+j \geq 1} a_{ij}(p)T_3^iT_5^j \tag{$*$}
+\end{equation}
+(with $a_{ij}(p) \in \mathbb{F}_2$).
+Note that this is a finite sum, since Hecke operators are nilpotent.
 
-Let $k\geq 1$ an integer.
-Then there exists an integer $N(k)>0$ such that,
-for all pairs of non-negative integers $(i, j)$ with $i+j \geq N(k)$,
-we have $T_3^{i}T_5^{j}|\Delta^k = 0$.
+The strategy is as follows: we use the module we developed.
+It allows us to compute the (exact) $\Delta$-representation of $T_p|\Delta^k$ and $\sum_{i+j \geq 1} a_{ij}(p) T_3^iT_5^j|\Delta^k$ for many $k$, $p$, $i$ and $j$.
+Now, since \eqref{eq:coefficientsEquate} should hold for all modular forms $f \in \mathcal{F}$, it has to holds, in particular, for all $\Delta^k$ (with $k$ and odd integer).
+Thus, we will plug successive $\Delta^k$ and equate coefficients.
+This will eventually give all $a_ij(p)$.
 
-This allows us to write:
-$$\sum_{i+j < N(k)} a_{ij} T_3^iT_5^j|\Delta^k= T_p|\Delta^k \qquad (*)$$
+\subsubsection{Algorithm}
+As explained before, we plot $\Delta^k$ successively for a range of $k$.
+In reality, most of the terms of the sum in \ref{eq:coefficientsEquate} are zeros.
+This si both nice and not good:
+It is nice because it makes the system is easy to solve.
+But it also makes all coefficients in front of zeros terms being undetermined.
+This implies that we need to plug larger powers of $\Delta$ to fix coefficients.
+And bigger powers of $\Delta$ ask for heavier computations (and now we see how important it was to optimize the modular forms modulo 2 module).
 
-Now, suppose that we want to calculate the table of the $a_{ij}(p)$ for $p \in \primes$:
-\begin{enumerate}
-    \item Take an odd power for $\Delta$ (say $k$, we usually start with the smallest: 1 and the increase gradually)
-    \item Plug $\Delta^k$ in the equation above, ie:
-    \item Calculate $T_3^iT_5^j|\Delta^k \forall i+j < N(k)$
-    \item Calculate $T_p|\Delta^k \forall i+j < N(k)$
-    \item Equate both sides of $(*)$, if not zero (which unfortunately happens often), use the equation to deduce $a_{ij}(p)$
-\end{enumerate}
+As this algorithm is the heart of all computations, we give a pseudocode simplified version:
+\begin{algorithmic}
+	\color{CodeColor}
+	\Require $MAX_K$ \Comment{Maximum power $\Delta^k$ for which $T_p|\Delta^k$ and $T_3^iT_5^j|\Delta^k$ are known (computed)}
+	\Require $MAX_I$ \Comment{Minimum $i \in \N$ such that $T_3^i|\Delta^{MAX_K} \neq 0$}
+	\Require $MAX_J$ \Comment{Minimum $j \in \N$ such that $T_5^j|\Delta^{MAX_K} \neq 0$}
+	\ForAll{$p \in \primes$, $p>2$}
+		\Comment{We compute the map $a_{ij}(p)$ for each specific odd $p$ prime}
+		\State{$a_p$ is a $MAX_I \times MAX_J$ 2-dimensional matrix} \Comment{$a_p[i,j]$ will correspond to $a_{ij}(p)$}
+		\State{Fill $a_p$ for known values (i.e. for $i+j \leq 2$}
+		\For{$k < MAX_K$}
+			\State{$f = T_p|\Delta^k$}
+			\State{$LIST_a$} \Comment{The list of $a_p[i,j]$ to fix using $\Delta^k$ iteration}
+			\State{$LIST_f$} \Comment{The corresponding list of modular forms $T_3^iT_5^j|\Delta^k$}
+			\For{$0 \leq i \leq MAX_I$}
+				\For{$0 \leq j \leq MAX_J$}
+					\If{$a_p[i,j]=1$}
+						\State{$f += T_3^iT_5^j|\Delta^k$} \Comment{Add $1 * T_3^iT_5^j|\Delta^k$ to $f$}
+					\ElsIf{$a_p[i,j]=0$}
+						\State{Pass} \Comment{Add $0 * T_3^iT_5^j|\Delta^k$ to $f$}
+					\Else \Comment{$a_p[i,j]$ is unset in this case.}
+						\State{Append $a_p[i,j]$ to $LIST_a$} \Comment{We add $a_p[i,j]$ to the list}
+						\State{Append $T_3^iT_5^j|\Delta^k$ to $LIST_f$} \Comment{We add $T_3^iT_5^j|\Delta^k$ to the list}
+					\EndIf
+				\EndFor
+			\EndFor
+			\State{Find $a_p[i,j]$ in $LIST_a$ that solve that system $f = \sum a_p[i,j] T_3^iT_5^j|\Delta^k$} \Comment{using built-in linear solver, for efficiency}
+		\EndFor
+		\State{Output $a_p$}
+	\EndFor
+\end{algorithmic}
+The implementation of this algorithm (in Julia) is in \ref{code:a_ij(p)calculation}.
+
+
+
+\subsubsection{Computations Limitations}
+Here, we discuss the bounds to put in the algorithm, for a decent amount of data, and a descent amount of computation time.
+
+\paragraph{Computing Hecke of Large Primes Versus Large Powers}
+Here, we compare the difficulty to compute Hecke operators for large primes ($T_p$ for $p >> 2$), against the difficulty to compute Hecke operators for large powers of Hecke operators ($T_3^iT_5^j$ for $i,j >> 1$).
+
+\subparagraph{Computing Hecke Operators for Large Primes}
+When calculating a Hecke operator $T_p$ for a modular form $f$, the maximum known coefficient is $q^{\frac{N}{p}}$ if $f$ is known for coefficients up to $q^{N}$.
+This means that we can compute the $\Delta$ representation for $T_p|f$ only if we know it will have a degree (in terms of $\Delta$) of maximum $\frac{N}{p}$.
+Thus, if we choose to compute $a_{ij}(p)$ for $p \leq P$, it means that $\degree{T_p|f} \leq \frac{N}{P} = K$.
+
+\subparagraph{Computing Hecke Operators for Large Powers}
+Now, at a first thought, $T_p$ isn't too pathological compared to $T_3^iT_5^j$ for large $i$ and $j$, since the maximum known coefficient would be $q^{\frac{N}{3^i5^j}}$ if $f$ is known for coefficients up to $q^{N}$.
+
+But in fact, we can apply a trick here:
+Once we know $T_3|f$ (once we computed it's $q$-representation), we straight calculate the $\Delta$-representation, and then get back to the $q$-representation with no "lose of coefficients".
+This may look weird at first, since we have the $q$-representation of $T_3|f$, and we need it to calculate $T_3^2|f$.
+However, we known the $q$-representation of $T_3|f$ with some coefficients lost.
+And the fact that we go back to the $\Delta$-representation allows us to drop the numerical error.
+Doing this again and again, there is no lose at all in the coefficients calculated.
+
+This is why exact computations (this is the name we gave to this trick) is crucial for this algorithm.
+In fact, for powers of Hecke operators, we only need to compute the $q$-representations of modular forms up to $5 \ \degree{f}$, since each $T_3$ or $T_5$ will lose at most $\nicefrac{4}{5}$ of the $q$-coefficients.
+
+\subparagraph{Conclusion}
+Thus, the part which use to be the most pathological in fact becomes much nicer than the other: Calculating Hecke operators for large powers is easier than for large primes.
+
+\paragraph{Reasonable Bounds}
+Here, we give limits used in the actual computations.
+
+It seems that using $q$ series capped at $q^{10^6}$ is reasonable (i.e. computations will be a few days long).
+We would like to compute $a_ij(p)$ for small $i,j$ and $p \leq 10^4$.
+
+So the setup (in the same notation as above) is $N=10^6$, $P=10^4$, so $K=10^2$.
+Then the algorithm will compute as much $a_{ij}(p)$ as possible, for each $p \leq P$.
+This maximum can in fact be calculated implicitly:
+$a_{ij}(p)$ will be computed if and only if $T_3^iT_5^j|f$ is non-zero for one of the forms $f$ plugged.
+As we plug powers of $\Delta$ up to $K$, this means $a_{ij}(p)$ will be comuted for all $p \leq P$ if and only if $k \leq K$, where $k$ is the odd integer with code $[i,j]$.
+
+\subsubsection{Results}
+[tables and graph to include]
+
+
 
 \subsection{Finding Governing Fields}
 \paragraph{Implementation Strategy}
-For algebraic computations (such as coputing Frobenius elements), many libraries already exist.
+For algebraic computations (such as computing Frobenius elements), many libraries already exist.
 However, many (such as SageMath) are limited in terms of degree of field extensions.
 This is why we will use a very powerful and respected library: PARI GP.
 PARI GP may be used through C, but for simplicity, we will use the the GP language that PARI GP developers suggest.
