@@ -25,51 +25,50 @@ G_k(q) = 2\zeta(2k) + 2 \frac{{(2 \pi i)}^{2k}}{(2k-1)!} \sum_{n=1}^{\infty} \si
 $$
 and
 $$
-2\zeta(2k) = \frac{(2\pi)^{2k}}{(2k)!}B_k
+2\zeta(2k) = \frac{(2\pi)^{2k}}{(2k)!}B_k,
 $$
 so overall:
 $$
-G_k(q) = \frac{(2\pi)^{2k}}{(2k)!}B_k + 2 \frac{{(2 \pi i)}^{2k}}{(2k-1)!} \sum_{n=1}^{\infty} \sigma_{2k-1}(n)q^n
+G_k(q) = \frac{(2\pi)^{2k}}{(2k)!}B_k + 2 \frac{{(2 \pi i)}^{2k}}{(2k-1)!} \sum_{n=1}^{\infty} \sigma_{2k-1}(n)q^n.
 $$
 
 We would like to normalize this series, so that the coefficients become integers, so that we can ultimately reduce them modulo 2.
 Right now, coefficients are rational.
 
 As we want to keep the series modular with same weight, the only tool we have to normalize the series is multiplication by a constant.
-The normalization is a crucial point: 
-If we multiply by $2$ all coefficients of a modular form that already lie in $\Z$, the reduction $\bmod 2$ will always give zero.
+The normalization is a crucial point: if we multiply by $2$ all coefficients of a modular form that already lie in $\Z$, the reduction modulo 2 will always give zero.
 
 First, let's normalize the series to have particular values on some coefficients of interest.
-There are two justified ways to do so: normalize to have constant coefficient set to one, and to have $q$ coefficient is set to one.
+There are two justified ways to do so: normalize to have constant ($q^0$) coefficient set to one, and to have $q^1$ coefficient set to one.
 We will introduce both:
-Let $E_k$ be such that:
+We define $E_k$ be such that:
 $$
-E_k.2\zeta(2k) = G_k
+E_k \cdot 2\zeta(2k) = G_k,
 $$
 so that
 $$
 E_k = 1 + (-1)^k \frac{4k}{B_k} \sum_{n=1}^{\infty} \sigma_{2k-1}(n)q^n.
 $$
-$E_k$ then has constant coefficient set to one.
+$E_k$ then has constant coefficient set to 1.
 
-Let $F_k$ be such that:
+We also define $F_k$ be such that:
 $$
-F_k.\left( 2 \frac{{(2 \pi i)}^{2k}}{(2k-1)!} \right) = G_k
+F_k \cdot \left( 2 \frac{{(2 \pi i)}^{2k}}{(2k-1)!} \right) = G_k,
 $$
 so that
 $$
 F_k =  (-1)^k \frac{B_k}{4k} + \sum_{n=1}^{\infty} \sigma_{2k-1}(n)q^n.
 $$
-$F_k$ then has $q$-coefficient set to one (as $\sigma_{2k-1}(1)=1$).
+$F_k$ then has $q$-coefficient set to 1 (as $\sigma_{2k-1}(1)=1$).
 
 Clearly, the coefficients of this expansion remain in $\Q$ at least, and we will show that for some specific $k$, the coefficients lie in fact in $\Z$.
 Both $F_k$ and $E_k$ are interesting, but for our purpose (reducing modulo 2), we will use $E_k$.
-Note that $E_k$ are normalized versions of Eisenstein series $G_k$, but in literature, both are called Eisenstein series see \cite[p.6]{IntoductionModularFormsWorkshop} for example.
+Note that $E_k$ are normalized versions of Eisenstein series $G_k$, but in literature, both are called Eisenstein series; see \cite[p.6]{IntoductionModularFormsWorkshop} for example.
 
 \paragraph{The Modular Discriminant $\Delta$ Normalized}
 Again, we recall the formula for $q$ extension of $\Delta$:
 $$
-\Delta(q) = q \prod_{n=1}^{\infty} (1-q^n)^{24}
+\Delta(q) = q \prod_{n=1}^{\infty} (1-q^n)^{24}.
 $$
 Clearly, the coefficients in expansion of $\Delta$ are integers (which we can reduce modulo 2).
 This is the reason why we defined $\Delta$ with the $\frac{1}{(2\pi)^{12}}$ factor in front.
@@ -89,8 +88,8 @@ and
 	    &= 1 - 504 \sum_{n=1}^{\infty} \sigma_{5}(n)q^n
 \end{align*}
 
-Now, we have shown that $\{G_2^aG_3^b | 2a+3b=k\}$ is a basis for modular forms of weight $2k$ over the complex (see \ref{BasisModularForms}).
-As $E_2 = \lambda G_2,\ \lambda \in \C$ and $E_3 = \mu G_3,\ \mu \in \C$, we have that $\{E_2^aE_3^b | 2a+3b=k\}$ remains a basis for $M_k$ over $\C$.
+Now, we have shown that $\{G_2^aG_3^b \mid 2a+3b=k\}$ is a basis for modular forms of weight $2k$ over the complex (see \ref{BasisModularForms}).
+As $E_2 = \lambda G_2,\ \lambda \in \C$ and $E_3 = \mu G_3,\ \mu \in \C$, we have that $\{E_2^aE_3^b \mid 2a+3b=k\}$ remains a basis for $M_k$ over $\C$.
 
 It is clear, from the series, that coefficients of the $q$-expansion of both $E_2$ and $E_3$ are all integers.
 Thus, so are coefficients of combinations of $E_2$ and $E_3$.
@@ -103,8 +102,8 @@ This is a nice result, but we can in fact do better, by forcing the first coeffi
 \begin{theorem}
 	For the space of modular cusp forms $M_k^0$, there exists a basis $\{f_1, \cdots, f_r\}$ such that:
 	\begin{itemize}
-		\item $f_i \in Z[q]$
-		\item $ a_i^j = \delta_ij = 
+		\item $f_i \in \Z[[q]]$
+		\item $ a_i^j = \delta_{ij} = 
 		\left\lbrace
 		\begin{array}{l l}
 			1 & \text{ if } i   =  j \\
@@ -128,56 +127,45 @@ This is commonly called the Miller basis for $M_k^0$, as it was first introduced
 		
 		%interesting part
 		\item For $k \geq 7$, we let $r = \dim(M_k^0) \geq 1$.	
-		We then consider the set
-		$$
-		\{ g_j | 1 \leq j \leq r \}
-		$$
-		where
+		We then consider the set $\{ g_j \mid 1 \leq j \leq r \}$ where
 		$$
 		g_j = \Delta^jE_3^{2(d-j)+b}E_2^a
 		$$
-		with
-		$$
-		2a+3b \leq 7 \ \&\ 2a+3b \cong k \bmod 6$$
-		$$
-		\& \ \ d=\frac{k-(2a+3b)}{6} \quad \in \N \text{ as $k \geq 7$}
-		$$
+		with $2a+3b \leq 7$, $2a+3b \cong k \bmod 6$ and $d = \frac{k-(2a+3b)}{6} \in \N$ (with $k \geq 7$).
 		Note that $a$ and $b$ are unique unless $k \cong 0 \bmod 6$. In witch case, we use by convention $a=0$, $b=0$.
-		
 		As all $E_2$, $E_3$, and $\Delta$ have integral coefficients, $g_j$ will as well.
 		
-		We then look at the $q$ series:
+		We then look at the $q$-series
 		$$
-		\Delta(q) = q + O(k^2) \implies \Delta^j(q) = q^j + O(k^{j+1})
+		\Delta(q) = q + \mathcal{O}(k^2) \implies \Delta^j(q) = q^j + \mathcal{O}(k^{j+1}).
 		$$
-		As we normalized so,
+		As we normalized, we have
 		$$
-		E_2(q) = 1 + O(q) \implies E_2^{\alpha}(q) = 1 + O(q)
+		E_2(q) = 1 + \mathcal{O}(q) \implies E_2^{\alpha}(q) = 1 + \mathcal{O}(q)
 		$$
 		$$
-		E_3(q) = 1 + O(q) \implies E_3^{\alpha}(q) = 1 + O(q)
+		\text{ and } E_3(q) = 1 + \mathcal{O}(q) \implies E_3^{\alpha}(q) = 1 + \mathcal{O}(q).
 		$$
 		
 		This gives:
 		$$
-		g_j(q) = q^j + O(q^{j+1}) \quad \forall 1 \leq j \leq r.
+		g_j(q) = q^j + \mathcal{O}(q^{j+1}) \quad \forall 1 \leq j \leq r.
 		$$
-		Therefore, $\{ g_j, | 1 \leq j \leq r \}$ is clearly a linearly independent set. By dimension argument, it also spans $M_k^0$. Therefore, it forms a basis.
+		Therefore, $\{ g_j \mid 1 \leq j \leq r \}$ is clearly a linearly independent set. By dimension argument, it also spans $M_k^0$. Therefore, it forms a basis.
 		Moreover, in this basis: $a_i^j = \delta_{ij} \quad i \leq j$.
 		
-		Finally, we can use Gaussian elimination on $\{g_j\}$ to obtain a basis $\{f_j | 1 \leq j \leq r \}$ such that: $a_i^j = \delta_{ij} \quad \forall 1 \leq i,j \leq r$.
-		The coefficients will remain in $\Z$ after Gaussian elimination.
+		Now, viewing $\Delta$-coefficients of the modular forms $\{g_j\}$ as rows of a matrix, we can perform Gaussian elimination on them.
+		We will obtain a basis $\{f_j \mid 1 \leq j \leq r \}$ such that: $a_i^j = \delta_{ij} \text{ for all } 1 \leq i,j \leq r$.
+		The coefficients will remain in $\Z$.
 	\end{itemize}
 \end{proof}
 
 \paragraph{Extension to all $M_k$}
 We already have a basis for $M_k^0$, as $\dim(M_k) = \dim(M_k^0) + 1$ (over $\C$), we just need to adjoint one element of $M_k \setminus M_k^0$ to our basis.
-
-It was shown before that $\{E_2^aE_3^b | 2a+3b=k\}$ is a basis for $M_k$ with integral coefficients (see \ref{IntegralBasisModularForms})
+It was shown before that $\{E_2^aE_3^b \mid 2a+3b=k\}$ is a basis for $M_k$ with integral coefficients (see \ref{IntegralBasisModularForms}).
 One may see from the $q$-expansion that $E_2^aE_3^b = 1 + O(q)$ so $E_2^aE_3^b \in M_k \setminus M_k^0$.
-
-Therefore, we can just add one element of $\{E_2^aE_3^b | 2a+3b=k\}$ to the Miller basis, and use Gaussian elimination again.
-We get a basis foe $M_k$ of the form $\{f_j | 0 \leq j \leq r \}$ such that in this basis: $a_i^j = \delta_{ij} \quad \forall 0 \leq i,j \leq r$ (with $r=dim(M_k^0)$ i.e. $r+1=dim(M_k)$).
+Therefore, we can just add one element of $\{E_2^aE_3^b \mid 2a+3b = k\}$ to the Miller basis, and use Gaussian elimination again.
+We get a basis for $M_k$ of the form $\{f_j \mid 0 \leq j \leq r \}$ such that in this basis: $a_i^j = \delta_{ij} \text{ for all } 0 \leq i,j \leq r$ (with $r=\dim(M_k^0)$ i.e. $r+1=\dim(M_k)$).
 
 \paragraph{Miller Basis Examples}
 \subparagraph{Miller basis for $k=16$}
@@ -253,11 +241,7 @@ Here is, up to $O(q^{10})$, the Miller basis for $M_{92}$:
 Now that we have a basis with integral coefficients, it makes sense to reduce forms modulo 2.
 For a modular form $f$, we denote its reduced modulo 2 from $\overline{f}$. It is defined as follows:
 
-If
-$$
-f(q) = \sum_{n \in \N} c(n)q^n
-$$
-then
+If $f(q) = \sum_{n \in \N} c(n)q^n$ is a modular general form, then we define it's reduction $\overline{f}$ by
 $$
 \overline{f}(q) = \sum_{n \in \N} \overline{c}(n)q^n 
 \qquad \text{ with } \ \overline{c}(n) = c(n) \bmod 2 .
@@ -270,9 +254,7 @@ We will reduce separately $E_2$, $E_3$ and $\Delta$ (witch together generate the
 \paragraph{$E_2$ reduced}
 We have:
 $$
-E_2(q) 
-= 1 + 240 \sum_{n=1}^{\infty} \sigma_{3}(n)q^n
-\equiv 1 \bmod 2
+E_2(q) = 1 + 240 \sum_{n=1}^{\infty} \sigma_{3}(n)q^n \equiv 1 \bmod 2.
 $$
 Therefore, the reduction modulo 2 of $E_2$ is just $1$.
 We write $\overline{E_2} = 1$, so $\overline{E_2^a} = 1$, for all $a \geq 0$.
@@ -280,9 +262,7 @@ We write $\overline{E_2} = 1$, so $\overline{E_2^a} = 1$, for all $a \geq 0$.
 \paragraph{$E_3$ reduced}
 We have:
 $$
-E_3(q)
-= 1 - 504 \sum_{n=1}^{\infty} \sigma_{5}(n)q^n
-\equiv 1 \bmod 2
+E_3(q) = 1 - 504 \sum_{n=1}^{\infty} \sigma_{5}(n)q^n \equiv 1 \bmod 2.
 $$
 Therefore, the reduction modulo 2 of $E_3$ is $1$ as well.
 We write $\overline{E_3} = 1$, so $\overline{E_3^b} = 1$, for all $b \geq 0$.
@@ -295,20 +275,18 @@ We define the coefficients $\tau(n)$ to match in the equation:
 $$
 \Delta(q) 
 = q \prod_{n=1}^{\infty} (1-q^n)^{24} 
-= \sum_{n=1}^{\infty} \tau(n)q^n
+= \sum_{n=1}^{\infty} \tau(n)q^n.
 $$
 When this holds, $\tau$ is called the \textit{Ramanujan function}.
-
 We would like an explicit formula for $\tau(n)$. More precisely, we are interested in a formula for $\tau(n) \bmod 2$.
-
 We will calculate separately the coefficients $\tau(n) \bmod 2$ for $n$ even and odd.
 
 \subparagraph{Case $n$ odd}
 Remember $\sigma_s(n)$ as the sum of $s^{th}$ powers of (positive) divisors of $n$.
 It is known from classical theory \cite[p.8]{kolberg} that:
-$$\tau(8n+l) \equiv a_l \sigma_{11}(8n+l) \pmod {2^{b_l}} $$
+$$\tau(8n+l) \equiv a_l \sigma_{11}(8n+l) \bmod {2^{b_l}}, $$
 where $gcd(l,8)=1$, $a_1 = 1$, $a_3 = 1217$, $a_5 = 1537$, $a_7 = 705$, 
-$b_1 = 11$, $b_3 = 13$, $b_5 = 12$, $b_7 = 14$
+$b_1 = 11$, $b_3 = 13$, $b_5 = 12$, $b_7 = 14$.
 
 We are interested in congruence class (mod $2$) of the Ramanujan function $\tau(n)$.
 For $n$ odd, we deduce the following:
@@ -317,41 +295,38 @@ $$\tau(n) \equiv \sigma_{11}(n) \equiv \sum_{d | n} d^{11}
 \begin{array}{ll}
 1 \bmod 2 \qquad \text{if } n \text{ is a square}\\
 0 \bmod 2 \qquad \text{else}\\
-\end{array} \right.
+\end{array} \right..
 $$
 \subparagraph{Case $n$ even}
 It is easy to calculate that $\tau(2) = -24 \equiv 0 \bmod 2$.\\
-Using $\tau(p^{n+1}) = \tau(p^n)\tau(p) - p^{11}\tau(p^{n-1}) \qquad p \in \primes$ \cite[p.97]{CourseInArithmetic} with $p=2$,
-it follows by induction that $\tau(2^k) \equiv 0 \bmod 2 \qquad \forall k \in \N$.\\
-Using $\tau(nm) = \tau(n)\tau(m) \qquad \text{if } gcd(n,m)=1$ \cite[p.97]{CourseInArithmetic},
-it follows that for all $n$ even, $\tau(n) \equiv 0 \bmod 2$.
+We known $\tau(p^{n+1}) = \tau(p^n)\tau(p) - p^{11}\tau(p^{n-1}) \text{ for all } p \in \primes$; see \cite[p.97]{CourseInArithmetic}. With $p=2$, it follows by induction that $\tau(2^k) \equiv 0 \bmod 2 \text{ for all } k \in \N$.
+We know as well that $\tau(nm) = \tau(n)\tau(m) \text{ if } \gcd(n,m)=1$; see \cite[p.97]{CourseInArithmetic}. It follows that for all $n$ even, $\tau(n) \equiv 0 \bmod 2$.
 \subparagraph[Summary]{Explicit series of the discriminant}
 \label{DeltaSeries}
 Therefore, the only non-zero coefficients (modulo $2$) appears on odd squares, i.e.:
-$$\tau(n) \equiv \left\lbrace \begin{array}{ll}
+$$
+\tau(n) \equiv \left\lbrace \begin{array}{ll}
 1 \bmod 2 \qquad \text{if } n=(2m+1)^2 \quad \text{for } m \in \N\\
 0 \bmod 2 \qquad \text{else} 
-\end{array}\right.$$
+\end{array}\right..
+$$
 Thus, we can write the power series of $\Delta$ as:
 \[
-\Delta(q) \equiv \overline{\Delta}(q) = \sum_{m=0}^{\infty} q^{(2m+1)^2} \bmod 2
+\Delta(q) \equiv \overline{\Delta}(q) = \sum_{m=0}^{\infty} q^{(2m+1)^2} \bmod 2.
 \label{eq:Delta}
 \]
 
 \subsubsection{Reduced Basis}
-The Miller basis for $M_k$ was obtained via the Gauss elimination of the set $\{ \Delta^jE_3^{2(d-j)+b}E_2^a | 1 \leq j \leq \dim(M_k) \}$ (with some conditions on $a$,$b$,$d$).
-
+The Miller basis for $M_k$ was obtained via the Gauss elimination of the set $\{ \Delta^jE_3^{2(d-j)+b}E_2^a \mid 1 \leq j \leq \dim(M_k) \}$ (with some conditions on $a$,$b$,$d$).
 But $\overline{E_2^a} = \overline{E_2}^a = 1^a = 1 \bmod 2$ and similarly, $\overline{E_3^{2(d-j)+b}} = 1 \bmod 2$.
-So once the above set is reduced modulo 2, we are left with $\{ \overline{\Delta}^j | 1 \leq j \leq \dim(M_k) \}$.
+So once the above set is reduced modulo 2, we are left with $\{ \overline{\Delta}^j \mid 1 \leq j \leq \dim(M_k) \}$.
 So the Miller basis just becomes the Gauss elimination of $\overline{\Delta}$ powers.
-
 This is what motivates the next section.
 
 
 
 \subsection{Space of Modular Forms Modulo Two}
 We would like to have a definition for this space in a similar way as $M_k$ was used for modular forms (of weight $2k$) before reduction.
-
 By abuse of notation, we denote the reduction of $\Delta$ modulo 2 (written $\overline{\Delta}$ until here) also by $\Delta$, that is,
 $$
 \Delta(q) = \sum_{m=0}^{\infty} q^{(2m+1)^2} \bmod 2.
@@ -359,7 +334,6 @@ $$
 \subsubsection{Weights of Modular Forms Modulo Two}
 \label{WeightModuloTwo}
 We just saw that the Miller basis for $\overline{M_k}$ is (the Gaussian elimination of) $\{ \Delta^j | 1 \leq j \leq \dim(M_k) \}$.
-
 Now, if we look at this set not reduced modulo 2, we have:
 $\{ \Delta^j | 1 \leq j \leq \dim(M_k) \}$.
 This is a set of modular forms that have different weights.
@@ -367,16 +341,15 @@ However, we started with a modular forms in $M_k$, i.e. all modular forms having
 
 We understand now that modulo 2, the weight of modular form doesn't make sense any more.
 This is one of the consequences of reducing modulo 2: we lose some informations about the modular forms, such as the weight.
-
 From this observation, we should study all modular forms together, modulo 2 (instead of separating by weights).
 This is why the space of modular forms modulo 2 will be denoted  $\mathcal{F}$, with no dependence on $k$.
 
 \subsubsection{Powers of the Modular Discriminant $\Delta$}
 \paragraph{Set of Powers of the Modular Discriminant $\Delta$}
-As we just saw, the Gaussian elimination of powers $\Delta^k$ up to $\dim(\overline{M_k})$ form the Miller basis of $\overline{M_k}$ (modular forms of weight $2k$ reduced modulo 2).
+As we just saw, we can treat $\Delta$-coefficients of modular forms as entries of a matrix (each modular form represented by a row).
+This allows us to perform Gaussian elimination for powers $\Delta^k$ up to $\dim(\overline{M_k})$ on the Miller basis of $\overline{M_k}$ (modular forms of weight $2k$ reduced modulo 2).
 
 For simplicity again, we will just take the powers of $\Delta$ to be our basis for modular forms modulo 2 (i.e. drop the Gaussian elimination process).
-
 We define the space $\F_2[\Delta]$ in the usual way:
 $$
 \F_2[\Delta] = \left\lbrace \sum_{k=1}^{n}a_k \Delta^k | n \in \N, \  a_k \in \mathbb{F}_2 \right\rbrace
@@ -387,21 +360,20 @@ From \ref{DeltaSeries} we had:
 $$
 \Delta(q) 
 = \sum_{n=0}^{\infty} \tau(n)q^n
-= \sum_{m=0}^{\infty} q^{(2m+1)^2}
+= \sum_{m=0}^{\infty} q^{(2m+1)^2}.
 $$
 Therefore, we define 
 $$
 \Delta^{k}(q) 
 = \sum_{n=0}^{\infty} \tau_k(n)q^n
-= \left( \sum_{m=0}^{\infty} q^{(2m+1)^2} \right)^k \bmod 2
+= \left( \sum_{m=0}^{\infty} q^{(2m+1)^2} \right)^k \bmod 2.
 $$
 Thus, we have $\tau(n)=\tau_1(n)$.
 
 \paragraph{Proportion of zeros}
 In fact, most of the coefficients $\tau_k(n)$ are $0$ modulo 2.
-
 When $k=1$, there is already few coefficients that are ones: only the odd squares.
-When raising to the $k^{th}$ power, there are even "less".
+When raising to the $k^{th}$ power, there are even fewer.
 
 \paragraph{Conditions on non-zero coefficients}
 We can find conditions on coefficients that may not be zero.
@@ -412,9 +384,9 @@ We observe:
 	\begin{center}
 		\begin{tabular}{|r||c|c|c|c|c|c|c|c||l|}
 			\hline
-			$a=$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $\bmod 8$ \\
+			$a=$ & $0$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $\bmod \ 8$ \\
 			\hline
-			$a^2=$ & \color{BrickRed} $0$ & \color{ForestGreen} $1$ & \color{BrickRed} $4$ & \color{ForestGreen} $1$ & \color{BrickRed} $0$ & \color{ForestGreen} $1$ & \color{BrickRed} $4$ & \color{ForestGreen} $1$ & $\bmod 8$ \\
+			$a^2=$ & \color{BrickRed} $0$ & \color{ForestGreen} $1$ & \color{BrickRed} $4$ & \color{ForestGreen} $1$ & \color{BrickRed} $0$ & \color{ForestGreen} $1$ & \color{BrickRed} $4$ & \color{ForestGreen} $1$ & $\bmod \ 8$ \\
 			\hline
 
 		\end{tabular}
@@ -431,8 +403,8 @@ n &= m_1^2 + m_2^2 + m_3^2 + \dots + m_k^2 \\
 &\equiv \:\; 1 \ + \:\; 1 \ + \:\; 1 \; + \dots + \:\; 1 \bmod 8 \\
 &\equiv k \bmod 8
 \end{align*}
-Therefore: $\tau_k(n) \equiv 1 \quad \bmod 2 \implies n \equiv k \quad \bmod 8$\\
-Equivalently: $n \not\equiv k \quad \bmod 8 \implies \tau_k(n) \equiv 0 \quad \bmod 2$ (by taking the contra-positive)
+Therefore: If $\tau_k(n) \equiv 1 \bmod 2$, then $n \equiv k \bmod 8$.\\
+Equivalently: If $n \not\equiv k \bmod 8$ then $\tau_k(n) \equiv 0 \bmod 2$ (by taking the contra-positive).
 
 This means, that $\Delta^k$ may only have terms $q^n$ such that $n \equiv k \bmod 8$, i.e. $\Delta^k$ may only have terms of power congruent to $k \bmod 8$.
 When $k=1$, this is that $\Delta$ may only have terms of power $1 \bmod 8$, this matches with table \ref{table:SquaresMod8}: all odd squares are $1 \bmod 8$.
@@ -443,18 +415,18 @@ We compare $\Delta^{2k}(q)$ and $\Delta^k(q^2)$:
 \begin{align*}
 	\Delta^{2k}(q) 
 	&= \left( \sum_{m=0}^{\infty} q^{(2m+1)^2} \right)^{2k} \\
-	&= \sum_{n=0}^{\infty} \#[ (2m_1+1)^2+(2m_2+1)^2+...+(2m_{2k}+1)^2=n \ | \  m_0,m_1,...,m_{2k} \in \N ] \  q^n\\
-	&= \sum_{n \ even}^{\infty} \#[ (2m_1+1)^2+(2m_2+1)^2+...+(2m_k+1)^2=n/2 \ | \  m_0,m_1,...,m_k \in \N ] \  q^n\\
+	&= \sum_{n=0}^{\infty} \#[ (2m_1+1)^2+(2m_2+1)^2+...+(2m_{2k}+1)^2=n \mid m_0,m_1,...,m_{2k} \in \N ] \  q^n\\
+	&= \sum_{n \ even}^{\infty} \#[ (2m_1+1)^2+(2m_2+1)^2+...+(2m_k+1)^2=n/2 \mid m_0,m_1,...,m_k \in \N ] \  q^n\\
 	&= \left( \sum_{m=0}^{\infty} q^{((2m+1)^2) \cdot 2} \right)^k \\
 	&= \left( \sum_{m=0}^{\infty} (q^2)^{(2m+1)^2} \right)^k = \Delta^{k}(q^2)
 \end{align*}
 Thus, $\Delta^{2k}(q) = \Delta^k(q^2)$.
-Therefore, we can write any modular form modulo 2 $f$ as the following:
+Therefore, we can write any modular form modulo 2 $f$ as the following \cite[(3)]{OrdreNilpotenceOperateurHecke}:
 $$
-f = \sum_{s \geq 0} f_s^{2^s} \quad \text{ with } f_s \text{ having only odd powers of } \Delta
+f = \sum_{s \geq 0} f_s^{2^s},
 $$
-\cite[(3)]{OrdreNilpotenceOperateurHecke}
-So it is sufficient to study only the odd powers of $\Delta$.
+with $f_s$ having only odd powers of $\Delta$.
+We will focus on the study of the odd powers of $\Delta$.
 
 \subsubsection{The Space $\mathcal{F}$}
 \label{ModularFormsModTwo}
@@ -462,7 +434,7 @@ We define the \textit{space of modular forms modulo 2} denoted $\mathcal{F} $ to
 $$
 \mathcal{F}
 %= \left\lbrace \sum_{\substack{k \  odd,\\ k \leq n}} a_k \Delta^k | n \in \N, \  a_k \in \mathbb{F}_2 \right\rbrace
-= \left\langle \Delta^k | k \text{ odd} \right\rangle
+= \left\langle \Delta^k \mid k \text{ odd} \right\rangle
 = \left\langle \Delta, \Delta^3, \Delta^5, \Delta^7, \dots \right\rangle 
 $$
 That is, all finite polynomials of $\Delta$ over $\F_2$, having only odd powers.
@@ -470,35 +442,35 @@ We remark that the weight of modular forms do not appear, as it was discussed be
 The observations modulo 8 that we have done in \ref{ObservationsMod8} yields that it will be useful to denote:
 $$
 \mathcal{F}_1
-= \left\langle \Delta^k \ | \ k = 1 \bmod 8 \right\rangle
-= \left\langle \Delta, \Delta^9, \Delta^{17}, \Delta^{25}, \dots \right\rangle
+= \left\langle \Delta^k \mid k = 1 \bmod 8 \right\rangle
+= \left\langle \Delta, \Delta^9, \Delta^{17}, \Delta^{25}, \dots \right\rangle,
 $$
 $$
 \mathcal{F}_3
-= \left\langle \Delta^k \ | \ k = 3 \bmod 8 \right\rangle
-= \left\langle \Delta^3, \Delta^{11}, \Delta^{19}, \Delta^{27}, \dots \right\rangle
+= \left\langle \Delta^k \mid k = 3 \bmod 8 \right\rangle
+= \left\langle \Delta^3, \Delta^{11}, \Delta^{19}, \Delta^{27}, \dots \right\rangle,
 $$
 $$
 \mathcal{F}_5
-= \left\langle \Delta^k \ | \ k = 5 \bmod 8 \right\rangle
-= \left\langle \Delta^5, \Delta^{13}, \Delta^{21}, \Delta^{29}, \dots \right\rangle
+= \left\langle \Delta^k \mid k = 5 \bmod 8 \right\rangle
+= \left\langle \Delta^5, \Delta^{13}, \Delta^{21}, \Delta^{29}, \dots \right\rangle,
 $$
 $$
+\text{and }
 \mathcal{F}_7
-= \left\langle \Delta^k \ | \ k = 7 \bmod 8 \right\rangle
-= \left\langle \Delta^7, \Delta^{15}, \Delta^{23}, \Delta^{31}, \dots \right\rangle
+= \left\langle \Delta^k \mid k = 7 \bmod 8 \right\rangle
+= \left\langle \Delta^7, \Delta^{15}, \Delta^{23}, \Delta^{31}, \dots \right\rangle.
 $$
 Of course, we have:
 $$
-\mathcal{F} = \mathcal{F}_1 \oplus \mathcal{F}_3 \oplus \mathcal{F}_5 \oplus \mathcal{F}_7
+\mathcal{F} = \mathcal{F}_1 \oplus \mathcal{F}_3 \oplus \mathcal{F}_5 \oplus \mathcal{F}_7.
 $$
 We will also introduce (as in \cite[2.]{StructureAlgebreHecke}):
 $$
 \mathcal{F}(n)
-= \left\langle \Delta^k \ | \ k \text{ odd} \text{ and } k \leq 2n-1 \right\rangle
-= \left\langle \Delta, \Delta^3, \Delta^5, \dots, \Delta^{2n-1} \right\rangle
+= \left\langle \Delta^k \mid k \text{ odd} \text{ and } k \leq 2n-1 \right\rangle
+= \left\langle \Delta, \Delta^3, \Delta^5, \dots, \Delta^{2n-1} \right\rangle.
 $$
-This matches specifically $\overline{M_{6(2n-1)}} = \mathcal{F}(n)$.
 
 \subsubsection{Duality between $\Delta$ and $q$}
 %reference to wave-particule duality from physics
@@ -539,12 +511,11 @@ $$
   c(np)+c(n/p) & \text{ if } p \mid  n
 \end{array}
 \right. 
-\qquad \&\ p \text{ an odd prime}
+\quad \text{ and } p \text{ an odd prime}.
 $$
 
 \paragraph{Well-definiteness}
 We want to check that all the definitions make sense. When we look at $T_p|f$, there is a number of ways to to reduce it modulo 2: $\overline{T_p|f}$, $\overline{T_p|\overline{f}}$, $\overline{\overline{T_p}|f}$, $\overline{T_p}|\overline{f}$.
-
 Let's compare coefficients:
 
 $\overline{T_p|f}$:
@@ -566,7 +537,7 @@ As both $1$ and $p$ are odd, the term $a^{2k-1}$ reduces to $1$ modulo 2.
 We understand why Hecke operators modulo 2 isn't defined for even numbers: many terms in the summation would become zero.
 It would not make sense to call it a Hecke operator any more.
 
-It also makes sense why we look at modular forms modulo 2 and not say three or five: the coefficient $a^{2k-1}$ collapse nicely modulo 2, which won't be the case modulo an other number then 2.
+It also makes sense why we look at modular forms modulo 2 and not say three or five: the coefficient $a^{2k-1}$ collapse nicely modulo 2, which won't be the case modulo another number then 2.
 
 $\overline{T_p|\overline{f}}$:
 This is (very) similar to the case before.
@@ -598,20 +569,20 @@ The extra properties make the study modulo two interesting.
 From the fact that $\overline{T_p}|\overline{f(q)} = \overline{T_p|f(q)}$, we get that the Hecke operators modulo 2 keep the properties they had before being reduced.
 \subparagraph{Modularity Remains}
 \label{HekeModular}
-From definition \ref{DefHeckeOperators}, a Hecke operators transform a modular form to an other.
+From definition \ref{DefHeckeOperators}, a Hecke operators transform a modular form to another.
 This is because from definition, $T_nf$ is a sum of modular forms (which remain modular).
-Therefore, Hecke operators modulo 2 will as well transform a modular form to an other.
+Therefore, Hecke operators modulo 2 will as well transform a modular form to another.
 This was not clear from the definition modulo 2 that we had (which was in terms of $q$ series).
 \subparagraph{Commutativity}
 \label{HekeCommute}
 As in general \cite[p.101]{CourseInArithmetic}:
 $$
-T_nT_m = T_{mn} \quad \text{ if } \gcd(m,n)=1
+T_nT_m = T_{mn} \text{ if } \gcd(m,n)=1.
 $$
 % and $$ T(p)T(p^n)f=T(p^{n+1})f+T(p^{n-1})f $$
 We get that:
 $$
-\overline{T_p}\overline{T_q} = \overline{T_q}\overline{T_p} \quad \forall p,q \in \primes
+\overline{T_p}\overline{T_q} = \overline{T_q}\overline{T_p} \quad \forall p,q \in \primes.
 $$
 Therefore, the Hecke operators modulo 2 commute.
 This, as well, was not clear form definition.
@@ -624,7 +595,6 @@ $$
 T_p|(f+g) = T_p|f + T_p|g
 $$
 (this follows directly from definition).
-
 This property will also remain modulo 2.
 
 \paragraph{Behaviour of $\mathcal{F}_i$}
@@ -657,18 +627,17 @@ $$
 	\item [$\gamma(n)$:] We conclude that $n \equiv np^2 \not\equiv pi \bmod 8 \implies \gamma(n) = 0$
 \end{enumerate}
 Using \ref{ObservationsMod8} again, we deduce that $\overline{T_p}|f \in \mathcal{F}_j$ with $j \equiv pi \bmod 8$.
-
 Overall, we have the following:
 $$
 f \in \mathcal{F}_i \implies \overline{T_p}|f \in \mathcal{F}_j
-\text{ with } j \equiv pj \bmod 8
+\text{ with } j \equiv pj \bmod 8.
 $$
 
 \paragraph{Non-Nullity of Hecke Opereator}
 \label{HeckeNonNull}
-We will prove a property that directly implies the non nullity of Hecke Operators.
+We will prove the non-nullity of Hecke Operators in two ways.
 
-This property follows the idea developed in \cite[p.33]{TheWebOfModularityArithmeticOfTheCoefficientsOfModularForms}.
+First, as a consequence of a property following the idea developed in \cite[p.33]{TheWebOfModularityArithmeticOfTheCoefficientsOfModularForms}.
 \begin{property}
 	If $f \in \mathcal{F}$, and $\overline{T_p}|f = 0$ for all odd primes $p$, then either $f = 0$ or $f = \Delta$.
 	That is, only $\Delta$ and $0$ give zero after applying any Hecke operator.
@@ -698,7 +667,7 @@ This means that $\overline{T_p}$ is never the null operator (so reduction modulo
 
 
 
-Non-nullity of Hecke operators is also implied by the following property, which is new to this paper:
+A second way to show non-nullity of Hecke operators is by the following property, which is new to this paper:
 \begin{property}
 	In fact, we have $\overline{T_p}|\Delta^p = \Delta + \mathcal{O}(\Delta^9)$ for any odd primes $p$.\\
 	That is, $\overline{T_p}|\Delta^p = \Delta + \left[ \Delta^{k_1} + \Delta^{k_2} + \dots + \Delta^{k_r} \right] $ with $k_i \geq 9 \quad \forall 1 \leq i \leq r$ (in fact, we also have $k_i \equiv 1 \bmod 8 \quad \forall 1 \leq i \leq r$).
@@ -722,7 +691,7 @@ Note that with this proof, we know an explicit modular form such that the Hecke 
 
 
 
-\subsubsection{Nil-potency}
+\subsubsection{Nilpotency}
 \label{NilpotencyHeckeOperators}
 The properties of Hecke operators is that, given a modular form $f$, if we apply a Hecke operators enough times, the form will become zero (i.e. they are nilpotent).
 The strategy to show this is to prove that for any $k$ (odd), and any prime $p$, we have:
@@ -734,12 +703,12 @@ The proof of this property will be divided in two main steps:
 \subparagraph{Order of $\Delta$ doesn't increase}
 We first want to show that:
 $$
-\overline{T_p}| \Delta^k = \sum_{j \leq k} \mu_j \Delta^j
+\overline{T_p}| \Delta^k = \sum_{j \leq k} \mu_j \Delta^j.
 $$
 
 Let $f$ be a modular form modulo 2 of maximum degree $2n_0-1$ (in $\Delta$), i.e. 
 $$
-f = \Delta^{2n_0-1} + \Delta^{2n_1-1} + \dots + \Delta^{2n_m-1}
+f = \Delta^{2n_0-1} + \Delta^{2n_1-1} + \dots + \Delta^{2n_m-1},
 $$ with $n_0 > n_1 > \dots > n_m$.
 So $f \in \mathcal{F}(n_0)$
 Then, there must exist a modular forms $g \in M_{6n_0}$ such that $\overline{g}=f$.
@@ -761,12 +730,11 @@ Therefore, the degree of $f$ doesn't increase when applying $\overline{T_p}$ to 
 \label{orderDecrease}
 Since $T_p$ and $\overline{T_p}$ have exactly the same action on $q$-expansions of modular forms, we can interchange them as we want.
 By abuse of notation (again), we denote the reduction of $T_p$ modulo 2 (usually denoted $\overline{T_p}$) by $T_p$ as well.
-
-Now that we have proved that 
+We have proved that 
 $$
-T_p| \Delta^k = \sum_{j \leq k} \mu_j \Delta^j
+T_p| \Delta^k = \sum_{j \leq k} \mu_j \Delta^j.
 $$
-we need to show that $\mu_k = 0$, so that the maximum order of $\Delta$ in fact effectively decrease.
+We now need to show that $\mu_k = 0$, so that the maximum order of $\Delta$ in fact effectively decrease.
 
 Let's look at $\mathcal{F}(k)$ as a vector space over $\F_2$ with basis $\{ \Delta, \Delta^3, \cdots, \Delta^k \}$.
 We may represent a modular form modulo 2 by a $k$-vector over $\F_2$ (note that even powers of $\Delta$ will always be zero, but we keep track of them to lighten notation).
@@ -781,10 +749,9 @@ a_{1,1} & a_{1,2} & a_{1,3} & \cdots & a_{1,k} \\
    0    &    0    & a_{3,3} & \cdots & a_{3,k} \\
 \vdots  & \vdots  & \vdots  & \ddots & \vdots  \\
    0    &    0    &    0    & \cdots & a_{k,k}
-\end{pmatrix}
+\end{pmatrix}.
 $$
 We need to show that the coefficients $a_{i,i}$ are zero.
-
 We will do this by induction.
 Suppose we know $T_p$ decrease the degree of $\Delta^j$ for all $j \leq k-1$.
 Translating this information to the matrix, it means that $a_{j,j}=0$ for all $j \leq k-1$.
@@ -793,7 +760,6 @@ Then, we only need to show that $a_{k,k}=0$.
 Now that we have all this information on the diagonal, it makes sense to study the trace: 
 $\Tr{A_p} = a_{k,k}$.
 A nice interpretation of the Trace should give us an equation for $a_{k,k}$.
-
 We can interpret the trace as the sum of eigenvalues of the matrix $A_p$, i.e. eigenvalues of the Hecke operator $T_p$.
 Some knowledge about eigenvalues of Hecke operators has been proved already (see \cite{EigenvaluesOfHeckeOperators}), we have:
 For $p$ an odd prime, if $\lambda_p$ is an eigenvalue of $T_p$, we have the congruence: $\lambda_p \equiv 1+p \bmod 8$
@@ -801,10 +767,9 @@ Since $p$ is an odd (prime) number, we get: $\lambda_p \equiv 0 \bmod 2$.
 As this is true for all eigenvalues of $T_p$, we have that the sum of eigenvalues (which corresponds to the trace of the matrix) is zero over $\F_2$.
 Thus: 
 %$a_{k,k} = \Tr{A_p} = \sum_{j} \lambda_{p,j} \equiv 0 \bmod 2$
-$a_{k,k} = \Tr{A_p} \equiv 0 \bmod 2$
+$a_{k,k} = \Tr{A_p} \equiv 0 \bmod 2$.
 
 Now, this is a proof by induction, but the first case really is $k=0$, in which case, all modular forms are just $0$, so all Hecke operators are obviously zero so nilpotent in this case.
-
 Therefore, we proved the nilpotence modulo 2 of Hecke operators $T_p$ for all $p$ odd primes.
 
 \subsubsection[Expression for $T_p|\Delta^k$]{Expression as a Sum of Powers of $\Delta$}
@@ -822,7 +787,7 @@ The observation on $\mathcal{F}_i$ (in \ref{HeckeInF_i}) leads us to the formula
 T_p|\Delta^k = \sum_{\substack{j \leq k-2\\ j \equiv pk \bmod 8}} \mu_j\Delta^j
 \label{eq:TpDelta^k_bis} \tag{**}
 \]
-(since $\Delta^k \in \mathcal{F}_i \text{ with } k \equiv i \bmod 8$)
+(since $\Delta^k \in \mathcal{F}_i \text{ with } k \equiv i \bmod 8$).
 
 \subsubsection{Examples (for Small Powers of $\Delta$)}
 We will describe the behaviour of Hecke operators when applied to $\Delta^k$ with $k \text{ odd}, k \leq 7$.
@@ -831,25 +796,21 @@ We will describe the behaviour of Hecke operators when applied to $\Delta^k$ wit
 Clearly, from \eqref{eq:TpDelta^k}, we have $T_p|\Delta = 0$, since the sum is empty (for any $p$ odd prime).
 
 \paragraph{$\Delta^3$}
-From \eqref{eq:TpDelta^k}, we have $T_p|\Delta^3 = \Delta \text{ or } 0$.\\
-Moreover, \eqref{eq:TpDelta^k_bis} gives $T_p|\Delta^3 = 0$ if $1 \not\equiv 3p \bmod 8$ i.e. if $p \not\equiv 3 \bmod 8$.
-
+From \eqref{eq:TpDelta^k}, we have $T_p|\Delta^3 = \Delta \text{ or } 0$. Moreover, \eqref{eq:TpDelta^k_bis} gives $T_p|\Delta^3 = 0$ if $1 \not\equiv 3p \bmod 8$ i.e. if $p \not\equiv 3 \bmod 8$.
 Now, if $p \equiv 3 \bmod 8$, we may only look at the coefficient $q^1$ of $T_p|\Delta^3$ (if it is $1$, $T_p|\Delta^3 = \Delta$ and if it is $0$, $T_p|\Delta^3 = 0$, as there is no other possibilities).
 
 From definition (in \ref{DefHeckeOperatorsMod2}), we have that the coefficient of $q^1$ is $\gamma(1) = c(p)$ (since $p \nmid 1$) with $c$ the $q$ coefficients of $\Delta^3$.
-
 From \eqref{eq:Delta}, the non-zero coefficients of $\Delta$ are odd squares.
 So we have:
 $$
 \left( \Delta(q) \right)^3
 = \left( \sum_{m=0}^{\infty} q^{(2m+1)^2} \right)^3
-= \sum_{n=0}^{\infty} \#\{m_1, m_2, m_3 \text{ odds } | m_1^2 + m_2^2 + m_3^2 = n\} q^n
+= \sum_{n=0}^{\infty} \#\{m_1, m_2, m_3 \text{ odds } | m_1^2 + m_2^2 + m_3^2 = n\} q^n.
 $$
 As, $c(p)$ is th $p^{th}$ coefficient of $\Delta^3$, $c(p) = \#\{m_1, m_2, m_3 \text{ odds } | m_1^2 + m_2^2 + m_3^2 = p\} \bmod 2$ corresponds ($\bmod 2$) to the number of ways to write $p$ as sum of three odd squares.
-
 Now, there are a few possible cases:
 If $p=3$, then $m_1=m_2=m_3=1$ is the only solution, and $c(p)=1$ so $T_p|\Delta^3=\Delta$.
-Now, we consider 
+We consider separately:
 \begin{itemize}
 	\item $m_1=m_2=m_3$: in this case, $m_1^2 + m_2^2 + m_3^2$ isn't prime, unless $p=3$ (but we handled this case already). So there is no solution of this form.
 	\item $m_1 \neq m_2 \neq m_3 \neq m_1$ (i.e. all distinct): in this case, if $(m_1, m_2, m_3)$ is a solution, the so is $(m_1, m_3, m_2)$, $(m_2, m_1, m_3)$, $(m_2, m_3, m_1)$, $(m_3, m_1, m_2)$ and $(m_3, m_2, m_1)$. Therefore, there is an even number of solutions, so the contribution to $c(p)$ of solutions of this type is 0.
@@ -880,9 +841,7 @@ Moreover, \eqref{eq:TpDelta^k_bis} gives:
 
 \subparagraph{$p \equiv 7 \bmod 8$}
 Now, if $p \equiv 7 \bmod 8$, we may only look at the coefficient $q^3$ of $T_p|\Delta^5$ (if it is $1$, $T_p|\Delta^5 = \Delta^3$ and if it is $0$, $T_p|\Delta^3 = 0$, as there is no other possibilities).
-
 From definition (in \ref{DefHeckeOperatorsMod2}), we have that the coefficient of $q^3$ is $\gamma(3) = c(3p)$ (since $p \nmid 3$) with $c$ the $q$ coefficients of $\Delta^5$.
-
 From \eqref{eq:Delta}, the none zero coefficients of $\Delta$ are odd squares.
 Now, $c(3p)$ is th $p^{th}$ coefficient of $\Delta^5$. We have:
 $$
@@ -997,21 +956,20 @@ A larger table may be found in the appendix (see \ref{table:PrimeHeckeOperators}
 
 It seems quite random, which makes sense since the Hecke operators depend on prime, and primes appear at random.
 However, it is interesting to try to find patterns and rules for this table.
-
 In the second column (of $\Delta^3$), we get $\nicefrac{1}{4}$ of the primes giving $\Delta$ (the other $\nicefrac{3}{4}$ giving $0$), this is a consequence of Dirichlet Density Theorem, that will be discussed later in this paper.
 Similarly, in the third column (of $\Delta^5$), we get $\nicefrac{1}{4}$ of the primes giving $\Delta$.
 For similar reason, in the fourth column (of $\Delta^7$), we get $\nicefrac{1}{4}$ of the primes giving $\Delta^3$; $\nicefrac{1}{4}$ of the primes giving $\Delta^5$; $\nicefrac{1}{8}$ of the primes giving $\Delta$; and $\nicefrac{3}{8}$ of the primes giving $0$.
 
 
 
-\subsection{Nil-potency Order}
-In this subsection, we follow the construction from \cite{OrdreNilpotenceOperateurHecke}.\\
+\subsection{Nilpotency Order}
+In this subsection, we follow the construction from \cite{OrdreNilpotenceOperateurHecke}.
 As we know that the Hecke operators are nilpotent, we may want to study the order of nil potentness.
 \subsubsection{Introduction}
 \paragraph{Definition}
 For a modular from modulo 2 $f \in \mathcal{F}$, we define the \textit{nil potentness order} to be the smallest integer $g(f)$ such that we have 
 $$
-T_{p_1} T_{p_2} \cdots T_{p_{g(f)}} | f = 0
+T_{p_1} T_{p_2} \cdots T_{p_{g(f)}} | f = 0,
 $$
 for any set of primes numbers $p_1, p_2, \dots, p_{g(f)} \in \primes$.
 The primes $p_i$ involved do not need to be distinct.
@@ -1035,7 +993,6 @@ If the degree of $f$ is strictly greater than 1 (i.e. $f \neq 0, \Delta$), then 
 
 We deduce this from the fact that Hecke operators are not null operators in general (\ref{HeckeNonNull}):
 Remember that one consequence of non nullity is that if $f \neq 0, \Delta$, then there exists an odd prime $p$ such that $T_p|f \neq 0$.
-
 This directly implies that $g(f) > 1$ if $f \neq \Delta, 0$.
 
 \paragraph{Examples}
@@ -1073,11 +1030,10 @@ We then define $n_3(k)$ and $n_5(k)$ as follows:
 $$
 n_3(k) = \sum_{i=1}^{\infty} \alpha_{2i+1} 2^i = \sum_{i \text{ odd}} \alpha_i 2^{\frac{i-1}{2}}
 \qquad \text{ and } \qquad
-n_5(k) = \sum_{i=1}^{\infty} \alpha_{2i+2} 2^i = \sum_{i \text{ even}} \alpha_i 2^{\frac{i-2}{2}}
+n_5(k) = \sum_{i=1}^{\infty} \alpha_{2i+2} 2^i = \sum_{i \text{ even}} \alpha_i 2^{\frac{i-2}{2}}.
 $$
 We also define $h$ (the \textit{height})to be the sum of $n_3$ and $n_5$, that is:
-$$h(k) = n_3(k) + n_5(k)$$
-
+$$h(k) = n_3(k) + n_5(k).$$
 The definition of $n_3$ and $n_5$ is equivalent to the followings:
 \begin{itemize}
 	\item [$n_3(k)$] Take $k$ and write it in binary base. Ignore the units digit. Select only the digits corresponding to odd powers of 2. This forms $n_3(k)$.
@@ -1150,7 +1106,7 @@ n_3(m) = 0
 \quad \text{ and } \quad 
 n_5(m) = 2^{\frac{k-2}{2}} = \nicefrac{1}{2}\sqrt{m}
 \quad \text{ so } \quad 
-h(m) = \nicefrac{1}{2}\sqrt{m} 
+h(m) = \nicefrac{1}{2}\sqrt{m}.
 $$
 For $m=2^k, \ k>0$ odd: 
 $$
@@ -1158,11 +1114,11 @@ n_3(m) = \sqrt{\nicefrac{m}{2}}
 \quad \text{ and } \quad 
 n_5(m) = 0
 \quad \text{ so } \quad 
-h(m) = \sqrt{\nicefrac{m}{2}}
+h(m) = \sqrt{\nicefrac{m}{2}}.
 $$
 Therefore, if $m=2^k, \ m \geq 2$, we have:
 $$
-\nicefrac{1}{2}\sqrt{m} \leq h(m) \leq \sqrt{\nicefrac{m}{2}}
+\nicefrac{1}{2}\sqrt{m} \leq h(m) \leq \sqrt{\nicefrac{m}{2}}.
 $$
 
 \subparagraph{Lower Bound for $h$}
@@ -1176,15 +1132,15 @@ Let $m = 2^{k_1} + 2^{k_2} + \dots + 2^{k_r}$ with $k_1 > k_2 > \dots > k_r$.
 
 By construction, we have:
 \begin{itemize}
-	\item If $k_1$ is even, $n_3(m) < \sqrt{2^{k_1}} = \sqrt{m} < \sqrt{2m}$
-	\item If $k_1$ is odd, $n_3(m) < \sqrt{2^{k_1+1}} < \sqrt{2m}$
+	\item If $k_1$ is even, $n_3(m) < \sqrt{2^{k_1}} = \sqrt{m} < \sqrt{2m}$.
+	\item If $k_1$ is odd, $n_3(m) < \sqrt{2^{k_1+1}} < \sqrt{2m}$.
 \end{itemize}
 Thus, in any case $n_3(m) < \sqrt{2m}$.
 
 Again, by construction, we have:
 \begin{itemize}
-	\item If $k_1$ is even, $n_5(m) < \sqrt{2^{k_1}} < \sqrt{m}$
-	\item If $k_1$ is odd, $n_5(m) < \sqrt{2^{k_1-1}} = \sqrt{\nicefrac{m}{2}} < \sqrt{m}$
+	\item If $k_1$ is even, $n_5(m) < \sqrt{2^{k_1}} < \sqrt{m}$.
+	\item If $k_1$ is odd, $n_5(m) < \sqrt{2^{k_1-1}} = \sqrt{\nicefrac{m}{2}} < \sqrt{m}$.
 \end{itemize}
 Thus, in any case $n_5(m) < \sqrt{m}$.
 
@@ -1195,12 +1151,11 @@ Therefore, we have $h(m) < \sqrt{2m} +  \sqrt{m} = (1+\sqrt{2}) \sqrt{m} < \nice
 Note that if $m=0,1$, we have $h(m) = \sqrt{m} = m$.
 Thus, we have:
 $$
-\nicefrac{1}{2}\sqrt{m} \leq h(m) < (1+\sqrt{2}) \sqrt{m} < \nicefrac{5}{2}\sqrt{m}
+\nicefrac{1}{2}\sqrt{m} \leq h(m) < (1+\sqrt{2}) \sqrt{m} < \nicefrac{5}{2}\sqrt{m} \quad \text{ for all } m \in \N.
 $$
-for all $m \in \N$.
 Using the big $\mathcal{O}$ notation (asymptotic behaviour), this is:
 $$
-h(m) = \mathcal{O}(\sqrt{m})
+h(m) = \mathcal{O}(\sqrt{m}).
 $$
 
 
@@ -1242,10 +1197,9 @@ $$
 \qquad \text{ with } \left\lbrace \begin{array}{c}
 	m_1 = \sum_{i=0}^{\infty} \alpha_i 2^i \\
 	m_2 = \sum_{i=0}^{\infty} \beta_i 2^i
-\end{array} \right.
+\end{array} \right..
 $$
 (i.e. squaring each power of two composing $m_1$ and $m_2$ separately.)
-
 Since $\phi$ (respectively $\psi$) has an inverse, it defines a bijection between even (respectively odd) natural numbers and their code.
 
 \paragraph{Behaviour}
@@ -1280,31 +1234,33 @@ First, we can make a small table of values:
 	\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|c|}
 		\hline
 		\textbf{} & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\\hline\hline
-		0 & 0 & 4 & 16 & 20 & 64 & 68 & 80 & 84 & 256 & 260 & 272 \\
-		1 & 2 & 6 & 18 & 22 & 66 & 70 & 82 & 86 & 258 & 262 & 274 \\
-		2 & 8 & 12 & 24 & 28 & 72 & 76 & 88 & 92 & 264 & 268 & 280 \\
-		3 & 10 & 14 & 26 & 30 & 74 & 78 & 90 & 94 & 266 & 270 & 282 \\
-		4 & 32 & 36 & 48 & 52 & 96 & 100 & 112 & 116 & 288 & 292 & 304 \\
-		5 & 34 & 38 & 50 & 54 & 98 & 102 & 114 & 118 & 290 & 294 & 306 \\
-		6 & 40 & 44 & 56 & 60 & 104 & 108 & 120 & 124 & 296 & 300 & 312 \\
-		7 & 42 & 46 & 58 & 62 & 106 & 110 & 122 & 126 & 298 & 302 & 314 \\
-		8 & 128 & 132 & 144 & 148 & 192 & 196 & 208 & 212 & 384 & 388 & 400 \\
-		9 & 130 & 134 & 146 & 150 & 194 & 198 & 210 & 214 & 386 & 390 & 402 \\
-		10 & 136 & 140 & 152 & 156 & 200 & 204 & 216 & 220 & 392 & 396 & 408 \\
+		\textbf{0} & 0 & 4 & 16 & 20 & 64 & 68 & 80 & 84 & 256 & 260 & 272 \\
+		\textbf{1} & 2 & 6 & 18 & 22 & 66 & 70 & 82 & 86 & 258 & 262 & 274 \\
+		\textbf{2} & 8 & 12 & 24 & 28 & 72 & 76 & 88 & 92 & 264 & 268 & 280 \\
+		\textbf{3} & 10 & 14 & 26 & 30 & 74 & 78 & 90 & 94 & 266 & 270 & 282 \\
+		\textbf{4} & 32 & 36 & 48 & 52 & 96 & 100 & 112 & 116 & 288 & 292 & 304 \\
+		\textbf{5} & 34 & 38 & 50 & 54 & 98 & 102 & 114 & 118 & 290 & 294 & 306 \\
+		\textbf{6} & 40 & 44 & 56 & 60 & 104 & 108 & 120 & 124 & 296 & 300 & 312 \\
+		\textbf{7} & 42 & 46 & 58 & 62 & 106 & 110 & 122 & 126 & 298 & 302 & 314 \\
+		\textbf{8} & 128 & 132 & 144 & 148 & 192 & 196 & 208 & 212 & 384 & 388 & 400 \\
+		\textbf{9} & 130 & 134 & 146 & 150 & 194 & 198 & 210 & 214 & 386 & 390 & 402 \\
+		\textbf{10} & 136 & 140 & 152 & 156 & 200 & 204 & 216 & 220 & 392 & 396 & 408 \\
 		\hline
 	\end{tabular}
 
-	(Larger table in \ref{table:CodeToIntegers}.)
+	Table in of (even) integers corresponding to code $[line,column]$.
 \end{center}
+(Larger table in \ref{table:CodeToIntegers}.)
 
 But it isn't very visual, so another way to view it is as a surface (obtained by linking with triangles the points plotted).
 On the grid $\left[ 0,10 \right]^2$, we plot the surface $z = \left[ x, y \right]$ i.e. $z$ is the integer with code $\left[ x, y \right]$.
 \begin{center}
 	\includegraphics{code_plot_10-10}
 	
-	(Other scales of plots available in \ref{plot:CodeSurface}.)
+	Plot of the surface with height given by the code of $X$ and $Y$.\\
+	(i.e. the surface with equation $Z = [X,Y]$.)
 \end{center}
-
+(Other scales of plots available in \ref{plot:CodeSurface}.)
 
 \paragraph{Order Relation}
 We define the following order relation on natural numbers:
@@ -1346,7 +1302,7 @@ Again, this proposition is stated in \cite[§4]{OrdreNilpotenceOperateurHecke}, 
 
 
 
-\subsubsection{Formula for the Order of Nil-potency}
+\subsubsection{Formula for the Order of Nilpotency}
 \paragraph{Lower bound}
 \begin{property}
 	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2 of degree $m_1$.
@@ -1374,7 +1330,6 @@ Again, this proposition is stated in \cite[§4]{OrdreNilpotenceOperateurHecke}, 
 \subparagraph{Table}
 This means that for each $k$ odd, there is pair $\left[ a,b \right] = \left[ n_3(k),n_5(k) \right] \in \N\times\N$ (which corresponds to the code of $k$), such that $T_3^aT_5^b|\Delta^k = \Delta$.
 Explicitly, $T_3^{n_3(k)}T_5^{n_5(k)}|\Delta^k = \Delta$.
-
 Thus, we can arrange all odd powers of the discriminant $\Delta$ in a table, such that applying the corresponding Hecke operators give exactly $\Delta^1$:
 \begin{center}
 	\begin{tabular}{|c||ccccccccccc|}
@@ -1397,24 +1352,26 @@ Thus, we can arrange all odd powers of the discriminant $\Delta$ in a table, suc
 		\hline
 	\end{tabular}
 
-	(A larger table can be found in \ref{table:CodeToIntegers}.)
+	Table of powers $\Delta^k$ such that the corresponding operator applied to $\Delta^k$ gives $\Delta^1$.\\
+	(i.e. $\Delta^k$ such that $T_3^{line}T_5^{column}|\Delta^k = \Delta$.)
 \end{center}
+(A larger table can be found in \ref{table:OperatorToDelta1}.)
 
-
+From the fact that codes are in bijection with odd integers, we can use this table as a basis for modular forms modulo 2.
 
 
 \paragraph{Exact Formula}
-We derive here an explicit formula for the order of nil-potency of a modular form modulo 2.
+We derive here an explicit formula for the order of nilpotency of a modular form modulo 2.
 \label{theoremOrderOfNilpotency}
-\begin{theorem}[Order of Nil-potency of Modular Forms Modulo 2]
+\begin{theorem}[Order of Nilpotency of Modular Forms Modulo 2] \cite[§5]{OrdreNilpotenceOperateurHecke}.
 	Let $f \in \mathcal{F}$ be a non-zero modular form modulo 2.
-	The order of nil-potency is exactly $g(f) = h(f) + 1$.
+	The order of nilpotency is exactly $g(f) = h(f) + 1$.
 \end{theorem}
 What remains to prove is that $g(f) \leq h(f) + 1$.
 This is proved in \cite[§5]{OrdreNilpotenceOperateurHecke}.
 
 From this follows a new remark, which is useful to estimate computations times:
-As $g(f)=h(f)+1$, and $h(f) = h(\degree{f}) = \mathcal{O}(\sqrt{\degree{f}})$, we have $g(f) = \mathcal{O}(\sqrt{\degree{f}})$, i.e. the nil-potency order of a modular form behaves asymptotically as the square root of its degree.
+As $g(f)=h(f)+1$, and $h(f) = h(\degree{f}) = \mathcal{O}(\sqrt{\degree{f}})$, we have $g(f) = \mathcal{O}(\sqrt{\degree{f}})$, i.e. the nilpotency order of a modular form behaves asymptotically as the square root of its degree.
 
 \label{corollaryOrderOfNilpotency}
 \begin{corollary}

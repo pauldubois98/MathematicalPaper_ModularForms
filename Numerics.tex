@@ -286,7 +286,7 @@ Here, the optimization is not trivial:
 To calculate $\Delta^{31}$ (say), the most trivial way is to do $\Delta \cdot \Delta \cdots \Delta$ with 30 multiplications.
 But what is done in fact inside the library is much faster: we calculate $\Delta$, $\Delta^2 = \Delta \cdot \Delta$, $\Delta^4 = \Delta^2 \cdot \Delta^2$, ... until $\Delta^{16}$, and then $\Delta^{31} = \Delta^{16} \cdot \Delta^8 \cdot \Delta^4 \cdot \Delta^2 \cdot \Delta$.
 Doing like this, only 8 multiplications were needed (against 30 with the naïve method).
-On may think that 3 was an example particularly good for this technique, but if we take an other example, say 32, we would turn 31 multiplication to 5.
+On may think that 3 was an example particularly good for this technique, but if we take another example, say 32, we would turn 31 multiplication to 5.
 In fact, in general, to calculate $\Delta^n$ this second method need a maximum of $\log_2(n)^2$ multiplications against $n-1$ for the first one.
 So it really is a much faster algorithm.\footnote{In fact, half of the operations are squaring modular forms, wich is much faster than a usual multiplication. This this algorithm is even better than stated.}
 \subparagraph{Hecke Operators}
@@ -551,12 +551,12 @@ For $p=19$, we can also look at $a_{ij}(p)$ as an infinite 2-dimensional table:
 \end{center}
 For tables of other primes, please visit \href{https://pauldubois98.github.io/HeckeOperatorsModuloTwo/a_ij_p/}{this web site}:\\ \url{https://pauldubois98.github.io/HeckeOperatorsModuloTwo/a_ij_p/}.
 
-Now, we will later be interested in the map $p \to a_{ij}(p)$, so it makes sense for each pair $(i,j)$, to list the \textit{1-primes} (i.e. the set $\{ p \in \primes \ | \ a_{ij}(p) = 1 \}$) or the 0-primes 
+Now, we will later be interested in the map $p \to a_{ij}(p)$, so it makes sense for each pair $(i,j)$, to list the \textit{1-primes} (i.e. the set $\{ p \in \primes \mid a_{ij}(p) = 1 \}$) or the 0-primes 
 This is what we do in the following table:
 \begin{center}
 	\begin{tabular}{|r|l|}
 		\hline
-		\textbf{$a_{ij}$} & \textbf{$ \lbrace p \in \primes \ | \ a_{ij}(p) = 1 \rbrace $} \\
+		\textbf{$a_{ij}$} & \textbf{$ \lbrace p \in \primes \mid a_{ij}(p) = 1 \rbrace $} \\
 		\hline
 		$ a_{0 1} $ & 5, 13, 29, 37, 53, 61, 101, 109, 149, 157, 173, 181, 197, 229, 269, 277, 293, 317, 349, ...\\
 		$ a_{1 0} $ & 3, 11, 19, 43, 59, 67, 83, 107, 131, 139, 163, 179, 211, 227, 251, 283, 307, 331, 347, ...\\    
@@ -586,7 +586,7 @@ This is what we do in the following table:
 \end{center}
 Again, for complete tables, please visit \href{https://pauldubois98.github.io/HeckeOperatorsModuloTwo/a_ij_p/a_ij_p-1.html}{this web site}:\\ \url{https://pauldubois98.github.io/HeckeOperatorsModuloTwo/a_ij_p/a_ij_p-1.html}.
 
-Note that tables for \textit{0-primes} (i.e. the set $\{ p \in \primes \ | \ a_{ij}(p) = 0 \}$) may be found \href{https://pauldubois98.github.io/HeckeOperatorsModuloTwo/a_ij_p/a_ij_p-0.html}{here}:\\
+Note that tables for \textit{0-primes} (i.e. the set $\{ p \in \primes \mid a_{ij}(p) = 0 \}$) may be found \href{https://pauldubois98.github.io/HeckeOperatorsModuloTwo/a_ij_p/a_ij_p-0.html}{here}:\\
 \url{https://pauldubois98.github.io/HeckeOperatorsModuloTwo/a_ij_p/a_ij_p-0.html}.
 
 
@@ -626,6 +626,7 @@ This will test the algorithms that we use: if the output agrees with the theory,
 [more results? (a05, a50, ...)? => if time]
 
 
+\nicefrac{}{}
 \paragraph{Probabilistic Analysis}
 Here, we look for the probability that the results found appeared randomly.
 We assume that the Frobenius element of a prime is random for each prime.
