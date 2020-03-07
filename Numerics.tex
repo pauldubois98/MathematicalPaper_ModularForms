@@ -87,7 +87,7 @@ This is equivalent (somewhat) to the asymptotic notation in mathematics.
 In the case of $q$-series of modular forms, we will store only the few first hundred/thousand/million coefficients.
 
 This means that we will represent a modular form via its $q$-series, witch will be stored as a list.
-We investigate the best ways (timewise) to do basic operations to decide what technology to use.
+We investigate the best ways (time wise) to do basic operations to decide what technology to use.
 The operations tested are creating the $q$-series of $\Delta$, and squaring it (both storing coefficients up to some power \texttt{LENGTH}, the length of the list used).
 
 There are various techniques to store lists in a computer, the main ones being continuous lists, linked lists, and sparse lists.
@@ -116,7 +116,7 @@ This method (storing only non-zero values) is known as \href{https://en.wikipedi
 We can implement this technique in both Python and Julia:
 \subparagraph{Sparse Python}
 We can adapt the previous code to use Python's linked lists as index of a sparse list.
-Note that in general, we would need a second list to store values, but there ar only $0$s and $1$s, we can take as convention that all stored indices have value $1$ and all non-store have value $0$.
+Note that in general, we would need a second list to store values, but there are only $0$s and $1$s, we can take as convention that all stored indices have value $1$ and all non-store have value $0$.
 (code in appendix \ref{code:SparsePython}). 
 \subparagraph{Sparse Julia}
 Julia has a very convenient built-in sparse module.
@@ -170,7 +170,7 @@ Doing so, no code will be repeated for each small task.
 The code will be divided in a many files, for convenience.
 
 \paragraph{Code Architecture}
-The main function are direct parts of the module, and the pre-calculated data part is written in a subfolder, detailed next paragraph.
+The main function are direct parts of the module, and the pre-calculated data part is written in a sub-folder, detailed next paragraph.
 Here is a visualization of the organisation (the "architecture"):
 
 % code architecture draw
@@ -269,7 +269,7 @@ Here is a visualization of the organisation (the "architecture"):
 \path (MFmod2) edge (Data);
 \end{tikzpicture}
 \begin{center}
-	Majour functions of the module and their repartitions into file (represented by boxes).
+	Major functions of the module and their repartitions into file (represented by boxes).
 \end{center}
 
 
@@ -292,7 +292,7 @@ But what is done in fact inside the library is much faster: we calculate $\Delta
 Doing like this, only 8 multiplications were needed (against 30 with the naïve method).
 On may think that 3 was an example particularly good for this technique, but if we take another example, say 32, we would turn 31 multiplication to 5.
 In fact, in general, to calculate $\Delta^n$ this second method need a maximum of $\log_2(n)^2$ multiplications against $n-1$ for the first one.
-So it really is a much faster algorithm.\footnote{In fact, half of the operations are squaring modular forms, wich is much faster than a usual multiplication. This this algorithm is even better than stated.}
+So it really is a much faster algorithm.\footnote{In fact, half of the operations are squaring modular forms, which is much faster than a usual multiplication. This this algorithm is even better than stated.}
 \subparagraph{Hecke Operators}
 The only formula we have to calculate Hecke operators, is using the $q$-representation of modular forms.
 Therefore, the Hecke operators are taking a modular forms under $q$-representation as input (together with a prime $p$).
@@ -302,6 +302,7 @@ This means that we should be careful when applying Hecke operator.
 
 Hecke operators are implemented in the file \texttt{HeckeOperator.jl} (see \ref{code:HeckeOperator} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/HeckeOperator.jl})
 \subparagraph{Recognise the trick?}
+\label{recogniseTrick}
 This part of the module us probably the most important, and it is the one that differ the most form any other computing technique.
 
 We start by noting that it is easy to go from the $\Delta$ representation of a modular form to the $q$ representation: it suffices to choose an arbitrary $n$, and calculate all coefficients up to $q^n$, using the series expansion of $\Delta$.
@@ -330,7 +331,7 @@ The last file, \texttt{ModularFormsModuloTwo.jl} is the one that creates the lin
 It also defines a few general objects, such as types and printing functions.
 For more details, see (\ref{code:ModularFormsModuloTwo} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/ModularFormsModuloTwo.jl})
 \subsubsection[Sub Module]{(Pre-calculated) Data}
-Data is natively part of the ModularFormModuloTwo.jl module, but it is treated internally as a subcomponent, for better organisation.
+Data is natively part of the ModularFormModuloTwo.jl module, but it is treated internally as a sub-component, for better organisation.
 
 
 
@@ -378,7 +379,7 @@ This time, the architecture is much easier:
 We will detail here an overview of what each file achieve.
 For more details, the reader may look at the source code, which is highly commented, and quite explicit in general.
 \begin{itemize}
-	\item \texttt{storage.jl} (see \ref{code:storage} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/storage.jl}): This is the only file to be called outside of the Data submodule.
+	\item \texttt{storage.jl} (see \ref{code:storage} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/storage.jl}): This is the only file to be called outside of the Data sub-module.
 	\item \texttt{delta\_file\_maker.jl} (see \ref{code:deltaFileMaker} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/delta_file_maker.jl}): The program in this file generates the $q$-coefficients lists for a range of powers of $\Delta$.
 	\item \texttt{Hecke\_primes\_file\_maker.jl} (see \ref{code:HeckePrimesFileMaker} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/Hecke_primes_file_maker.jl}): The program in this file calculates the $\Delta$-representation lists for a range of Hecke operators $T_p$ and range of powers of $\Delta$.
 	\item \texttt{Hecke\_powers\_file\_maker.jl} (see \ref{code:HeckePowersFileMaker} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/data/Hecke_powers_file_maker.jl}): The program in this file calculates the $\Delta$-representation lists for a range of powers of Hecke operators $T_3$ and $T_5$ and range of powers of $\Delta$.
@@ -426,13 +427,13 @@ This will eventually give all $a_ij(p)$.
 \subsubsection{Algorithm}
 As explained before, we plot $\Delta^k$ successively for a range of $k$.
 In reality, most of the terms of the sum in \ref{eq:coefficientsEquate} are zeros.
-This si both nice and not good:
+This is both nice and not good:
 It is nice because it makes the system is easy to solve.
 But it also makes all coefficients in front of zeros terms being undetermined.
 This implies that we need to plug larger powers of $\Delta$ to fix coefficients.
 And bigger powers of $\Delta$ ask for heavier computations (and now we see how important it was to optimize the modular forms modulo 2 module).
 
-As this algorithm is the heart of all computations, we give a pseudocode simplified version:
+As this algorithm is the heart of all computations, we give a pseudo-code simplified version:
 \begin{algorithmic}
 	\color{CodeColor}
 	\Require $MAX_K$ \Comment{Maximum power $\Delta^k$ for which $T_p|\Delta^k$ and $T_3^iT_5^j|\Delta^k$ are known (computed)}
@@ -504,7 +505,7 @@ So the setup (in the same notation as above) is $N=10^6$, $P=10^4$, so $K=10^2$.
 Then the algorithm will compute as much $a_{ij}(p)$ as possible, for each $p \leq P$.
 This maximum can in fact be calculated implicitly:
 $a_{ij}(p)$ will be computed if and only if $T_3^iT_5^j|f$ is non-zero for one of the forms $f$ plugged.
-As we plug powers of $\Delta$ up to $K$, this means $a_{ij}(p)$ will be comuted for all $p \leq P$ if and only if $k \leq K$, where $k$ is the odd integer with code $[i,j]$.
+As we plug powers of $\Delta$ up to $K$, this means $a_{ij}(p)$ will be computed for all $p \leq P$ if and only if $k \leq K$, where $k$ is the odd integer with code $[i,j]$.
 
 \subsubsection{Results}
 Here, we will give results for the prime $p=19$.

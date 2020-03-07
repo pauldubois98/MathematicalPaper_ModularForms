@@ -473,7 +473,7 @@ $$
 $$
 
 \subsubsection{Duality between $\Delta$ and $q$}
-%reference to wave-particule duality from physics
+%reference to wave-particle duality from physics
 As we defined $\mathcal{F}$ above, a modular form modulo 2 is an expression of powers $\Delta^k$.
 But we had from before that $\Delta = \sum_{m=0}^{\infty} q^{(2m+1)^2} \bmod 2$.
 Therefore, we can translate a modular form given as a finite polynomial of $\Delta$ into an infinite polynomial of $q$.
@@ -483,8 +483,7 @@ This duality between the two definitions is what makes the study of modular form
 we go back and forth between an infinite series and a finite polynomial.
 One is easy to express, the other easy to compute.
 This will lead to new reasoning.
-In particular, there is a new technique of computation ("exact computations") that uses equivalence between the two ways of writing a modular form.
-%use a ref to numerics, when numerics section willbe written
+In particular, there is a new technique of computation ("exact computations" \ref{recogniseTrick}) that uses equivalence between the two ways of writing a modular form.
 
 
 
@@ -725,8 +724,7 @@ Therefore, the degree of $f$ doesn't increase when applying $\overline{T_p}$ to 
 
 
 \subparagraph{Order of $\Delta$ decrease}
-%Serre's "proof"
-%\cite[2.3]{OrdreNilpotenceOperateurHecke}
+% Serre's "proof" in 2.3 of OrdreNilpotenceOperateurHecke
 \label{orderDecrease}
 Since $T_p$ and $\overline{T_p}$ have exactly the same action on $q$-expansions of modular forms, we can interchange them as we want.
 By abuse of notation (again), we denote the reduction of $T_p$ modulo 2 (usually denoted $\overline{T_p}$) by $T_p$ as well.
@@ -843,7 +841,7 @@ Moreover, \eqref{eq:TpDelta^k_bis} gives:
 Now, if $p \equiv 7 \bmod 8$, we may only look at the coefficient $q^3$ of $T_p|\Delta^5$ (if it is $1$, $T_p|\Delta^5 = \Delta^3$ and if it is $0$, $T_p|\Delta^3 = 0$, as there is no other possibilities).
 From definition (in \ref{DefHeckeOperatorsMod2}), we have that the coefficient of $q^3$ is $\gamma(3) = c(3p)$ (since $p \nmid 3$) with $c$ the $q$ coefficients of $\Delta^5$.
 From \eqref{eq:Delta}, the none zero coefficients of $\Delta$ are odd squares.
-Now, $c(3p)$ is th $p^{th}$ coefficient of $\Delta^5$. We have:
+Now, $c(3p)$ is the $p^{th}$ coefficient of $\Delta^5$. We have:
 $$
 \left( \Delta(q) \right)^5
 = \left( \sum_{m=0}^{\infty} q^{(2m+1)^2} \right)^5
@@ -964,10 +962,10 @@ For similar reason, in the fourth column (of $\Delta^7$), we get $\nicefrac{1}{4
 
 \subsection{Nilpotency Order}
 In this subsection, we follow the construction from \cite{OrdreNilpotenceOperateurHecke}.
-As we know that the Hecke operators are nilpotent, we may want to study the order of nil potentness.
+As we know that the Hecke operators are nilpotent, we may want to study the order of nilpotentness.
 \subsubsection{Introduction}
 \paragraph{Definition}
-For a modular from modulo 2 $f \in \mathcal{F}$, we define the \textit{nil potentness order} to be the smallest integer $g(f)$ such that we have 
+For a modular from modulo 2 $f \in \mathcal{F}$, we define the \textit{nilpotentness order} to be the smallest integer $g(f)$ such that we have 
 $$
 T_{p_1} T_{p_2} \cdots T_{p_{g(f)}} | f = 0,
 $$
@@ -985,7 +983,7 @@ All Hecke operators lower by at least two the maximum degree of $\Delta$ in the 
 We deduce that $g(f) \leq g(T_p|f) + 1$.
 Applied to $\Delta^k$, we get: $g(k) \leq g(k-2) + 1$.
 Therefore, by induction, we have $g(k) \leq \floor{\frac{k+1}{2}}$.
-This implies by the same occasion, the well definiteness of the order of nil potentness for all modular form modulo two.
+This implies by the same occasion, the well definiteness of the order of nilpotentness for all modular form modulo two.
 
 \subparagraph{Minimum Order}
 \label{MinimumOrderNilpotencyHeckeOperators}
@@ -996,7 +994,7 @@ Remember that one consequence of non nullity is that if $f \neq 0, \Delta$, then
 This directly implies that $g(f) > 1$ if $f \neq \Delta, 0$.
 
 \paragraph{Examples}
-We can compute a few nil potentness "by hand" (we will see later that there is a more direct method):
+We can compute a few nilpotentness "by hand" (we will see later that there is a more direct method):
 \begin{itemize}
 	\item $g(0) = -\infty$
 	\item $g(\Delta) = 1$:\\
@@ -1313,7 +1311,7 @@ Again, this proposition is stated in \cite[§4]{OrdreNilpotenceOperateurHecke}, 
 \end{property}
 \begin{proof}
 	We apply $n_3(m_1)$ times the proposition about $T_3$ above, and $n_5(m_1)$ times the proposition about $T_5$, to get that the degree of $g = T_3^{n_3(m_1)}T_5^{n_5(m_1)}|f$ has code $\left[ 0,0 \right]$.
-	The propositions also implie that $h(g) > -\infty$, i.e. $g \neq 0$.
+	The propositions also implies that $h(g) > -\infty$, i.e. $g \neq 0$.
 	Therefore, $\degree{g} > -\infty$, so it must be odd. since it has code $\left[ 0,0 \right]$,  $\degree{g} = 1$, thus $g = \Delta$.
 \end{proof}
 
@@ -1383,8 +1381,3 @@ As $g(f)=h(f)+1$, and $h(f) = h(\degree{f}) = \mathcal{O}(\sqrt{\degree{f}})$, w
 	Thus, $\degree{f}$ has code $\left[ 0,0 \right]$.
 	Since $f \neq 0$ and $f \in \mathcal{F}$, this means $f = \Delta$.
 \end{proof}
-
-
-
-
-
