@@ -9,7 +9,7 @@ Therefore, with more data, we have more knowledge, and we can make smarter guess
 There are two main ways to make a program faster:
 use a better algorithm, or 
 use a faster implementation.
-A better algorithm means, for example, test factors only up to square root (in the case of primality a test).
+For example, in the test of primality of a number $n$, we may test factors only up to $\sqrt{n}$, instead of up to $n$.
 A better implementation simply means optimisation inside the computer (i.e. on operations that are made, types that are used...).
 We will try to optimise both.
 
@@ -50,7 +50,7 @@ For example, the following two algorithms create the same list of coefficients f
 \end{algorithmic}
 
 However, the second algorithm is significantly more efficient: the loop is faster as it only goes through odd squares instead of all numbers, and it has no condition to check.
-The algorithms may be \textit{harder} to understand, but it in fact is \textit{better} (in terms of performance).
+An efficient algorithm may be \textit{harder} to understand, but is actually \textit{better} (in terms of performance).
 
 \paragraph{Mathematical ruse}
 As we are working modulo 2, there are obviously many cancellations, which will make the calculations \textit{faster}.
@@ -60,12 +60,12 @@ It is an opportunity we shouldn't miss to make the algorithms \textit{stronger}.
 
 
 \subsubsection{Implementation Approach}
-As explained above, investigations on which tool will be the more suitable for the computations is an important part.
+As explained above, investigations on which tool will be the more suitable for the computation is an important part.
 Of course, the best would be to find a programming language that can already deal with modular forms modulo two.
 Unfortunately, this (yet) doesn't exist.
 There are packages that have modular forms implemented, but none with modular forms modulo two specifically.
 The goal of looking at modulo two is to conclude more than what we know in general.
-So using what has already been done in general to make computations modulo two won't give any thing interesting.
+So using what has already been done in general to make computations modulo two won't be useful.
 
 We realize that there is no other way than just creating a package for modular forms modulo two on our own.
 In fact, this is what we will do later, but before, we want to determine the tools to build this package.
@@ -90,8 +90,8 @@ This means that we will represent a modular form via its $q$-series, witch will 
 We investigate the best ways (timewise) to do basic operations to decide what technology to use.
 The operations tested are creating the $q$-series of $\Delta$, and squaring it (both storing coefficients up to some power \texttt{LENGTH}, the length of the list used).
 
-There are various techniques to store lists in a computed, the main ones are continuous list, linked list, and sparse list.
-Continuous and linked lists can be aggregated as dense lists.
+There are various techniques to store lists in a computer, the main ones being continuous lists, linked lists, and sparse lists.
+Continuous and linked lists are both dense lists.
 
 \paragraph{Dense Technique}
 Dense storage means that we store each values of the list (next to each other, or with a link to the next).
@@ -112,7 +112,7 @@ Julia naturally supports lists, that we can use to represent modular forms.
 
 \paragraph{Sparse Technique}
 As all coefficients of the $q$-series are just $0$ or $1$, and that most of the time, they are $0$, we can represent a modular forms by storing only the coefficients for which it is non-zero.
-This method is (storing only non-zero values) is known as \href{https://en.wikipedia.org/wiki/Sparse_matrix}{sparse representation}.
+This method (storing only non-zero values) is known as \href{https://en.wikipedia.org/wiki/Sparse_matrix}{sparse representation}.
 We can implement this technique in both Python and Julia:
 \subparagraph{Sparse Python}
 We can adapt the previous code to use Python's linked lists as index of a sparse list.
