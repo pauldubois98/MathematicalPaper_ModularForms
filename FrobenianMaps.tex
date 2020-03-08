@@ -684,14 +684,17 @@ In such a configuration, $M_{ij}$ are called \textit{governing fields}.
 It is nice to know that the maps $p \to a_{ij}(p)$ are Frobenius, but to compute $a_{ij}(p)$, we need to know explicitly the governing field (which will depend on $i$ and $j$).
 \subsubsection{Basics}
 \paragraph{Notations}
-We denote by $M_{ij}$ \textit{a} governing field of the map $p \to a_{ij}(p)$.
+We denote by $M_{ij}$ \textbf{a} \textit{governing field} of the map $p \to a_{ij}(p)$.
 From the theorem above, we know that such a field exist.
 Note that such a governing fields may not be unique (and in fact we will prove next that it is never unique).
-We then define $G_{ij} = \Gal{M_{ij}/\Q}$.
-We will denote $\primes_{ij}^1$ the set of 1-primes, i.e. $\primes_{ij}^1 = \{ p \in \primes \mid a_{ij}(p)=1 \}$.
-Similarly, $\primes_{ij}^0$ is the set of 0-primes, i.e. $\primes_{ij}^0 = \{ p \in \primes \mid a_{ij}(p)=0 \}$.
-We will denote by $S_{ij}^1$ the set of Frobenius 1-elements, that is, $S_{ij}^1 = \{ g \in G_{ij} \mid \exists p \in \primes \text{ s.t. } \Frob{M_{ij}/\Q}{p}=g \text{ and } a_{ij}(p)=1 \}$.
-We define $S_{ij}^0$ in a similar manner to be the set of Frobenius 0-elements.
+We then define \textbf{a} \textit{governing group} of $a_{ij}$ to be a $G_{ij}$ such that $G_{ij} = \Gal{M_{ij}/\Q}$ for \textbf{a} $M_{ij}$ governing field.
+By abuse of notation, we will denote $M_{ij}$ and call \textbf{the} governing field the first one we find.
+\textbf{The} governing group $G_{ij}$ is the one that agrees with $M_{ij}$.
+
+We will denote $\primes_{ij}^1$ the \textit{set of 1-primes}, i.e. $\primes_{ij}^1 = \{ p \in \primes \mid a_{ij}(p)=1 \}$.
+Similarly, $\primes_{ij}^0$ is the \textit{set of 0-primes}, i.e. $\primes_{ij}^0 = \{ p \in \primes \mid a_{ij}(p)=0 \}$.
+We will denote by $S_{ij}^1$ the \textit{set of Frobenius 1-elements}, that is, $S_{ij}^1 = \{ g \in G_{ij} \mid \exists p \in \primes \text{ s.t. } \Frob{M_{ij}/\Q}{p}=g \text{ and } a_{ij}(p)=1 \}$.
+We define $S_{ij}^0$ in a similar manner to be the \textit{set of Frobenius 0-elements}.
 Finally, we define $C_{ij}^1$ and $C_{ij}^0$ to be the conjugacy classes corresponding to $S_{ij}^1$ and $S_{ij}^0$ respectively.
 
 \paragraph{Properties}
@@ -741,19 +744,22 @@ We then have the following corresponding governing fields:
 	\item $M_{10} = \Q(\zeta_8, \sqrt{1+i})$
 	\item $M_{10} = \Q(\zeta_8, \sqrt[4]{2})$
 \end{itemize}
-\cite[§7]{StructureAlgebreHecke}
-[proof??]
-
+The first two ones ($M_{01}$ and $M_{10}$) are consequences of Chebotarev Density theorem.
+For the other three, see \cite[§7]{StructureAlgebreHecke}.
 
 
 
 \subsubsection{Research of Governing Fields}
-\subparagraph{Limit}
+Here, we use the various computations results that are discussed in the next section \ref{numerics:GoverningFields}.
+
+\paragraph{Limitations}
 To test if a field extension is a governing field for $a_{ij}$, we check it for odd primes $p$ up to $10^4$ (i.e. $2 < p <10^4, p \in \primes$).
 Therefore, there is a strong evidence that the suggested fields are in fact governing fields, but we do not provide a mathematical proof.
+Therefore, we may only speculate on a possible value for $M_{ij}$.
+However, we will write equality sign, to lighten notation.
 
-\paragraph{Results}
-We will detail results in here only for $a_{03}$ and $a_{30}$.
+\paragraph{Brute Results}
+We will provide details in here only for $a_{03}$ and $a_{30}$.
 Details for other results may be found in \ref{governingFieldsResults}.
 \subparagraph{$a_{03}$}
 \begin{multline*}
@@ -798,16 +804,172 @@ Details for other results may be found in \ref{governingFieldsResults}.
 	}\right)
 \end{multline*}
 \begin{multicols}{2}
-\begin{itemize}
-	\item $G_{30} = D16$ (the dihedral group of order 16)
-	\item $\abs{S_{30}^1} = 2$
-	\item $\abs{C_{30}^1} = 1$
-\end{itemize}
-Data used (i.e. primes $p<10^4$):
-\begin{itemize}
-	\item $\primes_{30}^1 = 158$
-	\item $\primes_{30}^0 = 1070$
-\end{itemize}
+	\begin{itemize}
+		\item $G_{30} = D16$ (the dihedral group of order 16)
+		\item $\abs{S_{30}^1} = 2$
+		\item $\abs{C_{30}^1} = 1$
+	\end{itemize}
+	Data used (i.e. primes $p<10^4$):
+	\begin{itemize}
+		\item $\primes_{30}^1 = 158$
+		\item $\primes_{30}^0 = 1070$
+	\end{itemize}
 \end{multicols}
 
 
+\paragraph{Conjectures}
+From \ref{governingFieldsResults}, we have the following field extension diagram:\\
+\begin{tikzpicture}[scale=0.7]
+	%%%nodes
+	%i+j=0
+	\node at (0,0) (M00){$M_{00} = \Q$};
+	%i+j=1
+	\node at (-2,2) (M01){$M_{01}$};
+	\node at (2,2) (M10){$M_{10}$};
+	%i+j=2
+	\node at (-4,4) (M02){$M_{02}$};
+	\node at (0,4) (M11){$M_{11}$};
+	\node at (4,4) (M20){$M_{20}$};
+	%i+j=3
+	\node at (-6,6) (M03){$M_{03}$};
+	\node at (-2,6) (M12){$M_{12}$};
+	\node at (2,6) (M21){$M_{21}$};
+	\node at (6,6) (M30){$M_{30}$};
+	%i+j=4
+	\node at (-7,7) (M04){$M_{04}$};
+	%\node at (-3.5,7) (M13){$M_{13}$};
+	%\node at (0,7) (M22){$M_{22}$};
+	%\node at (3.5,7) (M31){$M_{31}$};
+	\node at (7,7) (M40){$M_{40}$};
+	%i+j=5
+	\node at (-9,9)(M05){$M_{05}$};
+	\node at (9,9) (M50){$M_{50}$};
+	%i+j=6
+	\node at (-10,10) (M06){$M_{06}$};
+	\node at (10,10) (M60){$M_{60}$};
+	%i+j=7
+	\node at (-11,11) (M07){$M_{07}$};
+	\node at (11,11) (M70){$M_{70}$};
+	%i+j=...
+	\node at (-12,12) (M0k){$\cdots$};
+	\node at (12,12) (Mk0){$\cdots$};
+	%%%links
+	%level 1
+	\draw[-] (M00) -- (M10)node[midway, below right, rotate=45, scale=0.8] {$4$};
+	\draw[-] (M00) -- (M01)node[midway, below left, rotate=-45, scale=0.8] {$4$};
+	%level 2
+	\draw[double] (M01) -- (M10);
+	\draw[-] (M01) -- (M11)node[midway, below right, scale=0.8] {$2$};
+	\draw[-] (M10) -- (M11)node[midway, below left, scale=0.8] {$2$};
+	\draw[-] (M01) -- (M02)node[midway, below left, rotate=-45, scale=0.8] {$2$};
+	\draw[-] (M10) -- (M20)node[midway, below right, rotate=45, scale=0.8] {$2$};
+	%unknown middle
+	\draw[dashed] (M11) -- (M21)node[midway, below right, scale=0.8] {?};	\draw[dashed] (M20) -- (M21)node[midway, below left, scale=0.8] {?};
+	\draw[dashed] (M11) -- (M12)node[midway, below left, scale=0.8] {?};
+	\draw[dashed] (M02) -- (M12)node[midway, below right, scale=0.8] {?};
+	%left branch
+	\draw[-] (M02) -- (M03)node[midway, below left, rotate=-45, scale=0.8] {$2$};
+	\draw[double] (M03) -- (M04);
+	\draw[-] (M04) -- (M05)node[midway, below left, rotate=-45, scale=0.8] {$2$};
+	\draw[double] (M05) -- (M06);
+	\draw[double] (M06) -- (M07);
+	\draw[-] (M07) -- (M0k);
+	%right branch
+	\draw[-] (M20) -- (M30)node[midway, below right, rotate=45, scale=0.8] {$2$};
+	\draw[double] (M30) -- (M40);
+	\draw[-] (M40) -- (M50)node[midway, below right, rotate=45, scale=0.8] {$2$};
+	\draw[double] (M50) -- (M60);
+	\draw[double] (M60) -- (M70);
+	\draw[-] (M70) -- (Mk0);
+\end{tikzpicture}
+
+We can produce the same diagram for corresponding groups:\\
+\begin{tikzpicture}[scale=0.7]
+	%%%nodes
+	%i+j=0
+	\node at (0,0) (G00){$\left\lbrace Id \right\rbrace $};
+	%i+j=1
+	\node at (-2,2) (G01){$C_2 \times C_2$};
+	\node at (2,2) (G10){$C_2 \times C_2$};
+	%i+j=2
+	\node at (-4,4) (G02){$D_8$};
+	\node at (0,4) (G11){$D_8$};
+	\node at (4,4) (G20){$D_8$};
+	%i+j=3
+	\node at (-6,6) (G03){$D_{16}$};
+	\node at (-2,6) (G12){$G_{12}$};
+	\node at (2,6) (G21){$G_{21}$};
+	\node at (6,6) (G30){$D_{16}$};
+	%i+j=4
+	\node at (-7,7) (G04){$D_{16}$};
+	\node at (7,7) (G40){$D_{16}$};
+	%i+j=5
+	\node at (-9,9)(G05){$D_{32}$};
+	\node at (9,9) (G50){$D_{32}$};
+	%i+j=6
+	\node at (-10,10) (G06){$D_{32}$};
+	\node at (10,10) (G60){$D_{32}$};
+	%i+j=7
+	\node at (-11,11) (G07){$D_{32}$};
+	\node at (11,11) (G70){$D_{32}$};
+	%i+j=...
+	\node at (-12,12) (G0k){$\cdots$};
+	\node at (12,12) (Gk0){$\cdots$};
+	%%%links
+	%level 1
+	\draw[-] (G00) -- (G10)node[midway, below right, rotate=45, scale=0.8] {$4$};
+	\draw[-] (G00) -- (G01)node[midway, below left, rotate=-45, scale=0.8] {$4$};
+	%level 2
+	\draw[double] (G01) -- (G10);
+	\draw[-] (G01) -- (G11)node[midway, below right, scale=0.8] {$2$};
+	\draw[-] (G10) -- (G11)node[midway, below left, scale=0.8] {$2$};
+	\draw[-] (G01) -- (G02)node[midway, below left, rotate=-45, scale=0.8] {$2$};
+	\draw[-] (G10) -- (G20)node[midway, below right, rotate=45, scale=0.8] {$2$};
+	%unknown middle
+	\draw[dashed] (G11) -- (G21)node[midway, below right, scale=0.8] {?};	\draw[dashed] (G20) -- (G21)node[midway, below left, scale=0.8] {?};
+	\draw[dashed] (G11) -- (G12)node[midway, below left, scale=0.8] {?};
+	\draw[dashed] (G02) -- (G12)node[midway, below right, scale=0.8] {?};
+	%left branch
+	\draw[-] (G02) -- (G03)node[midway, below left, rotate=-45, scale=0.8] {$2$};
+	\draw[double] (G03) -- (G04);
+	\draw[-] (G04) -- (G05)node[midway, below left, rotate=-45, scale=0.8] {$2$};
+	\draw[double] (G05) -- (G06);
+	\draw[double] (G06) -- (G07);
+	\draw[-] (G07) -- (G0k);
+	%right branch
+	\draw[-] (G20) -- (G30)node[midway, below right, rotate=45, scale=0.8] {$2$};
+	\draw[double] (G30) -- (G40);
+	\draw[-] (G40) -- (G50)node[midway, below right, rotate=45, scale=0.8] {$2$};
+	\draw[double] (G50) -- (G60);
+	\draw[double] (G60) -- (G70);
+	\draw[-] (G70) -- (Gk0);
+\end{tikzpicture}
+
+
+We can remark that:
+\begin{multicols}{2}
+	\begin{itemize}
+		\item $G_{01} = D_4 = C_2 \times C_2$
+		\item $G_{02} = D_8$
+		\item $G_{03} = D_{16}$
+		\item $G_{04} = D_{16}$
+		\item $G_{05} = D_{32}$
+		\item $G_{06} = D_{32}$
+		\item $G_{07} = D_{32}$
+	\end{itemize}
+	\begin{itemize}
+		\item $G_{10} = D_4 = C_2 \times C_2$
+		\item $G_{20} = D_8$
+		\item $G_{30} = D_{16}$
+		\item $G_{40} = D_{16}$
+		\item $G_{50} = D_{32}$
+		\item $G_{60} = D_{32}$
+		\item $G_{70} = D_{32}$
+	\end{itemize}
+\end{multicols}
+This leads us to the following conjecture:
+\begin{conjecture}[Diagonal Governing Groups Conjecture]
+	For all $k \in \N^*$, there exists a fields $M_{0k}$ such that $M_{0k}$ is a governing field for $a_{0k}$, and $G_{0k} = \Gal{M_{0k}/\Q}$.
+	For all $k \in \N^*$, there exists a fields $M_{k0}$ such that $M_{k0}$ is a governing field for $a_{k0}$, and $G_{k0} = \Gal{M_{k0}/\Q}$.
+	Moreover $M_{k0} \neq M_{0k}$ in general, but $G_{k0} = G_{0k}$.
+\end{conjecture}

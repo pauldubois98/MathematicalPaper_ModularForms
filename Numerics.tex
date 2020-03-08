@@ -599,16 +599,18 @@ Note that tables for \textit{0-primes} (i.e. the set $\{ p \in \primes \mid a_{i
 
 
 \subsection{Finding Governing Fields}
-\subsubsection{Strategy}
+\label{numerics:GoverningFields}
+\subsubsection{Computations Strategy}
 As it is usually the case with computations, this algorithm will not give a proof that the considered field is a governing field.
 What we will do, is to check that for sufficiently many primes, the field we consider is a governing field.
 
-\paragraph{Outline of the Algorithm}
+\paragraph{Algorithm}
+\subparagraph{Outline}
 Consider the field $L$ extending $\Q$, suppose we suspect it to be a governing field for $a_{ij}$.
 We want to check that there exists a subset $S \subseteq G = \Gal{L/\Q}$ that is stable under conjugacy, such that $\Frob{L/\Q}{p} \in S$ if and only if $a_{ij}(p)=1$.
 That is $\Frob{L/\Q}{p} \in S$ if $a_{ij}(p)=1$ and $\Frob{L/\Q}{p} \not \in S$ if $a_{ij}(p)=0$.
 
-\paragraph{Algorithm}
+\subparagraph{Pseudo-code}
 \label{algo:governingFieldsChecks}
 Here is a pseudo-code version of the algorithm used:
 \begin{algorithmic}
@@ -646,24 +648,33 @@ Note here that the analysis is just checking if whether or not, the field is a g
 All the "difficult" computations are made in very efficient languages (Julia and the highly optimized PARI GP library).
 So it is fine, for convenience, to use a slower language as Python for the last step, which isn't computationally fast.
 
-
-
-\subsubsection{Frobenian Map Test}
-
-
+\paragraph{reliability}
 \paragraph{Checking Known Governing Fields}
-[It is always good to check, to make the theory stronger (this is usually true in Science, a little bit less in math)]
+[I is always good to check, to make the theory stronger (this is usually true in Science, a little bit less in math)]
 This will test the algorithms that we use: if the output agrees with the theory, then it is less likely to contain errors.
 [results: Serre is right]
 
-\paragraph{Finding Possible New Governing Fields}
-[NEW RESULTS!!!]
-[results: a04, a03, a30, a40]
-[more results? (a05, a50, ...)? => if time]
+\subsubsection{Guesses for Governing Fields}
+Results in appendix
+Unfortunately, there is no better way to write them
+We talked above on how to check if whether or not a field is a governing field.
+Now, a question one could ask is "what are good candidates fo governing fields?"
+In fact, can not try all possible fields, we have to filter.
+We already know M02 for a02, so it sounds reasonable to try extensions of M02 for M03.
+In fact, this is what we do, and to create extensions, we adjoint sqrt(alpha), with alpha being a product of fundamental unit(s) and torsion unit(s) in M02.
+We think similarly for M30.
+It turns out M03 works also for a04, so M03=M04.
+Similarly for M40 and M30.
+For M05, we look at extensions of M04.
+It turns out it works for M05, M06, M07, and maybe (not enough data) also for M08.
+Similarly for M50, M60, M70, and again maybe M80.
+
+It is disappointing that the reasonable extensions of M11 aren't governing fields (this time, for sure, as we can't prove with a computer, but we can disprove) for any aij with $i+j \leq 6$
 
 
-\nicefrac{}{}
-\paragraph{Probabilistic Analysis}
+
+\subsection{Probabilistic Analysis}
+ASSUMING [BLA]
 Here, we look for the probability that the results found appeared randomly.
 We assume that the Frobenius element of a prime is random for each prime.
 then the proba [bla].
