@@ -750,17 +750,54 @@ For the other three, see \cite[§7]{StructureAlgebreHecke}.
 
 
 \subsubsection{Research of Governing Fields}
-Here, we use the various computations results that are discussed in the next section \ref{numerics:GoverningFields}.
+The only way known so far to find governing fields is via trial and error.
+\paragraph{Check}
+In fact, it is not easy to check if a given field is in fact a governing field.
+Numerically, we can check that a field is governing for a finite amount of primes.
+However, proving it in general is much harder.
+Never the less, we can easily check that a field is not governing: it suffices to show that two conjugate Frobenius element of primes $p_1$ and $p_2$ are not both 1-primes or both 0-primes.
+What we will do is to check that a field is governing for a sufficiently amount of primes, and take it as a strong evidence that it will work in general. 
+
+\paragraph{Guesses for Governing Fields}
+Now we saw how to pseudo check if a field is governing.
+But to find governing fields, this isn't enough: wa also need to have some guesses for governing fields.
+Some will be declined, and some will accepted (hopefully).
+
+\subparagraph{Reasonable Candidates}
+It is not possible to try all fields (since there are infinitely many), we have to filter.
+We already know $M_{02}$, governing field for $a_{02}$.
+Thus, it sounds reasonable to try extensions of $M_{02}$ as candidates for $M_{03}$.
+To create extensions, we adjoint a root to $M_{02}$.
+So the candidate for $M_{03}$ is of the form $M_{02}\left( \sqrt{\alpha} \right)$.
+For $\alpha$, it is reasonable to take a product of fundamental unit(s) and torsion unit(s) of $M_{02}$.
+We think similarly for $M_{ji}$ as for $M_{ij}$.
+For $M_{04}$, we look at extensions of $M_{03}$, and continue the process again for $M_{05}$, $M_{06}$ and so on.
+
+\subparagraph{Good candidates}
+The details of the computation can be found in \ref{numerics:GoverningFields}, and the results (which are long to write, so we will keep the notation $M_{ij}$ to refer to the found governing fields) can be found in \ref{governingFieldsResults}.
+We will discuss the details this later.
+An important thing to remark is that $M_{03} = M_{03}$, and similarly, $M_{40} = M_{30}$.
+It turns out that $M_{05} = M_{06} = M_{07}$, and maybe (not enough data) $ = M_{08}$.
+Similarly for $M_{50}$, $M_{60}$, $M_{70}$, and again maybe $M_{80}$.
+
+\subparagraph{Wrong candidates}
+It is disappointing that the reasonable guesses extensions of $M_{11}$ aren't governing fields (this time, it is known for sure, as we can't prove with a computer, but we can disprove) for any $a_{ij}$ with $i+j \leq 6$.
 
 \paragraph{Limitations}
 To test if a field extension is a governing field for $a_{ij}$, we check it for odd primes $p$ up to $10^4$ (i.e. $2 < p <10^4, p \in \primes$).
-Therefore, there is a strong evidence that the suggested fields are in fact governing fields, but we do not provide a mathematical proof.
+Thus, there is a strong evidence that the suggested fields are in fact governing fields, but we do not provide a mathematical proof.
 Therefore, we may only speculate on a possible value for $M_{ij}$.
-However, we will write equality sign, to lighten notation.
+However, we will treat pseudo governing fields as governing fields to lighten notation.
 
-\paragraph{Brute Results}
-We will provide details in here only for $a_{03}$ and $a_{30}$.
+\subsubsection{New Governing Fields}
+Here, we use the results of the various computations made.
+The computation methods are discussed in in the next section \ref{numerics:GoverningFields}.
+Full results can be found in \ref{governingFieldsResults}.
+
+\paragraph{Results Samples}
+We will discuss in here governing fields found for $a_{03}$ and $a_{30}$.
 Details for other results may be found in \ref{governingFieldsResults}.
+
 \subparagraph{$a_{03}$}
 \begin{multline*}
 	M_{03} = \mathbb{Q}\left(\mu, \sqrt[4]{2}, 
@@ -817,7 +854,8 @@ Details for other results may be found in \ref{governingFieldsResults}.
 \end{multicols}
 
 
-\paragraph{Conjectures}
+\paragraph{Graphs}
+\subparagraph{For Fields}
 From \ref{governingFieldsResults}, we have the following field extension diagram:\\
 \begin{tikzpicture}[scale=0.7]
 	%%%nodes
@@ -883,6 +921,7 @@ From \ref{governingFieldsResults}, we have the following field extension diagram
 	\draw[-] (M70) -- (Mk0);
 \end{tikzpicture}
 
+\subparagraph{For Galois Groups}
 We can produce the same diagram for corresponding groups:\\
 \begin{tikzpicture}[scale=0.7]
 	%%%nodes
@@ -945,7 +984,7 @@ We can produce the same diagram for corresponding groups:\\
 	\draw[-] (G70) -- (Gk0);
 \end{tikzpicture}
 
-
+\paragraph{Induced Conjecture}
 We can remark that:
 \begin{multicols}{2}
 	\begin{itemize}
@@ -973,3 +1012,13 @@ This leads us to the following conjecture:
 	For all $k \in \N^*$, there exists a fields $M_{k0}$ such that $M_{k0}$ is a governing field for $a_{k0}$, and $G_{k0} = \Gal{M_{k0}/\Q}$.
 	Moreover $M_{k0} \neq M_{0k}$ in general, but $G_{k0} = G_{0k}$.
 \end{conjecture}
+
+
+
+\subsection{Probabilistic Analysis}
+ASSUMING [BLA]
+Here, we look for the probability that the results found appeared randomly.
+We assume that the Frobenius element of a prime is random for each prime.
+then the proba [bla].
+[this part is written, but only in my head, at the moment.]
+

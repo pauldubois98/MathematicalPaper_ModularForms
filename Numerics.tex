@@ -648,33 +648,26 @@ Note here that the analysis is just checking if whether or not, the field is a g
 All the "difficult" computations are made in very efficient languages (Julia and the highly optimized PARI GP library).
 So it is fine, for convenience, to use a slower language as Python for the last step, which isn't computationally fast.
 
-\paragraph{reliability}
-\paragraph{Checking Known Governing Fields}
-[I is always good to check, to make the theory stronger (this is usually true in Science, a little bit less in math)]
-This will test the algorithms that we use: if the output agrees with the theory, then it is less likely to contain errors.
-[results: Serre is right]
+\subsubsection{Reliability}
+We want the program elaborated to be reliable.
+Since we are mixing 3 different languages (PARI GP, Python, and Julia), it isn't easy to check that no error was made when coding.
 
-\subsubsection{Guesses for Governing Fields}
-Results in appendix
-Unfortunately, there is no better way to write them
-We talked above on how to check if whether or not a field is a governing field.
-Now, a question one could ask is "what are good candidates fo governing fields?"
-In fact, can not try all possible fields, we have to filter.
-We already know M02 for a02, so it sounds reasonable to try extensions of M02 for M03.
-In fact, this is what we do, and to create extensions, we adjoint sqrt(alpha), with alpha being a product of fundamental unit(s) and torsion unit(s) in M02.
-We think similarly for M30.
-It turns out M03 works also for a04, so M03=M04.
-Similarly for M40 and M30.
-For M05, we look at extensions of M04.
-It turns out it works for M05, M06, M07, and maybe (not enough data) also for M08.
-Similarly for M50, M60, M70, and again maybe M80.
+\paragraph{Checking on Known Governing Fields}
+This is the reason why we first check that the fields $\Q(\zeta_8, \sqrt[4]{2})$, $\Q(\zeta_8, \sqrt{1+i})$, and $\Q(\zeta_{16})$ are validated by the program as governing fields for $a_{02}$, $a_{20}$, and $a_{11}$.
+Even if maths is an exact science (so we don't need to check again some result found before), it is still nice to see that the theory is consistent.
 
-It is disappointing that the reasonable extensions of M11 aren't governing fields (this time, for sure, as we can't prove with a computer, but we can disprove) for any aij with $i+j \leq 6$
+Unsurprisingly, we in fact find results expected form \cite[§7]{StructureAlgebreHecke}.
+
+\paragraph{New Governing Fields}
+We apply the exact same method as before, and find very good candidates governing fields for: $a_{03}$, $a_{04}$, $a_{05}$, $a_{06}$, $a_{07}$, $a_{30}$, $a_{40}$, $a_{50}$, $a_{60}$, and $a_{70}$.
+We also have some less reliable results for $a_{08}$ and $a_{80}$.
+All the details can be found in \ref{governingFieldsResults}.
 
 
 
-\subsection{Probabilistic Analysis}
+\subsection{Probabilistic graphs}
 ASSUMING [BLA]
+... we can produce plots of $a_ij(p)$ to check it has th right distribution....
 Here, we look for the probability that the results found appeared randomly.
 We assume that the Frobenius element of a prime is random for each prime.
 then the proba [bla].
