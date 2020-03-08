@@ -599,6 +599,41 @@ Note that tables for \textit{0-primes} (i.e. the set $\{ p \in \primes \mid a_{i
 
 
 \subsection{Finding Governing Fields}
+\subsubsection{Strategy}
+As it is usually the case with computations, this algorithm will not give a proof that the considered field is a governing field.
+What we will do, is to check that for sufficiently many primes, the field we consider is a governing field.
+
+\paragraph{Outline of the Algorithm}
+Consider the field $L$ extending $\Q$, suppose we suspect it to be a governing field for $a_{ij}$.
+We want to check that there exists a subset $S \subseteq G = \Gal{L/\Q}$ that is stable under conjugacy, such that $\Frob{L/\Q}{p} \in S$ if and only if $a_{ij}(p)=1$.
+That is $\Frob{L/\Q}{p} \in S$ if $a_{ij}(p)=1$ and $\Frob{L/\Q}{p} \not \in S$ if $a_{ij}(p)=0$.
+
+\paragraph{Algorithm}
+\label{algo:governingFieldsChecks}
+Here is a pseudo-code version of the algorithm used:
+\begin{algorithmic}
+	\color{CodeColor}
+	\State{$MAX_P \in \N$}
+	\State{$i,j \in \N$ given}
+	\State{$L$ a given  number field, suspected to be a governing field for $a_{ij}$.}
+	\State{$G = \Gal{L/\Q}$}
+	\State{$Primes-1$ an empty set.}
+	\For{$p \in \primes, p<MAX_P, a_{ij}(p)=1$}
+		\If{$\Frob{L/\Q}{p} \in Primes-0$}
+			\State{Add $\Frob{L/\Q}{p}$ to the set $Primes-1$}
+		\EndIf
+	\EndFor
+	\For{$p \in \primes, p<MAX_P, a_{ij}(p)=0$}
+		\If{$\exists F_q \in Primes-0 \text{ s.t. } \Frob{L/\Q}{p} \sim F_q$}
+			\State{REJECT!}
+		\EndIf
+	\EndFor
+	\Comment{Accept as not rejected yet.}
+	\State{$L$ is a Governing field for $a_{ij}$.}
+\end{algorithmic}
+The implementation of this algorithm (in Python) is in \ref{code:governingFieldsChecks}.
+Note that the hardest part to program is in fact the transition between computer's representation of mathematical objects, and the human readable versions. This part isn't mathematically interesting, so has been hidden in this paper. The interested reader may find complete programs on GitHub (see \url{https://github.com/pauldubois98/HeckeOperatorsModuloTwo/tree/master/GoverningFields}).
+
 \paragraph{Implementation Strategy}
 For algebraic computations (such as computing Frobenius elements), many libraries already exist.
 However, many (such as SageMath) are limited in terms of degree of field extensions.
@@ -612,14 +647,9 @@ All the "difficult" computations are made in very efficient languages (Julia and
 So it is fine, for convenience, to use a slower language as Python for the last step, which isn't computationally fast.
 
 
+
 \subsubsection{Frobenian Map Test}
-To test if a field extension is a governing field for $a_{ij}$, we need to check if the map $a_{ij}$ is Frobenian (we take the set $S$ to be ramified primes) with respect to this field.
-Here is the algorithm we use to test this:
 
-[Algorithm to be included.]
-
-
-Note that this algorithm doesn't give a proof, since it only make some tests for primes less than $10^4$.
 
 \paragraph{Checking Known Governing Fields}
 [It is always good to check, to make the theory stronger (this is usually true in Science, a little bit less in math)]

@@ -136,7 +136,20 @@ Note that it in fact uses the library described above, and some other peices of 
 
 
 \section{Governing Fields}
-\subsection{Check of Known Governing Fields}
-\subsection{Frobenian Elements Computations in Extensions}
+\subsection{Frobenian Elements Computations}
+\label{code:frobenianElementsCalc}
+We provide here an example for the case of extensions of the governing field of $a_{02}$.
+It also has been a little bit simplified.
+Others are very similar, and may be found \href{https://github.com/pauldubois98/HeckeOperatorsModuloTwo/tree/master/GoverningFields/guessGoverningFields}{here}: \url{https://github.com/pauldubois98/HeckeOperatorsModuloTwo/tree/master/GoverningFields/guessGoverningFields}
+\inputminted[breaklines]{C}{Codes/frobenianComputations.gp}.
+
 \subsection{Analysis of Extensions}
+\label{code:governingFieldsChecks}
+Here, we provide the piece of code that is interesting, which checks if the field is a governing field (it follows \ref{algo:governingFieldsChecks}).
+But we in fact have to loop through the possible fields and the possibilities for $a_{ij}$.
+General codes may be found \href{https://github.com/pauldubois98/HeckeOperatorsModuloTwo/tree/master/GoverningFields/guessGoverningFields/Common}{here}: \url{https://github.com/pauldubois98/HeckeOperatorsModuloTwo/tree/master/GoverningFields/guessGoverningFields/Common}
+\inputminted[breaklines]{Python}{Codes/governingFieldTest.py}.
+
+
+
 

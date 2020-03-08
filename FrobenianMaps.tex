@@ -687,6 +687,12 @@ It is nice to know that the maps $p \to a_{ij}(p)$ are Frobenius, but to compute
 We denote by $M_{ij}$ \textit{a} governing field of the map $p \to a_{ij}(p)$.
 From the theorem above, we know that such a field exist.
 Note that such a governing fields may not be unique (and in fact we will prove next that it is never unique).
+We then define $G_{ij} = \Gal{M_{ij}/\Q}$.
+We will denote $\primes_{ij}^1$ the set of 1-primes, i.e. $\primes_{ij}^1 = \{ p \in \primes \mid a_{ij}(p)=1 \}$.
+Similarly, $\primes_{ij}^0$ is the set of 0-primes, i.e. $\primes_{ij}^0 = \{ p \in \primes \mid a_{ij}(p)=0 \}$.
+We will denote by $S_{ij}^1$ the set of Frobenius 1-elements, that is, $S_{ij}^1 = \{ g \in G_{ij} \mid \exists p \in \primes \text{ s.t. } \Frob{M_{ij}/\Q}{p}=g \text{ and } a_{ij}(p)=1 \}$.
+We define $S_{ij}^0$ in a similar manner to be the set of Frobenius 0-elements.
+Finally, we define $C_{ij}^1$ and $C_{ij}^0$ to be the conjugacy classes corresponding to $S_{ij}^1$ and $S_{ij}^0$ respectively.
 
 \paragraph{Properties}
 Using properties of Frobenius elements, we have that if $L$ extends $M_{ij}$, then $L$ will also be a governing fields for the map $p \to a_{ij}(p)$.
@@ -742,12 +748,66 @@ We then have the following corresponding governing fields:
 
 
 \subsubsection{Research of Governing Fields}
-[ NEW TOPIC !!! ]
+\subparagraph{Limit}
+To test if a field extension is a governing field for $a_{ij}$, we check it for odd primes $p$ up to $10^4$ (i.e. $2 < p <10^4, p \in \primes$).
+Therefore, there is a strong evidence that the suggested fields are in fact governing fields, but we do not provide a mathematical proof.
 
+\paragraph{Results}
+We will detail results in here only for $a_{03}$ and $a_{30}$.
+Details for other results may be found in \ref{governingFieldsResults}.
+\subparagraph{$a_{03}$}
+\begin{multline*}
+	M_{03} = \mathbb{Q}\left(\mu, \sqrt[4]{2}, 
+	\sqrt{
+		- \frac{3136435454775881 \sqrt[4]{2}}{562949953421312} 
+		+ \frac{4208721080340285 \sqrt{2}}{2251799813685248} 
+	}\right. \\
+	\left. \overline{ 
+		+ \frac{3672578267558083 \cdot 2^{\frac{3}{4}}}{562949953421312} 
+		+ \frac{3582104167901087}{281474976710656}
+	}\right)
+\end{multline*}
+\setlength{\columnsep}{0.85cm}
+\begin{multicols}{2}
+	\begin{itemize}
+		\item $G_{03} = D16$ (the dihedral group of order 16)
+		\item $\abs{S_{03}^1} = 2$
+		\item $\abs{C_{03}^1} = 1$
+	\end{itemize}
+	Data used (i.e. primes $p<10^4$):
+	\begin{itemize}
+		\item $\primes_{03}^1 = 157$
+		\item $\primes_{03}^0 = 1071$
+	\end{itemize}
+\end{multicols}
 
-
-
-
-
+\subparagraph{$a_{30}$}
+\begin{multline*}
+	M_{30} = \mathbb{Q}\left(\mu, \sqrt{1+i}, 
+	\sqrt{
+		-4 
+		- \frac{65 i}{16} 
+		- \frac{31 \sqrt{1 + i}}{16} 
+		- \frac{5 \left(1 + i\right)^{\frac{5}{2}}}{16} 
+		- \frac{3 \left(1 + i\right)^{3}}{16} 
+	}\right. \\
+	\left. \overline{
+		+ \frac{\left(1 + i\right)^{\frac{7}{2}}}{16} 
+		+ \frac{11 \left(1 + i\right)^{2}}{16} 
+		+ \frac{27 \left(1 + i\right)^{\frac{3}{2}}}{16}
+	}\right)
+\end{multline*}
+\begin{multicols}{2}
+\begin{itemize}
+	\item $G_{30} = D16$ (the dihedral group of order 16)
+	\item $\abs{S_{30}^1} = 2$
+	\item $\abs{C_{30}^1} = 1$
+\end{itemize}
+Data used (i.e. primes $p<10^4$):
+\begin{itemize}
+	\item $\primes_{30}^1 = 158$
+	\item $\primes_{30}^0 = 1070$
+\end{itemize}
+\end{multicols}
 
 
