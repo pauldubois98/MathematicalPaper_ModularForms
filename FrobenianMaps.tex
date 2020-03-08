@@ -204,8 +204,8 @@ $, but $\Norm[\Q/\Q]{(3)} = 3$.
 So we have:
 \begin{align*}
     \Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}+1)}:
-    \alpha   &\to \alpha^{\Norm[\Q/\Q]{(3)}} \bmod (3, \sqrt{7}+1)\\
-    \sqrt{7} &\to \left( \sqrt{7} \right)^3 \equiv \sqrt{7} \bmod (3, \sqrt{7}+1)
+    \alpha   &\mapsto \alpha^{\Norm[\Q/\Q]{(3)}} \bmod (3, \sqrt{7}+1)\\
+    \sqrt{7} &\mapsto \left( \sqrt{7} \right)^3 \equiv \sqrt{7} \bmod (3, \sqrt{7}+1)
 \end{align*}
 Thus, $\Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}+1)} = 1_G \in G$.
 Similarly, $\Frob{\Q[\sqrt{7}]:\Q}{(3, \sqrt{7}-1)} = 1_G \in G$.
@@ -217,8 +217,8 @@ As well, $\Norm[{\Q[\sqrt{7}]/\Q}]{(5)} = 5^2 = 25$ but $\Norm[\Q/\Q]{(5)} = 5$.
 So we have:
 \begin{align*}
     \Frob{\Q[\sqrt{7}]:\Q}{(5)}: 
-    \alpha   &\to \alpha^{\Norm[\Q/\Q]{(5)}} \bmod (5)\\
-    \sqrt{7} &\to \left( \sqrt{7} \right)^5 \equiv -\sqrt{7} \bmod (5)
+    \alpha   &\mapsto \alpha^{\Norm[\Q/\Q]{(5)}} \bmod (5)\\
+    \sqrt{7} &\mapsto \left( \sqrt{7} \right)^5 \equiv -\sqrt{7} \bmod (5)
 \end{align*}
 Thus, $\Frob{\Q[\sqrt{7}]:\Q}{(5)} = \sigma \in G$.
 
@@ -247,8 +247,8 @@ We want to look at $\Frob{\Q[\zeta_n]/\Q}{P}$.
 We have:
 \begin{align*}
 	\Frob{\Q[\zeta_n]/\Q}{P}: 
-	\alpha&\to \alpha^{\Norm[\Q/\Q]{(p)}} \bmod P\\
-	\zeta_n&\to \zeta_n^p \bmod P
+	\alpha&\mapsto \alpha^{\Norm[\Q/\Q]{(p)}} \bmod P\\
+	\zeta_n&\mapsto \zeta_n^p \bmod P
 \end{align*}
 
 \paragraph{Case $\Q[\zeta_{10}]/\Q$ ($10^{th}$ cyclotomic field extension)}
@@ -257,7 +257,7 @@ We have minimum polynomial $m(x) = x^4-x^3+x^2-x+1$ (so degree of the extension 
 
 We write $
 G = \Gal{\Q[\zeta_{10}]:\Q} 
-= < \sigma: \zeta_{10} \to \zeta_{10}^3 \mid \sigma^4 = Id > \cong C_4$.
+= < \sigma: \zeta_{10} \mapsto \zeta_{10}^3 \mid \sigma^4 = Id > \cong C_4$.
 
 %\begin{center}
 %	\begin{tabular}{r|l}
@@ -285,8 +285,8 @@ As $m(x)$ has no root $\bmod 3$, so $(3)$ is inert.
 We have:
 \begin{align*}
 	\Frob{\Q[\zeta_{10}]/\Q}{(3)}:
-	\alpha   &\to \alpha^{\Norm[\Q/\Q]{(3)}} \bmod (3)\\
-	\zeta_{10} &\to \left( \zeta_{10} \right)^3 \bmod (3)
+	\alpha   &\mapsto \alpha^{\Norm[\Q/\Q]{(3)}} \bmod (3)\\
+	\zeta_{10} &\mapsto \left( \zeta_{10} \right)^3 \bmod (3)
 \end{align*}
 Thus, $\Frob{\Q[\zeta_{10}]:\Q}{(3)} = \sigma \in G$.
 
@@ -296,8 +296,8 @@ As $m(x)$ has no root $\bmod 7$, so $(7)$ is inert.
 We have:
 \begin{align*}
 	\Frob{\Q[\zeta_{10}]/\Q}{(7)}:
-	\alpha   &\to \alpha^{\Norm[\Q/\Q]{(7)}} \bmod (7)\\
-	\zeta_{10} &\to \left( \zeta_{10} \right)^7 \bmod (7)
+	\alpha   &\mapsto \alpha^{\Norm[\Q/\Q]{(7)}} \bmod (7)\\
+	\zeta_{10} &\mapsto \left( \zeta_{10} \right)^7 \bmod (7)
 \end{align*}
 Thus, $\Frob{\Q[\zeta_{10}]:\Q}{(7)} = \sigma^3 \in G$.
 
@@ -306,8 +306,8 @@ As $m(x) = (x-2)(x+3)(x+4)(x+4) \bmod 11$, so $(11)$ splits.
 We have:
 \begin{align*}
 	\Frob{\Q[\zeta_{10}]/\Q}{(11)}:
-	\alpha   &\to \alpha^{\Norm[\Q/\Q]{(11)}} \bmod (11)\\
-	\zeta_{10} &\to \left( \zeta_{10} \right)^{11} = \zeta_{10} \bmod (11)
+	\alpha   &\mapsto \alpha^{\Norm[\Q/\Q]{(11)}} \bmod (11)\\
+	\zeta_{10} &\mapsto \left( \zeta_{10} \right)^{11} = \zeta_{10} \bmod (11)
 \end{align*}
 Thus, $\Frob{\Q[\zeta_{10}]:\Q}{(11)} = \sigma^4 = Id \in G$.
 
@@ -571,10 +571,10 @@ Now, for a prime $p$ unramified, we want to calculate the Frobenius element.
 If $p$ is unramified, either $p \mathcal{O}_{\Q[\sqrt{d}]} = R_1R_2$ or $p \mathcal{O}_{\Q[\sqrt{d}]} = R$.
 
 In the first case, we have $\left( \frac{d}{p} \right) = 1$ (i.e. $\sqrt{d} \in \F_p$, so $d$ is a square modulo $p$).
-In this case, $\sqrt{d}^p \equiv \sqrt{d} \bmod p$ so $\Frob{\Q[\sqrt{d}]}{p} = \left\lbrace Id: \sqrt{d} \to \sqrt{d} \right\rbrace \in G$.
+In this case, $\sqrt{d}^p \equiv \sqrt{d} \bmod p$ so $\Frob{\Q[\sqrt{d}]}{p} = \left\lbrace Id: \sqrt{d} \mapsto \sqrt{d} \right\rbrace \in G$.
 
 In the second case, $\left( \frac{d}{p} \right) = -1$ (i.e. $\sqrt{d} \not\in \F_p$, so $d$ is not a square modulo $p$).
-In this case, $\sqrt{d}^p \not\equiv \sqrt{d} \bmod p$ as there is no other choice, $\Frob{\Q[\sqrt{d}]}{p} = \left\lbrace \sigma: \sqrt{d} \to -\sqrt{d} \right\rbrace \in G$.
+In this case, $\sqrt{d}^p \not\equiv \sqrt{d} \bmod p$ as there is no other choice, $\Frob{\Q[\sqrt{d}]}{p} = \left\lbrace \sigma: \sqrt{d} \mapsto -\sqrt{d} \right\rbrace \in G$.
 
 Then by Chebotarev's density theorem, we have that the density of primes $p$ such that $\left( \frac{d}{p} \right) = \pm1$ is $\nicefrac{1}{2}$ in both cases.
 Therefore, we have the following summary:
@@ -614,7 +614,7 @@ Therefore, Chebotarev gives Dirichlet's density theorem in the particular case o
 % $\Delta = 3^4 5^6 = 1265625$.
 % We consider $\Q[\zeta_{15}/\Q]/\Q$.
 % The Galois group $G = \left( \nicefrac{\Z}{15\Z} \right)^\times$ has elements:
-% $\alpha \to \alpha$, $\alpha \to \alpha^2$, $\alpha \to \alpha^4$, $\alpha \to \alpha^7$, $\alpha \to \alpha^8$, $\alpha \to \alpha^{11}$, $\alpha \to \alpha^{13}$, $\alpha \to \alpha^{14}$.
+% $\alpha \mapsto \alpha$, $\alpha \mapsto \alpha^2$, $\alpha \mapsto \alpha^4$, $\alpha \mapsto \alpha^7$, $\alpha \mapsto \alpha^8$, $\alpha \mapsto \alpha^{11}$, $\alpha \mapsto \alpha^{13}$, $\alpha \mapsto \alpha^{14}$.
 Here, look at the example of Dirichlet theorem in the case $n=15$ from the motivation subsection above (see \ref{DensityMotivation}).
 We apply the last theorem in the case of $n=15$: $\varphi(15)=8$.
 We define $S_k = \{ p \in \primes \mid p \equiv k \bmod 15 \}$.
@@ -648,7 +648,7 @@ T_p = \sum_{i,j \geq 0} a_{ij}(p)T_3^iT_5^j
 \qquad \text{ with } a_{ij}(p) \in \F_2.
 $$
 \begin{theorem}\cite[§7]{StructureAlgebreHecke}.
-	For $i$ and $j$ fixed, the map $p \to a_{ij}(p)$ is Frobenian.\\
+	For $i$ and $j$ fixed, the map $p \mapsto a_{ij}(p)$ is Frobenian.\\
 	That is, for all $i,j \geq 0$, there exists an extension $M_{ij}/\Q$ and a class function $\phi_{ij}: \Gal{M_{ij}/\Q} \to \F_2$ such that $a_{ij}(p)=\phi_{ij}(\Frob{M_{ij}/\Q}{p})$ for all $p \in \primes$ unramified in $M_{ij}/\Q$.
 	
 	Moreover, $M_{ij}/\Q$ is a finite Galois extension, unramified for odd primes.
@@ -681,10 +681,10 @@ In such a configuration, $M_{ij}$ are called \textit{governing fields}.
 
 
 \subsection{Governing Fields}
-It is nice to know that the maps $p \to a_{ij}(p)$ are Frobenius, but to compute $a_{ij}(p)$, we need to know explicitly the governing field (which will depend on $i$ and $j$).
+It is nice to know that the maps $p \mapsto a_{ij}(p)$ are Frobenius, but to compute $a_{ij}(p)$, we need to know explicitly the governing field (which will depend on $i$ and $j$).
 \subsubsection{Basics}
 \paragraph{Notations}
-We denote by $M_{ij}$ \textbf{a} \textit{governing field} of the map $p \to a_{ij}(p)$.
+We denote by $M_{ij}$ \textbf{a} \textit{governing field} of the map $p \mapsto a_{ij}(p)$.
 From the theorem above, we know that such a field exist.
 Note that such a governing fields may not be unique (and in fact we will prove next that it is never unique).
 We then define \textbf{a} \textit{governing group} of $a_{ij}$ to be a $G_{ij}$ such that $G_{ij} = \Gal{M_{ij}/\Q}$ for \textbf{a} $M_{ij}$ governing field.
@@ -698,7 +698,7 @@ We define $S_{ij}^0$ in a similar manner to be the \textit{set of Frobenius 0-el
 Finally, we define $C_{ij}^1$ and $C_{ij}^0$ to be the conjugacy classes corresponding to $S_{ij}^1$ and $S_{ij}^0$ respectively.
 
 \paragraph{Properties}
-Using properties of Frobenius elements, we have that if $L$ extends $M_{ij}$, then $L$ will also be a governing fields for the map $p \to a_{ij}(p)$.
+Using properties of Frobenius elements, we have that if $L$ extends $M_{ij}$, then $L$ will also be a governing fields for the map $p \mapsto a_{ij}(p)$.
 This implies that governing fields aren't unique.
 
 We also have:
