@@ -39,7 +39,7 @@ T_{p_1} T_{p_2} \cdots T_{p_k} \cdot e_n(f)
 $$
 
 To fit naturally with the above definitions, we define the Hecke algebra $A$ as follows:
-As $\mathcal{F}(n) \subset \mathcal{F}(n+1)$, we can restrict elements of $A(n+1)$ to $\mathcal{F}$ to obtain an element of $A(n)$.
+as $\mathcal{F}(n) \subset \mathcal{F}(n+1)$, we can restrict elements of $A(n+1)$ to $\mathcal{F}$ to obtain an element of $A(n)$.
 If we consider the map $\phi_n: A(n+1) \to A(n)$ to be the restriction to $\mathcal{F}(n)$, then $\phi_n$ is a homomorphism.
 As $A(1)$ is either identity or zero, $A(1) \cong \F_2$.
 Therefore, we have the chain:
@@ -104,7 +104,7 @@ $$
 A = \F_2 \left[\left[ T_3, T_5 \right]\right] .
 $$
 The strategy to show this splits in two parts:
-First, we show that $A(n) = \F_2 \left[ T_3, T_5 \right]$ (with $T_3$ and $T_5$ seen in $A(n)$).
+first, we show that $A(n) = \F_2 \left[ T_3, T_5 \right]$ (with $T_3$ and $T_5$ seen in $A(n)$).
 Then, we show that this equation remains when taking the limit.
 
 \begin{property}
@@ -170,7 +170,7 @@ Then, we show that this equation remains when taking the limit.
 	Since is is already homomorphic, it suffices to show that for any element $u = \sum_{i,j} \lambda_{ij}T_3^iT_5^j$, there exist a modular form modulo 2 $f$ such that $u|f = \sum_{i,j} \lambda_{ij}T_3^iT_5^j|f = \Delta$.
 	Note that this sum is finite, as Hecke operators are nilpotent.
 	If $\lambda_{00}=1$, take $f=\Delta$.
-	Suppose $\lambda_{00}=0$: Consider $S = \{ (i,j) \in \N^2 \mid \lambda_{ij}=1 \}$.\\
+	Suppose $\lambda_{00}=0$: consider $S = \{ (i,j) \in \N^2 \mid \lambda_{ij}=1 \}$.\\
 	Let $S_{min} = \{ (m,n) \mid m+n \leq i+j \quad \forall (i,j) \in S \}$ and $(a,b) \in S_{min}$ be such that $b \leq n \quad \forall (m,n) \in S_{min}$.
 	Let $k = [a,b]$ ($k$ is the odd integer with code $[a,b]$ as in \ref{definitionCode}), and let $f = \Delta^k$.
 	Then, by the theorem of Order Of Nilpotency \ref{theoremOrderOfNilpotency}, we have $T_3^aT_5^b|f=\Delta$.

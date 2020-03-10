@@ -41,7 +41,7 @@ The normalization is a crucial point: if we multiply by $2$ all coefficients of 
 First, let's normalize the series to have particular values on some coefficients of interest.
 There are two justified ways to do so: normalize to have constant ($q^0$) coefficient set to one, and to have $q^1$ coefficient set to one.
 We will introduce both:
-We define $E_k$ be such that:
+we define $E_k$ be such that:
 $$
 E_k \cdot 2\zeta(2k) = G_k,
 $$
@@ -403,8 +403,8 @@ n &= m_1^2 + m_2^2 + m_3^2 + \dots + m_k^2 \\
 &\equiv \:\; 1 \ + \:\; 1 \ + \:\; 1 \; + \dots + \:\; 1 \bmod 8 \\
 &\equiv k \bmod 8
 \end{align*}
-Therefore: If $\tau_k(n) \equiv 1 \bmod 2$, then $n \equiv k \bmod 8$.\\
-Equivalently: If $n \not\equiv k \bmod 8$ then $\tau_k(n) \equiv 0 \bmod 2$ (by taking the contra-positive).
+Therefore: if $\tau_k(n) \equiv 1 \bmod 2$, then $n \equiv k \bmod 8$.\\
+Equivalently: if $n \not\equiv k \bmod 8$ then $\tau_k(n) \equiv 0 \bmod 2$ (by taking the contra-positive).
 
 This means, that $\Delta^k$ may only have terms $q^n$ such that $n \equiv k \bmod 8$, i.e. $\Delta^k$ may only have terms of power congruent to $k \bmod 8$.
 When $k=1$, this is that $\Delta$ may only have terms of power $1 \bmod 8$, this matches with table \ref{table:SquaresMod8}: all odd squares are $1 \bmod 8$.
@@ -539,7 +539,7 @@ It would not make sense to call it a Hecke operator any more.
 It also makes sense why we look at modular forms modulo 2 and not say three or five: the coefficient $a^{2k-1}$ collapse nicely modulo 2, which won't be the case modulo another number then 2.
 
 $\overline{T_p|\overline{f}}$:
-This is (very) similar to the case before.
+this is (very) similar to the case before.
 
 $\overline{T_p}|\overline{f}$:
 $$
@@ -618,12 +618,12 @@ c(np)+c(n/p) & \text{ if } p \mid  n
 \right.
 $$
 \begin{enumerate}
-	\item [$c(np)$:] We have $np \not \equiv i \bmod 8 \implies c(np) = 0$.
-	\item [$c(n/p)$:] As $p$ is an odd prime, it is an odd number, so from \ref{ObservationsMod8}, $p^2 \equiv 1 \bmod 8$, so $p^{-2} \equiv 1 \bmod 8$ as well (with $p^{-2}$ seen $\bmod 8$).
+	\item [$c(np)$] We have $np \not \equiv i \bmod 8 \implies c(np) = 0$.
+	\item [$c(n/p)$] As $p$ is an odd prime, it is an odd number, so from \ref{ObservationsMod8}, $p^2 \equiv 1 \bmod 8$, so $p^{-2} \equiv 1 \bmod 8$ as well (with $p^{-2}$ seen $\bmod 8$).
 	
 	Therefore, $np \not\equiv i \bmod 8 \implies  n/p \equiv \nicefrac{np}{p^2} \equiv np \not\equiv i \bmod 8 $.
 	
-	\item [$\gamma(n)$:] We conclude that $n \equiv np^2 \not\equiv pi \bmod 8 \implies \gamma(n) = 0$
+	\item [$\gamma(n)$] We conclude that $n \equiv np^2 \not\equiv pi \bmod 8 \implies \gamma(n) = 0$
 \end{enumerate}
 Using \ref{ObservationsMod8} again, we deduce that $\overline{T_p}|f \in \mathcal{F}_j$ with $j \equiv pi \bmod 8$.
 Overall, we have the following:
@@ -645,7 +645,7 @@ First, as a consequence of a property following the idea developed in \cite[p.33
 	Let's denote by $a(n)$ the coefficients of the $q$-expansion of $f$ in the usual way ($f(z) = \sum_{n=0}^{\infty} a(n)q^n$, with $q=e^{2\pi i z}$).
 	With $p$ an odd prime, we similarly define $\overline{T_p}|f(z) = \sum_{n=0}^{\infty} \gamma(n)q^n$ with $\gamma(n) = c(np) + c(n/p)$.
 	\begin{enumerate}
-		\item if $r$ simple odd:\\
+		\item If $r$ simple odd:\\
 		$p \nmid n$ gives $0 = \gamma(n) = a(np)$,
 		so $a(r)=0$
 		\item If $r$ odd of power 3 or more:\\
@@ -760,7 +760,7 @@ $\Tr{A_p} = a_{k,k}$.
 A nice interpretation of the Trace should give us an equation for $a_{k,k}$.
 We can interpret the trace as the sum of eigenvalues of the matrix $A_p$, i.e. eigenvalues of the Hecke operator $T_p$.
 Some knowledge about eigenvalues of Hecke operators has been proved already (see \cite{EigenvaluesOfHeckeOperators}), we have:
-For $p$ an odd prime, if $\lambda_p$ is an eigenvalue of $T_p$, we have the congruence: $\lambda_p \equiv 1+p \bmod 8$
+for $p$ an odd prime, if $\lambda_p$ is an eigenvalue of $T_p$, we have the congruence: $\lambda_p \equiv 1+p \bmod 8$
 Since $p$ is an odd (prime) number, we get: $\lambda_p \equiv 0 \bmod 2$.
 As this is true for all eigenvalues of $T_p$, we have that the sum of eigenvalues (which corresponds to the trace of the matrix) is zero over $\F_2$.
 Thus: 
@@ -807,7 +807,7 @@ $$
 $$
 As, $c(p)$ is th $p^{th}$ coefficient of $\Delta^3$, $c(p) = \#\{m_1, m_2, m_3 \text{ odds } | m_1^2 + m_2^2 + m_3^2 = p\} \bmod 2$ corresponds ($\bmod 2$) to the number of ways to write $p$ as sum of three odd squares.
 Now, there are a few possible cases:
-If $p=3$, then $m_1=m_2=m_3=1$ is the only solution, and $c(p)=1$ so $T_p|\Delta^3=\Delta$.
+if $p=3$, then $m_1=m_2=m_3=1$ is the only solution, and $c(p)=1$ so $T_p|\Delta^3=\Delta$.
 We consider separately:
 \begin{itemize}
 	\item $m_1=m_2=m_3$: in this case, $m_1^2 + m_2^2 + m_3^2$ isn't prime, unless $p=3$ (but we handled this case already). So there is no solution of this form.
@@ -817,7 +817,7 @@ We consider separately:
 
 We want to know if there are solutions to $a^2+2b^2=p$ with $a$ and $b$ odds.
 We look at the integers $\Z[\sqrt{-2}]$:
-If $p$ splits, then there is a pair $(a,b)$ of integers such that $(a+b\sqrt{-2})(a-b\sqrt{-2})=p$, i.e. $a^2+2b^2=p$.
+if $p$ splits, then there is a pair $(a,b)$ of integers such that $(a+b\sqrt{-2})(a-b\sqrt{-2})=p$, i.e. $a^2+2b^2=p$.
 Now, $p$ splits in $\Z[\sqrt{-2}]$ if $\legendre{-2}{p}=+1$.
 As $p \equiv 3 \bmod 8$, $\legendre{2}{p}=-1$ and $\legendre{-1}{p}=-1$, so $\legendre{-2}{p}=+1$ (by the first and second supplement to the law of quadratic reciprocity.)
 Therefore, there are two integers $a$ and $b$ such that $a^2+2b^2=p$.
@@ -912,15 +912,17 @@ $$
 %As $c(n) = \#\{m_1, m_2, m_3, m_4, m_5 \text{ odds } | m_1^2 + m_2^2 + m_3^2 + m_4^2 + m_5^2 + m_6^2 + m_7^2 = n\} \bmod 2$, it is useful to look at the decomposition of $m_1$, $m_2$, $m_3$, $m_4$, $m_5$, $m_6$, $m_7$:
 %\begin{itemize}
 %	\item (1+1+1+1+1+1+1): in this case, the only possible $p$ is $p=7$, but then it is easy to see that $T_7|\Delta^7=\Delta$.
-%	\item (1+1+...): in this case, there are evenly many symmetric solutions, so the contribution to $c(n)$ is 0.
-%	\item (1+2+2+2): in this case, there are $\binom{7}{2}\binom{7}{2}\binom{7}{2}=3^3*7^3$ symmetric solutions, so an odd number of solution, so the contribution to $c(n)$ is 1, if such a solution exist.
-%	\item (1+3+3): in this case, there are evenly many symmetric solutions, so the contribution to $c(n)$ is 0.
-%	\item (1+2+4): in this case, there are evenly many symmetric solutions, so the contribution to $c(n)$ is 0?
-%	\item (1+6): in this case, there are evenly many (in fact 6) symmetric solutions, so the contribution to $c(n)$ is 0.
-%	\item (2+2+3): in this case, there are evenly many symmetric solutions, so the contribution to $c(n)$ is 0.
-%	\item (2+5): in this case, there are evenly many symmetric solutions, so the contribution to $c(n)$ is 0?
-%	\item (3+4): in this case, there are evenly many symmetric solutions, so the contribution to $c(n)$ is 0?
+%	\item (1+1+...): No contribution to $c(n)$.
+%	\item (1+2+2+2): No contribution to $c(n)$.
+%	\item (1+3+3): No contribution to $c(n)$.
+%	\item (1+2+4): Contributes to $c(n)$.
+%	\item (1+6): Contributes to $c(n)$.
+%	\item (2+2+3): No contribution to $c(n)$.
+%	\item (2+5): Contributes to $c(n)$.
+%	\item (3+4): Contributes to $c(n)$.
 %\end{itemize}
+%(1+6) have solutions iff (3+4) have
+%(1+2+4) and (2+5) to be checked
 
 
 
@@ -1262,7 +1264,7 @@ On the grid $\left[ 0,10 \right]^2$, we plot the surface $z = \left[ x, y \right
 
 \paragraph{Order Relation}
 We define the following order relation on natural numbers:
-For $m, l \in \N$, $m \prec l$ if $h(m) < h(l)$ or $h(m) = h(l)$ and $n_5(m) \prec n_5(l)$.
+for $m, l \in \N$, $m \prec l$ if $h(m) < h(l)$ or $h(m) = h(l)$ and $n_5(m) \prec n_5(l)$.
 This relation is a total order, this is straightforward to check.
 
 \subsubsection{Action of $T_3$ and $T_5$}
@@ -1321,7 +1323,7 @@ Again, this proposition is stated in \cite[§4]{OrdreNilpotenceOperateurHecke}, 
 \end{corollary}
 \begin{proof}
 	This is directly implied by the proposition:
-	As $T_3^{n_3(m_1)}T_5^{n_5(m_1)}|f = \Delta \neq 0$, we have $g(f) \geq n_3(f)+n_5(f)+1 = h(k)+1$.
+	as $T_3^{n_3(m_1)}T_5^{n_5(m_1)}|f = \Delta \neq 0$, we have $g(f) \geq n_3(f)+n_5(f)+1 = h(k)+1$.
 \end{proof}
 
 \paragraph{Representation of $\mathcal{F}$}
@@ -1369,7 +1371,7 @@ What remains to prove is that $g(f) \leq h(f) + 1$.
 This is proved in \cite[§5]{OrdreNilpotenceOperateurHecke}.
 
 From this follows a new remark, which is useful to estimate computations times:
-As $g(f)=h(f)+1$, and $h(f) = h(\degree{f}) = \mathcal{O}(\sqrt{\degree{f}})$, we have $g(f) = \mathcal{O}(\sqrt{\degree{f}})$, i.e. the nilpotency order of a modular form behaves asymptotically as the square root of its degree.
+as $g(f)=h(f)+1$, and $h(f) = h(\degree{f}) = \mathcal{O}(\sqrt{\degree{f}})$, we have $g(f) = \mathcal{O}(\sqrt{\degree{f}})$, i.e. the nilpotency order of a modular form behaves asymptotically as the square root of its degree.
 
 \label{corollaryOrderOfNilpotency}
 \begin{corollary}

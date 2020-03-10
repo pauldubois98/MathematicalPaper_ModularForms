@@ -554,7 +554,7 @@ We go through an example of Chebotarev Density Theorem for an extension of order
 We look at $K/\Q$ with $K \cong \nicefrac{\Q[x]}{(x^3-3x-1)}$ (i.e. the number field with defining polynomial $x^3 - 3x - 1$).
 Using SageMath \footnote{See the code in appendix, \ref{code:ChebotarevExample}}, we have:
 The discriminant of this extension is $3^4=81$, and the extension is Galois.
-We define $G = \Gal{K/\Q}$ the Galois group of the extension, and we have $G \cong C_3 = \left\langle \sigma \mid \sigma^2 = 1 \right\rangle $ since the order of the extension is 3).
+We define $G = \Gal{K/\Q}$ the Galois group of the extension, and we have $G \cong C_3 = \left\langle \sigma \mid \sigma^3 = 1 \right\rangle $ since the order of the extension is 3).
 
 Then, an unramified prime in $\Q$ may remain irreducible in $K/\Q$, split in $K/\Q$.
 If $p$ splits in $K\Q$, then $\Frob{K/\Q}{p}=1$ (the identity of the Galois group $G$).
@@ -806,14 +806,14 @@ Details for other results may be found in \ref{governingFieldsResults}.
 		+ \frac{4208721080340285 \sqrt{2}}{2251799813685248} 
 	}\right. \\
 	\left. \overline{ 
-		+ \frac{3672578267558083 \cdot 2^{\frac{3}{4}}}{562949953421312} 
+		+ \frac{3672578267558083 \cdot \sqrt[4]{2}^3}{562949953421312} 
 		+ \frac{3582104167901087}{281474976710656}
 	}\right)
 \end{multline*}
 \setlength{\columnsep}{0.85cm}
 \begin{multicols}{2}
 	\begin{itemize}
-		\item $G_{03} = D16$ (the dihedral group of order 16)
+		\item $G_{03} = D_{16}$ (the dihedral group of order 16)
 		\item $\abs{S_{03}^1} = 2$
 		\item $\abs{C_{03}^1} = 1$
 	\end{itemize}
@@ -830,7 +830,7 @@ Details for other results may be found in \ref{governingFieldsResults}.
 	\sqrt{
 		-4 
 		- \frac{65 i}{16} 
-		- \frac{31 \sqrt{1 + i}}{16} 
+		- \frac{31 \left(1 + i\right)^{\frac{1}{2}}}{16} 
 		- \frac{5 \left(1 + i\right)^{\frac{5}{2}}}{16} 
 		- \frac{3 \left(1 + i\right)^{3}}{16} 
 	}\right. \\
@@ -842,7 +842,7 @@ Details for other results may be found in \ref{governingFieldsResults}.
 \end{multline*}
 \begin{multicols}{2}
 	\begin{itemize}
-		\item $G_{30} = D16$ (the dihedral group of order 16)
+		\item $G_{30} = D_{16}$ (the dihedral group of order 16)
 		\item $\abs{S_{30}^1} = 2$
 		\item $\abs{C_{30}^1} = 1$
 	\end{itemize}
@@ -1008,8 +1008,8 @@ We can remark that:
 \end{multicols}
 This leads us to the following conjecture:
 \begin{conjecture}[Diagonal Governing Groups Conjecture]
-	For all $k \in \N^*$, there exists a fields $M_{0k}$ such that $M_{0k}$ is a governing field for $a_{0k}$, and $G_{0k} = \Gal{M_{0k}/\Q}$.
-	For all $k \in \N^*$, there exists a fields $M_{k0}$ such that $M_{k0}$ is a governing field for $a_{k0}$, and $G_{k0} = \Gal{M_{k0}/\Q}$.
+	For all $k \in \N^*$, there exists a fields $M_{0k}$ such that $M_{0k}$ is a governing field for $a_{0k}$, and $G_{0k} = \Gal{M_{0k}/\Q}$ is dihedral.
+	For all $k \in \N^*$, there exists a fields $M_{k0}$ such that $M_{k0}$ is a governing field for $a_{k0}$, and $G_{k0}$ is dihedral.
 	Moreover $M_{k0} \neq M_{0k}$ in general, but $G_{k0} = G_{0k}$.
 \end{conjecture}
 
