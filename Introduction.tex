@@ -3,8 +3,8 @@
 \section{Introduction}
 
 
-In section 1, we will introduce modular forms as function of the upper half plane.
-We will look at the standard examples, and basic properties.
+In section 1, we will introduce modular forms as functions of the upper half-plane.
+We will look at the standard examples and basic properties.
 Then we will define Hecke operators $T_n$ on modular forms.
 
 Section 2 is dedicated to the reduction of modular forms modulo 2.
@@ -15,7 +15,7 @@ It is important to determine if the reduction of Hecke operators modulo 2 become
 In fact, it is not.
 We will prove this via the classical way, and as a consequence of a property that ill be new to this paper.
 The reduction not being trivial yields an interesting theory.
-We will therefore study the properties of Hecke operators modulo two.
+We will, therefore, study the properties of Hecke operators modulo two.
 The main one is that given a modular form they are all nilpotent.
 Finding the order of nilpotency of a modular form is a solved problem, that we will go through.
 
@@ -25,27 +25,26 @@ The coefficients of this power series for $T_p$ are denoted $a_{ij}(p)$.
 They will play a major role in the rest of the paper.
 
 In section 4, we introduce all the algebraic number theory that will be needed for the rest of the paper.
-First, we define the basic of algebraic number theory, that is field extensions, ideals, prime ideals, splitting, ramification, inertia.
+First, we define the basis of algebraic number theory, that is field extensions, ideals, prime ideals, splitting, ramification, inertia.
 Then we will look at Frobenius elements, together with their basic properties.
 Finally, we mention Chebotarev's density theorem.
 
-Then we make the link between the two last section: the coefficients $a_{ij}(p)$, seen as a map, are Frobenian.
+Then we make the link between the last two sections: the coefficients $a_{ij}(p)$, seen as a map, are Frobenian.
 The first cases (for small $i+j \leq 2$) have already been studied, and we know what are the corresponding governing fields.
 Our goal is to investigate the possible governing fields for other cases (that is, for $i+j>2$).
 We analyse extensions numerically.
 After this numerical analysis, we come up with very strong candidates as governing fields for $a_{0k}(p)$ and $a_{k0}(p)$ for $k \leq 7$.
-The potential governing fields are extensions of each others.
+The potential governing fields are extensions of each other.
 When drawing a diagram as in \ref{diagramFieldsExtensions}, they appear on the extreme sides.
-We 
 It appears that the Galois group of all the found diagonal governing fields are dihedral groups.
 The fact that this is verified not only for $k \leq 2$, but in fact $k \leq 7$ leads us to a new conjecture: the on diagonal governing groups \ref{diagonalGoverningGroupsConjecture}.
 
 In the last section, we will discuss the computations.
 The results allowed us to have enough data to analyse the fields extensions, which was the goal of the paper.
 To get this data, various techniques were involved.
-We have used the structure of the mathematical objects, together with careful programming to create a new computing technique (so called "exact computations").
+We have used the structure of the mathematical objects, together with careful programming to create a new computing technique (so-called "exact computations").
 It allows, in the case of modular forms modulo 2, to recover the numerical error made when calculating Hecke operator of forms.
-We combined this with a high performance language (Julia), and a high performance library to compute fields extensions (PARI GP).
+We combined this with a high-performance language (Julia), and a high-performance library to compute fields extensions (PARI GP).
 
-In the appendix can be found a subset tables of the computations made, the most important parts of the code used (both with links to full online versions).
+In the appendix can be found a subset of the tables from the computations made, the most important parts of the code used (both with links to full online versions).
 The governing fields calculated may be found at the very end of the appendix.
