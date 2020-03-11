@@ -694,15 +694,46 @@ Finally, we define $C_{ij}^1$ and $C_{ij}^0$ to be the conjugacy classes corresp
 Using properties of Frobenius elements, we have that if $L$ extends $M_{ij}$, then $L$ will also be a governing fields for the map $p \mapsto a_{ij}(p)$.
 This implies that governing fields aren't unique.
 
-We also have:
+We also have \cite[§7]{StructureAlgebreHecke}:
 \begin{itemize}
 	\item $T_p \in \F_2[[x^2, y^2]] \text{ if } p \equiv 1 \bmod 8$
 	\item $T_p \in x.\F_2[[x^2, y^2]] \text{ if } p \equiv 3 \bmod 8$
 	\item $T_p \in y.\F_2[[x^2, y^2]] \text{ if } p \equiv 5 \bmod 8$
 	\item $T_p \in xy.\F_2[[x^2, y^2]] \text{ if } p \equiv 7 \bmod 8$
 \end{itemize}
-\cite[§7]{StructureAlgebreHecke}
-[proof??]
+
+The argument to see this is as follows:
+We know from the action of Hecke operators on $\mathcal{F}_i$ (see \ref{actionOfHeckeOnF_i}) that:
+$$
+f \in \mathcal{F}_i \implies T_p|f \in \mathcal{F}_j \text{ with } j \equiv pi \bmod 8.
+$$
+Therefore, if $f \in \mathcal{F}_i$, we may remark that:
+\begin{itemize}
+	\item $T_3|f \in \mathcal{F}_j$ with $j \equiv 3i \bmod 8$
+	\item $T_3^2|f \in \mathcal{F}_j$ with $j \equiv i \bmod 8$
+	\item $T_5|f \in \mathcal{F}_j$ with $j \equiv 5i \bmod 8$
+	\item $T_5^2|f \in \mathcal{F}_j$ with $j \equiv i \bmod 8$
+	\item $T_3T_5|f \in \mathcal{F}_j$ with $j \equiv 7i \bmod 8$
+\end{itemize}
+
+Now, we have $p \in \primes$ such that $T_p|f \in \mathcal{F}_j$ with $j \equiv pi \bmod 8$.
+We write $T_p = \sum_{k+l>0} a_{kl}(p) T_3^kT_5^l$.
+Now, by plugging increasingly the powers of $\Delta$, we obtain the following:
+$a_{kl}(p) \neq 0$ may happen only if $3^k5^l \equiv p \bmod 8$.
+This splits into the following cases:
+\begin{itemize}
+	\item $p \equiv 1 \bmod 8$: Then $p \equiv 3^k5^l \bmod 8$ for $k \equiv 0 \bmod 2$ and $l \equiv 0 \bmod 2$.
+	Thus,  $T_p \in \F_2[[T_3,T_5]]$.
+	
+	\item $p \equiv 3 \bmod 8$: Then $p \equiv 3^k5^l \bmod 8$ for $k \equiv 1 \bmod 2$ and $l \equiv 0 \bmod 2$.
+	Thus,  $T_p \in T_3.\F_2[[T_3,T_5]]$.
+	
+	\item $p \equiv 5 \bmod 8$: Then $p \equiv 3^k5^l \bmod 8$ for $k \equiv 0 \bmod 2$ and $l \equiv 1 \bmod 2$.
+	Thus,  $T_p \in T_5.\F_2[[T_3,T_5]]$.
+	
+	\item $p \equiv 7 \bmod 8$: Then $p \equiv 3^k5^l \bmod 8$ for $k \equiv 1 \bmod 2$ and $l \equiv 1 \bmod 2$.
+	Thus,  $T_p \in T_3T_5.\F_2[[T_3,T_5]]$.
+\end{itemize}
 
 \paragraph{Examples}
 We recall the expansions of $T_p$ in series of $x^ay^b = T_3^aT_5^b$ (here, for primes $p<152$):\\
@@ -725,20 +756,20 @@ We have:
 	\item $a_{20}(p)=1 \iff \exists a,b \in \Z \text{ and } b \text{ odd},\text{ such that } p=a^2+8b^2, p \equiv 3 \bmod 8$
 	\item $a_{02}(p)=1 \iff \exists a,b \in \Z \text{ and } b \text{ odd},\text{ such that } p=a^2+16b^2, p \equiv 3 \bmod 8$
 \end{itemize}
-\cite[§7]{StructureAlgebreHecke}
-[proof??]
+The three first ones follows directly from the examples $T_p|\Delta^3$, $T_p|\Delta^5$, $T_p|\Delta^7$ from \ref{examplesSmallPowersDelta}.
+For the other two, see \cite[§7]{StructureAlgebreHecke}.
 
 \paragraph{Corresponding Governing Fields}
 We then have the following corresponding governing fields:
 \begin{itemize}
 	\item $M_{10} = \Q(\zeta_8)$ with $\zeta_8$ the $8^{th}$ root of unity
 	\item $M_{01} = \Q(\zeta_8)$
-	\item $M_{11} = \Q(\zeta_8, \sqrt{\zeta_8}) = \Q(\zeta_{16})$ with $\zeta_{16}$ the $16^{th}$ root of unity.
+	\item $M_{11} = \Q(\zeta_{16}) = \Q(\zeta_8, \sqrt{\zeta_8})$ with $\zeta_{16}$ the $16^{th}$ root of unity.
 	\item $M_{10} = \Q(\zeta_8, \sqrt{1+i})$
 	\item $M_{10} = \Q(\zeta_8, \sqrt[4]{2})$
 \end{itemize}
-The first two ones ($M_{01}$ and $M_{10}$) are consequences of Chebotarev Density theorem.
-For the other three, see \cite[§7]{StructureAlgebreHecke}.
+The first three ones ($M_{01}$, $M_{10}$, and $M_{11}$) are consequences of Chebotarev density theorem, coupled with known values of $a_{ij}(p)$ from above.
+For the other two, see \cite[§7]{StructureAlgebreHecke}.
 
 
 
