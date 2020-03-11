@@ -1,13 +1,16 @@
 % !TeX spellcheck = en_GB
 \section{Frobenian Elements}
 \subsection{Context}
-Let $R$ be a commutative ring, $M$ and $P$ ideals in $R$. We can then prove the followings:
-\begin{theorem}
-    \begin{itemize}
-        \item $M \text{ is maximal} \iff R/M \text{ is a field}$
-        \item $P \text{ is prime} \iff R/P \text{ is an integral domain}$
-    \end{itemize}
-\end{theorem}
+\subsubsection{General}
+\paragraph{Basic Properties}
+Let $R$ be a commutative ring, $M$ and $P$ ideals in $R$.
+We can then prove the followings:
+\begin{itemize}
+    \item $M \text{ is maximal} \iff R/M \text{ is a field}$
+    \item $P \text{ is prime} \iff R/P \text{ is an integral domain}$
+\end{itemize}
+
+Moreover, we have:
 \begin{property}
     Maximal ideals are prime. 
 \end{property}
@@ -18,13 +21,8 @@ Let $R$ be a commutative ring, $M$ and $P$ ideals in $R$. We can then prove the 
     \end{align*}
 \end{proof}
 
+\paragraph{Definitions and Notations}
 If $L/K$ is a Galois extension, then we will denote it's Galois group by $\Gal{L/K}$.
-
-
-
------------
-
-
 
 Let $K$ be a number field, and $\mathcal{O}_K$ be the corresponding ring of integers.
 Let $\mathfrak{p}$ be a non-zero prime ideal in $\mathcal{O}_K$.
@@ -54,7 +52,7 @@ Then, there are three possibilities for an ideal: it may split, ramify of be ine
 We know that the extension $L/K$ is ramified in the primes that divide the discriminant. Therefore, the extension is unramified in all but finitely many prime ideals.
 
 
-\subsection{Residue Fields Extensions}
+\subsubsection{Residue Fields Extensions}
 The ideal $\mathfrak{p}$ defines the \textit{residue field} $F=\mathcal{O}_K/\mathfrak{p}$.
 The ideals $\mathfrak{P}_i$ define the \textit{residue fields} $F_i=\mathcal{O}_L/\mathfrak{P}_i$.\\
 The field $F$ then naturally embeds to $F_i$ (so each $\mathfrak{P}_i$ defines a field extension).
@@ -72,7 +70,7 @@ We can then specify when an ideal splits or ramifies completely:
     In this case, $e_1=[L:K]$.
 \end{definition}
 
-\subsection{Norms of Ideals}
+\subsubsection{Norms of Ideals}
 We define the \textit{norm of an ideal} $I$ in $\mathcal{O}_K$ as $N(I)=|\mathcal{O}_K/I|$.
 If $\mathfrak{p} \subset \mathcal{O}_K$ is a prime ideal, then we can put $(p)=\mathfrak{p} \cap \Z$.
 It follows that $p\mathcal{O}_K \subset \mathfrak{p}$.
@@ -83,7 +81,7 @@ This implies $\Norm{\mathfrak{P}_i} = |\mathcal{O}_L/\mathfrak{P}_i| = p^{mf_i}$
 We also have: 
 $\mathcal{O}_K/\mathfrak{p} \cong \mathbb{F}_{\Norm{\mathfrak{p}}}$ and $\mathcal{O}_L/\mathfrak{P}_i \cong \mathbb{F}_{\Norm{\mathfrak{P}_i}}$.
 
-\subsection{Galois Extensions Simplifications}
+\subsubsection{Galois Extensions Simplifications}
 When the extension $L/K$ is Galois, the ramification indexes $e_i$ are all the same ($e_i=e$), as well as the inertia degrees $f_i=f$.
 We then have
 $$
@@ -99,11 +97,11 @@ $G_{\mathfrak{P}}
 \cong \Gal{ \mathbb{F}_{p^{mf}}/\mathbb{F}_{p^{f}}}$.
 Moreover, it is a cyclic group, so $G_{\mathfrak{P}} = <\tilde{\sigma}>$.
 
-\subsection{Unramified Prime Simplifications}
+\subsubsection{Unramified Prime Simplifications}
 When the ideal $\mathfrak{p}$ is unramified, $e=1$, so we get:
 $$
 \mathfrak{p}\mathcal{O}_L 
-= \prod_{i=1}^r \mathfrak{P} \text{ and } [L:K] = rf
+= \prod_{i=1}^r \mathfrak{P} \text{ and } [L:K] = rf.
 $$
 
 \subsection{The Frobenius Element}
