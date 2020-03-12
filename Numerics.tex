@@ -1,5 +1,7 @@
 % !TeX spellcheck = en_GB
 \section{Numerics}
+In this section, we will discuss the computations method that allowed us to find the potential governing fields.
+
 \subsection{High Performance Computations}
 It is important to make the program as fast as possible.
 Indeed, the faster the program goes, the more data it will generate (within the same amount of time).
@@ -60,9 +62,9 @@ It is an opportunity we shouldn't miss to make the algorithms \textit{stronger}.
 
 
 \subsubsection{Implementation Approach}
-As explained above, investigations on which tool will be the more suitable for the computation is an important part.
+As explained above, investigations on which tool will be more suitable for the computation is an important part.
 Of course, the best would be to find a programming language that can already deal with modular forms modulo two.
-Unfortunately, this (yet) doesn't exist.
+Unfortunately, this doesn't exist (yet).
 There are packages that have modular forms implemented, but none with modular forms modulo two specifically.
 The goal of looking at modulo two is to conclude more than what we know in general.
 So using what has already been done in general to make computations modulo two won't be useful.
@@ -155,12 +157,12 @@ Therefore, we will use this technique.
 It is nice to remark that the Pure Python implementation was 7720 times slower than the Sparse Julia one.
 We see here the importance of choosing the right tool to implement an algorithm.
 
-This ratio would even be greater considering the bad algorithm presented before \ref{algorithmOptimisation}.
+This ratio would be even greater considering the bad algorithm presented before \ref{algorithmOptimisation}.
 
 
 
 \subsection{Creating the library}
-It is clear now that the code should be done with Julia and it's Sparse objects.
+It is clear now that the code should be done with Julia and it	s Sparse objects.
 Now, as all the library should be created from the beginning, it is a good idea to pack all of it in a Julia module.
 Doing so, no code will be repeated for each small task.
 
@@ -290,7 +292,7 @@ Here, the optimization is not trivial:
 To calculate $\Delta^{31}$ (say), the most trivial way is to do $\Delta \cdot \Delta \cdots \Delta$ with 30 multiplications.
 But what is done in fact inside the library is much faster: we calculate $\Delta$, $\Delta^2 = \Delta \cdot \Delta$, $\Delta^4 = \Delta^2 \cdot \Delta^2$, ... until $\Delta^{16}$, and then $\Delta^{31} = \Delta^{16} \cdot \Delta^8 \cdot \Delta^4 \cdot \Delta^2 \cdot \Delta$.
 Doing like this, only 8 multiplications were needed (against 30 with the naïve method).
-On may think that 3 was an example particularly good for this technique, but if we take another example, say 32, we would turn 31 multiplication to 5.
+One may think that 3 was an example particularly good for this technique, but if we take another example, say 32, we would turn 31 multiplication to 5.
 In fact, in general, to calculate $\Delta^n$ this second method need a maximum of $\log_2(n)^2$ multiplications against $n-1$ for the first one.
 So it really is a much faster algorithm.\footnote{In fact, half of the operations are squaring modular forms, which is much faster than a usual multiplication. This this algorithm is even better than stated.}
 \subparagraph{Hecke Operators}
@@ -303,7 +305,7 @@ This means that we should be careful when applying Hecke operator.
 Hecke operators are implemented in the file \texttt{HeckeOperator.jl} (see \ref{code:HeckeOperator} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/HeckeOperator.jl})
 \subparagraph{Recognise the trick?}
 \label{recogniseTrick}
-This part of the module us probably the most important, and it is the one that differ the most form any other computing technique.
+This part of the module is probably the most important, and it is the one that differ the most form any other computing technique.
 
 We start by noting that it is easy to go from the $\Delta$ representation of a modular form to the $q$ representation: it suffices to choose an arbitrary $n$, and calculate all coefficients up to $q^n$, using the series expansion of $\Delta$.
 This step is necessary to calculate Hecke operators.
@@ -311,7 +313,7 @@ This step is necessary to calculate Hecke operators.
 Now, one may ask if it is possible to go back from the $q$-representation to the $\Delta$-representation of a modular form.
 In general, this is not possible.
 \textbf{But}
-If we have some assumptions on the modular form, then it may become possible.
+if we have some assumptions on the modular form, then it may become possible.
 For example, if we know that the maximum degree (in terms of $\Delta$) of $f$ is n, and that we know it's $q$-coefficients up to n:
 then $f$ may be written as $f = \sum_{k \leq n} \mu_k \Delta^k$, so the set $\{ \Delta^k | k \leq n \}$ acts as a basis, and it is just a matter of finding the matching coefficients $\mu_k$.
 This is in fact possible, and that is how the function \texttt{to\_delta()} is made possible.
@@ -320,10 +322,10 @@ Now, once we have the $\Delta$ representation of a modular form, we potentially 
 This may seem weird or even magical, since we assumed only finitely many $q$-coefficients were known.
 In fact, we can use this fact to drop the numerical error that calculating a Hecke operator may have produced.
 
-Such kind of calculations are rather unusual in computer science: usually computers approximates objects, and this approximation error is never given back.
+Such kind of calculations are rather unusual in computer science: usually computers approximate objects, and this approximation error is never given back.
 But with modular forms modulo two, we can take back the approximation error.
 
-This method will now be referred as exact computations. [may I create this name?]
+This method will now be referred to as exact computations.
 
 It is implemented in the file \texttt{recognizer.jl} (see \ref{code:recognizer} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/recognizer.jl}).
 \subparagraph{Global}
@@ -397,7 +399,7 @@ This module is now registered as an official Julia package.
 To use all the code form this library, a new user will just need to type:
 \begin{minted}{julia}
 julia> using Pkg
-julia> Pkg.add(PackageSpec(url="https://github.com/pauldubois98/ModularFormsModuloTwo.jl"))
+julia> Pkg.add("ModularFormsModuloTwo")
 \end{minted}
 It is convenient that all the algorithms developed in this module can be used just by importing the package, which can be done in a minute.
 
@@ -660,7 +662,7 @@ Unsurprisingly, we in fact find results expected form \cite[§7]{StructureAlgebr
 
 \paragraph{New Governing Fields}
 We apply the exact same method as before, and find very good candidates governing fields for: $a_{03}$, $a_{04}$, $a_{05}$, $a_{06}$, $a_{07}$, $a_{30}$, $a_{40}$, $a_{50}$, $a_{60}$, and $a_{70}$.
-We also have some less reliable results for $a_{08}$ and $a_{80}$.
+We also have some less reliable results \footnote{In the sense of no coding error.} for $a_{08}$ and $a_{80}$.
 All the details can be found in \ref{governingFieldsResults}.
 
 
@@ -668,7 +670,7 @@ All the details can be found in \ref{governingFieldsResults}.
 
 \subsection{Probabilistic Analysis}
 In here, we want to estimate the probability that the fields found are wrong.
-To do this, we calculate the probability that the result found happens at random.
+To do this, we calculate the probability that the matching found happens at random.
 
 \subsubsection{Motivation}
 We can plot the number of 1-primes (that is, $\{ p<p_n \mid a_{ij}(p)=1 \}$) as a function of the number of primes $n$.
@@ -681,9 +683,9 @@ It seems like there is a ratio $r \in \left( 0,1 \right)$ such that
 $$
 \frac{\abs{\{ p \leq p_n | a_{03}(p)=1 \}}} {\abs{\{ p \leq p_n \}}} \to r.
 $$
-In fact, since we know that the map $a_{ij}$ is Frobenian, there exists a field $M_{03}$ such that $a_{ij}(p)$ is determined by the conjugacy class of $\Frob{M_{03}/\Q}{p}$.
+In fact, since we know that the map $a_{ij}$ is Frobenian, there exists a field $M_{ij}$ such that $a_{ij}(p)$ is determined by the conjugacy class of $\Frob{M_{ij}/\Q}{p}$.
 Now, by Chebotarev's Density Theorem, we know the density of conjugacy classes:
-For a conjugacy class $C \subseteq G_{03} = \Gal{M_{03}/\Q}$, there will be, asymptotically, a proportion of $\nicefrac{\abs{C}}{\abs{G}}$ of the primes $p$ such that $\Frob{M_{03}/\Q}{p} \in C$.
+for a conjugacy class $C \subseteq G_{ij} = \Gal{M_{ij}/\Q}$, there will be, asymptotically, a proportion of $\nicefrac{\abs{C}}{\abs{G}}$ of the primes $p$ such that $\Frob{M_{ij}/\Q}{p} \in C$.
 Therefore, the ratio $r$ we conjectured does in fact exist.
 
 
@@ -691,18 +693,18 @@ Therefore, the ratio $r$ we conjectured does in fact exist.
 \subsubsection{Assumptions}
 We consider primes $p<10^4$ (the ones for which we have computational results).
 We have a set of values $a_{ij}(p)$ that is fixed.
-As we said, the asymptotic density of primes $p$ such that $\Frob{M_{03}/\Q}{p} \in C$ in $G_{03}$ is $\nicefrac{\abs{C}}{\abs{G}}$.
-We will consider the assignment of $\Frob{M_{03}}{p}$ to a conjugacy class of $G$ as a random variable.
-We assume that $\Frob{M_{03}}{p}$ is assigned to a conjugacy class $C$ with probability $\nicefrac{\abs{C}}{\abs{G}}$.
+As we said, the asymptotic density of primes $p$ such that $\Frob{M_{ij}/\Q}{p} \in C$ in $G_{ij}$ is $\nicefrac{\abs{C}}{\abs{G}}$.
+We will consider the assignment of $\Frob{M_{ij}}{p}$ to a conjugacy class of $G$ as a random variable.
+We assume that $\Frob{M_{ij}}{p}$ is assigned to a conjugacy class $C$ with probability $\nicefrac{\abs{C}}{\abs{G}}$.
 
-With $S \subseteq G_{03}$ stable under conjugacy, we define $$b_S(p) = \left\lbrace \begin{array}{l}
-1 \quad \text{ if } \Frob{M_{03}/\Q}{p} \in S \\
+With $S \subseteq G_{ij}$ stable under conjugacy, we define $$b_S(p) = \left\lbrace \begin{array}{l}
+1 \quad \text{ if } \Frob{M_{ij}/\Q}{p} \in S \\
 0 \quad \text{ else }
 \end{array} \right..$$
 
 Using this, we make $b_S$ a Bernoulli random variable with probability $p = \nicefrac{\abs{S}}{\abs{G}}$.
 
-\subsubsection{Probability of Mistake in Governing Fields Found}
+\subsubsection{Probability of Mistake in the Governing Fields Found}
 \paragraph{General $a_{ij}$ case}
 we want to know the following probability:
 $$P_{ij} = P(\exists \ S \subseteq G_{ij} \text{ stable under conjugacy } \mid b_S(p) = a_{ij}(p) \quad \forall p<10^4).$$
@@ -724,7 +726,7 @@ Therefore, we have to sum this probability over all possible sets $S \subseteq G
 
 \paragraph{Case $a_{03}$}
 When calculating for $i=0$, $j=3$ so, we find:
-$p_0 = 157$ and $p_1 = 1071$.
+$p_0 = 157$, $p_1 = 1071$ and $G_{03} = D_{16}$.
 $$P(\exists \ S \subseteq G_{03} \text{ stable under conjugacy } \mid b_S(p) = a_{03}(p) \quad \forall p<10^4) \approx 5.0998 \cdot 10^{-204}.$$
 Therefore, it is very unlikely that the governing field that we have found is in fact matching the coefficients randomly.
 It really is a strong evidence that the governing fields found are correct.

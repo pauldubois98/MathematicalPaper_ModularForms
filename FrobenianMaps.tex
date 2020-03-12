@@ -81,7 +81,7 @@ This implies $\Norm{\mathfrak{P}_i} = |\mathcal{O}_L/\mathfrak{P}_i| = p^{mf_i}$
 We also have: 
 $\mathcal{O}_K/\mathfrak{p} \cong \mathbb{F}_{\Norm{\mathfrak{p}}}$ and $\mathcal{O}_L/\mathfrak{P}_i \cong \mathbb{F}_{\Norm{\mathfrak{P}_i}}$.
 
-\subsubsection{Galois Extensions Simplifications}
+\subsubsection{Galois Extension Simplifications}
 When the extension $L/K$ is Galois, the ramification indexes $e_i$ are all the same ($e_i=e$), as well as the inertia degrees $f_i=f$.
 We then have
 $$
@@ -176,7 +176,7 @@ Hence, we refer to $\Frob{L/K}{\mathfrak{p}}$ as the Frobenius conjugacy class.
 	Then using last property, we deduce that $\Frob{L/K}{\mathfrak{P}_1}$ and $\Frob{L/K}{\mathfrak{P}_2}$ are conjugates.
 \end{proof}
 
-Never the less, is important to notice at this point that if $L/K$ is an abelian extension (i.e. $G$ is abelian), then every conjugacy class in $\Gal{L/K}$ are made up of only one element.
+Never the less, is important to notice at this point that if $L/K$ is an abelian extension (i.e. $G$ is abelian), then every conjugacy class in $\Gal{L/K}$ is made up of only one element.
 In this case, we sometimes use $\Frob{L/K}{\mathfrak{p}}$ to denote the Frobenius element $\Frob{L/K}{\mathfrak{P}}$, where $\mathfrak{P}$ is any prime lying above $\mathfrak{p}$.
 
 
@@ -808,12 +808,12 @@ The only way known so far to find governing fields is via trial and error.
 In fact, it is not easy to check if a given field is in fact a governing field.
 Numerically, we can check that a field is governing for a finite amount of primes.
 However, proving it in general is much harder.
-Never the less, we can easily check that a field is not governing: it suffices to show that two conjugate Frobenius element of primes $p_1$ and $p_2$ are not both 1-primes or both 0-primes.
+Nevertheless, we can easily check that a field is not governing: it suffices to show that two conjugate Frobenius element of primes $p_1$ and $p_2$ are not both 1-primes or both 0-primes.
 What we will do is to check that a field is governing for a sufficiently amount of primes, and take it as a strong evidence that it will work in general. 
 
 \paragraph{Guesses for Governing Fields}
 Now we saw how to pseudo check if a field is governing.
-But to find governing fields, this isn't enough: wa also need to have some guesses for governing fields.
+But to find governing fields, this isn't enough: we also need to have some guesses for governing fields.
 Some will be declined, and some will accepted (hopefully).
 
 \subparagraph{Reasonable Candidates}
@@ -828,13 +828,13 @@ For $M_{04}$, we look at extensions of $M_{03}$, and continue the process again 
 
 \subparagraph{Good candidates}
 The details of the computation can be found in \ref{numerics:GoverningFields}, and the results (which are long to write, so we will keep the notation $M_{ij}$ to refer to the found governing fields) can be found in \ref{governingFieldsResults}.
-We will discuss the details this later.
+We will discuss the details of this later.
 An important thing to remark is that $M_{03} = M_{03}$, and similarly, $M_{40} = M_{30}$.
 It turns out that $M_{05} = M_{06} = M_{07}$, and maybe (not enough data) $ = M_{08}$.
 Similarly for $M_{50}$, $M_{60}$, $M_{70}$, and again maybe $M_{80}$.
 
 \subparagraph{Wrong candidates}
-It is disappointing that the reasonable guesses extensions of $M_{11}$ aren't governing fields (this time, it is known for sure, as we can't prove with a computer, but we can disprove) for any $a_{ij}$ with $i+j \leq 6$.
+It is disappointing that the reasonable guesses for $M_{11}$ aren't governing fields (this time, it is known for sure, as we can't prove with a computer, but we can disprove) for any $a_{ij}$ with $i+j \leq 6$.
 
 \paragraph{Limitations}
 To test if a field extension is a governing field for $a_{ij}$, we check it for odd primes $p$ up to $10^4$ (i.e. $2 < p <10^4, p \in \primes$).
@@ -848,7 +848,7 @@ The results aren't proved mathematically, however, we will treat pseudo governin
 
 \subsubsection{New Governing Fields}
 Here, we use the results of the various computations made.
-The computation methods are discussed in in the next section \ref{numerics:GoverningFields}.
+The computation methods are discussed in the next section \ref{numerics:GoverningFields}.
 Full results can be found in \ref{governingFieldsResults}.
 
 \paragraph{Results Samples}
