@@ -86,7 +86,7 @@ The way we represent infinite objects in computers, which have only a finite amo
 This is equivalent (somewhat) to the asymptotic notation in mathematics.
 In the case of $q$-series of modular forms, we will store only the few first hundred/thousand/million coefficients.
 
-This means that we will represent a modular form via its $q$-series, witch will be stored as a list.
+This means that we will represent a modular form via its $q$-series, which will be stored as a list.
 We investigate the best ways (time wise) to do basic operations to decide what technology to use.
 The operations tested are creating the $q$-series of $\Delta$, and squaring it (both storing coefficients up to some power \texttt{LENGTH}, the length of the list used).
 
@@ -276,7 +276,7 @@ Here is a visualization of the organisation (the "architecture"):
 
 \paragraph{Files Details}
 We will detail here the important and interesting parts of the code.
-For more details, the reader may refer to the source code, witch is commented and documented.
+For more details, the reader may refer to the source code, which is commented and documented.
 \subparagraph{Basics Operations}
 Basic operations on modular forms modulo 2 are defined in \texttt{arithmetic.jl} (see \ref{code:arithmetic} or \url{https://github.com/pauldubois98/ModularFormsModuloTwo.jl/blob/master/src/arithmetic.jl}).
 All of these algorithms have been optimised as much as possible (i.e. cutting loops as soon as possible, and iterate through "ones" only, as most coefficients are zero).

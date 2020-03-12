@@ -1,6 +1,6 @@
 % !TeX spellcheck = en_GB
-\section{Modular forms}
-\subsection{Modular forms of level 1}
+\section{Modular Forms}
+\subsection{Modular Forms of Level 1}
 Let $\halfplane$ denote the \textit{upper-half plane}, that is, 
 $$\halfplane = \{z = x+yi \in \C | \ y>0 \}.$$
 We say that a function $f:\halfplane 
@@ -51,7 +51,7 @@ if $f(z)$ is modular of weight $2k$, then $f^n(z)$ is modular of weight $2k \cdo
 
 
 \subsection{Typical Modular Forms}
-\subsubsection{Eisenstein series $G_k$}
+\subsubsection{Eisenstein Series $G_k$}
 The most famous class of modular forms is probably the \textit{Eisenstein series}, usually denoted $G_k$. We define them as follows \cite[Examples of Modular Forms]{ModularFormsComputationalApproach}:
 $$
 G_k(z) = \sum_{(m,n) \in \Z^2\setminus\{(0,0)\}} \frac{1}{(mz+n)^{2k}}
@@ -84,7 +84,7 @@ $$
 \Delta = \left( \frac{1}{(2\pi)^{12}} \right) (g_2^3 - 27g_3^2) \in M_6 \qquad \text{ with } g_2 = 40G_2 \text{ and } g_3 = 140G_3
 $$
 As $g_2^3$ is modular of weight $4 \cdot 3=12$ and $g_3^2$ of weight $6 \cdot 2 = 12$, $\Delta$ is modular of weight $12$.
-Multiplying by the scalar $\left( \nicefrac{1}{(2\pi)^{12}} \right)$ doesn't change the weight of the modular form, and it will we useful later for normalization purposes.
+Multiplying by the scalar $\left( \nicefrac{1}{(2\pi)^{12}} \right)$ doesn't change the weight of the modular form and it will we useful later for normalization purposes.
 
 Now, using 
 $
@@ -122,14 +122,14 @@ We have the following relation:
     Thus, $G_k \in M_k \setminus M_k^0$.
     
     Finally, we have $M_k \cong M_k^0 \oplus \C \cdot G_k$ if $k \geq 2$.
-    (The above argument fails for $k<2$ as $G_k$ is not well defined any more.)
+    (The above argument fails for $k<2$ as $G_k$ is not well defined anymore.)
 \end{proof}
 Therefore, the dimensions of $M_k$ and $M_k^0$ are closely linked.
 
 
 
 \subsection{Dimensions of Spaces of Modular Forms}
-The fact that multiplying two modular forms gives a function that remains modular yields that we may map a set of modular forms to another.
+The fact that multiplying two modular forms gives a function that remains modular yields that we may map one set of modular forms to another.
 
 \begin{theorem}\cite[p.88]{CourseInArithmetic}.
 	We have $M_{k-6} \cong M_k^0$.
@@ -158,7 +158,7 @@ Using complex analysis techniques again, we have:
     \item $\dim(M_0) = \dim(M_2) = \dim(M_3) = \dim(M_4) = \dim(M_5) = 1$
 \end{itemize}
 %[proof?]
-In the case $k=0$, $\dim(M_0) = 1$. As $f(z) = 1$ is clearly a modular from of weight $0$, $\{1\}$ is a basis for $M_0$. We deduce $\dim(M_k^0) = 0$ as $1$ is clearly not a cusp form.
+In the case $k=0$, $\dim(M_0) = 1$. As $f(z) = 1$ is clearly a modular form of weight $0$, $\{1\}$ is a basis for $M_0$. We deduce $\dim(M_k^0) = 0$ as $1$ is clearly not a cusp form.
 In the case $k=1$, $\dim(M_1) = 0$, which makes $\dim(M_1^0) = 0$ automatically.
 (Cases $k<0$ are similar to $k=1$.)
 
@@ -177,7 +177,7 @@ Other cases may be derived directly from the relations (using induction to get g
     \hline
 \end{tabular}
 \end{center}
-Note that the $\max$ is taken only to avoid negative dimensions.
+Note that the maximum is taken only to avoid negative dimensions.
 
 
 
@@ -235,7 +235,7 @@ $$
 \subsection{A Basis for Modular Forms}
 \label{BasisModularForms}
 We established that $M_k$ form a vector space over the complex numbers. 
-One may ask then a basis for this vector space.
+One may ask for a basis of this vector space.
 
 We would like to find a basis for each vector space $M_k$. It turns out that the modular forms $G_2$ and $G_3$ introduced before in fact generate a basis for all $M_k$. 
 It is not obvious and may in fact seem wrong at a first glance: $G_2$ and $G_3$ are modular forms of weight $4$ and $6$, whereas $M_k$ in general have modular forms of weight $2k$.
@@ -255,19 +255,19 @@ However, by taking combinations of $G_2$ and $G_3$, we may obtain modular forms 
     So there must be a complex $\lambda$ such that $f - \lambda g$ is a cusp form. 
     Then $f - \lambda g \in M_k \cong M_{k-6}^0$ and we can find a $h \in M_{k-6}^*$ such that $h \cdot \Delta = f - \lambda g$.
     
-    By induction, $h$ must be a polynomial of $G_2$ and $G_3$; by definition, $\Delta$ is one as well (note that yet, we don't put any restriction on powers of $G_2$ and $G_3$, other then being positive integers).
+    By induction, $h$ must be a polynomial of $G_2$ and $G_3$; by definition, $\Delta$ is one as well (note that as of yet, we haven't put any restriction on powers of $G_2$ and $G_3$, other then being positive integers).
     Therefore, $f = \Delta \cdot h + \lambda g$ is a polynomial of $G_2$ and $G_3$.
     From the fact that $f \in M_k$ (i.e. $f$ has weight $2k$), terms of $f$ as a polynomial of $G_2$ and $G_3$ have the from $G_2^aG_3^b$ with $2a+3b=k$.
     
     We now want to show linear independence, we proceed by contradiction.
     Suppose there is a non-trivial linear relation of terms $G_2^aG_3^b$. 
     We can multiply it by suitable $G_2$ and $G_3$ so that all terms have the form $2a+3b = k \equiv 0 \bmod 12$.
-    Then, we can divide all terms by $G_3^2$, witch gives us that there is a polynomial for which $\nicefrac{G_2^3}{G_3^2}$ is a root.
+    Then, we can divide all terms by $G_3^2$, which gives us a polynomial for which $\nicefrac{G_2^3}{G_3^2}$ is a root.
     In particular, this polynomial is constant when $\nicefrac{G_2^3}{G_3^2}$ is plugged.
-    This contradicts the fact that $q$-expansion of $\nicefrac{G_2^3}{G_3^2}$ is not constant.
+    This contradicts the fact that the $q$-expansion of $\nicefrac{G_2^3}{G_3^2}$ is not constant.
 \end{proof}
 
-This set of makes to be a basis, and one may even find it pleasant: given the two modular forms $G_2$ and $G_3$, this set generates all the modular forms of weight $2k$ that we could think of, if we only knew these two modular forms.
+This set is a basis. One may even find it pleasant: given the two modular forms $G_2$ and $G_3$, we are able to generate all the modular forms of weight $2k$ that we could think of.
 
 
 
