@@ -665,13 +665,81 @@ All the details can be found in \ref{governingFieldsResults}.
 
 
 
-\subsection{Probabilistic graphs}
-ASSUMING [BLA]
-... we can produce plots of $a_ij(p)$ to check it has th right distribution....
-Here, we look for the probability that the results found appeared randomly.
-We assume that the Frobenius element of a prime is random for each prime.
-then the proba [bla].
-[this part is written, but only in my head, at the moment.]
+
+\subsection{Probabilistic Analysis}
+In here, we want to estimate the probability that the fields found are wrong.
+To do this, we calculate the probability that the result found happens at random.
+
+\subsubsection{Motivation}
+We can plot the number of 1-primes (that is, $\{ p<p_n \mid a_{ij}(p)=1 \}$) as a function of the number of primes $n$.
+We obtain a plot as follows (here, we take the example of $a_{03}$, others may be found at \url{https://pauldubois98.github.io/HeckeOperatorsModuloTwo/behaviour_a_ij_p/}):
+\begin{center}
+	\includegraphics[scale=0.53]{a_0,3_exact}
+	\includegraphics[scale=0.53]{a_0,3_relative}
+\end{center}
+It seems like there is a ratio $r \in \left( 0,1 \right)$ such that
+$$
+\frac{\abs{\{ p \leq p_n | a_{03}(p)=1 \}}} {\abs{\{ p \leq p_n \}}} \to r.
+$$
+In fact, since we know that the map $a_{ij}$ is Frobenian, there exists a field $M_{03}$ such that $a_{ij}(p)$ is determined by the conjugacy class of $\Frob{M_{03}/\Q}{p}$.
+Now, by Chebotarev's Density Theorem, we know the density of conjugacy classes:
+For a conjugacy class $C \subseteq G_{03} = \Gal{M_{03}/\Q}$, there will be, asymptotically, a proportion of $\nicefrac{\abs{C}}{\abs{G}}$ of the primes $p$ such that $\Frob{M_{03}/\Q}{p} \in C$.
+Therefore, the ratio $r$ we conjectured does in fact exist.
 
 
 
+\subsubsection{Assumptions}
+We consider primes $p<10^4$ (the ones for which we have computational results).
+We have a set of values $a_{ij}(p)$ that is fixed.
+As we said, the asymptotic density of primes $p$ such that $\Frob{M_{03}/\Q}{p} \in C$ in $G_{03}$ is $\nicefrac{\abs{C}}{\abs{G}}$.
+We will consider the assignment of $\Frob{M_{03}}{p}$ to a conjugacy class of $G$ as a random variable.
+We assume that $\Frob{M_{03}}{p}$ is assigned to a conjugacy class $C$ with probability $\nicefrac{\abs{C}}{\abs{G}}$.
+
+With $S \subseteq G_{03}$ stable under conjugacy, we define $$b_S(p) = \left\lbrace \begin{array}{l}
+1 \quad \text{ if } \Frob{M_{03}/\Q}{p} \in S \\
+0 \quad \text{ else }
+\end{array} \right..$$
+
+Using this, we make $b_S$ a Bernoulli random variable with probability $p = \nicefrac{\abs{S}}{\abs{G}}$.
+
+\subsubsection{Probability of Mistake in Governing Fields Found}
+\paragraph{General $a_{ij}$ case}
+we want to know the following probability:
+$$P_{ij} = P(\exists \ S \subseteq G_{ij} \text{ stable under conjugacy } \mid b_S(p) = a_{ij}(p) \quad \forall p<10^4).$$
+That is, the probability that the field $M_{ij}$ was found to match all the calculated coefficients at random.
+
+Now, let $S \subseteq G$ be stable under conjugacy.
+Then $P(b_S(p) = a_{ij}(p) \quad \forall p<10^4)$ is determined $\abs{S}$.
+For $a_{ij}$, let $p_0 = \abs{ \{ p \in \primes_{ij}^1 \mid p<10^4 \} }$ and $p_1 = \abs{ \{ p \in \primes_{ij}^1 \mid p<10^4 \} }$.
+So we have:
+$$
+P(b_S(p)=a_{ij}(p) \quad \forall p<10^4)
+= P(b_S(p)=1)^{p_1}P(b_S(p)=0)^{p_0}
+= \left( \frac{\abs{S}}{\abs{G}} \right)^{p_1}
+\left( \frac{\abs{G}-\abs{S}}{\abs{G}} \right)^{p_0}
+$$
+This is the probability that a particular set $S$ is such that $b_S$ matches $a_{ij}$ for primes $p<10^4$.
+Now, we want to know the probability that the field extension produced this phenomenon.
+Therefore, we have to sum this probability over all possible sets $S \subseteq G$ that are stable under conjugation.
+
+\paragraph{Case $a_{03}$}
+When calculating for $i=0$, $j=3$ so, we find:
+$p_0 = 157$ and $p_1 = 1071$.
+$$P(\exists \ S \subseteq G_{03} \text{ stable under conjugacy } \mid b_S(p) = a_{03}(p) \quad \forall p<10^4) \approx 5.0998 \cdot 10^{-204}.$$
+Therefore, it is very unlikely that the governing field that we have found is in fact matching the coefficients randomly.
+It really is a strong evidence that the governing fields found are correct.
+However, this isn't a proof.
+
+The data for all other cases is in the appendix \ref{governingFieldsResults}.
+
+\paragraph{Cases $a_{08}$ and $a_{80}$}
+For these two cases, we stopped computations at primes $p<10^3$ (because it was too long to continue).
+Thus, we have less data, so the probability that the governing fields found are due to random should be greater than for the other governing fields found.
+And it is effectively the case (see \ref{governingFieldsResults} for more details).
+
+
+\subsubsection{Limitation of Probabilistic Analysis}
+This analysis is interesting, however, one may be septic on the step where we take the assignment of a Frobenius element to it's conjugacy class as a binary random variable (being in the set $S$, or not).
+We know the Bernoulli random variables very well, comparing the Frobenian element conjugacy class to a random variable would need nore thought.
+We have shown that the expectations are the same (as we calibrated the Bernoulli random variable for it).
+However, it would be interesting for example, in further study, to see if the variance is the same.
