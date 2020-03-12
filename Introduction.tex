@@ -6,7 +6,7 @@ Following \cite{OrdreNilpotenceOperateurHecke}, we define a \textit{modular form
 $$
 \Delta(q) = \sum_{n = 0}^{\infty}q^{(2n+1)^2} \in \F_2\left[\left[ q \right]\right].
 $$
-After we introduce the classical theory of modular forms as functions on the upper half-plane in Section 1, we will provide justification for this etymology by constructing certain suitable integral bases for the spaces of modular forms of level $1$.
+After we introduce the classical theory of modular forms as functions on the upper half-plane in Section 1, we will provide justification for this terminology by constructing certain suitable integral bases for the spaces of modular forms of level $1$ and then reducing their coefficients modulo 2.
 
 We will then be interested in the reduction of Hecke operators modulo $2$.
 Our interest will be limited to Hecke operators for odd prime numbers ($T_p$).
@@ -25,6 +25,7 @@ $$
 T_p = \sum_{i+j \geq 1} a_{ij}(p)T_3^iT_5^j
 $$
 Then, as a consequence of a theorem of \cite{bellaiche}, for each fixed $i$ and $j$, there is a normal extension $M_{ij}/\Q$ such that the Frobenius conjugacy class of $p$ in $M_{ij}/\Q$ determines the value $a_{ij}(p) \in \F_2$.
+In fact, one can choose $M_{ij}$ such that they are unramified outside $2$ and infinity and such that their degrees are powers of $2$.
 For instance, in \cite{OrdreNilpotenceOperateurHecke}, they claim that one can take 
 $$
 M_{01} = \Q\left( \zeta_8 \right)
@@ -33,7 +34,7 @@ M_{02} = \Q\left( \zeta_8, \sqrt[4]{2} \right)
 $$
 We carry out with various high-performance computations techniques.
 The structure of modular forms modulo 2 will in fact lead to a new computing technique (so-called "exact computations").
-This allows us to find new results, for instance, we have computed that
+This allows us to find new results; for instance, we have computed that
 \begin{multline*}
 	M_{03} = \mathbb{Q}\left(\mu, \sqrt[4]{2}, \sqrt{
 		- \frac{3136435454775881 \sqrt[4]{2}}{562949953421312} 
@@ -51,5 +52,5 @@ The new data calculated will lead us to the following new conjecture:
 \begin{conjecture}[On Diagonal Governing Groups]
 	For all $k \in \N^*$, there exists a field $M_{0k}$ such that $M_{0k}$ is a governing field for $a_{0k}$, and $G_{0k} = \Gal{M_{0k}/\Q}$ is dihedral.
 	For all $k \in \N^*$, there exists a field $M_{k0}$ such that $M_{k0}$ is a governing field for $a_{k0}$, and $G_{k0}$ is dihedral.
-	Moreover $M_{k0} \neq M_{0k}$ in general, but $G_{k0} = G_{0k}$.
+	Moreover $M_{k0} \not \cong M_{0k}$ in general, but $G_{k0} \cong G_{0k}$.
 \end{conjecture}
