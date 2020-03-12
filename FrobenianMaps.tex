@@ -354,12 +354,12 @@ $\Frob{L/K}{\mathfrak{p}}$ , and
 $\Frob{L/K}{p}$ (see \cite[p.99]{AlgebraicNumberFields}).
 We will look at properties of these Frobenius elements (relation between each others).
 
-\begin{property}
+\begin{property}\cite[p.99]{AlgebraicNumberFields}:
+	We have 
 	$$
-	\Frob{M/K}{\mathfrak{P}}^{f(\mathfrak{P}/\mathfrak{p})} = \Frob{M/L}{\mathfrak{P}}
+	\Frob{M/K}{\mathfrak{P}}^{f(\mathfrak{P}/\mathfrak{p})} = \Frob{M/L}{\mathfrak{P}}.
 	$$
 \end{property}
-This property is proved in \cite[p.99]{AlgebraicNumberFields}.
 
 \begin{property}
 	$$
@@ -401,15 +401,13 @@ This property is proved in \cite[p.99]{AlgebraicNumberFields}.
 	% done with Djordjo
 \end{proof}
 
-\begin{property}
-	We have: 
+\begin{property}\cite[p.100]{AlgebraicNumberFields}:
+	We have
 	$$
 	\mathfrak{p} \text{ splits complitely in } L 
-	\iff \Frob{L/K}{\mathfrak{P}} = 1
+	\iff \Frob{L/K}{\mathfrak{P}} = 1.
 	$$
 \end{property}
-\cite[p.100]{AlgebraicNumberFields}
-
 
 We will consider the following scheme:\\
 \begin{tikzpicture}[text width=10cm, align=flush center, node distance=2cm]
@@ -440,26 +438,25 @@ We will consider the following scheme:\\
 
 
 
-\begin{property}
-	We have:
+\begin{property}\cite[p.100]{AlgebraicNumberFields}:
+	We have
 	$$
 	\Frob{L_1L_2/K}{\mathfrak{P}}
-	= \Frob{L_1/K}{\mathfrak{p}_1} \times \Frob{L_2/K}{\mathfrak{p}_2}
+	= \Frob{L_1/K}{\mathfrak{p}_1} \times \Frob{L_2/K}{\mathfrak{p}_2}.
 	$$
 \end{property}
-\cite[p.100]{AlgebraicNumberFields}
 
-\begin{property}
-	We have: 
+
+\begin{property}\cite[p.100]{AlgebraicNumberFields}:
+	We have
 	$$
 	\mathfrak{p} \text{ splits complitely in } L_1L_2
 	\iff
-	\mathfrak{p} \text{ splits complitely in } L_1 \text{ and } L_2
+	\mathfrak{p} \text{ splits complitely in } L_1 \text{ and } L_2.
 	$$
 \end{property}
 \begin{proof}
 	Combine the last two proposition.
-	\cite[p.100]{AlgebraicNumberFields}
 \end{proof}
 
 
@@ -691,10 +688,42 @@ We define $S_{ij}^0$ in a similar manner to be the \textit{set of Frobenius 0-el
 Finally, we define $C_{ij}^1$ and $C_{ij}^0$ to be the conjugacy classes corresponding to $S_{ij}^1$ and $S_{ij}^0$ respectively.
 
 \paragraph{Properties}
+\subparagraph{Behaviour in Extensions.}
 Using properties of Frobenius elements, we have that if $L$ extends $M_{ij}$, then $L$ will also be a governing fields for the map $p \mapsto a_{ij}(p)$.
 This implies that governing fields aren't unique.
 
-We also have \cite[§7]{StructureAlgebreHecke}:
+\subparagraph{Behaviour of $T_3^2$ and $T_5^2$}
+We plot $a_{ij}(p)$ as a 2-dimensional table for a fixed $p$:
+\begin{center}
+	\begin{tabular}{|r||cc|cc|cc|cc|}
+		\hline
+		\textbf{$ T_{19}$} & \textbf{$ T_5^{0} $} & \textbf{$ T_5^{1} $} & \textbf{$ T_5^{2} $} & \textbf{$ T_5^{3} $} & \textbf{$ T_5^{4} $} & \textbf{$ T_5^{5} $} & \textbf{$ T_5^{6} $} & \textbf{$ T_5^{7} $} \\
+		\hline\hline
+		$ T_3^{0} $ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+		$ T_3^{1} $ & 1 & 0 & 0 & 0 & 1 & 0 & 1 & 0 \\
+		\hline
+		$ T_3^{2} $ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+		$ T_3^{3} $ & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+		\hline
+		$ T_3^{4} $ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+		$ T_3^{5} $ & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+		\hline
+		$ T_3^{6} $ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+		$ T_3^{7} $ & 0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 \\
+		\hline
+		$ T_3^{8} $ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+		$ T_3^{9} $ & 1 & 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+		\hline
+		$ T_3^{10} $ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+		$ T_3^{11} $ & 1 & 0 & 1 & 0 & 1 & 0 & 1 & 0 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+Putting a grid like this, it seems that for $T_{19}$, the only $a_{ij}(19) \neq 0$ are of the form $i \equiv 1 \bmod 2\text{ ; } j \equiv 0 \bmod 2$ (i.e. if $i$ is odd and $j$ even).
+We find the same kind of pattern for other primes (see tables \href{https://pauldubois98.github.io/HeckeOperatorsModuloTwo/a_ij_p/}{here}: \url{https://pauldubois98.github.io/HeckeOperatorsModuloTwo/a_ij_p/}).
+
+In fact, we have \cite[§7]{StructureAlgebreHecke}:
 \begin{itemize}
 	\item $T_p \in \F_2[[x^2, y^2]] \text{ if } p \equiv 1 \bmod 8$
 	\item $T_p \in x.\F_2[[x^2, y^2]] \text{ if } p \equiv 3 \bmod 8$
@@ -811,7 +840,11 @@ It is disappointing that the reasonable guesses extensions of $M_{11}$ aren't go
 To test if a field extension is a governing field for $a_{ij}$, we check it for odd primes $p$ up to $10^4$ (i.e. $2 < p <10^4, p \in \primes$).
 Thus, there is a strong evidence that the suggested fields are in fact governing fields, but we do not provide a mathematical proof.
 Therefore, we may only speculate on a possible value for $M_{ij}$.
-However, we will treat pseudo governing fields as governing fields to lighten notation.
+
+We could turn these calculation much stronger by proving that there is a degree for which we known a governing field exist.
+In this case, there won't be a finite amount of governing fields, but there would be only few of them that would be considered as good candidates.
+
+The results aren't proved mathematically, however, we will treat pseudo governing fields as governing fields to lighten notation.
 
 \subsubsection{New Governing Fields}
 Here, we use the results of the various computations made.
@@ -1036,8 +1069,8 @@ We can remark that:
 This leads us to the following conjecture:
 \label{diagonalGoverningGroupsConjecture}
 \begin{conjecture}[Diagonal Governing Groups Conjecture]
-	For all $k \in \N^*$, there exists a fields $M_{0k}$ such that $M_{0k}$ is a governing field for $a_{0k}$, and $G_{0k} = \Gal{M_{0k}/\Q}$ is dihedral.
-	For all $k \in \N^*$, there exists a fields $M_{k0}$ such that $M_{k0}$ is a governing field for $a_{k0}$, and $G_{k0}$ is dihedral.
+	For all $k \in \N^*$, there exists a field $M_{0k}$ such that $M_{0k}$ is a governing field for $a_{0k}$, and $G_{0k} = \Gal{M_{0k}/\Q}$ is dihedral.
+	For all $k \in \N^*$, there exists a field $M_{k0}$ such that $M_{k0}$ is a governing field for $a_{k0}$, and $G_{k0}$ is dihedral.
 	Moreover $M_{k0} \neq M_{0k}$ in general, but $G_{k0} = G_{0k}$.
 \end{conjecture}
 
